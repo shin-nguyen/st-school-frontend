@@ -1,0 +1,14 @@
+[
+    {
+        "icon": "bx bx-error",
+        "content": "Có đứa mới cmt"
+    },
+    {
+        "icon": "bx bx-package",
+        "content": "Có đứa mới mua khóa học"
+    },
+    {
+        "icon": "bx bx-cart",
+        "content": "Hết tiền rồi"
+    }
+]
