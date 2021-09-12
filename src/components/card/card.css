@@ -1,0 +1,50 @@
+.card{
+    height: 475px;
+}
+
+.card-title{
+    font-size: 18px;
+    border-bottom:darkgray 1px solid;
+}
+
+.card-content{
+    font-size: 12px;
+}
+
+.card-footer{
+    padding: 10px;
+    background-color:white
+}
+
+.card-img-top{
+    height: 175px;
+}
+
+.card-extend{
+    float: left;
+    font-size: 14px;
+}
+
+.card-extend p{
+    margin-bottom: 2px;
+}
+
+.card-extend span{
+    font-size: 20px;
+    color:firebrick;
+}
+
+.card-action{
+    height: 100%;
+    margin: auto;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-icon{
+    color:aquamarine;
+    float: right;
+    font-size: 40px;
+}

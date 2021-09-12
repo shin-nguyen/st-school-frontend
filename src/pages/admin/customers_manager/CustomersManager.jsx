@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react'
 
-import Table from '../components/table/Table'
-import UserServices from '.././services/user_services';
+import Table from '../../../components/table/Table'
+import {UserServices} from '../../../services/services';
 
 import { connect } from 'react-redux';
 
@@ -15,7 +15,6 @@ const Customers = (props) => {
         'Email',
         'Phone',
         'Address',
-        'Balance',
         'Status',
         '',
     ]
@@ -30,7 +29,6 @@ const Customers = (props) => {
             <td>{item.email}</td>
             <td>{item.phone}</td>
             <td>{item.address}</td>
-            <td>{item.balance}</td>
             <td>{item.status}</td>
             <td>
                 <button className='btn btn-success mr-10'>View</button>
@@ -50,9 +48,9 @@ const Customers = (props) => {
     return (
         <div>
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div className="card">
-                    <div className="card-">
-                        <h3 className="card-title">Customer List</h3>
+                <div className="card-table">
+                    <div className="card-header">
+                        <h3 className="title">Customer List</h3>
                     </div>
                     <div className="card-body">
                         <Table 

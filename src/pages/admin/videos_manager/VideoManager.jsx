@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react'
 
-import { connect } from 'react-redux';
-import Table from '../components/table/Table';
+// import { connect } from 'react-redux';
+import Table from '../../../components/table/Table';
 
 const VideoManager = () => {
     const [videos, setVideos] = useState([]);
@@ -38,23 +38,23 @@ const VideoManager = () => {
         </tr>
     )
 
-    // const onChange = (e) =>{
-    //     switch (e.target.name){
-    //         case "name" :   
-    //             setName(e.target.value);
-    //             break;
-    //         case "description" :    
-    //             setDescription(e.target.value);
-    //             break;
-    //         case "price":
-    //             setPrice(e.target.value);
-    //             break;
-    //         case "image":
-    //             setImage(e.target.files[0]);
-    //             break;
-    //         default : 
-    //     }
-    // }
+    const onChange = (e) =>{
+        // switch (e.target.name){
+        //     case "name" :   
+        //         setName(e.target.value);
+        //         break;
+        //     case "description" :    
+        //         setDescription(e.target.value);
+        //         break;
+        //     case "price":
+        //         setPrice(e.target.value);
+        //         break;
+        //     case "image":
+        //         setImage(e.target.files[0]);
+        //         break;
+        //     default : 
+        // }
+    }
 
     const handelReset = () =>{
         setId(-1);
@@ -131,9 +131,9 @@ const VideoManager = () => {
                         onClick={() => handelReset()}>
                     New Video
                 </button>
-                <div className="card">
-                    <div className="card-">
-                        <h3 className="card-title">Video List</h3>
+                <div className="card-table">
+                    <div className="card-header">
+                        <h3 className="title">Video List</h3>
                     </div>
                     <div className="card-body">
                         <Table 
@@ -150,21 +150,21 @@ const VideoManager = () => {
                 <div className="modal-dialog modal-dialog-centered" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title">Add New Course</h5>
+                            <h5 className="modal-title">Add New Video</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                         </div>
                         <div className="modal-body">
                             <form onSubmit= { handleSubmit }>
-                                {/* <div className="form-group">
+                                <div className="form-group">
                                     <label>Name:</label>
                                     <input  type="text" 
                                             className="form-control" 
                                             placeholder="Enter name" 
                                             name="name"
                                             value={title}
-                                            // onChange={onChange}
+                                            onChange={onChange}
                                     />
                                 </div>
                                 <div className="form-group">
@@ -174,7 +174,7 @@ const VideoManager = () => {
                                             placeholder="Enter Description" 
                                             name="description"
                                             value={content}
-                                            // onChange={onChange}
+                                            onChange={onChange}
                                     />
                                 </div>
                                 <div className="form-group">
@@ -183,7 +183,7 @@ const VideoManager = () => {
                                             className="form-control" 
                                             placeholder="Enter Price" 
                                             name="price"
-                                            value={price}
+                                            value={position}
                                             onChange={onChange}
                                             
                                     />
@@ -193,10 +193,10 @@ const VideoManager = () => {
                                     <input  type="file"  multiple
                                             className="form-control"
                                             name="image"
-                                            files={image}
+                                            value={course}
                                             onChange={onChange}
                                     />
-                                </div> */}
+                                </div>
                                 <div className="modal-footer">
                                     <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                                     <button type="submit" className="btn btn-primary">Save</button>

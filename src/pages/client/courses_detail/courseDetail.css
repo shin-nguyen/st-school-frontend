@@ -1,0 +1,50 @@
+.body{
+    height: 62vh;
+    background-color:#f0f0f0;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+
+.content{
+    width: 78%;
+    height: 100%;
+}
+
+.course-detail-img{
+    height: 100%;
+    width: 99%;
+}
+
+.course-detail{
+    height: max-content;
+}
+
+.course-detail h2{
+   font-size: 36px;
+   font-weight: 700;
+}
+
+.course-detail h4{
+    font-size: 30px;
+    font-weight: 550;
+    color: seagreen;
+ }
+
+.course-detail span{
+    font-size: 25px;
+    font-weight: 400;
+ }
+
+.btn-enroll{
+    width: 200px;
+    height: 50px;
+    background-color: #04aa6d;
+    color: white;
+    line-height: 21px;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: 600;
+}

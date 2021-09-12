@@ -2,6 +2,14 @@ import axios from "axios";
 
 const API_URL = "http://localhost:8080/course/";
 
+const getCourse = (id) => {
+  return axios
+    .get(API_URL + id)
+    .catch((error) => {
+      return error.response; 
+    });
+};
+
 const getCourses = () => {
     return axios
       .get(API_URL + "courses")
@@ -35,6 +43,7 @@ const deleteCourse = (id) => {
 }
 
 const CourseServices = {
+    getCourse, 
     getCourses,
     addCourse,
     editCourse,

@@ -1,8 +1,8 @@
 import React,{useState, useEffect} from 'react'
 
 import { connect } from 'react-redux';
-import Table from '../components/table/Table';
-import CourseServices from '../services/course_services';
+import Table from '../../../components/table/Table';
+import { CourseServices } from '../../../services/services'
 
 const Courses = (props) => {
     const [courses, setCourses] = useState([]);
@@ -135,9 +135,9 @@ const Courses = (props) => {
                         onClick={() => handelReset()}>
                     New Course
                 </button>
-                <div className="card">
-                    <div className="card-">
-                        <h3 className="card-title">Course List</h3>
+                <div className="card-table">
+                    <div className="card-header">
+                        <h3 className="title">Course List</h3>
                     </div>
                     <div className="card-body">
                         <Table 

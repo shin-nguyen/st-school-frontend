@@ -48,7 +48,7 @@
 }
 
 body {
-    font-family: "Roboto", sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     letter-spacing: 0.7px;
@@ -102,33 +102,13 @@ input:focus {
     text-transform: capitalize;
 }
 
-.card {
-    padding: 20px;
-    margin-bottom: 30px;
-    background-color: var(--main-bg);
-    box-shadow: var(--box-shadow);
-    border-radius: var(--border-radius);
+.page-body{
+    margin: auto;
+    width: 75%;
 }
 
 .full-height {
     height: 100%;
-}
-
-/* .card.full-height {
-    height: calc(100% - 30px);
-} */
-
-.card__header {
-    text-transform: capitalize;
-}
-
-.card > div ~ div {
-    margin-top: 10px;
-}
-
-.card__footer {
-    text-align: center;
-    text-transform: capitalize;
 }
 
 .custom-img{
@@ -140,8 +120,21 @@ input:focus {
     margin-bottom: 10px;
 }
 
+.mb-20{
+    margin-bottom: 20px;
+}
+
 .mr-10{
     margin-right: 10px;
+}
+
+.mr-20{
+    margin-right: 20px;
+}
+
+.m-sides-5{
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 /* .light-background {
