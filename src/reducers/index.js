@@ -1,10 +1,10 @@
+import courseReducer from "./courseReducer";
+import userReducer from "./userReducer";
 import { combineReducers } from "redux";
-import  customers from './customers'
-import courses from './courses'
 
-const appReducers = combineReducers({
-    customers,
-    courses
-});
+const rootReducer = combineReducers({
+    user: userReducer,
+    course: courseReducer,
+})
 
-export default appReducers;
+export default rootReducer;
