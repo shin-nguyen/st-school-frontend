@@ -4,7 +4,7 @@ import {BASE_URL} from '../constants/SystemConstants';
 
 export const getAllCourse  = () => async (dispatch) => {
     try {
-        const { data } = await axios.get(BASE_URL + `/course/courses`);
+        const { data } = await axios.get(BASE_URL + `/course/list`);
         dispatch({ type: "GET_ALL_COURSE", payload: data });
     } catch (error) {
         dispatch({ type: "GET_ALL_COURSE_FAIL", payload: error.message });
@@ -25,7 +25,8 @@ export const addCourse = (params) => async (dispatch) => {
       //   const {
       //     userSignin: { userInfo },
       //   } = getState();
-        const { data } = await axios.post(BASE_URL + `/course/add`, params
+        const { data } = await axios.post(BASE_URL + `/course/add`
+          , params
           // {
           //   headers: {
           //     Authorization: `Bearer ${userInfo.token}`,
@@ -35,6 +36,7 @@ export const addCourse = (params) => async (dispatch) => {
         dispatch({ type: "ADD_PRODUCT", payload: data });
     } catch (error) {
         dispatch({ type: "ADD_PRODUCT_FAIL", payload: error.message });
+        console.log(error.message)
     }
 }
 

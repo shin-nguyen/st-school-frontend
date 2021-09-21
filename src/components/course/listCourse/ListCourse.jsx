@@ -21,7 +21,7 @@ const ListCourse = (props) => {
         <div className="row page-body">
         {
             listCourse ? 
-            listCourse.map((item, index)=>(
+            listCourse.map((item)=>(
                 <div className="col-md-3 col-sm-6 " key={item.id}>
                     <CardCourse 
                         image= {item.image}

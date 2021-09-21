@@ -1,17 +1,24 @@
 import React,{useState, useEffect} from 'react'
+import { useHistory } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllCourse, deleteCourse, addCourse, updateCourse } from '../../../../actions/courseAction'
 import Table from '../table/Table'
+import { getAllLanguage } from '../../../../actions/languageAction'
 
 const CoursesManager = (props) => {
+    const history = useHistory()
     const dispatch = useDispatch()
     const listCourse = useSelector(state => state.course.listCourse)
+    const listLanguage = useSelector(state => state.language.listLanguage)
     
     const [id, setId] = useState(-1);
     const [name, setName] = useState('');
     const [descripton, setDescription] = useState('');
+    const [totalLength, setTotalLength] = useState('');
     const [price, setPrice] = useState(0);
-    const [image, setImage] = useState('');
+    const [language, setLanguage] = useState('');
+    const [file, setFile] = useState('');
+
     const [modalTitle, setModalTitle] = useState('');
 
     const courseTableHead = [
@@ -29,15 +36,14 @@ const CoursesManager = (props) => {
         <tr key={index}>
             <td>{index + 1}</td>
             <td>
-                <img src={"http://localhost:8080/images/"+item.image} alt="" className="custom-img"></img>
+                <img src={item.image} alt="" className="custom-img"></img>
             </td>
             <td>{item.name}</td>
-            <td>{item.description}</td>
+            <td className="mw-445">{item.description}</td>
             <td>{item.price}</td>
             <td>
                 <button className="btn-a btn btn-success mr-10" data-toggle="modal" data-target="#myModal" onClick={() => handleRequire(item)}>Edit</button>
                 <button className="btn btn-danger mr-10" onClick={() => handleDelete(item.id)}>Delete</button> 
-                
             </td>
         </tr>
     )
@@ -53,8 +59,15 @@ const CoursesManager = (props) => {
             case "price":
                 setPrice(e.target.value);
                 break;
-            case "image":
-                setImage(e.target.files[0]);
+            case "totalLength":
+                setTotalLength(e.target.value);
+                break;
+            case "language":
+                console.log(e.target.value);
+                setLanguage(e.target.value);
+                break;
+            case "file":
+                setFile(e.target.files[0]);
                 break;
             default : 
         }
@@ -64,8 +77,10 @@ const CoursesManager = (props) => {
         setId(-1);
         setName("");
         setDescription("");
+        setTotalLength("");
         setPrice("");
-        setImage("");
+        setFile("");
+        setLanguage("");
         setModalTitle("Add New Course");
     }
 
@@ -75,24 +90,33 @@ const CoursesManager = (props) => {
         setId(item.id);
         setName(item.name);
         setDescription(item.description);
+        setTotalLength(item.totalLength);
         setPrice(item.price);
-        setImage(item.image);
+        setLanguage(item.language);
+        setFile(item.file);
         setModalTitle("Edit Course");
+
+        console.log(language);
     }
 
     const handleDelete = (id) =>{
         if(confirm('Are you sure to delete it ?')){ //eslint-disable-line
             dispatch(deleteCourse(id));
+            history.push('/admin/courses')
         } 
     }
 
     const handleSubmit = (evt) => {
         // evt.preventDefault();
-        const params = new URLSearchParams();
-        params.append('name', name);
-        params.append('description', descripton);
-        params.append('price', price);
-        params.append('image', image);
+        let params = new FormData();
+
+        params.append("name", name);
+        params.append("description", descripton);
+        params.append("totalLength", totalLength);
+        params.append("price", price);
+        // params.append("language", language)
+        // params.appendd("language", listLanguage[0])
+        params.append("file", file);
 
         if(id===-1){
             dispatch(addCourse(params));
@@ -102,15 +126,17 @@ const CoursesManager = (props) => {
             dispatch(updateCourse(params));
         }
 
-        handelReset();  
+        handelReset();
+        // history.push('/admin/courses')  
     }
 
     useEffect(() => {
-        dispatch(getAllCourse())
+        dispatch(getAllCourse());
+        dispatch(getAllLanguage());
         return () => {
-            return []
+            return [];
         }
-    }, [dispatch])
+    }, [dispatch]);
 
     return (    
         <div>
@@ -151,7 +177,7 @@ const CoursesManager = (props) => {
                                     <label>Name:</label>
                                     <input  type="text" 
                                             className="form-control" 
-                                            placeholder="Enter name" 
+                                            placeholder="Enter Name" 
                                             name="name"
                                             value={name}
                                             onChange={onChange}
@@ -168,6 +194,33 @@ const CoursesManager = (props) => {
                                     />
                                 </div>
                                 <div className="form-group">
+                                    <label>Total length:</label>
+                                    <input  type="text" 
+                                            className="form-control" 
+                                            placeholder="Enter Total Length" 
+                                            name="totalLength"
+                                            value={totalLength}
+                                            onChange={onChange}
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label>Language:</label>
+                                    <select className="form-control"
+                                            name="language"
+                                            value={language}
+                                            onChange={onChange} 
+                                    >
+                                            {
+                                               listLanguage.map((language) => (
+                                                    <option key={language.id} 
+                                                            value={language.obj}>
+                                                        {language.name}
+                                                    </option> )
+                                               )
+                                            }
+                                    </select>
+                                </div>
+                                <div className="form-group">
                                     <label>Price:</label>
                                     <input  type="number" 
                                             className="form-control" 
@@ -182,8 +235,8 @@ const CoursesManager = (props) => {
                                     <label>Image:</label>
                                     <input  type="file"  multiple
                                             className="form-control"
-                                            name="image"
-                                            files={image}
+                                            name="file"
+                                            files={file}
                                             onChange={onChange}
                                     />
                                 </div>

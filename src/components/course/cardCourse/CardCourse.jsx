@@ -9,7 +9,7 @@ const Card = (props) => {
             <Link to={props.goto}>
                 {
                     props.image ?
-                    <img className="card-img-top" src={'http://localhost:8080/images/' + props.image} alt=""/> : 
+                    <img className="card-img-top" src={props.image} alt=""/> : 
                     <img className="card-img-top" src={default_image} alt=""/>
                 }
             </Link>
