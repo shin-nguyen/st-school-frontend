@@ -1,0 +1,107 @@
+.checkout-card-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkout-card{
+    margin-top: 80px;
+    width: 75%;
+}
+
+.order-detail h2{
+    font-family: SuisseWorks,Georgia,Times,times new roman,serif,apple color emoji,segoe ui emoji,segoe ui symbol;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.25;
+    letter-spacing: -.5px;
+}
+
+.item-detail{
+    color: black;
+    margin-top: 50px;
+}
+
+.item-detail p {
+    font-family: sf pro display,-apple-system,BlinkMacSystemFont,Roboto,segoe ui,Helvetica,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.33em;
+    margin-bottom: 32px;
+}
+
+.item-image{
+    width: 98px;
+    float: left;
+}
+
+.item-name{
+    margin-left: 20px;
+    float: left;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.43em;
+    color: #1c1d1f;
+    font-weight: 700;
+}
+
+.item-price{
+    float: right;
+    box-sizing: border-box;
+    margin-right: 5%;
+}
+
+.card-order-summary{
+    width: 100%;
+    margin: 10px;
+    padding: 25px;
+    border: 1px solid #f7f9fa;
+    box-shadow: 0 0 1px 1px rgb(28 29 31 / 10%), 0 3px 1px 0 rgb(28 29 31 / 10%);
+    box-sizing: border-box;
+    display: table;
+    margin-bottom: 10px;
+}
+
+.card-order-summary h4{
+    line-height: 24px;
+    vertical-align: middle;
+    width: 100%;
+    font-weight: 700;
+    font-size: 24px;
+    padding-bottom: 16px;
+}
+
+.btn-cancel{
+    width: 95%;
+    padding: 10px;
+    margin-top: 30px;
+}
+
+.original-price-wrapper span{
+    float: left;
+}
+
+.original-price{
+    float: right;
+} 
+
+.coupon-discounts-wrapper span{
+    float: left;
+}
+
+.coupon-discounts{
+    float: right;
+}
+
+.total-wrapper span{
+    float: left;
+}
+
+.total{
+    float: right;
+}
+
+.total-wrapper{
+    font-size: 18px;
+    margin-bottom: 50px;
+}

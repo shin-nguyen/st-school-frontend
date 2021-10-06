@@ -33,9 +33,9 @@ export const addCourse = (params) => async (dispatch) => {
           //   },
           // }
         );
-        dispatch({ type: "ADD_PRODUCT", payload: data });
+        dispatch({ type: "ADD_COURSE", payload: data });
     } catch (error) {
-        dispatch({ type: "ADD_PRODUCT_FAIL", payload: error.message });
+        dispatch({ type: "ADD_COURSE_FAIL", payload: error.message });
         console.log(error.message)
     }
 }
@@ -52,9 +52,10 @@ export const updateCourse = (params) => async (dispatch) => {
         //   },
         // }
       );
-      dispatch({ type: "UPDATE_PRODUCT", payload: data });
+      dispatch({ type: "UPDATE_COURSE", payload: data });
   } catch (error) {
-      dispatch({ type: "UPDATE_PRODUCT_FAIL", payload: error.message });
+      dispatch({ type: "UPDATE_COURSE_FAIL", payload: error.message });
+      console.log(error.message)
   }
 }
 
@@ -70,8 +71,8 @@ export const deleteCourse = (courseId) => async (dispatch, getState) => {
         //   },
         // }
       );
-      dispatch({ type: "DELETE_PRODUCT", payload: data });
+      dispatch({ type: "DELETE_COURSE", payload: data });
     } catch (error) {
-      dispatch({ type: "DELETE_PRODUCT_FAIL", payload: error.message });
+      dispatch({ type: "DELETE_COURSE_FAIL", payload: error.message });
     }
   };

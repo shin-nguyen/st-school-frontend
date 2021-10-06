@@ -145,6 +145,10 @@ input:focus {
     max-width: 445px;
 }
 
+.fw-bold{
+    font-weight: bold;
+}
+
 /* .light-background {
     background-color: var(--main-bg-light);
     color: #000;

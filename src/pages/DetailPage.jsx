@@ -2,6 +2,7 @@ import React from 'react'
 import Brand from '../components/brand/Brand'
 import Navbar from '../components/navbar/Navbar'
 import CourseDetail from '../components/course/courseDetail/CourseDetail'
+import Footer from '../components/footer/Footer'
 
 const DetailPage = () => {
     return (
@@ -9,6 +10,8 @@ const DetailPage = () => {
             <Brand/>
             <Navbar/>
             <CourseDetail/>
+            <hr />
+            <Footer/>
         </div>
     )
 }

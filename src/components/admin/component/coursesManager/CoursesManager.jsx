@@ -3,20 +3,19 @@ import { useHistory } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllCourse, deleteCourse, addCourse, updateCourse } from '../../../../actions/courseAction'
 import Table from '../table/Table'
-import { getAllLanguage } from '../../../../actions/languageAction'
+import listLanguage from "../../../../assets/JsonData/language.json"
 
 const CoursesManager = (props) => {
     const history = useHistory()
     const dispatch = useDispatch()
     const listCourse = useSelector(state => state.course.listCourse)
-    const listLanguage = useSelector(state => state.language.listLanguage)
     
     const [id, setId] = useState(-1);
     const [name, setName] = useState('');
     const [descripton, setDescription] = useState('');
     const [totalLength, setTotalLength] = useState('');
     const [price, setPrice] = useState(0);
-    const [language, setLanguage] = useState('');
+    const [language, setLanguage] = useState('English'); 
     const [file, setFile] = useState('');
 
     const [modalTitle, setModalTitle] = useState('');
@@ -43,7 +42,7 @@ const CoursesManager = (props) => {
             <td>{item.price}</td>
             <td>
                 <button className="btn-a btn btn-success mr-10" data-toggle="modal" data-target="#myModal" onClick={() => handleRequire(item)}>Edit</button>
-                <button className="btn btn-danger mr-10" onClick={() => handleDelete(item.id)}>Delete</button> 
+                <button className="btn btn-danger mr-10" onClick={() => handleDelete(item)}>Delete</button> 
             </td>
         </tr>
     )
@@ -63,8 +62,8 @@ const CoursesManager = (props) => {
                 setTotalLength(e.target.value);
                 break;
             case "language":
-                console.log(e.target.value);
                 setLanguage(e.target.value);
+                console.log(language);
                 break;
             case "file":
                 setFile(e.target.files[0]);
@@ -95,14 +94,12 @@ const CoursesManager = (props) => {
         setLanguage(item.language);
         setFile(item.file);
         setModalTitle("Edit Course");
-
-        console.log(language);
     }
 
-    const handleDelete = (id) =>{
+    const handleDelete = (item) =>{
         if(confirm('Are you sure to delete it ?')){ //eslint-disable-line
-            dispatch(deleteCourse(id));
-            history.push('/admin/courses')
+            dispatch(deleteCourse(item.id));
+            history.push('/admin/courses');
         } 
     }
 
@@ -113,9 +110,8 @@ const CoursesManager = (props) => {
         params.append("name", name);
         params.append("description", descripton);
         params.append("totalLength", totalLength);
+        params.append("language", language)
         params.append("price", price);
-        // params.append("language", language)
-        // params.appendd("language", listLanguage[0])
         params.append("file", file);
 
         if(id===-1){
@@ -127,12 +123,12 @@ const CoursesManager = (props) => {
         }
 
         handelReset();
-        // history.push('/admin/courses')  
+        history.push('/admin/courses')  
     }
 
     useEffect(() => {
         dispatch(getAllCourse());
-        dispatch(getAllLanguage());
+        console.log("render");
         return () => {
             return [];
         }
@@ -208,15 +204,16 @@ const CoursesManager = (props) => {
                                     <select className="form-control"
                                             name="language"
                                             value={language}
-                                            onChange={onChange} 
+                                            onChange={onChange}
                                     >
                                             {
-                                               listLanguage.map((language) => (
-                                                    <option key={language.id} 
-                                                            value={language.obj}>
-                                                        {language.name}
-                                                    </option> )
-                                               )
+                                                listLanguage ?
+                                                listLanguage.map((item) => 
+                                                    <option key={item.id} 
+                                                            value={item.name}>
+                                                        {item.name}
+                                                    </option>
+                                                ) : <option value="">No language</option>
                                             }
                                     </select>
                                 </div>
