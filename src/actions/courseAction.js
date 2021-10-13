@@ -33,6 +33,7 @@ export const addCourse = (params) => async (dispatch) => {
           //   },
           // }
         );
+        console.log(data);
         dispatch({ type: "ADD_COURSE", payload: data });
     } catch (error) {
         dispatch({ type: "ADD_COURSE_FAIL", payload: error.message });
@@ -71,6 +72,7 @@ export const deleteCourse = (courseId) => async (dispatch, getState) => {
         //   },
         // }
       );
+      console.log(data)
       dispatch({ type: "DELETE_COURSE", payload: data });
     } catch (error) {
       dispatch({ type: "DELETE_COURSE_FAIL", payload: error.message });

@@ -1,3 +1,5 @@
+import { findIndex } from "../untils/untils"
+
 const initialState ={
     listCourse:[],
     course: {}
@@ -10,20 +12,33 @@ const courseReducer = (state = initialState, action) => {
         case 'GET_ALL_COURSE_FAIL':{
             return {...state, error: action.payload}
         }
-        case 'SAVE_COURSE':{
-            return {...state, listCourse: action.payload}
+        case 'ADD_COURSE':{
+            const newList = [...state.listCourse];
+            newList.push(action.payload);
+            console.log(newList)
+            return {...state, listCourse: newList};
         }
-        case 'SAVE_COURSE_FAIL':{
+        case 'ADD_COURSE_FAIL':{
             return {...state, error: action.payload}
         }
         case 'UPDATE_COURSE':{
-            return {...state, listCourse: action.payload}
+            const index = findIndex(state.listCourse, action.payload.id)
+            state.listCourse[index] = action.payload;
+            console.log("update course")
+            console.log(action.payload)
+            console.log("after update");
+            console.log(state.listCourse);
+            return {...state};
         }
         case 'UPDATE_COURSE_FAIL':{
             return {...state, error: action.payload}
         }
         case 'DELETE_COURSE':{
-            return {...state, listCourse: action.payload}
+            const index = findIndex(state.listCourse, action.payload)
+            const newList = [...state.listCourse];
+            newList.splice(index, 1);
+            console.log(newList);
+            return {...state, listCourse: newList}
         }   
         case 'DELETE_COURSE_FAIL':{
             return {...state, error: action.payload}
