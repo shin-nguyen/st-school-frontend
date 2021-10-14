@@ -1,20 +1,51 @@
-import React,{useState, useEffect} from 'react'
-import { useHistory } from 'react-router'
+import React, {useState, useEffect} from 'react'
+import { useHistory, useParams } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
-import { addCourse, updateCourse } from '../../../../../actions/courseAction'
+import { getCourseById, addCourse, updateCourse } from '../../../../../actions/courseAction'
 import listLanguage from "../../../../../assets/JsonData/language.json"
 
 const CourseForm = () => {
+    let { id } = useParams();
+    if(id == null)
+        id = -1 ;
+
     const history = useHistory()
     const dispatch = useDispatch()
+    const course = useSelector(state => state.course.course);
 
-    const [id, setId] = useState(-1);
     const [name, setName] = useState('');
-    const [descripton, setDescription] = useState('');
+    const [description, setDescription] = useState('');
     const [totalLength, setTotalLength] = useState('');
     const [price, setPrice] = useState(0);
     const [language, setLanguage] = useState('English'); 
     const [file, setFile] = useState('');
+
+    const [title, setTitle] = useState('Add Course');
+
+    const loadCourseEdited = async () => {
+        if(id !== -1){
+            await dispatch(getCourseById(id));
+            setTitle("Edit Course");
+        }
+    }
+
+    useEffect(()=>{
+        loadCourseEdited();
+        return () => {
+            return [];
+        }
+    },[dispatch, id])
+
+    useEffect(()=>{
+        console.log("re-render")
+        console.log("Get course edited: ")
+        console.log(course);
+        setName(course.name);
+        setDescription(course.description);
+        setTotalLength(course.totalLength);
+        setLanguage(course.language);
+        setPrice(course.price);
+    },[course]);
 
     const onChange = (e) =>{
         switch (e.target.name){
@@ -45,23 +76,32 @@ const CourseForm = () => {
         let params = new FormData();
 
         params.append("name", name);
-        params.append("description", descripton);
+        params.append("description", description);
         params.append("totalLength", totalLength);
         params.append("language", language);
         params.append("price", price);
         params.append("file", file);
 
-        if(id===-1){
+        if(id === -1){
             dispatch(addCourse(params));
         }
         else {
             params.append("id", id)
             dispatch(updateCourse(params));
         }
-        history.push('/admin/courses');
+
+        handelBack();
     }
+
+    const handelBack = () =>{
+        history.push("/admin/courses")
+    }
+
     return (
         <div>
+            <div className='form_title'>
+                {title}
+            </div>
              <form onSubmit= { handleSubmit } encType="multipart/form-data">
                 <div className="form-group">
                     <label>Name:</label>
@@ -79,7 +119,7 @@ const CourseForm = () => {
                             className="form-control" 
                             placeholder="Enter Description" 
                             name="description"
-                            value={descripton}
+                            value={description}
                             onChange={onChange}
                         />
                     </div>
@@ -130,7 +170,7 @@ const CourseForm = () => {
                     />
                 </div>
                 <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" className="btn btn-secondary" onClick={handelBack}>Close</button>
                     <button type="submit" className="btn btn-primary">Save</button>
                 </div>               
             </form>

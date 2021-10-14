@@ -15,7 +15,6 @@ const courseReducer = (state = initialState, action) => {
         case 'ADD_COURSE':{
             const newList = [...state.listCourse];
             newList.push(action.payload);
-            console.log(newList)
             return {...state, listCourse: newList};
         }
         case 'ADD_COURSE_FAIL':{
@@ -23,12 +22,9 @@ const courseReducer = (state = initialState, action) => {
         }
         case 'UPDATE_COURSE':{
             const index = findIndex(state.listCourse, action.payload.id)
-            state.listCourse[index] = action.payload;
-            console.log("update course")
-            console.log(action.payload)
-            console.log("after update");
-            console.log(state.listCourse);
-            return {...state};
+            const newList = [...state.listCourse];
+            newList[index] = action.payload;
+            return {...state, listCourse: newList};
         }
         case 'UPDATE_COURSE_FAIL':{
             return {...state, error: action.payload}
@@ -44,6 +40,9 @@ const courseReducer = (state = initialState, action) => {
             return {...state, error: action.payload}
         }
         case 'GET_COURSE_BY_ID':{
+            let newState ={...state, course: action.payload};
+            console.log("State: ")
+            console.log(newState);
             return {...state, course: action.payload}
         }
         case 'GET_COURSE_BY_ID_FAIL':{

@@ -4,7 +4,7 @@ import { getAllCourse, deleteCourse } from '../../../../../actions/courseAction'
 import Table from '../../table/Table'
 import { Link } from 'react-router-dom'
 
-const CoursesManager = (props) => {
+const CoursesManager = () => {
     const dispatch = useDispatch()
     const listCourse = useSelector(state => state.course.listCourse)
 
@@ -46,17 +46,7 @@ const CoursesManager = (props) => {
     useEffect(() => {
         dispatch(getAllCourse());
         console.log("render");
-        return () => {
-            return [];
-        }
     }, [dispatch]);
-
-    useEffect(() => {
-        console.log("render2");
-        return () => {
-            return [];
-        }
-    }, [listCourse]);
 
     return (    
         <div>

@@ -5,6 +5,7 @@ import {BASE_URL} from '../constants/SystemConstants';
 export const getAllCourse  = () => async (dispatch) => {
     try {
         const { data } = await axios.get(BASE_URL + `/course/list`);
+        console.log(data)
         dispatch({ type: "GET_ALL_COURSE", payload: data });
     } catch (error) {
         dispatch({ type: "GET_ALL_COURSE_FAIL", payload: error.message });
