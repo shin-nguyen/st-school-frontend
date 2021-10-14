@@ -22,14 +22,13 @@ const CourseForm = () => {
 
     const [title, setTitle] = useState('Add Course');
 
-    const loadCourseEdited = async () => {
-        if(id !== -1){
-            await dispatch(getCourseById(id));
-            setTitle("Edit Course");
-        }
-    }
-
     useEffect(()=>{
+        const loadCourseEdited = async () => {
+            if(id !== -1){
+                await dispatch(getCourseById(id));
+                setTitle("Edit Course");
+            }
+        }
         loadCourseEdited();
         return () => {
             return [];
@@ -37,15 +36,16 @@ const CourseForm = () => {
     },[dispatch, id])
 
     useEffect(()=>{
-        console.log("re-render")
-        console.log("Get course edited: ")
-        console.log(course);
-        setName(course.name);
-        setDescription(course.description);
-        setTotalLength(course.totalLength);
-        setLanguage(course.language);
-        setPrice(course.price);
-    },[course]);
+        if(id !== -1){
+            console.log("Get course edited: ")
+            console.log(course);
+            setName(course.name);
+            setDescription(course.description);
+            setTotalLength(course.totalLength);
+            setLanguage(course.language);
+            setPrice(course.price);
+        }
+    },[course, id]);
 
     const onChange = (e) =>{
         switch (e.target.name){
@@ -84,10 +84,12 @@ const CourseForm = () => {
 
         if(id === -1){
             dispatch(addCourse(params));
+            console.log("add");
         }
         else {
             params.append("id", id)
             dispatch(updateCourse(params));
+            console.log("update");
         }
 
         handelBack();
