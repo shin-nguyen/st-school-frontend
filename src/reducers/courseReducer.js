@@ -1,4 +1,4 @@
-import { findIndex } from "../untils/untils"
+import { findIndex } from "../utils/utils"
 
 const initialState ={
     listCourse:[],
