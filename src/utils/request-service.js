@@ -23,6 +23,7 @@ const createRequest = (method, url, body, isAuthRequired, contentType) => {
         data: body,
         headers: setHeader(isAuthRequired, contentType)
     });
+    
 };
 const setHeader = (isAuthRequired, contentType) => {
     if (isAuthRequired) {

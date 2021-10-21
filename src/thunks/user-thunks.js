@@ -12,7 +12,7 @@ import {userByQuery} from "../utils/graphql-query/users-query";
 
 export const fetchUserInfo = () => async (dispatch) =>{
     dispatch(loadingUserInfo());
-    const response = await RequestService.get("users/info",true);
+    const response = await RequestService.get("/users/info",true);
     localStorage.setItem("email",response.data.email);
     localStorage.setItem("userRole",response.data.roles);
     localStorage.setItem("isLoggedIn","true");
@@ -22,7 +22,8 @@ export const fetchUserInfo = () => async (dispatch) =>{
 
 export const updateUserInfo = (userEdit)=> async(dispatch) =>{
     try{
-        const response = await RequestService.put("/user/edit",userEdit,true);
+        console.log(userEdit);
+        const response = await RequestService.put("/users/edit",userEdit,true);
         dispatch(userUpdatedSuccess(response.data));
     }
     catch(error){
@@ -32,7 +33,7 @@ export const updateUserInfo = (userEdit)=> async(dispatch) =>{
 
 export const updateUserPassword = (data) => async (dispatch) =>{
     try{
-        const response  = await RequestService.put("auth/edit/password",data,true);
+        const response  = await RequestService.put("/auth/edit/password",data,true);
         dispatch(userUpdatedPasswordSuccess(response.data));
     }
     catch(error){
