@@ -68,8 +68,8 @@ const CourseDetail = () => {
                                         {index+1 +'. '+ item.name}
                                     </div>
                                     <div id={"component"+ item.id} className="collapse">
-                                        <div className="course-component-item">Lesson 1</div>
-                                        <div className="course-component-item">Lesson 2</div>
+                                        <div className="course-component-item">Video 1</div>
+                                        <div className="course-component-item">Video 2</div>
                                     </div>
                                 </div> 
                             ))

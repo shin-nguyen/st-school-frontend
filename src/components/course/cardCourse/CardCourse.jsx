@@ -23,15 +23,28 @@ const Card = (props) => {
                     <p className="card-text">{props.description}</p>
                 </div>
             </div>
-            <div className="card-footer">
-                <div className="card-extend ">
-                    <p>Price: </p>
-                    <span>${props.price}</span>
-                </div>
-                <div className="card-action">
-                        <Link to={props.goto} className='card-icon bx bxs-right-arrow-circle'/>
-                </div>
-            </div>             
+            {
+                props.isBought ? 
+                <div className="card-footer">
+                    <div className="card-extend ">
+                        <p>Learn Now </p>
+                        <p>ST-School</p>
+                    </div>
+                    <div className="card-action">
+                            <Link to={props.goto} className='card-icon bx bxs-right-arrow-circle'/>
+                    </div>
+                </div>     
+                :
+                <div className="card-footer">
+                    <div className="card-extend ">
+                        <p>Price: </p>
+                        <span>${props.price}</span>
+                    </div>
+                    <div className="card-action">
+                            <Link to={props.goto} className='card-icon bx bxs-right-arrow-circle'/>
+                    </div>
+                </div>     
+            }        
         </div>
     )
 }
