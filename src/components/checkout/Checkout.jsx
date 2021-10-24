@@ -14,15 +14,15 @@ const Checkout = () => {
     const history = useHistory();
     console.log(course)
 
-    // const handleClick = () =>{
-    //     dispatch(addOrder({
-    //         "user":{
-    //             "id": 1
-    //         },
-    //         "course": course
-    //     }));
-    //     alert("save")
-    // }
+    const handleClick = () =>{
+        dispatch(addOrder({
+            "user":{
+                "id": 1
+            },
+            "course": course
+        }));
+        alert("save")
+    }
 
     const handelBack = () =>{
         history.push("/course/"+course.id)
@@ -123,9 +123,9 @@ const Checkout = () => {
                             }}
                         />
 
-                        {/* <button onClick={handleClick}>
+                        <button onClick={handleClick}>
                             Test Create Order
-                        </button> */}
+                        </button>
                     </div>
                 </div>
             </div>
