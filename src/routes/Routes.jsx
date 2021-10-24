@@ -4,6 +4,8 @@ import HomePage from '../pages/HomePage'
 import CoursesPage from '../pages/CoursePage'
 import DetailPage from '../pages/DetailPage'
 import CheckoutPage from '../pages/CheckoutPage'
+import MyCoursesPage from '../pages/MyCoursesPage'
+import LearningPage from '../pages/LearningPage'
 import AdminPage from '../pages/AdminPage'
 import NotFound from '../pages/NotFound'
 import LoginPage from '../pages/LoginPage'
@@ -24,14 +26,13 @@ const Routes = () => {
                     (<Route component={Account}/>) : (<Route component={HomePage}/>)}/> 
             <Route exact path="/reset/:code" component={ResetPassword}/>
             <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}/>
-            <Route path='/courses' exact component={CoursesPage}/>
+            <Route path='/courses' component={CoursesPage}/>
             <Route path='/course/:id' component={DetailPage}/>
             <Route path='/checkout' component={CheckoutPage}/>
-            <Route path='/admin' component ={AdminPage}/>
-            
-          
-
-            
+            <Route path='/my-courses' component={MyCoursesPage}/>
+            <Route path='/learning/:id' component={LearningPage}/>
+            <Route path='/admin' exact component ={AdminPage}/>
+            <Route component={NotFound}/>
             {/* <Route component={NotFound}/>   */}
         </Switch>
     )

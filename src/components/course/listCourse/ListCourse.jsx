@@ -9,19 +9,31 @@ const ListCourse = (props) => {
     const listCourse = useSelector(state => state.course.listCourse)
 
     useEffect(() => {
-        dispatch(getAllCourse())
+        if(props.isBought === true){
+            console.log("isBought");
+        } else {
+            dispatch(getAllCourse());
+        }
         return () => {
             return []
         }
     }, [dispatch])
 
-    console.log(listCourse)
-
     return (
         <div className="row page-body">
         {
-            listCourse ? 
             listCourse.map((item)=>(
+                props.isBought === true ?
+                <div className="col-md-3 col-sm-6 " key={item.id}>
+                    <CardCourse 
+                        image= {item.image}
+                        title= {item.name}
+                        description= {item.description}
+                        price={item.price}
+                        goto={"/learning/" + item.id}
+                        isBought/>
+                </div>
+                :
                 <div className="col-md-3 col-sm-6 " key={item.id}>
                     <CardCourse 
                         image= {item.image}
@@ -30,7 +42,7 @@ const ListCourse = (props) => {
                         price={item.price}
                         goto={"/course/" + item.id}/>
                 </div>
-            )) : <h3>No Course</h3>
+            ))
         }
         </div>
     )

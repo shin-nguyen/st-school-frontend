@@ -1,5 +1,4 @@
 import courseReducer from "./courseReducer";
-import languageReducer from "./languageReducer";
 import sectionReducer from "./sectionReducer";
 import orderReducer from "./orderReducer";
 import userReducer from "../reducers/userReducer";
@@ -12,7 +11,6 @@ const rootReducer = combineReducers({
     user: userReducer,
     auth: authReducer,
     course: courseReducer,
-    language: languageReducer,
     section: sectionReducer,
     order: orderReducer,
     admin: adminReducer,
