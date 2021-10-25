@@ -122,7 +122,6 @@ const Checkout = () => {
                                 clientId: CLIENT_ID
                             }}
                         />
-
                         <button className="btn btn-success" onClick={handleClick}>
                             Test Create Order
                         </button>

@@ -44,6 +44,7 @@ const renderUserMenu =(item, index) => (
     </Link>
 )
 
+
 const Topnav = () => {
     return (
         <div className='topnav'>
@@ -51,6 +52,7 @@ const Topnav = () => {
                 <input type="text" placeholder='Search here...' />
                 <i className='bx bx-search'></i>
             </div>
+            
             <div className="topnav__right">
                 <div className="topnav__right-item">
                     {/* dropdown here */}

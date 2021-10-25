@@ -1,55 +1,50 @@
+import {
+    LOADING_BLOG,
+    FETCH_BLOGS,
+    FETCH_BLOG_SUCCESS,
+    FETCH_BLOGS_BY_FILTER_PARAMS_SUCCESS,
+    FETCH_BLOGS_BY_QUERY_SUCCESS,
+    FETCH_BLOG_BY_QUERY_SUCCESS,
+    DELETE_BLOG,
+} from "../action-types/blog-action-types";
 
-const initialState ={
-    listCourse:[],
-    course: {}
-}
-const courseReducer = (state = initialState, action) => {
+
+const initialState = {
+    blogs: [],
+    blog: {},
+    topics: [],
+    isBlogLoading: false
+};
+
+const reducer = (state = initialState, action) => {
+
     switch (action.type) {
-        case 'GET_ALL_COURSE':{
-            return {...state, listCourse: action.payload}
-        }
-        case 'GET_ALL_COURSE_FAIL':{
-            return {...state, error: action.payload}
-        }
-        case 'ADD_COURSE':{
-            const newList = [...state.listCourse];
-            newList.push(action.payload);
-            return {...state, listCourse: newList};
-        }
-        case 'ADD_COURSE_FAIL':{
-            return {...state, error: action.payload}
-        }
-        case 'UPDATE_COURSE':{
-            const index = findIndex(state.listCourse, action.payload.id)
-            const newList = [...state.listCourse];
-            newList[index] = action.payload;
-            return {...state, listCourse: newList};
-        }
-        case 'UPDATE_COURSE_FAIL':{
-            return {...state, error: action.payload}
-        }
-        case 'DELETE_COURSE':{
-            const index = findIndex(state.listCourse, action.payload)
-            const newList = [...state.listCourse];
-            newList.splice(index, 1);
-            console.log(newList);
-            return {...state, listCourse: newList}
-        }   
-        case 'DELETE_COURSE_FAIL':{
-            return {...state, error: action.payload}
-        }
-        case 'GET_COURSE_BY_ID':{
-            let newState ={...state, course: action.payload};
-            console.log("State: ")
-            console.log(newState);
-            return {...state, course: action.payload}
-        }
-        case 'GET_COURSE_BY_ID_FAIL':{
-            return {...state, error: action.payload}
-        }
-        default:
-            return state   
-    }
-}
+        case LOADING_BLOG:
+            return {...state, isBlogLoading: true};
 
-export default courseReducer;
+        case FETCH_BLOGS:
+            return {...state, blogs: action.payload, isBlogLoading: false};
+
+        case FETCH_BLOGS_BY_FILTER_PARAMS_SUCCESS:
+            return {...state, blogs: action.payload, isBlogLoading: false};
+
+        case FETCH_BLOG_SUCCESS:
+            return {...state, blog: action.payload, topics: action.payload.topics, isBlogLoading: false};
+
+        case FETCH_BLOG_BY_QUERY_SUCCESS:
+            return {...state, blog: action.payload, topics: action.payload.topics, isBlogLoading: false};
+
+        case FETCH_BLOGS_BY_QUERY_SUCCESS:
+            return {...state, blogs: action.payload, isBlogLoading: false};
+        case DELETE_BLOG:{
+                console.log(action.payload);
+                const newList = [...state.blogs].filter((item) => item.id !== action.payload);
+                console.log(newList);
+                return {...state, blogs: newList,isBlogLoading: false}
+            }   
+        default:
+            return state;
+    }
+};
+
+export default reducer;

@@ -3,7 +3,7 @@ import {useEffect, useState} from 'react';
 const usePagination = ({itemsPerPage, data, startFrom}) => {
     const [searching, setSearching] = useState(false);
     const [filteredData, setFilteredData] = useState(data);
-    const perPage = itemsPerPage ? itemsPerPage : 12;
+    const perPage = itemsPerPage ? itemsPerPage : 4;
     const pages = Math.ceil(filteredData.length / perPage);
     const pagination = [];
     const [currentPage, setCurrentPage] = useState(startFrom <= pages ? startFrom : 1);

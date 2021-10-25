@@ -7,12 +7,15 @@ import CourseManager from '../components/admin/component/course/courseManager/Co
 import CourseForm from '../components/admin/component/course/courseForm/CourseForm'
 import ListCustomer from '../components/admin/component/customer/ListCustomer'
 import ListOrder from '../components/admin/component/order/ListOrder'
+import BlogPage from '../pages/BlogPage'
 
 const AdminRoutes = () => {
     return (
         <Switch>
             <Route path='/admin' exact component={Dashboard}/>
             <Route path='/admin/customers' component={ListCustomer}/>
+            {/* <Route path='/admin/customers' component={CustomersManager}/> */}
+            <Route path='/admin/blogs' component={BlogPage}/>
             <Route path='/admin/courses' component={CourseManager}/>
             <Route path='/admin/course/add' component={CourseForm}/>
             <Route path='/admin/course/:id/edit' component={CourseForm}/>
