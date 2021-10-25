@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { useHistory, useParams } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
-import { getCourseById, addCourse, updateCourse } from '../../../../../actions/courseAction'
+import { getCourseById, addCourse, updateCourse } from '../../../../../services/course-services'
 import listLanguage from "../../../../../assets/JsonData/language.json"
 
 const CourseForm = () => {

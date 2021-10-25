@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllCourse, deleteCourse } from '../../../../../actions/courseAction'
+import { getAllCourse, deleteCourse } from '../../../../../services/course-services'
 import Table from '../../table/Table'
 import { Link } from 'react-router-dom'
 
@@ -27,7 +27,7 @@ const CoursesManager = () => {
             </td>
             <td>{item.name}</td>
             <td className="mw-445">{item.description}</td>
-            <td>{item.price}</td>
+            <td>${item.price}</td>
             <td>
                 <Link to={'course/'+item.id+'/edit'}>
                     <button className="btn-a btn btn-success mr-10">Edit</button>
@@ -45,11 +45,9 @@ const CoursesManager = () => {
 
     useEffect(() => {
         dispatch(getAllCourse());
-        console.log("render");
     }, [dispatch]);
 
     useEffect(() => {
-        console.log("re-render");
     }, [listCourse]);
 
     return (    

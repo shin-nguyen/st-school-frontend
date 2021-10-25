@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router'
 import { useEffect } from 'react';
-import { getCourseById } from '../../../actions/courseAction';
+import { getCourseById } from '../../../services/course-services';
 import { getSectionOfCourse } from '../../../actions/sectionAction';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -68,8 +68,11 @@ const CourseDetail = () => {
                                         {index+1 +'. '+ item.name}
                                     </div>
                                     <div id={"component"+ item.id} className="collapse">
-                                        <div className="course-component-item">Video 1</div>
-                                        <div className="course-component-item">Video 2</div>
+                                            {
+                                                item.lectures.map((lecture) => (
+                                                    <div className="course-component-item">{lecture.title}</div>
+                                                ))
+                                            }
                                     </div>
                                 </div> 
                             ))

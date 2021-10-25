@@ -1,0 +1,48 @@
+.content-wrapper{
+    direction: inherit;
+    box-sizing: border-box!important;
+    position: relative;
+    display: block;
+    height: 100%;
+    width: 100%;
+    visibility: visible;
+}
+
+.video-wrapper{
+    width: 100%;
+    position: relative;
+    background-color: black;
+    padding: 0 17%;
+}
+
+.comment-wrapper{
+    width: 100%;
+    position: relative;
+    padding: 0 17%;
+}
+
+.comment-header{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.comment-wrapper h4 {
+    font-size: 1.2rem;
+    font-weight: 550;
+    margin: 20px auto 0 0;
+}
+
+.share-box{
+    display: flex;
+    align-items: center;
+}
+
+.playlist-wrapper{
+    /* position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0; */
+    width: 25%;
+}

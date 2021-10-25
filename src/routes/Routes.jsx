@@ -31,7 +31,7 @@ const Routes = () => {
             <Route path='/checkout' component={CheckoutPage}/>
             <Route path='/my-courses' component={MyCoursesPage}/>
             <Route path='/learning/:id' component={LearningPage}/>
-            <Route path='/admin' exact component ={AdminPage}/>
+            <Route path='/admin' component ={AdminPage}/>
             <Route component={NotFound}/>
             {/* <Route component={NotFound}/>   */}
         </Switch>

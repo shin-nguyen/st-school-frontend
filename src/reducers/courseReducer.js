@@ -2,14 +2,21 @@ import { findIndex } from "../utils/utils"
 
 const initialState ={
     listCourse:[],
+    purchasedCourses:[],
     course: {}
 }
 const courseReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'GET_ALL_COURSE':{
+        case 'FETCH_ALL_COURSE':{
             return {...state, listCourse: action.payload}
         }
-        case 'GET_ALL_COURSE_FAIL':{
+        case 'FETCH_ALL_COURSE_FAIL':{
+            return {...state, error: action.payload}
+        }
+        case 'GET_PURCHASED_COURSE':{
+            return {...state, purchasedCourses: action.payload}
+        }
+        case 'GET_PURCHASED_COURSE_FAIL':{
             return {...state, error: action.payload}
         }
         case 'ADD_COURSE':{
@@ -40,9 +47,6 @@ const courseReducer = (state = initialState, action) => {
             return {...state, error: action.payload}
         }
         case 'GET_COURSE_BY_ID':{
-            let newState ={...state, course: action.payload};
-            console.log("State: ")
-            console.log(newState);
             return {...state, course: action.payload}
         }
         case 'GET_COURSE_BY_ID_FAIL':{

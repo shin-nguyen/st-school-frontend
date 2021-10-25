@@ -5,14 +5,9 @@
         "icon": "bx bx-category-alt"
     },
     {
-        "display_name": "Customers",
-        "route": "/admin/customers",
-        "icon": "bx bx-user-pin"
-    },
-    {
-        "display_name": "Blogs",
-        "route": "/admin/blogs",
-        "icon": "bx bx-package"
+        "display_name": "Orders",
+        "route": "/admin/orders",
+        "icon": "bx bx-cart"
     },
     {
         "display_name": "Courses",
@@ -20,27 +15,22 @@
         "icon": "bx bx-cart"
     },
     {
+        "display_name": "Blogs",
+        "route": "/admin/blogs",
+        "icon": "bx bx-package"
+    },
+    {
         "display_name": "Videos",
         "route": "/admin/videos",
         "icon": "bx bx-user-pin"
     },
     {
-        "display_name": "Orders",
-        "route": "/admin/orders",
-        "icon": "bx bx-cart"
+        "display_name": "Customers",
+        "route": "/admin/customers",
+        "icon": "bx bx-user-pin"
     },
     {
-        "display_name": "categories",
-        "route": "/admin/categories",
-        "icon": "bx bx-list-ol"
-    },
-    {
-        "display_name": "discount",
-        "route": "/admin/discount",
-        "icon": "bx bx-gift"
-    },
-    {
-        "display_name": "settings",
+        "display_name": "Settings",
         "route": "/admin/settings",
         "icon": "bx bx-cog"
     }

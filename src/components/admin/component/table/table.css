@@ -1,4 +1,4 @@
-/* .table-wrapper {
+.table-wrapper {
     overflow-y: auto;
 }
 
@@ -23,7 +23,7 @@ td {
 }
 
 tbody > tr:hover {
-    background-color: var(--main-color);
+    background-color: blue;
     color: var(--txt-white);
 }
 
@@ -59,4 +59,4 @@ tbody > tr:hover {
 .table__pagination-item:hover {
     color: var(--txt-white);
     background-color: var(--second-color);
-} */
+}

@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { PayPalButton } from "react-paypal-button-v2";
-import { addOrder } from "../../actions/orderAction"
+import { addOrder } from "../../services/order-services"
 import { CLIENT_ID } from '../../constants/SystemConstants';
 
 import "../checkout/checkout.css"
@@ -14,15 +14,15 @@ const Checkout = () => {
     const history = useHistory();
     console.log(course)
 
-    // const handleClick = () =>{
-    //     dispatch(addOrder({
-    //         "user":{
-    //             "id": 1
-    //         },
-    //         "course": course
-    //     }));
-    //     alert("save")
-    // }
+    const handleClick = () =>{
+        dispatch(addOrder({
+            "user":{
+                "id": 1
+            },
+            "course": course
+        }));
+        alert("saved")
+    }
 
     const handelBack = () =>{
         history.push("/course/"+course.id)
@@ -123,9 +123,9 @@ const Checkout = () => {
                             }}
                         />
 
-                        {/* <button onClick={handleClick}>
+                        <button className="btn btn-success" onClick={handleClick}>
                             Test Create Order
-                        </button> */}
+                        </button>
                     </div>
                 </div>
             </div>

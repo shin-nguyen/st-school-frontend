@@ -6,13 +6,19 @@ import {
     getUserInfoByQuery,
     loadingData,
 } from "../actions/admin-actions";
-import RequestService from '../utils/request-service';
+import RequestService from '../services/request-service';
 import {userByQuery, usersByQuery} from "../utils/graphql-query/users-query";
 
 
 export const fetchAllUsers = () => async (dispatch) => {
     dispatch(loadingData());
     const response = await RequestService.get("/admin/user/all", true);
+    dispatch(getAllUsers(response.data));
+};
+
+export const fetchAllCustomers = () => async (dispatch) => {
+    dispatch(loadingData());
+    const response = await RequestService.get("/admin/customer/all", false);
     dispatch(getAllUsers(response.data));
 };
 

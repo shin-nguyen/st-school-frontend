@@ -1,9 +1,9 @@
 import courseReducer from "./courseReducer";
 import sectionReducer from "./sectionReducer";
 import orderReducer from "./orderReducer";
-import userReducer from "../reducers/userReducer";
-import authReducer from "../reducers/authReducer";
-import adminReducer from "../reducers/adminReducer"
+import userReducer from "./userReducer";
+import authReducer from "./authReducer";
+import adminReducer from "./adminReducer"
 import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({

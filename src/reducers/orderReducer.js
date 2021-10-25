@@ -4,10 +4,10 @@ const initialState ={
 }
 const orderReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'GET_ALL_ORDER':{
+        case 'FETCH_ALL_ORDER':{
             return {...state, listOrder: action.payload}
         }
-        case 'GET_ALL_ORDER_FAIL':{
+        case 'FETCH_ALL__ORDER_FAIL':{
             return {...state, error: action.payload}
         }
         case 'SAVE_ORDER':{

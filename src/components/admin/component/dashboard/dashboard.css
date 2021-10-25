@@ -1,0 +1,29 @@
+.dash-card {
+    padding: 30px;
+    margin-bottom: 30px;
+    background-color: var(--main-bg);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+}
+
+.full-height {
+    height: 100%;
+}
+
+.dash-card.full-height {
+    height: calc(100% - 30px);
+}
+
+.dash-card-header {
+    text-transform: capitalize;
+}
+
+.dash-card > div ~ div {
+    margin-top: 30px;
+}
+
+.dash-card-footer {
+    text-align: center;
+    text-transform: capitalize;
+}
+

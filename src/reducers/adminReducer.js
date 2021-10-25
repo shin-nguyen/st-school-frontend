@@ -21,9 +21,6 @@ const reducer = (state= initialState, action) => {
     switch (action.type) {
         case LOADING_DATA:
             return {...state, isLoaded: true};
-
-      
-
         case FETCH_USER_INFO_SUCCESS:
             return {...state, user: action.payload, isLoaded: false};
 
