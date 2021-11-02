@@ -41,7 +41,7 @@ const ListOrder = () => {
     return (
         <div>
            <div className="card-table">
-                <div className="card-header">
+                <div className="card-table-header">
                     <h3 className="title">Order List</h3>
                 </div>
                 <div className="card-body">

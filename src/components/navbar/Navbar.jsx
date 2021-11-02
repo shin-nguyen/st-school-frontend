@@ -1,73 +1,105 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import {useDispatch, useSelector} from "react-redux";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faSignInAlt, faSignOutAlt, faUser, faUserPlus} from "@fortawesome/free-solid-svg-icons";
+import {useSelector} from "react-redux";
+import Dropdown from '../dropdown/Dropdown';
 
-import {logout} from "../../thunks/auth-thunks";
+
+import navbar_items from '../../assets/JsonData/navbar_routes.json'
+import logo from '../../assets/images/kai.jpg'
 import "./Navbar.css"
 
-const Navbar= () => {
-    const dispatch = useDispatch();
-    const isLoggedIn = useSelector((state)=>state.user.isLoggedIn);
+import user_menu from '../../assets/JsonData/user_menus.json'
+import access_menu from '../../assets/JsonData/access_menu.json'
+import user_image from '../../assets/images/kai.jpg'
 
-    const handleLogout = () =>{
-        dispatch(logout());
-    }
+const NavbarItem = props => {
 
-    let links;
-    let signOut;
-
-    if (localStorage.getItem("isLoggedIn") ||  isLoggedIn){
-        links = (
-            <li className="nav-item">
-                <Link to={"/account"}><span className="nav-link pl-5 pr-5">
-                         <FontAwesomeIcon className="mr-2" icon={faUser}/>MY ACCOUNT</span></Link>
-            </li>
-        );
-        signOut = (
-            <Link to={"/"} onClick={handleLogout}>
-                <FontAwesomeIcon className="mr-2" icon={faSignOutAlt}/>EXIT
-            </Link>
-        );
-    } else {
-        links = (
-            <>
-                <li className="nav-item">
-                    <Link to={"/login"} className="nav-link pl-5 pr-3">
-                        <FontAwesomeIcon className="mr-2" icon={faSignInAlt}/>SIGN IN</Link>
-                </li>
-                <li className="nav-item">
-                    <Link to={"/registration"} className="nav-link">
-                        <FontAwesomeIcon className="mr-2" icon={faUserPlus}/>SIGN UP</Link>
-                </li>
-            </>
-        );
-        signOut = null;
-    }
+    const active = props.active ? 'active' : ''
 
     return (
-        <div>
-            <nav className="navbar navbar-expand-sm navbar-light">
-                <ul className="navbar-nav">
-                    <li className="nav-item active">
-                        <Link to="/" className="nav-link">Home</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to="/courses" className="nav-link">Courses</Link>
-                    </li>
-                    <li className="nav-iteme">
-                        <Link to="/my-courses" className="nav-link">My Course</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to="/admin" className="nav-link">Admin?</Link>
-                    </li>
-                    {links}
-                </ul>
-                {signOut}
-            </nav>
+        <div className="naVbar__item">
+            <div className={`naVbar__item-inner ${active}`}>
+                <i className={props.icon}></i>
+                <span>
+                    {props.title}
+                </span>
+            </div>
+        </div>
+    )
+}
+
+const Navbar= (props) => {
+
+    const isLoggedIn = useSelector((state)=>state.user.isLoggedIn);
+
+    const activeItem = navbar_items.findIndex(item => item.route === props.location.pathname)
+
+    const curr_user = {
+        display_name: localStorage.getItem("email"),
+        image: user_image,
+    }
+
+    const renderUserToggle = (user) => (
+        <div className="topnav__right-user">
+            <div className="topnav__right-user__image">
+                <img src={user.image} alt="" />
+            </div>
+            <div className="topnav__right-user__name">
+                {user.display_name}
+            </div>
+        </div>
+    )
+    
+    const renderUserMenu = (item, index) => (
+        <Link to={item.routes} key={index}>
+            <div className="notification-item">
+                <i className={item.icon}></i>
+                <span>{item.content}</span>
+            </div>
+        </Link>
+    )
+
+    return (
+        <div className="navbar-container">
+            <div className="navbar-wrapper">
+                <Link to="/">
+                    <div className="navbar__logo">
+                        <img src={logo} alt="company logo"/>
+                    </div>
+                </Link>
+                {
+                    navbar_items.map((item, index) => (
+                        <Link to={item.route} key={index}>
+                            <NavbarItem
+                                title={item.display_name}
+                                icon={item.icon}
+                                active={index === activeItem}
+                            />
+                        </Link> 
+                    ))
+                }
+                {
+                    localStorage.getItem("isLoggedIn") ||  isLoggedIn ? 
+                    <div className="navbar__right-item">
+                        <Dropdown
+                            customToggle={() => renderUserToggle(curr_user)}
+                            contentData={user_menu}
+                            renderItems={(item, index) => renderUserMenu(item, index)}
+                        />
+                    </div>
+                    :
+                    <div className="navbar__right-item">
+                        <Dropdown
+                            icon="bx bx-lg bx-user-circle"
+                            contentData={access_menu}
+                            renderItems={(item, index) => renderUserMenu(item, index)}
+                        />
+                    </div> 
+                }
+            </div>
         </div>
     )
 }
 
 export default Navbar
+

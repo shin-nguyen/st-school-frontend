@@ -3,11 +3,10 @@ import Brand from '../components/brand/Brand'
 import Navbar from '../components/navbar/Navbar'
 import Checkout from '../components/checkout/Checkout'
 
-const CheckoutPage = () => {
+const CheckoutPage = (props) => {
     return (
         <div>
-            <Brand/>
-            <Navbar/>
+            <Navbar {...props}/>
             <Checkout/>
         </div>
     )

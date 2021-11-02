@@ -6,8 +6,7 @@ import ListCourse from '../components/course/listCourse/ListCourse'
 const CoursePage = (props) => {
     return (
         <div>
-            <Brand/>
-            <Navbar/>
+            <Navbar {...props}/>
             <ListCourse/>
         </div>
     )

@@ -1,9 +1,11 @@
 import React from 'react'
+import avt from '../../assets/images/kai.jpg'
+import './brand.css'
 
 const Brand = () => {
     return (
         <div className="brand">
-            <img src="https://loda.me/assets/images/new_logo.png" alt="Logo"></img>
+            <img src={avt} alt="Logo" className="logo"></img>
         </div>
     )
 }

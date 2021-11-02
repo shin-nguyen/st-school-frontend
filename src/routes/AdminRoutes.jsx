@@ -9,6 +9,8 @@ import ListCustomer from '../components/admin/component/customer/ListCustomer'
 import ListOrder from '../components/admin/component/order/ListOrder'
 import BlogPage from '../pages/BlogPage'
 
+import FormTest from '../components/admin/component/course/courseForm/FormTest'
+
 const AdminRoutes = () => {
     return (
         <Switch>
@@ -17,8 +19,8 @@ const AdminRoutes = () => {
             {/* <Route path='/admin/customers' component={CustomersManager}/> */}
             <Route path='/admin/blogs' component={BlogPage}/>
             <Route path='/admin/courses' component={CourseManager}/>
-            <Route path='/admin/course/add' component={CourseForm}/>
-            <Route path='/admin/course/:id/edit' component={CourseForm}/>
+            <Route path='/admin/course/add' component={FormTest}/>
+            <Route path='/admin/course/:id/edit' component={FormTest}/>
             <Route path='/admin/orders' component={ListOrder}/>
         </Switch>
     )

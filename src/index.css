@@ -128,6 +128,10 @@ input:focus {
     margin-right: 10px;
 }
 
+.ml-10{
+    margin-left: 10px;
+}
+
 .mr-20{
     margin-right: 20px;
 }
@@ -149,37 +153,38 @@ input:focus {
     font-weight: bold;
 }
 
-/* .light-background {
-    background-color: var(--main-bg-light);
-    color: #000;
+.show-false{
+    display: none;
 }
 
-.dark-background {
-    background-color: var(--main-bg-dark);
-    color: #fff;
+.show-true{
+    display: block;
 }
 
-.blue-color {
-    background-color: var(--main-color-blue);
-    color: #fff;
+.w-60{
+    width:60px;
 }
 
-.red-color {
-    background-color: var(--main-color-red);
-    color: #fff;
+.fr{
+    float: right;
 }
 
-.cyan-color {
-    background-color: var(--main-color-cyan);
-    color: #fff;
+.wh-100{
+    width: 100%;
+    height: 100%;
 }
 
-.green-color {
-    background-color: var(--main-color-green);
-    color: #fff;
+.topright {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    font-size: 18px;
 }
 
-.orange-color {
-    background-color: var(--main-color-orange);
-    color: #fff;
-} */
+.can-click{
+    cursor: pointer;
+}
+
+.notification-item{
+    font-size: 1rem;
+}

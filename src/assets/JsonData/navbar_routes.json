@@ -1,0 +1,27 @@
+[
+    {
+        "display_name": "Home",
+        "route": "/",
+        "icon": "bx bxs-home"
+    },
+    {
+        "display_name": "Course",
+        "route": "/courses",
+        "icon": "bx bx-store"
+    },
+    {
+        "display_name": "Learn",
+        "route": "/my-courses",
+        "icon": "bx bx-book-alt"
+    },
+    {
+        "display_name": "Blog",
+        "route": "/blogs",
+        "icon": "bx bxs-notepad"
+    },
+    {
+        "display_name": "Admin Test",
+        "route": "/admin",
+        "icon": "bx bx-world"
+    }
+]

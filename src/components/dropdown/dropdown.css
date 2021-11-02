@@ -1,6 +1,8 @@
 .dropdown {
     position: relative;
     z-index: 99;
+    border: white;
+    cursor: pointer;
 }
 
 .dropdown__toggle {
@@ -13,6 +15,7 @@
 .dropdown__toggle > i {
     font-size: 2rem;
     color: var(--txt-color);
+    cursor: pointer;
 }
 
 .dropdown__toggle-badge {
@@ -35,7 +38,7 @@
     top: calc(100% + 5px);
     right: 0;
     width: max-content;
-    max-width: 400px;
+    max-width: 500px;
     background-color: vaR(--main-bg);
     box-shadow: var(--box-shadow);
     border-radius: var(--border-radius);

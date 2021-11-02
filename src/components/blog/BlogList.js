@@ -32,7 +32,7 @@ const BlogList = () => {
     return (
         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div className="card-table">
-                <div className="card-header">
+                <div className="card-table-header">
                      <h3 className="title">Blog List</h3>
                  </div>
             </div>

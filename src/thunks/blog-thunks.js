@@ -10,7 +10,7 @@ import {
 } from "../actions/blog-actions";
 
 import {getBlogsByIdsQuery, getAllBlogsByQuery, getBlogByQuery} from "../utils/graphql-query/blog-query.js";
-import RequestService from '../utils/request-service';
+import RequestService from '../services/request-service';
 
 export const fetchBlogs = () => async (dispatch) => {
     dispatch(loadingBlog());

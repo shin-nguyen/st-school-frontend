@@ -11,3 +11,19 @@
 .layout__content-main {
     padding: 10px;
 }
+  
+label {
+    font-weight: bold;
+    display: flex;
+    margin-bottom: 5px;
+  }
+  
+  .form-control {
+    margin-bottom: 5px;
+  }
+  
+  .error {
+    color: red;
+    margin-bottom: 5px;
+    font-size: 0.8rem;
+  }
