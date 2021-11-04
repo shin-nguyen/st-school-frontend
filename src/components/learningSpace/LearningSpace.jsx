@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router'
 import { getCourseById } from '../../services/course-services'
-import { getSectionOfCourse } from '../../actions/sectionAction'
+// import { getSectionOfCourse } from '../../actions/sectionAction'
 import ListComment from '../comment/listComment/ListComment'
 
 import "../learningSpace/learningSpace.css"
@@ -22,7 +22,7 @@ const LearningSpace = () => {
 
     useEffect(() => {
         dispatch(getCourseById(id));
-        dispatch(getSectionOfCourse(id));
+        // dispatch(getSectionOfCourse(id));
     }, [dispatch, videoSource])
 
     return (

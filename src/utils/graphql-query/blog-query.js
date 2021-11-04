@@ -3,9 +3,10 @@ export const getAllBlogsByQuery = `
         blogs {
             id
             title
-            description
+            summary
             content
             status
+            image
             topics {
                 id
                 name
@@ -20,9 +21,10 @@ export const getBlogByQuery = (id) => `
         blog(id: ${id}) {
             id
             title
-            description
+            summary
             content
             status
+            image
             topics {
                 id
                 name
@@ -37,7 +39,8 @@ export const getBlogsByIdsQuery = (ids) => `
         blogsIds(ids: [${ids}]) {
             id
             title
-            description
+            image
+            summary
             content
             status
         }

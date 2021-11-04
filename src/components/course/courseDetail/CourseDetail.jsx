@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router'
 import { useEffect } from 'react';
 import { getCourseById } from '../../../services/course-services';
-import { getSectionOfCourse } from '../../../actions/sectionAction';
+// import { getSectionOfCourse } from '../../../services/s
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import default_image from '../../../assets/images/loading.png'
@@ -20,7 +20,7 @@ const CourseDetail = () => {
 
     useEffect(() => {
         dispatch(getCourseById(id));
-        dispatch(getSectionOfCourse(id))
+        // dispatch(getSectionOfCourse(id))
         return () => {
             return [];
         }

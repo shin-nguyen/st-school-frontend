@@ -13,6 +13,7 @@ const initialState = {
     blogs: [],
     blog: {},
     topics: [],
+    user: {},
     isBlogLoading: false
 };
 
@@ -29,7 +30,7 @@ const reducer = (state = initialState, action) => {
             return {...state, blogs: action.payload, isBlogLoading: false};
 
         case FETCH_BLOG_SUCCESS:
-            return {...state, blog: action.payload, topics: action.payload.topics, isBlogLoading: false};
+            return {...state, blog: action.payload, topics: action.payload.topics , user: action.payload.user, isBlogLoading: false};
 
         case FETCH_BLOG_BY_QUERY_SUCCESS:
             return {...state, blog: action.payload, topics: action.payload.topics, isBlogLoading: false};
