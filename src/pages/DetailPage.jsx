@@ -4,11 +4,10 @@ import Navbar from '../components/navbar/Navbar'
 import CourseDetail from '../components/course/courseDetail/CourseDetail'
 import Footer from '../components/footer/Footer'
 
-const DetailPage = () => {
+const DetailPage = (props) => {
     return (
         <div>
-            <Brand/>
-            <Navbar/>
+            <Navbar {...props}/>
             <CourseDetail/>
             <hr />
             <Footer/>

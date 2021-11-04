@@ -1,5 +1,9 @@
 [
     {
+        "id": "0",
+        "name": "Choose Language"
+    },
+    {
         "id": "1",
         "name": "English"
     },
@@ -13,14 +17,6 @@
     },
     {
         "id": "4",
-        "name": "Korean"
-    },
-    {
-        "id": "5",
         "name": "Chinese"
-    },
-    {
-        "id": "6",
-        "name": "French"
-    }    
+    }   
 ]

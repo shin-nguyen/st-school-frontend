@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgb(250, 246, 246);
 }
 
 .checkout-card{
@@ -60,6 +61,7 @@
     box-sizing: border-box;
     display: table;
     margin-bottom: 10px;
+    background-color: white;
 }
 
 .card-order-summary h4{

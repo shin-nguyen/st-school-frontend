@@ -4,7 +4,7 @@ import './topnav.css'
 
 import { Link } from 'react-router-dom'
 
-import Dropdown from '../dropdown/Dropdown'
+import Dropdown from '../../../dropdown/Dropdown'
 
 import notifications from '../../../../assets/JsonData/notification.json'
 
@@ -36,7 +36,7 @@ const renderUserToggle = (user) => (
 )
 
 const renderUserMenu =(item, index) => (
-    <Link to='/' key={index}>
+    <Link to={item.routes} key={index}>
         <div className="notification-item">
             <i className={item.icon}></i>
             <span>{item.content}</span>
@@ -55,14 +55,13 @@ const Topnav = () => {
             
             <div className="topnav__right">
                 <div className="topnav__right-item">
-                    {/* dropdown here */}
                     <Dropdown
                         customToggle={() => renderUserToggle(curr_user)}
                         contentData={user_menu}
                         renderItems={(item, index) => renderUserMenu(item, index)}
                     />
                 </div>
-                <div className="topnav__right-item">
+                {/* <div className="topnav__right-item">
                     <Dropdown
                         icon='bx bx-bell'
                         badge='12'
@@ -70,8 +69,7 @@ const Topnav = () => {
                         renderItems={(item, index) => renderNotificationItem(item, index)}
                         renderFooter={() => <Link to='/'>View All</Link>}
                     />
-                    {/* dropdown here */}
-                </div>
+                </div> */}
                 <div className="topnav__right-item">
                 
                 </div>

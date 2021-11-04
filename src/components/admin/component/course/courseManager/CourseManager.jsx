@@ -29,6 +29,9 @@ const CoursesManager = () => {
             <td className="mw-445">{item.description}</td>
             <td>${item.price}</td>
             <td>
+                <Link to={'course/'+item.id+'/detail'}>
+                    <button className="btn-a btn btn-info mr-10">Detail</button>
+                </Link>
                 <Link to={'course/'+item.id+'/edit'}>
                     <button className="btn-a btn btn-success mr-10">Edit</button>
                 </Link>
@@ -59,7 +62,7 @@ const CoursesManager = () => {
                     </button>
                 </Link>
                 <div className="card-table">
-                    <div className="card-header">
+                    <div className="card-table-header">
                         <h3 className="title">Course List</h3>
                     </div>
                     <div className="card-body">

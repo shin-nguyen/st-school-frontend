@@ -21,7 +21,7 @@ export const getAllOrder  = () => async (dispatch) => {
 
 export const addOrder = (params) => async (dispatch) => {
     try {
-        const { data } = await requestService.post(`/order/add`, params);
+        const { data } = await requestService.post(`/order/add`, params, true);
         dispatch(addOrderSuccess(data));
     } catch (error) {
         dispatch(addOrderFail(error.message));

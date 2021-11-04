@@ -3,11 +3,10 @@ import Brand from '../components/brand/Brand'
 import Navbar from '../components/navbar/Navbar'
 import LearningSpace from '../components/learningSpace/LearningSpace'
 
-const LearningPage = () => {
+const LearningPage = (props) => {
     return (
         <div>
-            <Brand/>
-            <Navbar/>
+            <Navbar {...props}/>
             <LearningSpace/>
         </div>
     )

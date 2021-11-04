@@ -5,6 +5,8 @@ import {
     GET_PURCHASED_COURSE_FAIL,
     GET_COURSE_BY_ID,
     GET_COURSE_BY_ID_FAIL,
+    RESET_COURSE,
+    RESET_COURSE_FAIL,
     ADD_COURSE,
     ADD_COURSE_FAIL,
     UPDATE_COURSE,
@@ -41,6 +43,14 @@ export const getCourseSuccess = (data) => ({
 export const getCourseFail = (data) => ({
     type: GET_COURSE_BY_ID_FAIL,
     payload: data
+});
+
+export const resetCourseSuccess = () => ({
+    type: RESET_COURSE
+});
+
+export const resetCourseFail = () => ({
+    type: RESET_COURSE_FAIL
 });
 
 export const addCourseSuccess = (data) => ({

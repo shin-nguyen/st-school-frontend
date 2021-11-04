@@ -1,29 +1,66 @@
-.bg-black {
-  background-color: black;
+.navbar-container{
+  /* background-color: #cdffcd; */
+  border-bottom: gainsboro 0.5px solid;
+  padding-left: 5%;
 }
 
-#navbar-main a {
-  font-size: 15px;
-  font-weight: bold;
-  color: white;
-  transition: 0.3s;
+.navbar-wrapper{
+  /* width: 75%; */
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-#navbar-main a:hover {
-  color: #00a1df;
-  text-decoration: none;
+.navbar__logo {
+  height: 80px;
+  display: flex;
+  padding: 5px;
+  align-items: center;
+  justify-content: center;
+  margin-right: 40px;
 }
 
-#header {
-  width: 100%;
-  height: 230px;
-  background-color: black;
-  /*position: relative;*/
+.navbar__logo > img {
+  height: 100%;
 }
 
-.fixed {
-  position: fixed;
-  /*width: 100%;*/
-  top: 0;
-  z-index: 20;
+.naVbar__item {
+  padding: 0 5px;
+}
+
+.naVbar__item-inner {
+  padding: 28px 20px;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  transition: color 0.25s ease 0.1s;
+}
+
+.naVbar__item-inner > i {
+  margin-right: 5px;
+  font-size: 1.5rem;
+}
+
+.naVbar__item-inner > span {
+  text-transform: capitalize;
+}
+
+.naVbar__item-inner:hover {
+  color: var(--main-color);
+}
+
+.naVbar__item-inner.active {
+  border-radius: 5px;
+  background-image: linear-gradient(
+      to right,
+      var(--main-color),
+      var(--second-color)
+  );
+  color: var(--txt-white);
+}
+
+.navbar__right-item{
+  position: absolute;
+  right: 70px;
 }

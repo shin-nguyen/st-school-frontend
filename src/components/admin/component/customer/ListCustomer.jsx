@@ -46,7 +46,7 @@ const ListCustomer = () => {
     return (
         <div>
            <div className="card-table">
-                <div className="card-header">
+                <div className="card-table-header">
                     <h3 className="title">Customer List</h3>
                 </div>
                 <div className="card-body">

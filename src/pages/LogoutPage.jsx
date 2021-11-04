@@ -1,15 +1,14 @@
 import React from 'react'
-import Brand from '../components/brand/Brand'
+import Logout from '../components/logout/Logout'
 import Navbar from '../components/navbar/Navbar'
 
-const HomePage = (props) => {
+const LogoutPage = (props) => {
     return (
         <div>
             <Navbar {...props}/>
-            Home
+            <Logout/>
         </div>
     )
 }
 
-export default HomePage
-
+export default LogoutPage

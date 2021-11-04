@@ -110,12 +110,9 @@ const Checkout = () => {
                                     alert("Transaction completed by " + details.payer.name.given_name);
                                     console.log(data);
                                     console.log(details);
-                                    dispatch(addOrder({
-                                        "user":{
-                                            "id": 1
-                                        },
+                                    dispatch(addOrder(JSON.stringify({
                                         "course": course
-                                    }));
+                                    })));
                                 });
                             }}
                             options={{

@@ -7,6 +7,8 @@ import {
     getPurchasedCourseFail,
     getCourseSuccess, 
     getCourseFail, 
+    resetCourseSuccess,
+    resetCourseFail,
     addCourseSuccess, 
     addCourseFail, 
     updateCourseSuccess, 
@@ -45,6 +47,14 @@ export const getCourseById  = (courseId) => async (dispatch) => {
     }
 }
 
+export const resetCourse  = () => async (dispatch) => {
+    try {
+        dispatch(resetCourseSuccess());
+    } catch (error) {
+        dispatch(resetCourseFail(error.message));
+        console.log(error.message);
+    }
+}
 
 export const addCourse = (params) => async (dispatch) => {
     try {
@@ -74,4 +84,4 @@ export const deleteCourse = (courseId) => async (dispatch) => {
       dispatch(deleteCourseFail(error.message));
       console.log(error.message);
     }
-  };
+};

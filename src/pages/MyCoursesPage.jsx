@@ -3,11 +3,10 @@ import Brand from '../components/brand/Brand'
 import ListCourse from '../components/course/listCourse/ListCourse'
 import Navbar from '../components/navbar/Navbar'
 
-const MyCoursesPage = () => {
+const MyCoursesPage = (props) => {
     return (
         <div>
-            <Brand/>
-            <Navbar/>
+            <Navbar {...props}/>
             <ListCourse
                 isBought={true}
             />

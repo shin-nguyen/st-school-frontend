@@ -116,7 +116,7 @@ const Dashboard = () => {
         <div>
             <h2 className="page-header">Dashboard</h2>
             <div className="row">
-                <div className="col-6">
+                <div className="col-7">
                     <div className="row">
                         {
                             statusCards.map((item, index) => (
@@ -130,11 +130,11 @@ const Dashboard = () => {
                         }
                     </div>
                 </div>
-                <div className="col-6">
+                {/* <div className="col-6">
                     <div className="dash-card full-height">
                         Để gắn cái đồ thị nếu cần
                     </div>
-                </div>
+                </div> */}
                 <div className="col-6">
                     <div className="dash-card">
                         <div className="dash-card-header">

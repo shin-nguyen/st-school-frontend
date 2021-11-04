@@ -1,0 +1,12 @@
+[
+    {
+        "icon": "bx bx-sm bx-user",
+        "routes": "/login",
+        "content": "Login"
+    },
+    {
+        "icon": "bx bx-sm bx-user-plus",
+        "routes": "/registration",
+        "content": "Sign Up"
+    }
+]
