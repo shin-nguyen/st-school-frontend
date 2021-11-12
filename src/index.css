@@ -188,3 +188,7 @@ input:focus {
 .notification-item{
     font-size: 1rem;
 }
+
+.mt_5-{
+    margin-top: -5px;
+}

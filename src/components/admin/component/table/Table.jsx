@@ -43,7 +43,7 @@ const Table = (props) => {
                 ) : null
             }
             {
-                props.bodyData && props.renderBody ? (
+                props.bodyData && props.renderBody && props.bodyData.length !==0  ? (
                     <tbody>
                         {
                             // props.limit ? 
@@ -51,7 +51,7 @@ const Table = (props) => {
                             props.bodyData.map((item, index) => props.renderBody(item, index))
                         }
                     </tbody>
-                ) : null
+                ) : <tbody className="message-no-content">No Item</tbody>
             }
             </table>
 

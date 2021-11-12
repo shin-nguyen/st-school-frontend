@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router'
 import { useEffect } from 'react';
 import { getCourseById } from '../../../services/course-services';
-import { getSectionOfCourse } from '../../../services/section-services'
+import { getVideosOfCourse } from '../../../services/video-services'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import default_image from '../../../assets/images/loading.png'
@@ -13,14 +13,13 @@ const CourseDetail = () => {
     let { id } = useParams();
     const dispatch = useDispatch();
     const course = useSelector(state => state.course.course);
-    const sections = useSelector(state => state.section.listSection)
+    const listVideo = useSelector(state => state.video.listVideo)
     
-    console.log(course)
-    console.log(sections)
+    console.log(listVideo)
 
     useEffect(() => {
         dispatch(getCourseById(id));
-        dispatch(getSectionOfCourse(id))
+        dispatch(getVideosOfCourse(id))
         return () => {
             return [];
         }
@@ -62,18 +61,18 @@ const CourseDetail = () => {
                     <h4>Course Detail</h4>
                     <div className="course-component-container">
                         {
-                            sections.map((item, index) => (
+                            listVideo.map((item, index) => (
                                 <div className="course-component" key={item.id}>
                                     <div className="course-component-title" data-toggle="collapse" data-target={"#component"+ item.id}>
                                         {index+1 +'. '+ item.name}
                                     </div>
-                                    <div id={"component"+ item.id} className="collapse">
+                                    {/* <div id={"component"+ item.id} className="collapse">
                                             {
                                                 item.lectures.map((lecture) => (
                                                     <div className="course-component-item">{lecture.title}</div>
                                                 ))
                                             }
-                                    </div>
+                                    </div> */}
                                 </div> 
                             ))
                         }                   

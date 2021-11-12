@@ -1,183 +1,155 @@
-import React, {useState, useEffect} from 'react'
-import { useHistory, useParams } from 'react-router'
-import { useDispatch, useSelector } from 'react-redux'
-import { getCourseById, addCourse, updateCourse } from '../../../../../services/course-services'
-import listLanguage from "../../../../../assets/JsonData/language.json"
+import React, { useState, useEffect } from "react";
+import { useHistory, useParams } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getCourseById,
+  resetCourse,
+  addCourse,
+  updateCourse,
+} from "../../../../../services/course-services";
+import listLanguage from "../../../../../assets/JsonData/language.json";
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
+import { TextField } from "../../formik/TextField";
+import { SelectField } from "../../formik/SelectField";
 
-const CourseForm = () => {
-    let { id } = useParams();
-    if(id == null)
-        id = -1 ;
+const FormTest = () => {
+  let { id } = useParams();
+  if (id == null) id = -1;
 
-    const history = useHistory()
-    const dispatch = useDispatch()
-    const course = useSelector(state => state.course.course);
+  const [title, setTitle] = useState("Add Course");
 
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
-    const [totalLength, setTotalLength] = useState('');
-    const [price, setPrice] = useState(0);
-    const [language, setLanguage] = useState('English'); 
-    const [file, setFile] = useState('');
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const course = useSelector((state) => state.course.course);
 
-    const [title, setTitle] = useState('Add Course');
+  const initialValues = {
+    name: "",
+    description: "",
+    totalLength: "",
+    language: "",
+    price: "",
+    file: ""
+  }
 
-    useEffect(()=>{
-        const loadCourseEdited = async () => {
-            if(id !== -1){
-                await dispatch(getCourseById(id));
-                setTitle("Edit Course");
-            }
-        }
-        loadCourseEdited();
-        return () => {
-            return [];
-        }
-    },[dispatch, id])
+  useEffect(() => {
+    const loadCourseEdited = async () => {
+      await dispatch(resetCourse());
+      if (id !== -1) {
+        await dispatch(getCourseById(id));
+        setTitle("Edit Course");
+      }
+    };
 
-    useEffect(()=>{
-        if(id !== -1){
-            console.log("Get course edited: ")
-            console.log(course);
-            setName(course.name);
-            setDescription(course.description);
-            setTotalLength(course.totalLength);
-            setLanguage(course.language);
-            setPrice(course.price);
-        }
-    },[course, id]);
+    loadCourseEdited();
 
-    const onChange = (e) =>{
-        switch (e.target.name){
-            case "name" :   
-                setName(e.target.value);
-                break;
-            case "description" :    
-                setDescription(e.target.value);
-                break;
-            case "price":
-                setPrice(e.target.value);
-                break;
-            case "totalLength":
-                setTotalLength(e.target.value);
-                break;
-            case "language":
-                setLanguage(e.target.value);
-                console.log(language);
-                break;
-            case "file":
-                setFile(e.target.files[0]);
-                break;
-            default : 
-        }
+    return () => {
+      return [];
+    };
+  }, [dispatch, id]);
+
+  // useEffect(()=>{
+  //   if(id !== -1){
+  //       console.log("Get course edited: ")
+  //       console.log(course);
+  //   }
+  // },[course, id]);
+
+  const handelBack = () => {
+    history.push("/admin/courses");
+  };
+
+  const handleSubmit = (values) => {
+    let params = new FormData();
+    console.log(values);
+    params.append("name", values.name);
+    params.append("description", values.description);
+    params.append("totalLength", values.totalLength);
+    params.append("language", values.language);
+    params.append("price", values.price);
+    params.append("file", values.file);
+
+    if(id === -1){
+      dispatch(addCourse(params));
+      console.log("add");
+    }
+    else {
+      params.append("id", id)
+      dispatch(updateCourse(params));
+      console.log("update");
     }
 
-    const handleSubmit = (evt) => {
-        let params = new FormData();
+    handelBack();
+  };
 
-        params.append("name", name);
-        params.append("description", description);
-        params.append("totalLength", totalLength);
-        params.append("language", language);
-        params.append("price", price);
-        params.append("file", file);
+  const validate = Yup.object({
+    name: Yup.string()
+      // .max(15, "Must be 15 characters or less")
+      .required("Required"),
+    description: Yup.string()
+      .min(6, "Must be at least 6 charaters")
+      // .max(20, "Must be 20 characters or less")
+      .required("Required"),
+    totalLength: Yup.string()
+      .required("Required"),
+    language: Yup.string()
+      .oneOf(
+        ["English", "Vietnamese", "Japanese", "Chinese"],
+        "Invalid Language"
+      )
+      .required("Required"),
+    price: Yup.string()
+      .required("Required"),
+    file: Yup.string()
+      .required("Required"),
+  });
 
-        if(id === -1){
-            dispatch(addCourse(params));
-            console.log("add");
-        }
-        else {
-            params.append("id", id)
-            dispatch(updateCourse(params));
-            console.log("update");
-        }
-
-        handelBack();
-    }
-
-    const handelBack = () =>{
-        history.push("/admin/courses")
-    }
-
-    return (
+  return (
+    <Formik
+      initialValues={course||initialValues}
+      validationSchema={validate}
+      onSubmit={(values) => handleSubmit(values)}
+      enableReinitialize
+    >
+      {(formik) => (
         <div>
-            <div className='form_title'>
-                {title}
+          <h2 className="my-4 font-weight-bold .display-4">{title}</h2>
+          <Form>
+            <TextField label="Name" name="name" type="text" />
+            <TextField label="Desctiption" name="description" type="text" />
+            <TextField label="Total Length" name="totalLength" type="text" />
+            <SelectField label="Language" name="language">
+              {
+                listLanguage.map((item) => (
+                  <option key={item.id} value={item.name}>{item.name}</option>
+                ))
+              }
+            </SelectField>
+            <TextField label="Price" name="price" type="number" />
+            <div className="form-group">
+              <label>Image:</label>
+              <input 
+                name="file" 
+                type="file" 
+                onChange={(event) => 
+                  formik.setFieldValue("file", event.target.files[0]
+                )}
+            />
             </div>
-             <form onSubmit= { handleSubmit } encType="multipart/form-data">
-                <div className="form-group">
-                    <label>Name:</label>
-                    <input  type="text" 
-                            className="form-control" 
-                            placeholder="Enter Name" 
-                            name="name"
-                            value={name}
-                            onChange={onChange}
-                    />
-                    </div>
-                    <div className="form-group">
-                        <label>Description:</label>
-                        <input  type="text" 
-                            className="form-control" 
-                            placeholder="Enter Description" 
-                            name="description"
-                            value={description}
-                            onChange={onChange}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Total length:</label>
-                        <input  type="text" 
-                                className="form-control" 
-                                placeholder="Enter Total Length" 
-                                name="totalLength"
-                                value={totalLength}
-                                onChange={onChange}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Language:</label>
-                        <select className="form-control"
-                                name="language"
-                                value={language}
-                                onChange={onChange}
-                    >
-                        {
-                            listLanguage.map((item) => 
-                                <option key={item.id} 
-                                        value={item.name}>
-                                            {item.name}
-                                </option>
-                            )
-                        }
-                        </select>
-                        </div>
-                        <div className="form-group">
-                            <label>Price:</label>
-                            <input  type="number" 
-                                    className="form-control" 
-                                    placeholder="Enter Price" 
-                                    name="price"
-                                    value={price}
-                                    onChange={onChange}                     
-                    />
-                </div>
-                <div className="form-group">
-                    <label>Image:</label>
-                    <input  type="file"  multiple
-                            className="form-control"
-                            name="file"
-                            files={file}
-                            onChange={onChange}
-                    />
-                </div>
-                <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" onClick={handelBack}>Close</button>
-                    <button type="submit" className="btn btn-primary">Save</button>
-                </div>               
-            </form>
+            <button className="btn btn-success mt-3" type="submit">
+              Save
+            </button>
+            {/* <button className="btn btn-danger mt-3 ml-3" onClick={()=> {history.push("/admin")}}>
+              Reset
+            </button> */}
+            <button className="btn btn-dark mt-3 ml-3" type="button"  onClick={handelBack}>
+              Close
+            </button>
+          </Form>
         </div>
-    )
-}
+      )}
+    </Formik>
+  );
+};
 
-export default CourseForm
+export default FormTest;

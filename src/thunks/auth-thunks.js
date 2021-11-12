@@ -26,7 +26,7 @@ export const login = (userData,history) => async (dispatch) =>{
         localStorage.setItem("email", response.data.email);
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("userRole", response.data.userRole);
-        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("isLoggedIn", true);
 
         dispatch(loginSuccess(response.data.userRole));
         history.push("/account");

@@ -1,5 +1,4 @@
 import React from 'react'
-import Brand from '../components/brand/Brand'
 import ListCourse from '../components/course/listCourse/ListCourse'
 import Navbar from '../components/navbar/Navbar'
 

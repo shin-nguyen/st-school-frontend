@@ -3,43 +3,58 @@ import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router'
 import { getCourseById } from '../../services/course-services'
-import { getSectionOfCourse } from '../../services/section-services'
+import { getVideosOfCourse } from '../../services/video-services'
 import ListComment from '../comment/listComment/ListComment'
 import { Player } from 'video-react';
 import "../../../node_modules/video-react/dist/video-react.css";
 
 import "../learningSpace/learningSpace.css"
 
+const ListVideoItem = props => {
+
+    const active = props.active ? 'active' : ''
+
+    return (
+        <div className="list_video_item can-click" onClick={props.onClick}>
+            <div className={`list_video_item-inner ${active}`}>
+                Lesson {props.index + 1} : {props.name}
+            </div>
+        </div>
+    )
+}
+
 const LearningSpace = () => {
     let { id } = useParams();
     const [videoSource, setVideoSouce] = useState('');
     const [showPlaylist, setShowPlaylist] = useState(true);
+    const [activeItem, setActiveItem] = useState(0);
     const [autoPlay, setAutoPlay] = useState(false);
     const course = useSelector(state => state.course.course);
-    const listSection = useSelector(state => state.section.listSection);
+    const listVideo = useSelector(state => state.video.listVideo);
     const dispatch = useDispatch();
 
-    const handleChooseVideo = (item) => {
-        console.log(item.video);
+    console.log(listVideo)
+
+    const handleChooseVideo = (item, index) => {
         setAutoPlay(true);
-        setVideoSouce(item.video);
+        setVideoSouce(item.source);
+        setActiveItem(index);
     }
 
     useEffect(() => {
         const loadInfo = async () => {
           await dispatch(getCourseById(id));
-          await dispatch(getSectionOfCourse(id));
-          if(videoSource===''){
+          await dispatch(getVideosOfCourse(id));
+          if(videoSource==='' && listVideo !== null){
               try{
-                setVideoSouce(((listSection[0].lectures)[0]).video);
+                setVideoSouce((listVideo[0].source));
               } catch {
-
+                setVideoSouce("");
               }
           }
         };
     
         loadInfo();
-        console.log(videoSource)
     
         return () => {
           return [];
@@ -64,11 +79,6 @@ const LearningSpace = () => {
                 <div className="comment-wrapper">
                     <div className="comment-header">
                         <h4>N Comments</h4>
-                        {/* <div className="share-box">
-                            <i class='bx bx-sm bxl-facebook-circle mr-10 ml-10'></i>
-                            <i class='bx bx-sm bxl-whatsapp mr-10'></i>
-                            <i class='bx bx-sm bx-mail-send mr-10'></i>
-                        </div> */}
                     </div>
                     <div className="list-comment">
                         <ListComment/>
@@ -78,27 +88,19 @@ const LearningSpace = () => {
             <div className={"playlist-wrapper show-"+ showPlaylist}>
                 <div className="playlist-header">
                     <span>{course.name}</span>
-                    <i className='bx bx-sm bx-x-circle bx-burst-hover can-click' 
-                        onClick={() => setShowPlaylist(!showPlaylist)}></i>
+                    <i className='bx bx-md bx-x-circle bx-burst-hover can-click mt_5-' 
+                            onClick={() => setShowPlaylist(!showPlaylist)}></i>
                 </div>
                 <div className="playlist-content">
-                    {
-                        listSection.map((item, index) => (
-                            <div className="course-componet can-click" key={item.id}>
-                                <div className="course-component-title" data-toggle="collapse" data-target={"#component"+ item.id}>
-                                    {"Part " + (index+1) +'. '+ item.name}
-                                </div>
-                                <div id={"component"+ item.id} className="collapse can-click">
-                                        {
-                                            item.lectures.map((lecture) => (
-                                                <div className="course-component-item" onClick={() => handleChooseVideo(lecture)}>
-                                                    {lecture.title}
-                                                </div>
-                                            ))
-                                        }
-                                </div>
-                            </div> 
-                        ))     
+                    {                       
+                        listVideo.map((video, index) => (
+                            <ListVideoItem
+                                index = {index}
+                                name={video.name}
+                                onClick={() => handleChooseVideo(video, index)}
+                                active={index===activeItem}
+                            />
+                        ))      
                     }           
                 </div>
             </div>
