@@ -1,83 +1,99 @@
 import {useEffect,useState } from "react";
-// import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./singleBlog.css";
 import {useDispatch, useSelector} from "react-redux";
 import { useParams } from 'react-router'
-import {fetchBlog,deleteBlog} from '../../../thunks/blog-thunks'
-import {faEdit,faTrash} from "@fortawesome/free-solid-svg-icons";
-import Modal from "../../../components/modal/Modal";
+import {fetchBlog,updateBlog} from '../../../services/blog-service'
+import {faEdit} from "@fortawesome/free-solid-svg-icons";
+import renderHTML from 'react-render-html';
+import { Editor } from 'react-draft-wysiwyg';
+import htmlToDraft from 'html-to-draftjs';
+import { EditorState, convertToRaw, ContentState } from 'draft-js';
+import draftToHtml from 'draftjs-to-html';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import {
+  Button
+} from 'reactstrap';
 
-export default function SingleBlog(){
+const SingleBlog = () => {
     const dispatch = useDispatch();
-    const blog = useSelector((state) => state.blog.blog);
-    const user = useSelector((state) => state.blog.user);
+    const blogData = useSelector(state => state.blog.blog);
+
+    const [blog, setBlog] = useState(blogData);
+
+    const {title, image, createdTime,user} = blog;
+    const [content,setContent] = useState();
+
+    const [editor,setEditor]  = useState(EditorState.createEmpty());
+
+    // console.log(blog);
+
     const userEmail =   localStorage.getItem("email");
-    const [modalActive, setModalActive] = useState(false);
     const [updateMode, setUpdateMode] = useState(false);
-    const [title, setTitle] = useState(blog.title);
-    const [desc, setDesc] = useState("");
 
     let { id } = useParams();
     useEffect(() => {
       if (id) {
           dispatch(fetchBlog(id));
+         
       }
-    }, []);
+      setBlog(blogData);
+      setContent(blogData.content)
 
-    const deleteBlogHandler = (id) => {
-        dispatch(deleteBlog(id));
+      if (content){
+        const contentBlock = htmlToDraft(blogData.content);
+        const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
+        setEditor(EditorState.createWithContent(contentState));
+      }
+    },[blogData.id])
+
+
+    const onFormSubmit = (event) => {
+        event.preventDefault();
+
+        setContent(draftToHtml(convertToRaw(editor.getCurrentContent())));
+        const blogEdit = {id,title, content};
+        dispatch(updateBlog(blogEdit));
+        console.log(blogEdit);
+
+        setUpdateMode(false)
+
     };
 
-    const showDeleteModalWindow = (blog) => {
-        setModalActive(true);
+    const handleInputChange = (event) => {
+        const {name, value} = event.target;
+        setBlog({...blog, [name]: value});
     };
-
-    
-
-
-//   const handleUpdate = async () => {
-//     try {
-//       await axios.put(`/Blogs/${Blog._id}`, {
-//         username: user.username,
-//         title,
-//         desc,
-//       });
-//       setUpdateMode(false)
-//     } catch (err) {}
-//   };
-
+  
   return (
 
     <div className="singleBlog">
       <div className="singleBlogWrapper">
-        {modalActive ?
+        {/* {modalActive ?
                 <Modal blog={blog}
                        deleteBlogHandler={deleteBlogHandler}
-                       setModalActive={setModalActive}/> : null}
+                       setModalActive={setModalActive}/> : null} */}
 
-        {blog.image && (
-          <img src={blog.image} alt="" className="singleBlogImg" />
+        {image && (
+          <img src={image} alt="ImageBlog" className="singleBlogImg" />
         )}
         {updateMode ? (
           <input
             type="text"
             value={title}
-            className="singleBlogTitleInput"
+            name="title"
             autoFocus
-            onChange={(e) => setTitle(e.target.value)}
+            className="singleBlogTitleInput"
+            onChange={handleInputChange}
           />
         ) : (
           <h1 className="singleBlogTitle">
-            {blog.title}
-            {
-                console.log(userEmail)
-            }
-            {user.email === userEmail && (
-              <div className="singleBlogEdit">
+            {title}
+            {user?.email === userEmail && 
+            (
+              <div className="singleBlogEdit" onClick={() => setUpdateMode(true)} >
                 <FontAwesomeIcon className="mr-3" icon={faEdit}/>
-                <FontAwesomeIcon className="mr-3" icon={faTrash} onClick={deleteBlogHandler}/>
               </div>
             )}
           </h1>
@@ -86,32 +102,37 @@ export default function SingleBlog(){
           <span className="singleBlogAuthor">
             Author:
             <Link 
-            to={`/?user=${user.email}`} 
+            to={`/?user=${user?.email}`} 
             className="link">
-              <b> {user.email}</b>
+              <b> {user?.email}</b>
             </Link>
           </span>
           <span className="singleBlogDate">
-            {new Date(blog.createdTime).toDateString()}
+            {new Date(createdTime).toDateString()}
           </span>
         </div>
         {updateMode ? (
-          <textarea
-            className="singleBlogDescInput"
-            value={desc}
-            onChange={(e) => setDesc(e.target.value)}
-          />
+          <div className='text-editor'>
+          <Editor
+          editorState={editor}
+          wrapperClassName="demo-wrapper"
+          editorClassName="demo-editor"
+          onEditorStateChange={ (editorState) => setEditor(editorState)}/>
+          </div>
         ) : (
-          <p className="singleBlogDesc">{blog.content}</p>
+          <p className="singleBlogDesc">
+            {renderHTML(content ===undefined?' ':content)}
+          </p>
         )} 
-         {updateMode && (
-          <button className="singleBlogButton" 
-          // onClick={handleUpdate}
-          >
-            Update
-          </button>
-        )} 
+        
       </div>
+      {updateMode && (
+           <div>
+            <Button color='danger' className={'pull-left'} onClick={()=> setUpdateMode(false)}>Cancel</Button>
+            <Button color='info' className={'pull-right'} onClick={onFormSubmit}>Update</Button>
+          </div>
+        )} 
     </div>
   );
 }
+export default SingleBlog;

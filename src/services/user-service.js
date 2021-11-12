@@ -1,4 +1,4 @@
-import RequestService from '../services/request-service';
+import RequestService from './request-service';
 import {
     fetchUserSuccess,
     loadingUserInfo,

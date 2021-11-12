@@ -10,7 +10,7 @@ import Modal from "../../components/modal/Modal";
 import SearchForm from "../searchForm/SearchForm.js";
 import PaginationItem from "../../components/pagination/PaginationItem";
 // import StarRating from "../../../component/StarRating/StarRating";
-import {deleteBlog} from "../../thunks/blog-thunks";
+import {deleteBlog} from "../../services/blog-service";
 import Spinner from '../../components/spinner/Spinner';
 
 

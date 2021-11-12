@@ -6,6 +6,6 @@ const OAuth2RedirectHandler = () => {
     if (token) {
         localStorage.setItem("token", token);
     }
-    return React.createElement(Redirect, { to: "/account" });
+    return React.createElement(Redirect, { to: "/" });
 };
 export default OAuth2RedirectHandler;

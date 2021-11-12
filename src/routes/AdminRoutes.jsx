@@ -4,7 +4,6 @@ import { Route, Switch} from 'react-router-dom'
 
 import Dashboard from '../components/admin/component/dashboard/Dashboard'
 import CourseManager from '../components/admin/component/course/courseManager/CourseManager'
-import CourseForm from '../components/admin/component/course/courseForm/CourseForm'
 import ListCustomer from '../components/admin/component/customer/ListCustomer'
 import ListOrder from '../components/admin/component/order/ListOrder'
 import BlogPage from '../pages/BlogPage'

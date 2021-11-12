@@ -97,3 +97,24 @@
   align-self: flex-end;
   margin-top: 20px;
 }
+
+.demo-content {
+  border: 1px solid #f1f1f1;
+  padding: 5px;
+  border-radius: 5px;
+  width: 100%;
+  border-radius: 2px;
+  resize: none;
+  height: 200px;
+}
+
+.text-editor {
+  margin-bottom: 1rem;
+  border: 1px solid #f1f1f1;
+  padding: 1rem;
+  display: flex;
+}
+
+.text-editor * {
+  margin-bottom: 1rem;
+}

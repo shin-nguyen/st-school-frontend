@@ -4,7 +4,7 @@ import {faUsers} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Link} from "react-router-dom";
 
-import {fetchAllUsersByQuery} from "../../../thunks/admin-thunks";
+import {fetchAllUsersByQuery} from "../../../services/admin-service";
 import Spinner from '../../../components/spinner/Spinner';
 
 const UsersList  = () => {

@@ -3,7 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheck} from "@fortawesome/free-solid-svg-icons";
 
 import {useDispatch, useSelector} from "react-redux";
-import {resetForm, updateUserInfo} from '../../../thunks/user-thunks';
+import {resetForm, updateUserInfo} from '../../../services/user-service';
 import "./EditPersonalData.css";
 
 const EditPersonalData = () => {
@@ -13,7 +13,7 @@ const EditPersonalData = () => {
     const [user, setUser] = useState(usersData);
     const {id, firstName, lastName, address, phone} = user;
     const {firstNameError, lastNameError} = errors;
-
+    console.log(user);
     useEffect(() => {
         dispatch(resetForm());
     }, []);

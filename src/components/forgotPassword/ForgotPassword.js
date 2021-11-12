@@ -2,7 +2,7 @@ import React,{useEffect,useState} from 'react';
 import {useDispatch,useSelector} from 'react-redux'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEnvelope, faKey, faPaperPlane} from "@fortawesome/free-solid-svg-icons";
-import {forgotPassword, formReset} from "../../thunks/auth-thunks";
+import {forgotPassword, formReset} from "../../services/auth-service";
 import {validateEmail} from "../../utils/input-validators";
 import PageLoader from "../pageLoader/PageLoader";
 

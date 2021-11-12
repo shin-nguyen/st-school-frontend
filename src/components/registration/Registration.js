@@ -3,7 +3,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock, faUser, faUserPlus } from "@fortawesome/free-solid-svg-icons";
-import { formReset, registration } from "../../thunks/auth-thunks";
+import { formReset, registration } from "../../services/auth-service";
 import PageLoader from "../pageLoader/PageLoader";
 
 

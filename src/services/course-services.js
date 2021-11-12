@@ -58,7 +58,7 @@ export const resetCourse  = () => async (dispatch) => {
 
 export const addCourse = (params) => async (dispatch) => {
     try {
-        const { data } = await requestService.post(`/course/add`, params);
+        const { data } = await requestService.post(`/course/add`, params,true,"multipart/form-data");
         dispatch(addCourseSuccess(data));
     } catch (error) {
         dispatch(addCourseFail(error.message));

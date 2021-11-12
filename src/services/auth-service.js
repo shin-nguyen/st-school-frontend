@@ -29,7 +29,11 @@ export const login = (userData,history) => async (dispatch) =>{
         localStorage.setItem("isLoggedIn", "true");
 
         dispatch(loginSuccess(response.data.userRole));
-        history.push("/account");
+
+        if (response.data.userRole==="ADMIN")
+            history.push("/admin");
+        else    
+            history.push("/");
     }
     catch(error){
         dispatch(loginFailure(error.response.data));

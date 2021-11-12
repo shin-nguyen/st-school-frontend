@@ -14,12 +14,12 @@ const Admin = () => {
 
     useEffect(() => {
         const checkAccess = async () => {
-            if(!(localStorage.getItem("isLoggedIn") ||  isLoggedIn)){
+            if(!(localStorage.getItem("userRole")==='ADMIN')){
                 history.push("/login")
             }
         };
       
-        checkAccess();
+        // checkAccess();
         return () => {
            
         }

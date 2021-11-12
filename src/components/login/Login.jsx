@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { Link, useHistory,RouteComponentProps } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { activateAccount, formReset, login } from '../../thunks/auth-thunks';
+import { activateAccount, formReset, login } from '../../services/auth-service';
 import { useParams } from 'react-router'
 
 import googleLogo from "../../img/google.png";

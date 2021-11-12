@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faSync, faUndo } from "@fortawesome/free-solid-svg-icons";
-import { fetchResetPasswordCode, formReset, resetPassword } from "../../thunks/auth-thunks";
+import { fetchResetPasswordCode, formReset, resetPassword } from "../../services/auth-service";
 import { useHistory } from "react-router-dom";
 import { useParams } from 'react-router'
 
