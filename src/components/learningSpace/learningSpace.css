@@ -55,19 +55,53 @@
 }
 
 .playlist-wrapper{
-    /* position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0; */
-    width: 25%;
-    margin-left: 20px;
-    margin-right: 20px;
+    width: 30%;
 }
 
 .playlist-header{
-    margin-bottom: 30px;
+    padding: 36px;
+    background-color: rgb(238, 238, 238);
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    border-bottom: 1px solid black ;
 }
 
 .playlist-header i {
     float: right;
+}
+
+.playlist-content{
+    height:61vh ;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.list_video_item{
+    height: 60px;
+    border-bottom: solid 1px black;
+    margin: auto;
+}
+
+.list_video_item-inner{
+    height: 100%;
+    padding-left: 20px;
+    padding-top: 5px;
+    font-weight: 700;
+    margin: auto;
+}
+
+.list_video_item-inner:hover {
+    color: var(--main-color);
+  }
+  
+.list_video_item-inner.active {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+        to right,
+        var(--main-color),
+        var(--second-color)
+    );
+    color: var(--txt-white);
 }

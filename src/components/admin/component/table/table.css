@@ -60,3 +60,11 @@ tbody > tr:hover {
     color: var(--txt-white);
     background-color: var(--second-color);
 }
+
+.message-no-content{
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 500;
+}

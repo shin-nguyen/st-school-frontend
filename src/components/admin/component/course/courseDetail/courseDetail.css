@@ -1,0 +1,15 @@
+.list-video-wrapper{
+    height: 80vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.list-title{
+    font-size: 2rem;
+    font-weight: 1.5rem;
+}
+
+.course-name{
+    font-size: 2rem;
+    font-weight: 900;
+}

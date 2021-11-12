@@ -1,5 +1,5 @@
 import courseReducer from "./courseReducer";
-import sectionReducer from "./sectionReducer";
+import videoReducer from "./videoReducer";
 import orderReducer from "./orderReducer";
 import userReducer from "../reducers/userReducer";
 import authReducer from "../reducers/authReducer";
@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
     user: userReducer,
     auth: authReducer,
     course: courseReducer,
-    section: sectionReducer,
+    video: videoReducer,
     order: orderReducer,
     admin: adminReducer,
     blog : blogReducer,
