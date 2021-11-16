@@ -5,6 +5,8 @@ const OAuth2RedirectHandler = () => {
     const token = new URLSearchParams(url.search).get('token');
     if (token) {
         localStorage.setItem("token", token);
+        localStorage.setItem("isLoggedIn", true);
+
     }
     return React.createElement(Redirect, { to: "/" });
 };

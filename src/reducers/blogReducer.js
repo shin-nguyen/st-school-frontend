@@ -16,7 +16,7 @@ import {
 const initialState = {
     blogs: [],
     blog: {},
-    topics: [],
+  
     isBlogLoading: false
 };
 

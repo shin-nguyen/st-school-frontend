@@ -15,6 +15,7 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import {
   Button
 } from 'reactstrap';
+import ListComment from '../../comment/listComment/ListComment'
 
 const SingleBlog = () => {
     const dispatch = useDispatch();
@@ -24,7 +25,6 @@ const SingleBlog = () => {
 
     const {title, image, createdTime,user} = blog;
     const [content,setContent] = useState();
-
     const [editor,setEditor]  = useState(EditorState.createEmpty());
 
     // console.log(blog);
@@ -32,28 +32,29 @@ const SingleBlog = () => {
     const userEmail =   localStorage.getItem("email");
     const [updateMode, setUpdateMode] = useState(false);
 
+    
     let { id } = useParams();
     useEffect(() => {
       if (id) {
           dispatch(fetchBlog(id));
-         
       }
-      setBlog(blogData);
-      setContent(blogData.content)
 
-      if (content){
+      setBlog(blogData);
+      setContent(blog.content);   
+      if (blogData.content){
         const contentBlock = htmlToDraft(blogData.content);
         const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
         setEditor(EditorState.createWithContent(contentState));
       }
-    },[blogData.id])
+    },blogData.id)
 
 
     const onFormSubmit = (event) => {
         event.preventDefault();
 
         setContent(draftToHtml(convertToRaw(editor.getCurrentContent())));
-        const blogEdit = {id,title, content};
+
+        const blogEdit = {id,title, content:draftToHtml(convertToRaw(editor.getCurrentContent()))};
         dispatch(updateBlog(blogEdit));
         console.log(blogEdit);
 
@@ -128,10 +129,17 @@ const SingleBlog = () => {
       </div>
       {updateMode && (
            <div>
-            <Button color='danger' className={'pull-left'} onClick={()=> setUpdateMode(false)}>Cancel</Button>
-            <Button color='info' className={'pull-right'} onClick={onFormSubmit}>Update</Button>
+            <Button color='danger' className='pull-left' onClick={()=> setUpdateMode(false)}>Cancel</Button>
+            <Button color='info' className='pull-right' onClick={onFormSubmit}>Update</Button>
           </div>
         )} 
+
+   
+      <ListComment
+        isAuthenticated={localStorage.getItem("isLoggedIn") }
+        loading={false}
+        blogId={id}>
+      </ListComment>
     </div>
   );
 }
