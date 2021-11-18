@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllCourse, getPurchasedCourses } from '../../../services/course-services';
-import CardCourse from '../cardCourse/CardCourse'
+import CardCourse from '../card-course/CardCourse'
 
 const ListCourse = (props) => {
     const dispatch = useDispatch()

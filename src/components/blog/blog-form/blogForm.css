@@ -3,8 +3,8 @@
 }
 
 .writeImg {
-  margin-left: 150px;
-  width: 70vw;
+  /* margin-left: 150px; */
+  width: 74vw;
   height: 250px;
   border-radius: 10px;
   object-fit: cover;
@@ -15,7 +15,7 @@
 }
 
 .writeFormGroup {
-  margin-left: 150px;
+  /* margin-left: 150px; */
   display: flex;
   align-items: center;
 }
@@ -37,7 +37,7 @@
   font-size: 30px;
   border: none;
   padding: 20px;
-  width: 70vw;
+  width: 75vw;
 }
 
 .writeInput:focus {
@@ -46,7 +46,7 @@
 
 .writeText {
   font-size: 20px;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 .writeSubmit {
@@ -66,6 +66,9 @@
   border: 1px solid #f1f1f1;
   padding: 1rem;
   display: flex;
+  min-height: 700px;
+  max-height: 1400px;
+  overflow: hidden;
 }
 
 .text-editor * {

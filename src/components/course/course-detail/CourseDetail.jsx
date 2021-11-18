@@ -54,38 +54,19 @@ const CourseDetail = () => {
                         <span className="mr-20">{course.language}</span>
                     </div>
                     <hr />
-                    <h4>Course Detail</h4>
-                    <div className="course-component-container">
-                        {
-                            listVideo.map((item, index) => (
-                                <div className="course-component" key={item.id}>
-                                    <div className="course-component-title" data-toggle="collapse" data-target={"#component"+ item.id}>
-                                        {index+1 +'. '+ item.name}
-                                    </div>
-                                    {/* <div id={"component"+ item.id} className="collapse">
-                                            {
-                                                item.lectures.map((lecture) => (
-                                                    <div className="course-component-item">{lecture.title}</div>
-                                                ))
-                                            }
-                                    </div> */}
-                                </div> 
-                            ))
-                        }                   
-                    </div>
 
-                    <div className="course-component-title" data-toggle="collapse" data-target="#component">
+                    {/* <div className="btn btn-success" data-toggle="collapse" data-target="#component">
                         Detail
                     </div>
                     <div id="component" className="collapse">
-                        <div className="playlist-content">
+                        <div className="course-detail-content">
                             {                       
                                 listVideo.map((video, index) => (
                                     <p>{video.name}</p>
                                 ))      
                             }           
                         </div>               
-                    </div>
+                    </div> */}
                     
                 </div>
             </div>

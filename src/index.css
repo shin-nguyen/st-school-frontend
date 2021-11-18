@@ -209,11 +209,3 @@ input:focus {
     width: 95%;
     height: 95%;
 }
-
-.page-title{
-    margin-left: 12%;
-    font-size: 30px;
-    padding: 20px;
-    font-weight: bold;
-    font-family:'Times New Roman', Times, serif;
-}

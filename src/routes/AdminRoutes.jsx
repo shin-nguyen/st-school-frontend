@@ -9,8 +9,7 @@ import CourseDetail from '../components/admin/component/course/courseDetail/Cour
 import VideoForm from '../components/admin/component/course/videoForm/VideoForm'
 import ListCustomer from '../components/admin/component/customer/ListCustomer'
 import ListOrder from '../components/admin/component/order/ListOrder'
-import BlogPage from '../pages/BlogPage'
-// import BlogPage from '../pages/BlogPage'
+import ListBlog from '../components/admin/component/blog/BlogList'
 import Account from '../components/account/Account'
 import Transfer from '../components/admin/component/transfer/Transfer'
 
@@ -19,8 +18,7 @@ const AdminRoutes = () => {
         <Switch>
             <Route path='/admin' exact component={Dashboard}/>
             <Route path='/admin/customers' component={ListCustomer}/>
-            <Route path='/admin/blogs' component={BlogPage}/>
-            {/* <Route path='/admin/blogs/:id/detail' component={SingleBlogPage}/> */}
+            <Route path='/admin/blogs' component={ListBlog}/>
             <Route path='/admin/courses' component={CourseManager}/>
             <Route path='/admin/course/add' component={CourseForm}/>
             <Route path='/admin/course/:id/edit' component={CourseForm}/>

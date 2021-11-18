@@ -7,7 +7,7 @@ import {faLockOpen,faLock} from "@fortawesome/free-solid-svg-icons";
 import usePagination from "../../../../components/pagination/usePagination";
 import Modal from "../../../../components/modal/Modal";
 import SearchForm from "../../../searchForm/SearchForm.js";
-import PaginationItem from "../../../../components/pagination/PaginationItem";
+import PaginationItem from "../pagination/PaginationItem";
 // import StarRating from "../../../component/StarRating/StarRating";
 import {deleteBlog} from "../../../../services/blog-service";
 import Spinner from '../../../../components/spinner/Spinner';

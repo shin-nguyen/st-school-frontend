@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import {useDispatch} from "react-redux";
 import { useHistory } from 'react-router'
 import { addBlog } from '../../../services/blog-service'
-import "./write.css";
-import Navbar from '../../../components/navbar/Navbar'
+import "./blogForm.css";
+import Navbar from '../../navbar/Navbar'
 import { Editor } from 'react-draft-wysiwyg';
 import htmlToDraft from 'html-to-draftjs';
 import { EditorState, convertToRaw, ContentState } from 'draft-js';
@@ -40,8 +40,7 @@ export default function Write(props) {
 
   return (
     <>
-      <Navbar {...props}/>
-    <div className="write">
+    <div className="page-body">
       {file && (
         <img className="writeImg" src={URL.createObjectURL(file)} alt="" />
       )}
@@ -66,8 +65,7 @@ export default function Write(props) {
           />
         </div>
         <div className="writeFormGroup">
-
-          
+ 
         <div className='text-editor'>
           <Editor
           editorState={editor}
@@ -76,7 +74,6 @@ export default function Write(props) {
           onEditorStateChange={ (editorState) => setEditor(editorState)}/>
           </div>
         </div>
-
 
         <div className="editor-button">
           <Button color='info' className="pull-left" onClick={onFormSubmit}>Save</Button>

@@ -1,12 +1,16 @@
 import React from 'react'
-// import Brand from '../components/brand/Brand'
-// import Navbar from '../components/navbar/Navbar'
-import BlogList from '../components/admin/component/blog/BlogList'
+import BlogWrapper from '../components/blog/blog-wrapper/BlogWrapper'
+import Footer from '../components/footer/Footer'
+import Navbar from '../components/navbar/Navbar'
+import PageTitle from '../components/page-title/PageTitle'
  
 const BlogPage = (props) => {
     return (
         <div>
-            <BlogList/>
+            <Navbar {...props}/>
+            <PageTitle title='Blogs'/>
+            <BlogWrapper/>
+            <Footer/>
         </div>
     )
 }

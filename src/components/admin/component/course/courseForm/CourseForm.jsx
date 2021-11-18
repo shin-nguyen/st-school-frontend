@@ -64,7 +64,6 @@ const FormTest = () => {
     console.log(values);
     params.append("name", values.name);
     params.append("description", values.description);
-    params.append("totalLength", values.totalLength);
     params.append("language", values.language);
     params.append("price", values.price);
     params.append("file", values.file);
@@ -89,8 +88,6 @@ const FormTest = () => {
     description: Yup.string()
       .min(6, "Must be at least 6 charaters")
       // .max(20, "Must be 20 characters or less")
-      .required("Required"),
-    totalLength: Yup.string()
       .required("Required"),
     language: Yup.string()
       .oneOf(
@@ -117,7 +114,6 @@ const FormTest = () => {
           <Form>
             <TextField label="Name" name="name" type="text" />
             <TextField label="Desctiption" name="description" type="text" />
-            <TextField label="Total Length" name="totalLength" type="text" />
             <SelectField label="Language" name="language">
               {
                 listLanguage.map((item) => (

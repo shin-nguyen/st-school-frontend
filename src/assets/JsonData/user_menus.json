@@ -1,5 +1,15 @@
 [
     {
+        "icon": "bx bx-sm bx-folder",
+        "routes": "/my-courses",
+        "content": "My Course"
+    },
+    {
+        "icon": "bx bx-sm bx-folder",
+        "routes": "/blogs",
+        "content": "My Blog"
+    },
+    {
         "icon": "bx bx-sm bx-user",
         "routes": "/account",
         "content": "Profile"

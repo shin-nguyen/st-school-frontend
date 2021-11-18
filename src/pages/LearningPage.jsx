@@ -2,7 +2,7 @@ import {React, useEffect} from 'react'
 import Navbar from '../components/navbar/Navbar'
 import { useHistory } from "react-router";
 import {useSelector} from "react-redux";
-import LearningSpace from '../components/learningSpace/LearningSpace'
+import LearningSpace from '../components/learning-space/LearningSpace'
 import Footer from '../components/footer/Footer'
 
 const LearningPage = (props) => {

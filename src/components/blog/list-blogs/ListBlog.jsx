@@ -1,12 +1,11 @@
-import Blog from "../blog/Blog";
-import "./blogs.css";
+import CardBlog from "../card-blog/CardBlog";
+import "./listBlog.css";
 
 export default function Blogs({ blogs }) {
   return (
-    
     <div className="blogs">
       {blogs.map((b) => (
-        <Blog blog={b} />
+        <CardBlog blog={b} />
       ))}
     </div>
   );

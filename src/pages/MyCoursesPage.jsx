@@ -2,8 +2,9 @@ import {React, useEffect} from 'react'
 import Navbar from '../components/navbar/Navbar'
 import { useHistory } from "react-router";
 import {useSelector} from "react-redux";
-import ListCourse from '../components/course/listCourse/ListCourse'
+import ListCourse from '../components/course/list-course/ListCourse'
 import Footer from '../components/footer/Footer'
+import PageTitle from '../components/page-title/PageTitle';
 
 const MyCoursesPage = (props) => {
     const history = useHistory();
@@ -27,7 +28,7 @@ const MyCoursesPage = (props) => {
     return (
         <div>
             <Navbar {...props}/>
-            <div className="page-title">MY COURSES</div>
+            <PageTitle title='My Courses'/>
             <ListCourse
                 isBought={true}
             />
