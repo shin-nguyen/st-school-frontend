@@ -5,6 +5,8 @@ import userReducer from "../reducers/userReducer";
 import authReducer from "../reducers/authReducer";
 import adminReducer from "../reducers/adminReducer"
 import blogReducer from "../reducers/blogReducer"
+import commentReducer from "../reducers/commentReducer"
+
 import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
@@ -14,7 +16,8 @@ const rootReducer = combineReducers({
     video: videoReducer,
     order: orderReducer,
     admin: adminReducer,
-    blog : blogReducer,
+    blog: blogReducer,
+    comment: commentReducer,
 })
 
 export default rootReducer;

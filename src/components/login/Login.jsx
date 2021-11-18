@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import { Link, useHistory,RouteComponentProps } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { activateAccount, formReset, login } from '../../thunks/auth-thunks';
+import { activateAccount, formReset, login } from '../../services/auth-service';
 import { useParams } from 'react-router'
 
 import googleLogo from "../../img/google.png";
 import facebookLogo from "../../img/facebook.png";
-import githubLogo from "../../img/github.png";
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEnvelope, faLock, faSignInAlt} from "@fortawesome/free-solid-svg-icons";
@@ -89,9 +88,6 @@ const Login = () =>{
                         <a className="btn btn-block social-btn facebook"
                            href="http://localhost:8080/oauth2/authorize/facebook">
                             <img src={facebookLogo} alt="facebook"/>Log in with Facebook</a>
-                        <a className="btn btn-block social-btn github"
-                           href="http://localhost:8080/oauth2/authorize/github">
-                            <img src={githubLogo} alt="github"/>Log in with Github</a>
                     </div>
                 </div>
             </div>

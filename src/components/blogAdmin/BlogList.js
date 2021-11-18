@@ -3,8 +3,7 @@ import {Route} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import BlogListComponent from "./BlogListComponent";
 // import ScrollButton from "../../components/scrollButton/ScrollButton";
-import {fetchBlogs} from "../../thunks/blog-thunks";
-import Table from '../admin/component/table/Table'
+import {fetchBlogs} from "../../services/blog-service";
 
 const BlogList = () => {
     const dispatch = useDispatch();
@@ -17,7 +16,7 @@ const BlogList = () => {
     const itemsPerPage = 4;
     const searchByData = [
         {label: 'Title', value: 'title'},
-        {label: 'Description', value : 'description'},
+        {label: 'Summary', value : 'summary'},
         {label: 'Status', value: 'status'}
     ];
 

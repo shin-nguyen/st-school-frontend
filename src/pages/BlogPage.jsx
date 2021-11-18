@@ -1,6 +1,7 @@
 import React from 'react'
-import Navbar from '../components/navbar/Navbar'
-import BlogList from '../components/blog/BlogList'
+// import Brand from '../components/brand/Brand'
+// import Navbar from '../components/navbar/Navbar'
+import BlogList from '../components/blogAdmin/BlogList'
  
 const BlogPage = (props) => {
     return (

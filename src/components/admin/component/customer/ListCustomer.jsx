@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchAllCustomers } from '../../../../thunks/admin-thunks'
+import { fetchAllCustomers } from '../../../../services/admin-service'
 import Table from '../table/Table'
 import { Link } from 'react-router-dom'
 

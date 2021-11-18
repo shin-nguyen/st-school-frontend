@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {faLock, faUndo} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {resetForm, updateUserPassword} from "../../../thunks/user-thunks";
+import {resetForm, updateUserPassword} from "../../../services/user-service";
 import "./ChangePassword.css";
 
 const ChangePassword = () => {

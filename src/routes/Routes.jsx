@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import HomePage from '../pages/HomePage'
 import CoursesPage from '../pages/CoursePage'
 import DetailPage from '../pages/DetailPage'
+import SingleBlogPage from '../pages/SingleBlogPage'
 import CheckoutPage from '../pages/CheckoutPage'
 import MyCoursesPage from '../pages/MyCoursesPage'
 import LearningPage from '../pages/LearningPage'
@@ -15,7 +16,11 @@ import RegistrationPage from '../pages/RegistrationPage'
 import OAuth2RedirectHandler from '../utils/oauth2/OAuth2RedirectHandler'
 import ForgotPassword from '../components/forgotPassword/ForgotPassword'
 import ResetPassword from '../components/resetPassword/ResetPassword.js'
-// import Account from '../components/account/Account'
+
+import Account from '../components/account/Account'
+import HomeBlog from '../components/blogHome/home/HomeBlog'
+import Write from '../components/blogHome/write/Write'
+
 
 const Routes = () => {
     return (
@@ -29,7 +34,10 @@ const Routes = () => {
             <Route path="/account" render={() => localStorage.getItem("token") ?
                     (<Route component={AccountPage}/>) : (<Route component={HomePage}/>)}/> 
             <Route exact path="/reset/:code" component={ResetPassword}/>
+            <Route path="/blog/add" component={Write}/>
+            <Route path="/blog/:id" component={SingleBlogPage}/>
             <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}/>
+            <Route path="/blogs" component={HomeBlog}/>
             <Route path='/courses' component={CoursesPage}/>
             <Route path='/course/:id' component={DetailPage}/>
             <Route path='/checkout' component={CheckoutPage}/>

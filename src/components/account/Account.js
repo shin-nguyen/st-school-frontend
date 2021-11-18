@@ -4,8 +4,8 @@ import {NavLink, Redirect, Route} from "react-router-dom";
 import {faUser} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-import {formReset} from "../../thunks/auth-thunks";
-import {fetchUserInfo} from "../../thunks/user-thunks";
+import {formReset} from "../../services/auth-service";
+import {fetchUserInfo} from "../../services/user-service";
 import ChangePassword from "./changePassword/ChangePassword";
 import PersonalData from "./personalData/PersonalData.js";
 import AccountItem from "./AccountItem";
