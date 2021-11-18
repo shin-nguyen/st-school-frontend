@@ -3,21 +3,20 @@ import {Route} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import BlogListComponent from "./BlogListComponent";
 // import ScrollButton from "../../components/scrollButton/ScrollButton";
-import {fetchBlogs} from "../../services/blog-service";
+import {fetchBlogs,fetchBlogsByQuery} from "../../../../services/blog-service";
 
 const BlogList = () => {
     const dispatch = useDispatch();
     const blogs= useSelector((state) => state.blog.blogs);
 
     useEffect(() => {
-        dispatch(fetchBlogs());
+        dispatch(fetchBlogsByQuery());
     }, []);
 
     const itemsPerPage = 4;
     const searchByData = [
         {label: 'Title', value: 'title'},
-        {label: 'Summary', value : 'summary'},
-        {label: 'Status', value: 'status'}
+        {label: 'Summary', value : 'summary'}
     ];
 
     const tableHead = [

@@ -10,12 +10,8 @@ const OAuth2RedirectHandler = () => {
     const token = new URLSearchParams(url.search).get('token');
     if (token) {
         localStorage.setItem("token", token);
-        dispatch(formReset());
-        dispatch(fetchUserInfo());
-        return React.createElement(Redirect, { to: "/admin" });
-
     }
-   
+    return React.createElement(Redirect, { to: "/" });
         
     
 };

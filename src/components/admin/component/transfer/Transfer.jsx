@@ -2,7 +2,7 @@ import React from 'react'
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react'
-import {logout} from "../../../../thunks/auth-thunks";
+import {logout} from "../../../../services/auth-service";
 
 const Transfer = () => {
     const history = useHistory();
