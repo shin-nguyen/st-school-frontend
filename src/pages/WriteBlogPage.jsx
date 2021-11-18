@@ -1,18 +1,18 @@
 import React from 'react'
+import BlogForm from '../components/blog/blog-form/BlogForm'
 import Navbar from '../components/navbar/Navbar'
-import ListCourse from '../components/course/list-course/ListCourse'
 import Footer from '../components/footer/Footer'
 import PageTitle from '../components/page-title/PageTitle'
 
-const CoursePage = (props) => {
+const WriteBlogPage = (props) => {
     return (
         <div>
             <Navbar {...props}/>
-            <PageTitle title='Courses'/>
-            <ListCourse/>
+            <PageTitle title='Write Blog'/>
+            <BlogForm/>
             <Footer/>
         </div>
     )
 }
 
-export default CoursePage
+export default WriteBlogPage

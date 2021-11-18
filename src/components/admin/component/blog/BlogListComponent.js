@@ -5,13 +5,13 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit, faList, faTrash} from "@fortawesome/free-solid-svg-icons";
 // import {LazyLoadImage} from "react-lazy-load-image-component";
 
-import usePagination from "../../components/pagination/usePagination";
-import Modal from "../../components/modal/Modal";
-import SearchForm from "../searchForm/SearchForm.js";
-import PaginationItem from "../../components/pagination/PaginationItem";
+import usePagination from "../pagination/usePagination";
+import Modal from "../../../modal/Modal";
+import SearchForm from "../../../searchForm/SearchForm";
+import PaginationItem from "../pagination/PaginationItem";
 // import StarRating from "../../../component/StarRating/StarRating";
-import {deleteBlog} from "../../services/blog-service";
-import Spinner from '../../components/spinner/Spinner';
+import {deleteBlog} from "../../../../services/blog-service";
+import Spinner from '../../../spinner/Spinner';
 
 
 const BlogListComponent = ({data, itemsPerPage,startFrom,searchByData,tableHead}) => {

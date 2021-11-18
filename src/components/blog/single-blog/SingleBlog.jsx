@@ -69,7 +69,7 @@ const SingleBlog = () => {
   
   return (
 
-    <div className="singleBlog">
+    <div className="page-body">
       <div className="singleBlogWrapper">
         {/* {modalActive ?
                 <Modal blog={blog}
@@ -93,8 +93,8 @@ const SingleBlog = () => {
             {title}
             {user?.email === userEmail && 
             (
-              <div className="singleBlogEdit" onClick={() => setUpdateMode(true)} >
-                <FontAwesomeIcon className="mr-3" icon={faEdit}/>
+              <div className="singleBlogEdit can-click" onClick={() => setUpdateMode(true)} >
+                <i class='bx bx-md bxs-edit' ></i>
               </div>
             )}
           </h1>

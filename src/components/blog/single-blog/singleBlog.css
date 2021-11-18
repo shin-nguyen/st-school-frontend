@@ -20,7 +20,7 @@
   text-align: center;
   margin: 10px;
   font-family: "Lora", serif;
-  font-size: 28px;
+  font-size: 35px;
 }
 
 .singleBlogTitleInput {
@@ -68,6 +68,7 @@
   color: #666;
   font-size: 18px;
   line-height: 25px;
+  min-height: 300px;
 }
 
 .singleBlogDesc::first-letter {

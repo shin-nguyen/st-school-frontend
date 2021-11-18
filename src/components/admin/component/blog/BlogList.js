@@ -3,7 +3,7 @@ import {Route} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import BlogListComponent from "./BlogListComponent";
 // import ScrollButton from "../../components/scrollButton/ScrollButton";
-import {fetchBlogs} from "../../services/blog-service";
+import {fetchBlogs} from "../../../../services/blog-service";
 
 const BlogList = () => {
     const dispatch = useDispatch();

@@ -1,18 +1,17 @@
-import "./blog.css";
+import "./cardBlog.css";
 import { Link } from "react-router-dom";
 
 export default function Blog({ blog }) {
   return (
-    <div className="blog">
+    <div className="blog col-md-4 col-sm-6">
       {blog.image && <img className="blogImg" src={blog.image} alt="Img" />}
       <div className="blogInfo">
         <div className="blogCats">
-           <span className="blogCat">{blog.title}</span>
+           <span className="blogCat">{blog.summary}</span>
         </div>
         <Link to={`/blog/${blog.id}`} className="link">
-          <span className="blogTitle">{blog.summary}</span>
+          <span className="blogTitle">{blog.title}</span>
         </Link>
-        <hr />
         <span className="blogDate">
           {new Date(blog.createdTime).toDateString()}
         </span>

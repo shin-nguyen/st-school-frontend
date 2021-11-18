@@ -61,8 +61,13 @@
     width: 80%;
 }
 
-.course-deatail{
+.course-detail{
     color: #000;
+}
+
+.course-deatail span{
+    color: #000;
+    font-size: 1.2rem;
 }
 
 .course-component{

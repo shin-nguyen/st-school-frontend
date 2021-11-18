@@ -8,7 +8,7 @@ import ListComment from '../comment/listComment/ListComment'
 import { Player } from 'video-react';
 import "../../../node_modules/video-react/dist/video-react.css";
 
-import "../learningSpace/learningSpace.css"
+import "./learningSpace.css"
 
 const ListVideoItem = props => {
 
