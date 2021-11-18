@@ -74,9 +74,23 @@ const CourseDetail = (props) => {
                 {course.name}
             </div>
             <div className="row">
-                <div className="col-sm-5 course-info">
-                    
-                    
+                <div className="col-sm-5 course-info mt-20">
+                    <div className="info-control">
+                        <label>Image:</label>
+                        <img className="w-and-h-95" src={course.image} alt="" />
+                    </div>
+                    <div className="info-control">
+                        <label>Description:</label>
+                        <p>{course.description}</p>
+                    </div>
+                    <div className="info-control">
+                        <label>Language:</label>
+                        <p>{course.language}</p>
+                    </div>
+                    <div className="info-control">
+                        <label>Price:</label>
+                        <p>{course.price}</p>
+                    </div>
                 </div>
                 <div className="col-sm-7 course-video-list">
                     <div className="list-title">

@@ -8,7 +8,7 @@ const LoginPage = (props) => {
         <div>
             <Navbar {...props}/>
             <Login/>
-            {/* <Footer/> */}
+            <Footer/>
         </div>
     )
 }

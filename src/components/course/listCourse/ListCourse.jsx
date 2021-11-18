@@ -23,7 +23,7 @@ const ListCourse = (props) => {
     }, [dispatch])
 
     return (
-        <div className="row page-body">
+        <div className="row page-body body-content">
         {
             props.isBought === true ?
                 purchasedCourses.map((item)=>(

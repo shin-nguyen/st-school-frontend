@@ -1,15 +1,16 @@
 import React from 'react'
+import Account from '../components/account/Account'
 import Footer from '../components/footer/Footer'
 import Navbar from '../components/navbar/Navbar'
 
-const NotFound = () => {
+const AccountPage = (props) => {
     return (
         <div>
-            <Navbar/>
-            404
+            <Navbar {...props} />
+            <Account/>
             <Footer/>
         </div>
     )
 }
 
-export default NotFound
+export default AccountPage

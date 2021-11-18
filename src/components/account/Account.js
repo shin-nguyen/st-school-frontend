@@ -22,7 +22,7 @@ const Account = () => {
     }, []);
 
     return (
-        <div className="account-container container">
+        <div className="account-container container h-500">
             <div className="row mt-5">
                 <div className="col-md-2">
                     <h4><FontAwesomeIcon className="mr-2" icon={faUser}/>My Account</h4>

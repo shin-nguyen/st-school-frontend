@@ -49,11 +49,7 @@ const CourseDetail = () => {
             </div>
             <div className="course-detail-wrapper">
                 <div className="course-detail-container">
-                    <div className="course-deatail">
-                        <span className="bold">Lecture total: </span>
-                        <span className="mr-20">10</span>
-                        <span className="bold">Total length: </span>
-                        <span className="mr-20">{course.totalLength}</span>
+                    <div className="course-deatail">  
                         <span className="bold">Language: </span>
                         <span className="mr-20">{course.language}</span>
                     </div>
@@ -77,6 +73,20 @@ const CourseDetail = () => {
                             ))
                         }                   
                     </div>
+
+                    <div className="course-component-title" data-toggle="collapse" data-target="#component">
+                        Detail
+                    </div>
+                    <div id="component" className="collapse">
+                        <div className="playlist-content">
+                            {                       
+                                listVideo.map((video, index) => (
+                                    <p>{video.name}</p>
+                                ))      
+                            }           
+                        </div>               
+                    </div>
+                    
                 </div>
             </div>
         </div>

@@ -20,11 +20,6 @@
         "icon": "bx bx-package"
     },
     {
-        "display_name": "Videos",
-        "route": "/admin/videos",
-        "icon": "bx bx-user-pin"
-    },
-    {
         "display_name": "Customers",
         "route": "/admin/customers",
         "icon": "bx bx-user-pin"

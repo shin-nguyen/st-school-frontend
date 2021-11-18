@@ -37,7 +37,7 @@ const Login = () =>{
     }
 
     return (
-        <div id="container" className="container mt-5">
+        <div id="container" className="container mt-5 h-500">
             <div className="row">
                 <div className="col-md-6">
                 <h4><FontAwesomeIcon className="mr-3" icon={faSignInAlt}/>SIGN IN</h4>

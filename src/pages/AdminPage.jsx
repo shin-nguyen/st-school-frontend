@@ -12,12 +12,14 @@ const AdminPage = () => {
         const checkAccess = async () => {
             const role = localStorage.getItem("userRole");
             const isLogin = localStorage.getItem("isLoggedIn");
-            if(!((isLoggedIn || isLogin) && role === "ADMIN")){
+            if(!(isLoggedIn || isLogin)){
+                history.push("/login")   
+            } else if(role !== "ADMIN"){
                 alert("Bạn không có quyền truy cập tài nguyên này!");
                 history.push("/")
             } else {
                 setAccess(true);
-            }
+            }     
         };
       
         checkAccess();

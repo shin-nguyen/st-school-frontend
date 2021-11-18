@@ -192,3 +192,28 @@ input:focus {
 .mt_5-{
     margin-top: -5px;
 }
+
+.mt-20{
+    margin-top: 20px;
+}
+
+.body-content{
+    min-height: 85vh;
+}
+
+.h-500{
+    height: 500px;
+}
+
+.w-and-h-95{
+    width: 95%;
+    height: 95%;
+}
+
+.page-title{
+    margin-left: 12%;
+    font-size: 30px;
+    padding: 20px;
+    font-weight: bold;
+    font-family:'Times New Roman', Times, serif;
+}

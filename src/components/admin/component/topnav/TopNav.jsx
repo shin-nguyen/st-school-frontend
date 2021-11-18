@@ -10,7 +10,7 @@ import notifications from '../../../../assets/JsonData/notification.json'
 
 import user_image from '../../../../assets/images/kai.jpg'
 
-import user_menu from '../../../../assets/JsonData/user_menus.json'
+import user_menu_admin from '../../../../assets/JsonData/user_menu_admin.json'
 
 const curr_user = {
     display_name: 'Kai Akatsuki',
@@ -48,16 +48,20 @@ const renderUserMenu =(item, index) => (
 const Topnav = () => {
     return (
         <div className='topnav'>
-            <div className="topnav__search">
+            {/* <div className="topnav__search">
                 <input type="text" placeholder='Search here...' />
                 <i className='bx bx-search'></i>
+            </div> */}
+
+            <div className="welcome-info">
+                WELCOME TO ST-SCHOOL!
             </div>
             
             <div className="topnav__right">
                 <div className="topnav__right-item">
                     <Dropdown
                         customToggle={() => renderUserToggle(curr_user)}
-                        contentData={user_menu}
+                        contentData={user_menu_admin}
                         renderItems={(item, index) => renderUserMenu(item, index)}
                     />
                 </div>

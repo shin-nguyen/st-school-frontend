@@ -62,7 +62,7 @@ const LearningSpace = () => {
     }, [dispatch, videoSource]);
 
     return (
-        <div className="learning-space">
+        <div className="learning-space body-content">
             <div className="content-wrapper">
                 <div className="video-wrapper">
                     <Player

@@ -51,7 +51,7 @@ const Registration = () =>{
     }
 
     return (
-        <div className="container mt-5">
+        <div className="container mt-5 body-content">
             {pageLoading}
             <h4><FontAwesomeIcon className="mr-2" icon={faUserPlus}/> SIGN UP</h4>
             <hr/>
