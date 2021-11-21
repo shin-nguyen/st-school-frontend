@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faLockOpen,faLock} from "@fortawesome/free-solid-svg-icons";
 
-import usePagination from "../../../../components/pagination/usePagination";
+import usePagination from "../pagination/usePagination";
 import Modal from "../../../../components/modal/Modal";
 import SearchForm from "../../../searchForm/SearchForm.js";
 import PaginationItem from "../pagination/PaginationItem";

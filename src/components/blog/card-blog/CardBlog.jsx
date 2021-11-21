@@ -16,8 +16,6 @@ export default function Blog({ blog }) {
           {new Date(blog.createdTime).toDateString()}
         </span>
       </div>
-      
-      {/* <p className="blogDesc">{blog.content}</p> */}
     </div>
   );
 }

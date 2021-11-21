@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./singleBlog.css";
 import {useDispatch, useSelector} from "react-redux";
 import { useParams } from 'react-router'
-import {fetchBlog,updateBlog} from '../../../services/blog-service'
+import {fetchBlogByQuery,updateBlog,resetBlog} from '../../../services/blog-service'
 import {faEdit} from "@fortawesome/free-solid-svg-icons";
 import renderHTML from 'react-render-html';
 import { Editor } from 'react-draft-wysiwyg';
@@ -24,7 +24,7 @@ const SingleBlog = () => {
     const [blog, setBlog] = useState(blogData);
 
     const {title, image, createdTime,user} = blog;
-    const [content,setContent] = useState();
+    const [content,setContent] = useState("");
     const [editor,setEditor]  = useState(EditorState.createEmpty());
 
     // console.log(blog);
@@ -35,18 +35,25 @@ const SingleBlog = () => {
     
     let { id } = useParams();
     useEffect(() => {
-      if (id) {
-          dispatch(fetchBlog(id));
-      }
+      const loadBlogEdited = async () => {
+        await dispatch(resetBlog());
+        if (id !== -1) {
+          await dispatch(fetchBlogByQuery(id));
+          setBlog(blogData);
+          setContent(blogData.content);   
+          if (content){
+            const contentBlock = htmlToDraft(content);
+            const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
+            setEditor(EditorState.createWithContent(contentState));
+          }
+        }
+      };
 
-      setBlog(blogData);
-      setContent(blog.content);   
-      if (blogData.content){
-        const contentBlock = htmlToDraft(blogData.content);
-        const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
-        setEditor(EditorState.createWithContent(contentState));
-      }
-    },blogData.id)
+      loadBlogEdited();
+     
+     
+      
+    }, [dispatch, id])
 
 
     const onFormSubmit = (event) => {

@@ -9,14 +9,14 @@ import {
     FETCH_BLOG_BY_QUERY_SUCCESS,
     DELETE_BLOG,
     UPDATE_BLOG,
-    ADD_BLOG_SUCCESS
+    ADD_BLOG_SUCCESS,
+    RESET_BLOG
 } from "../action-types/blog-action-types";
 
 
 const initialState = {
     blogs: [],
     blog: {},
-  
     isBlogLoading: false
 };
 
@@ -33,10 +33,10 @@ const reducer = (state = initialState, action) => {
             return {...state, blogs: action.payload, isBlogLoading: false};
 
         case FETCH_BLOG_SUCCESS:
-            return {...state, blog: action.payload, topics: action.payload.topics , isBlogLoading: false};
+            return {...state, blog: action.payload , isBlogLoading: false};
 
         case FETCH_BLOG_BY_QUERY_SUCCESS:
-            return {...state, blog: action.payload, topics: action.payload.topics, isBlogLoading: false};
+            return {...state, blog: action.payload, isBlogLoading: false};
 
         case FETCH_BLOGS_BY_QUERY_SUCCESS:
             return {...state, blogs: action.payload, isBlogLoading: false};
@@ -56,6 +56,9 @@ const reducer = (state = initialState, action) => {
                 const newList = [...state.blogs];
                 newList[index] = action.payload;
                 return {...state, blogs: newList};
+        }
+        case RESET_BLOG:{
+            return {...state, blog: null}
         }
         default:
             return state;

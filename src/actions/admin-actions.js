@@ -28,3 +28,8 @@ export const getAllUsersByQuery = (users) => ({
     type: FETCH_ALL_USERS_BY_QUERY_SUCCESS,
     payload: users
 });
+
+// export const getAllUsersByQuery = (users) => ({
+//     type: FETCH_ALL_ORDER_BY_QUERY_SUCCESS,
+//     payload: users
+// });

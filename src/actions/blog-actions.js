@@ -9,11 +9,16 @@ import {
     DELETE_BLOG,
     UPDATE_BLOG,
     ADD_BLOG_SUCCESS,
+    RESET_BLOG
     // ADD_BLOG_FAIL
 } from "../action-types/blog-action-types";
 
 export const loadingBlog = () => ({
     type: LOADING_BLOG
+});
+
+export const resetBlogSuccess = () => ({
+    type: RESET_BLOG
 });
 
 export const getBlogs = (blogs) => ({

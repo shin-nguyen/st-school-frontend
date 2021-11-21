@@ -1,5 +1,4 @@
-import React, {FC} from 'react';
-import {Pagination} from "./usePagination";
+import React from 'react';
 
 const PaginationItem = ({pagination, prevPage, changePage, nextPage}) => {
     return (

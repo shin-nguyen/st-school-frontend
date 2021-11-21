@@ -9,10 +9,11 @@ import {
     deleteBlogSuccess,
     updateBlogSuccess,
     addBlogSuccess,
+    resetBlogSuccess
     // addBlogFail
 } from "../actions/blog-actions";
 
-import {getBlogsByIdsQuery, getAllBlogsByQuery, getBlogByQuery} from "../utils/graphql-query/blog-query.js";
+import {getAllBlogsByQuery, getBlogByQuery} from "../utils/graphql-query/blog-query.js";
 import RequestService from '../services/request-service';
 
 export const fetchBlogs = () => async (dispatch) => {
@@ -21,16 +22,17 @@ export const fetchBlogs = () => async (dispatch) => {
     dispatch(getBlogs(response.data));
 };
 
+export const resetBlog  = () => async (dispatch) => {
+    try {
+        dispatch(resetBlogSuccess());
+    } catch (error) {
+        console.log(error.message);
+    }
+}
 export const fetchBlog = (id) => async (dispatch) => {
     dispatch(loadingBlog());
     const response = await RequestService.get("/blogs/" + id);
     dispatch(fetchBlogSuccess(response.data));
-};
-
-export const fetchBlogsByIds = (ids) => async (dispatch) => {
-    dispatch(loadingBlog());
-    const response = await RequestService.post("/blogs/ids", ids);
-    dispatch(getBlogs(response.data));
 };
 
 export const updateBlog = (params) => async (dispatch) => {
@@ -68,17 +70,10 @@ export const fetchBlogByQuery = (id) => async (dispatch) => {
     dispatch(fetchBlogByQuerySuccess(response.data.data.blog));
 };
 
-export const fetchBlogsByIdsQuery = (ids) => async (dispatch) => {
-    dispatch(loadingBlog());
-    const response = await RequestService.post("/blogs/graphql/ids", {query: getBlogsByIdsQuery(ids)});
-    dispatch(fetchBlogsByQuerySuccess(response.data.data.blogIds));
-};
-
 export const deleteBlog = (id) => async (dispatch) => {
     const response = await RequestService.delete("/blogs/delete/" + id, true);
     dispatch(deleteBlogSuccess(response.data));
 };
-
 
 export const addBlog = (params,history) => async (dispatch) => {
     try {
