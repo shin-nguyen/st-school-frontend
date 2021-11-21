@@ -13,7 +13,7 @@ import user_image from '../../../../assets/images/kai.jpg'
 import user_menu_admin from '../../../../assets/JsonData/user_menu_admin.json'
 
 const curr_user = {
-    display_name: 'Kai Akatsuki',
+    display_name: localStorage.getItem("email"),
     image: user_image
 }
 

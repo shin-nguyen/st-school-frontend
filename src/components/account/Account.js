@@ -50,13 +50,13 @@ const Account = () => {
                     }
                 </div>
                 <div className="col-md-10">
-                    <Route exact path="/account" component={() => <AccountItem/>}/>
+                    <Route  path="/account" component={() => <AccountItem/>}/>
                     <Route  path="/account/user/info" component={() => <PersonalData/>}/>
                     <Route  path="/account/user/edit" component={() => <ChangePassword/>}/>
                     {(localStorage.getItem("userRole") === "ADMIN") ?
                         <>
-                            <Route exact path="/account/admin/users" component={() => <UsersList/>}/>
-                            <Route exact path="/account/admin/users/:userId" component={() => <ManageUser/>}/>
+                            <Route  path="/account/admin/users" component={() => <UsersList/>}/>
+                            <Route  path="/account/admin/users/:userId" component={() => <ManageUser/>}/>
 
                         </> : <Redirect to={"/account"}/>
                     }

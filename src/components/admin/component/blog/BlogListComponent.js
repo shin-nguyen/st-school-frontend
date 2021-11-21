@@ -88,11 +88,15 @@ const BlogListComponent = ({data, itemsPerPage,startFrom,searchByData,tableHead}
                                  :<FontAwesomeIcon icon={faLock}/>}
                                 </td>
                                 <td>
+
                                     <Link to={`/admin/blogs/${blog.id}`}>
                                         <button className="btn-a btn btn-success mr-10">Detail</button>
                                     </Link>
+
                                     <button className="btn btn-danger mr-10" 
-                                             onClick={() => showDeleteModalWindow(blog)}>Delete</button>
+                                            onClick={() => showDeleteModalWindow(blog)}>
+                                        Delete
+                                    </button>
                                 </td>
                             </tr>
                             );

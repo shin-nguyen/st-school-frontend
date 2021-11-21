@@ -13,7 +13,7 @@ export default function Blog({ blog }) {
           <span className="blogTitle">{blog.title}</span>
         </Link>
         <span className="blogDate">
-          {new Date(blog.createdTime).toDateString()}
+          {blog.createdTime}
         </span>
       </div>
     </div>

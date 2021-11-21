@@ -70,7 +70,7 @@ const courseReducer = (state = initialState, action) => {
             return {...state, error: action.payload}
         }
         case RESET_COURSE:{
-            return {...state, course: null}
+            return {...state, course: {}}
         }
         case RESET_COURSE_FAIL:{
             return {...state, error: action.payload}

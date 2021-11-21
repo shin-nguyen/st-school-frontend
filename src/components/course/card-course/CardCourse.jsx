@@ -5,7 +5,7 @@ import default_image from '../../../assets/images/loading.png'
 
 const Card = (props) => {
     return (
-        <div className="card mb-20">
+        <div className={props.isBought ? "card mb-20 h-300" : "card mb-20 h-445"}>
             <Link to={props.goto}>
                 {
                     props.image ?
@@ -19,9 +19,13 @@ const Card = (props) => {
                         <p>{props.title}</p>
                     </Link>
                 </div>
-                <div className="card-content">
-                    <p className="card-text">{props.description}</p>
-                </div>
+                {
+                    props.isBought ?
+                    null  : 
+                    <div className="card-content">
+                        <p className="card-text">{props.description}</p>
+                    </div>
+                }
             </div>
             {
                 props.isBought ? 

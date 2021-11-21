@@ -10,8 +10,10 @@ import {
 import listLanguage from "../../../../../assets/JsonData/language.json";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { TextField } from "../../formik/TextField";
-import { SelectField } from "../../formik/SelectField";
+import { TextField } from "../../../../formik/TextField";
+import { SelectField } from "../../../../formik/SelectField";
+
+import "./courseForm.css"
 
 const FormTest = () => {
   let { id } = useParams();
@@ -102,49 +104,51 @@ const FormTest = () => {
   });
 
   return (
-    <Formik
-      initialValues={course||initialValues}
-      validationSchema={validate}
-      onSubmit={(values) => handleSubmit(values)}
-      enableReinitialize
-    >
-      {(formik) => (
-        <div>
-          <h2 className="my-4 font-weight-bold .display-4">{title}</h2>
-          <Form>
-            <TextField label="Name" name="name" type="text" />
-            <TextField label="Desctiption" name="description" type="text" />
-            <SelectField label="Language" name="language">
-              {
-                listLanguage.map((item) => (
-                  <option key={item.id} value={item.name}>{item.name}</option>
-                ))
-              }
-            </SelectField>
-            <TextField label="Price" name="price" type="number" />
-            <div className="form-group">
-              <label>Image:</label>
-              <input 
-                name="file" 
-                type="file" 
-                onChange={(event) => 
-                  formik.setFieldValue("file", event.target.files[0]
-                )}
-            />
-            </div>
-            <button className="btn btn-success mt-3" type="submit">
-              Save
-            </button>
-            {/* <button className="btn btn-danger mt-3 ml-3" onClick={()=> {history.push("/admin")}}>
-              Reset
-            </button> */}
-            <button className="btn btn-dark mt-3 ml-3" type="button"  onClick={handelBack}>
-              Close
-            </button>
-          </Form>
-        </div>
-      )}
-    </Formik>
+    <div className="form-course-wrapper">
+      <Formik
+        initialValues={course||initialValues}
+        validationSchema={validate}
+        onSubmit={(values) => handleSubmit(values)}
+        enableReinitialize
+      >
+        {(formik) => (
+          <div>
+            <h2 className="my-4 font-weight-bold .display-4">{title}</h2>
+            <Form>
+              <TextField label="Name" name="name" type="text" />
+              <TextField label="Desctiption" name="description" type="text" />
+              <SelectField label="Language" name="language">
+                {
+                  listLanguage.map((item) => (
+                    <option key={item.id} value={item.name}>{item.name}</option>
+                  ))
+                }
+              </SelectField>
+              <TextField label="Price" name="price" type="number" />
+              <div className="form-group">
+                <label>Image:</label>
+                <input 
+                  name="file" 
+                  type="file" 
+                  onChange={(event) => 
+                    formik.setFieldValue("file", event.target.files[0]
+                  )}
+              />
+              </div>
+              <button className="btn btn-success mt-3" type="submit">
+                Save
+              </button>
+              {/* <button className="btn btn-danger mt-3 ml-3" onClick={()=> {history.push("/admin")}}>
+                Reset
+              </button> */}
+              <button className="btn btn-dark mt-3 ml-3" type="button"  onClick={handelBack}>
+                Close
+              </button>
+            </Form>
+          </div>
+        )}
+      </Formik>
+    </div>
   );
 };
 

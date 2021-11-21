@@ -1,0 +1,14 @@
+.comment-item{
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.media-body i{
+    float: right;
+    font-size: 1rem;
+}
+
+.media-body{
+    margin-left: 30px;
+}

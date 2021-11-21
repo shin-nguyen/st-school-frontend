@@ -35,9 +35,15 @@
 
 .writeInput {
   font-size: 30px;
-  border: none;
+  border: rgb(189, 188, 188) 1px solid;
+  border-radius: 10px;
+  text-align: center;
   padding: 20px;
-  width: 75vw;
+  width: 85vw;
+}
+
+.add-file-blog{
+  padding: 20px;
 }
 
 .writeInput:focus {
@@ -64,6 +70,7 @@
 .text-editor {
   margin-bottom: 1rem;
   border: 1px solid #f1f1f1;
+  border-radius: 10px;
   padding: 1rem;
   display: flex;
   min-height: 700px;

@@ -1,7 +1,15 @@
 .card{
-    height: 445px;
+    /* height: 445px; */
     border-radius: 15px;
     border: 1px rgb(238, 237, 236) solid;
+}
+
+.h-445{
+    height: 445px;
+}
+
+.h-300{
+    height: 300px;
 }
 
 .card-title{

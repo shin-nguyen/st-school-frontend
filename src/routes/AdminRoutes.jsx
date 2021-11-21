@@ -10,7 +10,7 @@ import VideoForm from '../components/admin/component/course/videoForm/VideoForm'
 import ListCustomer from '../components/admin/component/customer/ListCustomer'
 import ListOrder from '../components/admin/component/order/ListOrder'
 import ListBlog from '../components/admin/component/blog/BlogList'
-import Account from '../components/account/Account'
+import ChangePassword from '../components/account/changePassword/ChangePassword'
 import Transfer from '../components/admin/component/transfer/Transfer'
 
 const AdminRoutes = () => {
@@ -25,7 +25,7 @@ const AdminRoutes = () => {
             <Route path='/admin/course/:id/detail' component={CourseDetail}/>
             <Route path='/admin/course/:id/video/add' component={VideoForm}/>
             <Route path='/admin/orders' component={ListOrder}/>
-            <Route path='/admin/account' component={Account}/>
+            <Route path='/admin/account' component={ChangePassword}/>
             <Route path='/admin/logout' component={Transfer}/>
         </Switch>
     )

@@ -119,3 +119,10 @@
 .text-editor * {
   margin-bottom: 1rem;
 }
+
+.blog-title{
+  width: 100%;
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: 800;
+}
