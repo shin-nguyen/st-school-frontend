@@ -76,10 +76,7 @@ const LearningSpace = () => {
                             onClick={() => setShowPlaylist(!showPlaylist)}></i>
                     </div>
                 </div>
-                <div className="comment-wrapper">
-                    <div className="comment-header">
-                        <h4>N Comments</h4>
-                    </div>
+                <div className="comment-wrapper">   
                     <div className="list-comment">
                         <ListComment/>
                     </div>

@@ -2,7 +2,7 @@
     {
         "icon": "bx bx-sm bx-user",
         "routes": "/admin/account",
-        "content": "Profile"
+        "content": "Account"
     },
     {
         "icon": "bx bx-sm bx-log-out-circle bx-rotate-180",

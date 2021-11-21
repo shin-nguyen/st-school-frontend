@@ -36,7 +36,7 @@ const CourseDetail = () => {
                             <img src={default_image} alt="" className="course-info-img"></img>
                         }
                     </div>
-                    <div className="course-info col-sm-6">
+                    <div className="course-info col-sm-5">
                         <h2>{course.name}</h2>  
                         <span>Price: </span>
                         <h4>${course.price}</h4>

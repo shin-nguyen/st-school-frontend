@@ -47,21 +47,21 @@ export default function Write(props) {
 
       <form className="writeForm">
         <div className="writeFormGroup">
-          <label htmlFor="fileInput">
-            <FontAwesomeIcon className="mr-2" icon={faPlus}/>
-          </label>
-          <input
-            type="file"
-            id="fileInput"
-            style={{ display: "none" }}
-            onChange={(e) => setFile(e.target.files[0])}
-          />
           <input
             type="text"
             placeholder="Title"
             className="writeInput"
             autoFocus={true}
             onChange={e=>setTitle(e.target.value)}
+          />
+          <label htmlFor="fileInput" className="add-file-blog">
+              <i class='bx bx-lg bx-image-add'></i>
+          </label>
+          <input
+            type="file"
+            id="fileInput"
+            style={{ display: "none" }}
+            onChange={(e) => setFile(e.target.files[0])}
           />
         </div>
         <div className="writeFormGroup">
@@ -75,8 +75,8 @@ export default function Write(props) {
           </div>
         </div>
 
-        <div className="editor-button">
-          <Button color='info' className="pull-left" onClick={onFormSubmit}>Save</Button>
+        <div className="editor-button mb-20">
+          <Button color='info' className="pull-left mr-20" onClick={onFormSubmit}>Save</Button>
           <Button color='danger' className="pull-right" tag={Link} to={"/blogs"}>Cancel</Button>
         </div>
       </form>

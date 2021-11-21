@@ -1,7 +1,7 @@
 import React from 'react'
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { TextField } from "../../formik/TextField";
+import { TextField } from "../../../../formik/TextField";
 
 
 const VideoForm = (props) => {

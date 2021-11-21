@@ -77,7 +77,7 @@ const CourseDetail = (props) => {
                 <div className="col-sm-5 course-info mt-20">
                     <div className="info-control">
                         <label>Image:</label>
-                        <img className="w-and-h-95" src={course.image} alt="" />
+                        <img className="w-and-h-95 course-image" src={course.image} alt="" />
                     </div>
                     <div className="info-control">
                         <label>Description:</label>
@@ -92,11 +92,11 @@ const CourseDetail = (props) => {
                         <p>{course.price}</p>
                     </div>
                 </div>
-                <div className="col-sm-7 course-video-list">
+                <div className="col-sm-6 course-video-list">
                     <div className="list-title">
                         Video List
                     </div>
-                    <button type="button" className="btn btn-primary topright" data-toggle="modal" data-target="#myModal">
+                    <button type="button" className="btn btn-primary btn-new topright" data-toggle="modal" data-target="#myModal">
                         New Video
                     </button>
 

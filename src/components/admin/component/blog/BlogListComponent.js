@@ -83,11 +83,14 @@ const BlogListComponent = ({data, itemsPerPage,startFrom,searchByData,tableHead}
                                 <td className="mw-445">{blog.summary}</td>
                                 <td>{blog.status}</td>
                                 <td>
-                                    <Link to={`/admin/blogs/${blog.id}`}>
-                                        <button className="btn-a btn btn-success mr-10">Edit</button>
-                                    </Link>
+                                    <button className="btn-a btn btn-success mr-10"
+                                            onClick={alert("duyet")}>
+                                        Edit
+                                    </button>
                                     <button className="btn btn-danger mr-10" 
-                                             onClick={() => showDeleteModalWindow(blog)}>Delete</button>
+                                            onClick={() => showDeleteModalWindow(blog)}>
+                                        Delete
+                                    </button>
                                 </td>
                             </tr>
                             );

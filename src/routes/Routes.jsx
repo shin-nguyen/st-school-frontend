@@ -18,6 +18,7 @@ import ForgotPassword from '../components/forgotPassword/ForgotPassword'
 import ResetPassword from '../components/resetPassword/ResetPassword.js'
 import BlogPage from '../pages/BlogPage'
 import WriteBlogPage from '../pages/WriteBlogPage'
+import MyBlogsPage from '../pages/MyBlogsPage'
 
 
 const Routes = () => {
@@ -40,6 +41,7 @@ const Routes = () => {
             <Route path='/course/:id' component={DetailPage}/>
             <Route path='/checkout' component={CheckoutPage}/>
             <Route path='/my-courses' component={MyCoursesPage}/>
+            <Route path='/my-blogs' component={MyBlogsPage}/>
             <Route path='/learning/:id' component={LearningPage}/>
             <Route path='/admin' component ={AdminPage}/>
             <Route component={NotFound}/>

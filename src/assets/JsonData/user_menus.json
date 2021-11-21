@@ -6,7 +6,7 @@
     },
     {
         "icon": "bx bx-sm bx-folder",
-        "routes": "/blogs",
+        "routes": "/my-blogs",
         "content": "My Blog"
     },
     {
