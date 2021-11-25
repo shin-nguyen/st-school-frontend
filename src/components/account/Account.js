@@ -32,9 +32,9 @@ const Account = () => {
                              
                     {(localStorage.getItem("userRole") === "ADMIN") ?
                         <>
-                            <NavLink to={"/account/admin/orders"}
+                            {/* <NavLink to={"/account/admin/orders"}
                                      className="account-sidebar-link nav-link"
-                                     activeClassName="is-active">List of all orders</NavLink>
+                                     activeClassName="is-active">List of all orders</NavLink> */}
                             <NavLink to={"/account/admin/users"}
                                      className="account-sidebar-link nav-link"
                                      activeClassName="is-active">List of all users</NavLink>

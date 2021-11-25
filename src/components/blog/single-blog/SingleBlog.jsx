@@ -50,9 +50,6 @@ const SingleBlog = () => {
       };
 
       loadBlogEdited();
-     
-     
-      
     }, [dispatch, id])
 
 
