@@ -1,5 +1,6 @@
 import "./cardBlog.css";
 import { Link } from "react-router-dom";
+import moment from 'moment';
 
 export default function Blog({ blog }) {
   return (

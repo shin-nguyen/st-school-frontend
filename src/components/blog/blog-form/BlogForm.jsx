@@ -4,17 +4,13 @@ import {useDispatch} from "react-redux";
 import { useHistory } from 'react-router'
 import { addBlog } from '../../../services/blog-service'
 import "./blogForm.css";
-import Navbar from '../../navbar/Navbar'
 import { Editor } from 'react-draft-wysiwyg';
-import htmlToDraft from 'html-to-draftjs';
-import { EditorState, convertToRaw, ContentState } from 'draft-js';
+import { EditorState, convertToRaw } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import {
   Button
 } from 'reactstrap';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPlus} from "@fortawesome/free-solid-svg-icons";
 
 export default function Write(props) {
 
@@ -35,7 +31,6 @@ export default function Write(props) {
     console.log(draftToHtml(convertToRaw(editor.getCurrentContent())));
     params.append("file", file);
     dispatch(addBlog(params,history));
-  
   }
 
   return (

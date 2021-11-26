@@ -1,11 +1,7 @@
 import { useEffect, Fragment } from "react";
-import Navbar from "../../navbar/Navbar"
 import ListBlog from "../list-blogs/ListBlog";
-// import Sidebar from "../../components/sidebar/Sidebar";
 import "./blogWrapper.css";
-import { Link } from 'react-router-dom'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-
 import {useDispatch, useSelector} from "react-redux";
 import {fetchBlogsByQuery} from "../../../services/blog-service";
 

@@ -1,5 +1,6 @@
 import React,{useEffect,useState } from "react";
 import Comment from '../comment/Comment'
+import CommentBox from '../comentBox/CommentBox'
 import './ListComment.css'
 import {fetchCommentById} from "../../../services/comment-service";
 import {useDispatch, useSelector} from "react-redux";
@@ -24,7 +25,9 @@ const ListComment = ({ isAuthenticated, loading, blogId }) => {
         {comments.length > 0 && comments.map((comment, index) => (
           <Comment key={index} comment={comment} />
         ))}
-        {/* {isAuthenticated && <CommentBox writeComment={writeComment} postId={postId} />} */}
+        {
+        isAuthenticated && 
+        <CommentBox  blogId={blogId} />}
   
         {(!isAuthenticated) && !loading ? (
           <div className="alert text-center alert-info">
