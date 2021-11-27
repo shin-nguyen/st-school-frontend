@@ -72,12 +72,12 @@ const FormTest = () => {
 
     if(id === -1){
       dispatch(addCourse(params));
-      console.log("add");
+      alert("add success");
     }
     else {
       params.append("id", id)
       dispatch(updateCourse(params));
-      console.log("update");
+      alert("edit success");
     }
 
     handelBack();
@@ -98,7 +98,8 @@ const FormTest = () => {
       )
       .required("Required"),
     price: Yup.string()
-      .required("Required"),
+      .required("Required")
+      .min(0,"Min is 0"),
     file: Yup.string()
       .required("Required"),
   });

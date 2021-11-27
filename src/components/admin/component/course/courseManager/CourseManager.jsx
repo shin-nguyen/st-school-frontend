@@ -43,6 +43,7 @@ const CoursesManager = () => {
     const handleDelete = (item) => {
         if(confirm('Are you sure to delete it ?')){ //eslint-disable-line
             dispatch(deleteCourse(item.id));
+            alert("delete success");
         } 
     }
 

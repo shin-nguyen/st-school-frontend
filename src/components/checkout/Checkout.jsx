@@ -107,12 +107,14 @@ const Checkout = () => {
                                 // Capture the funds from the transaction
                                 return actions.order.capture().then(function(details) {
                                     // Show a success message to your buyer
-                                    alert("Transaction completed by " + details.payer.name.given_name);
-                                    console.log(data);
-                                    console.log(details);
                                     dispatch(addOrder(JSON.stringify({
                                         "course": course
                                     })));
+                                    if(confirm('Success!')){ //eslint-disable-line
+                                        history.push("/");
+                                    } 
+                                    console.log(data);
+                                    console.log(details);
                                 });
                             }}
                             options={{
