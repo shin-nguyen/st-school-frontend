@@ -10,7 +10,7 @@ const BlogList = () => {
     const blogs= useSelector((state) => state.blog.blogs);
 
     useEffect(() => {
-        dispatch(fetchBlogsByQuery());
+        dispatch(fetchBlogsByQuery(""));
     }, []);
 
     const itemsPerPage = 4;

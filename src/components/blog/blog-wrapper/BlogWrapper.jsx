@@ -3,14 +3,18 @@ import ListBlog from "../list-blogs/ListBlog";
 import "./blogWrapper.css";
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import {useDispatch, useSelector} from "react-redux";
-import {fetchBlogsByQuery} from "../../../services/blog-service";
+import {fetchBlogsByQuery,fetchBlogsByMe} from "../../../services/blog-service";
 
-export default function BlogWrapper(props) {
+export default function BlogWrapper({isStatus}) {
   const dispatch = useDispatch();
   const blogs= useSelector((state) => state.blog.blogs);
-
+  const email = localStorage.getItem("email");
   useEffect(() => {
-      dispatch(fetchBlogsByQuery());
+      if (isStatus==="me"){
+        dispatch(fetchBlogsByMe(email));
+      }else{
+        dispatch(fetchBlogsByQuery(isStatus));
+      }
   }, []);
 
   return (

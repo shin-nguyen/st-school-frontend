@@ -9,7 +9,7 @@ const BlogPage = (props) => {
         <div>
             <Navbar {...props}/>
             <PageTitle title='Blogs'/>
-            <BlogWrapper/>
+            <BlogWrapper isStatus = {"true"}/>
             <Footer/>
         </div>
     )

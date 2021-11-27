@@ -13,7 +13,7 @@ import {
     // addBlogFail
 } from "../actions/blog-actions";
 
-import {getAllBlogsByQuery, getBlogByQuery} from "../utils/graphql-query/blog-query.js";
+import {getAllBlogsByQuery, getBlogByQuery,getAllBlogsByMe} from "../utils/graphql-query/blog-query.js";
 import RequestService from '../services/request-service';
 
 export const fetchBlogs = () => async (dispatch) => {
@@ -58,10 +58,18 @@ export const fetchBlogReviewsWS = (response) => async (dispatch) => {
 };
 
 // GraphQL thunks
-export const fetchBlogsByQuery = () => async (dispatch) => {
+export const fetchBlogsByQuery = (data) => async (dispatch) => {
     dispatch(loadingBlog());
-    const response = await RequestService.post("/blogs/graphql/blogs", {query: getAllBlogsByQuery});
+    console.log(typeof(data))
+    const response = await RequestService.post("/blogs/graphql/blogs", {query: getAllBlogsByQuery(data)});
     dispatch(fetchBlogsByQuerySuccess(response.data.data.blogs));
+};
+
+// GraphQL thunks
+export const fetchBlogsByMe = (data) => async (dispatch) => {
+    dispatch(loadingBlog());
+    const response = await RequestService.post("/blogs/graphql/blogs/me", {query: getAllBlogsByMe(data)},true);
+    dispatch(fetchBlogsByQuerySuccess(response.data.data.blogsOfMe));
 };
 
 export const fetchBlogByQuery = (id) => async (dispatch) => {

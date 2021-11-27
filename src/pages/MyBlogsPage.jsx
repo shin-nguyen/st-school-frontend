@@ -9,9 +9,7 @@ const MyBlogsPage = (props) => {
         <div>
             <Navbar {...props}/>
             <PageTitle title='My Blogs'/>
-            <BlogWrapper
-
-            />
+            <BlogWrapper isStatus = "me"/>
             <Footer/>
         </div>
     )

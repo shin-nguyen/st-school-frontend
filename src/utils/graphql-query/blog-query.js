@@ -1,19 +1,37 @@
-export const getAllBlogsByQuery = `
-    {
-        blogs {
+export const getAllBlogsByQuery = (data) => `
+{
+    blogs(type: "${data}") {
+        id
+        title
+        summary
+        content
+        status
+        image
+        topics {
             id
-            title
-            summary
-            content
-            status
-            image
-            topics {
-                id
-                name
-            }
-            createdTime
+            name
         }
+        createdTime
     }
+}
+`;
+
+export const getAllBlogsByMe = (data) => `
+{
+    blogsOfMe(email: "${data}") {
+        id
+        title
+        summary
+        content
+        status
+        image
+        topics {
+            id
+            name
+        }
+        createdTime
+    }
+}
 `;
 
 export const getBlogByQuery = (id) => `
