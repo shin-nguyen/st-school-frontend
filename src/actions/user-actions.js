@@ -5,7 +5,8 @@ import { LOADING_USER_INFO,
     USER_UPDATED_PASSWORD_FAILURE,
     USER_UPDATED_PASSWORD_SUCCESS,
     USER_UPDATED_SUCCESS,
-    FETCH_USER_BY_QUERY_SUCCESS
+    FETCH_USER_BY_QUERY_SUCCESS,
+    USER_IMAGE_UPDATED_SUCCESS
 } from '../action-types/user-actions-types' 
 
 export const loadingUserInfo = () => ({
@@ -19,6 +20,12 @@ export const userUpdatedSuccess = (user) => ({
     type: USER_UPDATED_SUCCESS,
     payload: user
 });
+////
+export const addUserImageSuccess = (user) => ({
+    type: USER_IMAGE_UPDATED_SUCCESS,
+    payload: user
+});
+
 export const userUpdatedFailure = (errors) => ({
     type: USER_UPDATED_FAILURE,
     payload: errors

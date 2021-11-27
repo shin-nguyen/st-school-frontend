@@ -8,6 +8,7 @@ import {
     RESET_INPUT_FORM,
     FETCH_USER_BY_QUERY_SUCCESS,
     LOADING_USER_INFO,
+    USER_IMAGE_UPDATED_SUCCESS
 } from "../action-types/user-actions-types";
 
 const initialState = {
@@ -49,6 +50,9 @@ const reducer = (state = initialState, action) => {
         case FETCH_USER_BY_QUERY_SUCCESS:
             return {...state, user: action.payload, isLoggedIn: true, isLoaded: false}
 
+        case USER_IMAGE_UPDATED_SUCCESS:{
+            return {...state, user: action.payload, isLoaded: false}
+        }
         default:
             return state;
     }

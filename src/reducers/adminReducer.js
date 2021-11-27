@@ -34,7 +34,7 @@ const reducer = (state= initialState, action) => {
             return {...state, users: action.payload, isLoaded: false};
 
         case FORM_RESET:
-            return {...state, isPerfumeAdded: false, isPerfumeEdited: false, errors: {}};
+            return {...state, errors: {}};
 
         default:
             return state;

@@ -10,8 +10,8 @@ export const getAllBlogsByQuery = `
             topics {
                 id
                 name
-                description
             }
+            createdTime
         }
     }
 `;
@@ -25,24 +25,15 @@ export const getBlogByQuery = (id) => `
             content
             status
             image
+            createdTime
             topics {
                 id
                 name
                 description
             }
-        }
-    }
-`;
-
-export const getBlogsByIdsQuery = (ids) => `
-    {
-        blogsIds(ids: [${ids}]) {
-            id
-            title
-            image
-            summary
-            content
-            status
+            user{
+                email
+            }
         }
     }
 `;

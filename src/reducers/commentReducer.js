@@ -22,6 +22,10 @@ const reducer = (state = initialState, action) => {
             return {...state};
         case FETCH_COMMENT_SUCCESS:
             return {...state, comments: action.payload };
+        case ADD_COMMENT_SUCCESS:
+            const newList = [...state.comments];
+            newList.push(action.payload);
+            return {...state, comments: newList};
         default:
             return state;
     }

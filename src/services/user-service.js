@@ -6,7 +6,8 @@ import {
     userUpdatedFailure,
     userUpdatedPasswordFailure,
     userUpdatedPasswordSuccess,
-    userUpdatedSuccess
+    userUpdatedSuccess,
+    addUserImageSuccess
 } from "../actions/user-actions";
 import {userByQuery} from "../utils/graphql-query/users-query";
 
@@ -31,6 +32,15 @@ export const updateUserInfo = (userEdit)=> async(dispatch) =>{
     }
 }
 
+export const addUserImage = (params) => async (dispatch) => {
+    try {
+        const { data } = await RequestService.post(`/users/add-image`, params,true);
+        await dispatch(addUserImageSuccess(data));
+    } catch (error) {
+        // dispatch(addBlogFail(error.message));
+        console.log(error.message)
+    }
+}
 export const updateUserPassword = (data) => async (dispatch) =>{
     try{
         const response  = await RequestService.put("/auth/edit/password",data,true);

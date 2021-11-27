@@ -72,11 +72,10 @@ export const deleteComment = (id) => async(dispatch) => {
 };
 
 
-export const addComment = (params, history) => async(dispatch) => {
+export const addComment = (params) => async(dispatch) => {
     try {
         const { data } = await RequestService.post(`/comments/add`, params, true);
         await dispatch(addCommentSuccess(data));
-        history.push("/comments");
     } catch (error) {
         // dispatch(addCommentFail(error.message));
         console.log(error.message)

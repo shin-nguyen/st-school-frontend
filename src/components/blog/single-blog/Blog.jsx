@@ -12,8 +12,6 @@ const Blog = () => {
     const dispatch = useDispatch();
     const blog = useSelector(state => state.blog.blog);
 
-    const userEmail =   localStorage.getItem("email");
-
     let { id } = useParams();
 
     useEffect(() => {
@@ -36,7 +34,7 @@ const Blog = () => {
             <Link 
                 // to={`/?user=${user?.email}`} 
                 className="link">
-              <b> {userEmail}</b>
+              <b> {blog.user?.email}</b>
             </Link>
           </span>
           <span className="singleBlogDate">

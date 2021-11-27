@@ -6,10 +6,11 @@ import { useParams } from 'react-router'
 
 import googleLogo from "../../img/google.png";
 import facebookLogo from "../../img/facebook.png";
+import githubLogo from "../../img/github.png";
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEnvelope, faLock, faSignInAlt} from "@fortawesome/free-solid-svg-icons";
-
+import {BASE_URL} from "../../constants/SystemConstants"
 import "./Login.css";
 
 const Login = () =>{
@@ -83,11 +84,14 @@ const Login = () =>{
                 <div className="col-md-6">
                     <div className="mt-5">
                         <a className="btn btn-block social-btn google"
-                           href="http://localhost:8080/oauth2/authorize/google">
+                           href={`${BASE_URL}/oauth2/authorize/google`}>
                             <img src={googleLogo} alt="google"/>Log in with Google</a>
                         <a className="btn btn-block social-btn facebook"
-                           href="http://localhost:8080/oauth2/authorize/facebook">
+                            href={`${BASE_URL}/oauth2/authorize/facebook`}>
                             <img src={facebookLogo} alt="facebook"/>Log in with Facebook</a>
+                        <a className="btn btn-block social-btn github"
+                           href={`${BASE_URL}/oauth2/authorize/github`}>
+                            <img src={githubLogo} alt="github"/>Log in with Github</a>
                     </div>
                 </div>
             </div>

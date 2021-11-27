@@ -2,16 +2,15 @@ import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faEdit, faList, faTrash} from "@fortawesome/free-solid-svg-icons";
-// import {LazyLoadImage} from "react-lazy-load-image-component";
+import {faLockOpen,faLock} from "@fortawesome/free-solid-svg-icons";
 
 import usePagination from "../pagination/usePagination";
-import Modal from "../../../modal/Modal";
-import SearchForm from "../../../searchForm/SearchForm";
+import Modal from "../../../../components/modal/Modal";
+import SearchForm from "../../../searchForm/SearchForm.js";
 import PaginationItem from "../pagination/PaginationItem";
 // import StarRating from "../../../component/StarRating/StarRating";
 import {deleteBlog} from "../../../../services/blog-service";
-import Spinner from '../../../spinner/Spinner';
+import Spinner from '../../../../components/spinner/Spinner';
 
 
 const BlogListComponent = ({data, itemsPerPage,startFrom,searchByData,tableHead}) => {
@@ -76,17 +75,23 @@ const BlogListComponent = ({data, itemsPerPage,startFrom,searchByData,tableHead}
                     </thead>
                 <tbody>
                         {slicedData.map((blog,index) => {
+                              console.log(blog);
                             return (
                             <tr key={index}>
+                              
                                 <td>{index + 1}</td>
                                 <td>{blog.title}</td>
                                 <td className="mw-445">{blog.summary}</td>
-                                <td>{blog.status}</td>
+
+                                <td>{(blog.status)? 
+                                 <FontAwesomeIcon icon={faLockOpen}/>
+                                 :<FontAwesomeIcon icon={faLock}/>}
+                                </td>
                                 <td>
-                                    <button className="btn-a btn btn-success mr-10"
-                                            >
-                                        Edit
-                                    </button>
+                                    <Link to={`/admin/blogs/${blog.id}`}>
+                                        <button className="btn-a btn btn-success mr-10">Detail</button>
+                                    </Link>
+
                                     <button className="btn btn-danger mr-10" 
                                             onClick={() => showDeleteModalWindow(blog)}>
                                         Delete
