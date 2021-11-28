@@ -10,40 +10,15 @@ import statusCards from '../../../../assets/JsonData/status-card-data.json'
 
 import "../dashboard/dashboard.css"
 
-const topCustomers = {
-    head: [
+import { useDispatch, useSelector } from 'react-redux'
+
+import {fetchDashboard,fetchCustomersDashboard,fetchOrderDashboard} from "../../../../services/admin-service";
+
+const topCustomers =[
         'User',
         'Total Orders',
         'Total Spending'
-    ],
-    body: [
-        {
-            "username": "john doe",
-            "order": "490",
-            "price": "$15,870"
-        },
-        {
-            "username": "frank iva",
-            "order": "250",
-            "price": "$12,251"
-        },
-        {
-            "username": "anthony baker",
-            "order": "120",
-            "price": "$10,840"
-        },
-        {
-            "username": "frank iva",
-            "order": "110",
-            "price": "$9,251"
-        },
-        {
-            "username": "anthony baker",
-            "order": "80",
-            "price": "$8,840"
-        }
     ]
-}
 
 const renderCusomerHead = (item, index) => (
     <th key={index}>{item}</th>
@@ -51,52 +26,18 @@ const renderCusomerHead = (item, index) => (
 
 const renderCusomerBody = (item, index) => (
     <tr key={index}>
-        <td>{item.username}</td>
+        <td>{item.firstName + item.lastName}</td>
         <td>{item.order}</td>
         <td>{item.price}</td>
     </tr>
 )
 
-const latestOrders = {
-    header: [
+const latestOrders = [
         "Course",
         "User",
         "Total Price",
         "Date",
-    ],
-    body: [
-        {
-            course: "HTML",
-            user: "john doe",
-            date: "17 Jun 2021",
-            price: "$900",
-        },
-        {
-            course: "CSS",
-            user: "frank iva",
-            date: "1 Jun 2021",
-            price: "$400",
-        },
-        {
-            course: "JAVA",
-            user: "anthony baker",
-            date: "27 Jun 2021",
-            price: "$200",
-        },
-        {
-            course: "JS",
-            user: "frank iva",
-            date: "1 Jun 2021",
-            price: "$400",
-        },
-        {
-            course: "JAVA",
-            user: "anthony baker",
-            date: "27 Jun 2021",
-            price: "$200",
-        }
-    ]
-}
+]
 
 const renderOrderHead = (item, index) => (
     <th key={index}>{item}</th>
@@ -104,30 +45,61 @@ const renderOrderHead = (item, index) => (
 
 const renderOrderBody = (item, index) => (
     <tr key={index}>
-        <td>{item.course}</td>
-        <td>{item.user}</td>
-        <td>{item.price}</td>
-        <td>{item.date}</td>
+        <td>{item.course.id}</td>
+        <td>{item.user.firstName}</td>
+        <td>{item.course.price}</td>
+        <td>{item.createdTime}</td>
     </tr>
 )
 
 const Dashboard = () => {
+    const dispatch = useDispatch()
+    const dashboardResponse= useSelector((state) => state.admin.dashboardResponse);
+    const userResponse= useSelector((state) => state.admin.userResponse);
+    const orderResponse= useSelector((state) => state.admin.orderResponse);
+
+    useEffect(() => {
+        dispatch(fetchDashboard());
+        dispatch(fetchCustomersDashboard());
+        dispatch(fetchOrderDashboard());
+        console.log("render");
+    }, [dispatch]);
+
+
     return (
         <div>
             <h2 className="page-header">Dashboard</h2>
             <div className="row">
                 <div className="col-7">
                     <div className="row">
-                        {
-                            statusCards.map((item, index) => (
-                                <div className="col-6" key={index}>
+                       
+                                <div className="col-6">
                                     <StatusCard
-                                        count={item.count}
-                                        title={item.title}
+                                        count={dashboardResponse.totalCourse}
+                                        title={"Total Course"}
                                     />
                                 </div>
-                            ))
-                        }
+                                
+                                <div className="col-6">
+                                    <StatusCard
+                                    count={dashboardResponse.totalOrder}
+                                    title={"Total Order"}
+                                    />
+                                </div>
+
+                                <div className="col-6">
+                                    <StatusCard
+                                    count={dashboardResponse.totalIncome}
+                                    title={"Total Income"}
+                                    />
+                                </div>
+
+                                <div className="col-6">
+                                    <StatusCard
+                                    count={dashboardResponse.totalBlog}
+                                    title={"Total Blog"}
+                                    />
+                                </div>
                     </div>
                 </div>
                 {/* <div className="col-6">
@@ -142,9 +114,9 @@ const Dashboard = () => {
                         </div>
                         <div className="dash-card-body">
                             <Table
-                                headData={topCustomers.head}
+                                headData={topCustomers}
                                 renderHead={(item, index) => renderCusomerHead(item, index)}
-                                bodyData={topCustomers.body}
+                                bodyData={userResponse}
                                 renderBody={(item, index) => renderCusomerBody(item, index)}
                             />
                         </div>
@@ -160,9 +132,9 @@ const Dashboard = () => {
                         </div>
                         <div className="dash-card-body">
                             <Table
-                                headData={latestOrders.header}
+                                headData={latestOrders}
                                 renderHead={(item, index) => renderOrderHead(item, index)}
-                                bodyData={latestOrders.body}
+                                bodyData={orderResponse}
                                 renderBody={(item, index) => renderOrderBody(item, index)}
                             />
                         </div>

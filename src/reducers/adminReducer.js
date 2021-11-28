@@ -4,7 +4,10 @@ import {
     FORM_RESET, 
     FETCH_ALL_USERS_BY_QUERY_SUCCESS, 
     FETCH_USER_INFO_BY_QUERY_SUCCESS,  
-    LOADING_DATA 
+    LOADING_DATA,
+    FETCH_DASHBOARD_SUCCESS,
+    FETCH_CUSTOMER_DASHBOARD_SUCCESS,
+    FETCH_ORDER_DASHBOARD_SUCCESS
 } from "../action-types/admin-action-types";
 
 
@@ -13,7 +16,11 @@ const initialState = {
     users: [],
     user: {},
     errors: {},
-    isLoaded: false
+    isLoaded: false,
+
+    userResponse: [],
+    orderResponse:[],
+    dashboardResponse: {}
 };
 
 const reducer = (state= initialState, action) => {
@@ -32,10 +39,15 @@ const reducer = (state= initialState, action) => {
 
         case FETCH_ALL_USERS_BY_QUERY_SUCCESS:
             return {...state, users: action.payload, isLoaded: false};
-
+        case FETCH_DASHBOARD_SUCCESS:
+            return {...state, dashboardResponse: action.payload, isLoaded: false};
+        case FETCH_CUSTOMER_DASHBOARD_SUCCESS:
+            return {...state, userResponse: action.payload, isLoaded: false};
+        case FETCH_ORDER_DASHBOARD_SUCCESS:
+            return {...state, orderResponse: action.payload, isLoaded: false};
         case FORM_RESET:
             return {...state, errors: {}};
-
+            
         default:
             return state;
     }

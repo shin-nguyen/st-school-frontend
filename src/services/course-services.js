@@ -19,7 +19,17 @@ from '../actions/course-actions'
 
 export const getAllCourse  = () => async (dispatch) => {
     try {
-        const { data } = await requestService.get(`/course/list`);
+        const { data } = await requestService.get(`/course/admin/list`);
+        dispatch(fetchCourseSuccess(data));
+    } catch (error) {
+        dispatch(fetchCourseFail(error.message));
+        console.log(error.message);
+    }
+}
+
+export const getAllCourseByMe  = () => async (dispatch) => {
+    try {
+        const { data } = await requestService.get(`/course/list`,true);
         dispatch(fetchCourseSuccess(data));
     } catch (error) {
         dispatch(fetchCourseFail(error.message));

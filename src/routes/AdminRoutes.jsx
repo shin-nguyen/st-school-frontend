@@ -12,6 +12,7 @@ import ListOrder from '../components/admin/component/order/ListOrder'
 import ListBlog from '../components/admin/component/blog/BlogList'
 import ChangePassword from '../components/account/changePassword/ChangePassword'
 import Transfer from '../components/admin/component/transfer/Transfer'
+import LogoutPage from '../pages/LogoutPage'
 
 const AdminRoutes = () => {
     return (
@@ -26,6 +27,7 @@ const AdminRoutes = () => {
             <Route path='/admin/course/:id/video/add' component={VideoForm}/>
             <Route path='/admin/orders' component={ListOrder}/>
             <Route path='/admin/account' component={ChangePassword}/>
+            {/* <Route path='/logout' component = {LogoutPage}/> */}
             <Route path='/admin/logout' component={Transfer}/>
         </Switch>
     )

@@ -29,12 +29,13 @@ const NavbarItem = props => {
 const Navbar= (props) => {
 
     const isLoggedIn = useSelector((state)=>state.user.isLoggedIn);
+    const user = useSelector(state => state.user.user);
 
     const activeItem = navbar_items.findIndex(item => item.route === props.location.pathname)
 
     const curr_user = {
         display_name: localStorage.getItem("email"),
-        image: user_image,
+        image: user?.avatar || user_image,
     }
 
     const renderUserToggle = (user) => (

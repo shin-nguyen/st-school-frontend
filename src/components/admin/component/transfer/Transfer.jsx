@@ -10,7 +10,7 @@ const Transfer = () => {
 
     useEffect(() => {
         dispatch(logout());
-        history.push("/admin")
+        history.push("/logout")
         return () => {
           return [];
         };

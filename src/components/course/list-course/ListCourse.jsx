@@ -1,23 +1,29 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getAllCourse, getPurchasedCourses } from '../../../services/course-services';
+import { getAllCourse, getPurchasedCourses,getAllCourseByMe } from '../../../services/course-services';
 import CardCourse from '../card-course/CardCourse'
 
 const ListCourse = (props) => {
     const dispatch = useDispatch()
     const listCourse = useSelector(state => state.course.listCourse)
     const purchasedCourses = useSelector(state => state.course.purchasedCourses)
-
+    const isLoggedIn = localStorage.getItem("isLoggedIn")
     useEffect(() => {
         if(props.isBought === true){
             console.log("is bought")
             dispatch(getPurchasedCourses());
         } else {
-            console.log("full list")
-            dispatch(getAllCourse());
+            if(isLoggedIn){
+                console.log("full list by me")
+                dispatch(getAllCourseByMe());
+            }
+            else{
+                console.log("full list")
+                dispatch(getAllCourse());
+            }
         }
-        return () => {
+        return () => { 
             return []
         }
     }, [dispatch])

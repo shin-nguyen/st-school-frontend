@@ -1,4 +1,4 @@
-export const getAllBlogsByQuery = `
+export const getOrderDashboardsByQuery = `
 {
     orders {
         id

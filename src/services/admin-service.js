@@ -5,9 +5,13 @@ import {
     getAllUsersByQuery,
     getUserInfoByQuery,
     loadingData,
+    getDashboard,
+    getOrderDashboard,
+    getCustomersDashboard
 } from "../actions/admin-actions";
 import RequestService from './request-service';
 import {userByQuery, usersByQuery} from "../utils/graphql-query/users-query";
+import {getOrderDashboardsByQuery} from "../utils/graphql-query/order-query";
 
 
 export const fetchAllUsers = () => async (dispatch) => {
@@ -22,11 +26,34 @@ export const fetchAllCustomers = () => async (dispatch) => {
     dispatch(getAllUsers(response.data));
 };
 
+
+export const fetchDashboard = () => async (dispatch) => {
+    dispatch(loadingData());
+    const response = await RequestService.get("/admin/dashboard", true);
+    dispatch(getDashboard(response.data));
+};
+
+export const fetchCustomersDashboard = () => async (dispatch) => {
+    dispatch(loadingData());
+    const response = await RequestService.get("/admin/dashboard/user", true);
+    dispatch(getCustomersDashboard(response.data));
+};
+
+// GraphQL thunks
+export const fetchOrderDashboard = () => async (dispatch) => {
+    dispatch(loadingData());
+    const response = await RequestService.post("/admin/graphql/dashboard/order", {query: getOrderDashboardsByQuery},true);
+    console.log(response)
+    dispatch(getOrderDashboard(response.data.data.orders));
+};
+
 export const fetchUserInfo = (id) => async (dispatch) => {
     dispatch(loadingData());
     const response = await RequestService.get("/admin/user/" + id, true);
     dispatch(getUserInfo(response.data));
 };
+
+
 
 export const formReset = () => async (dispatch) => {
     dispatch(reset());

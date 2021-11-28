@@ -44,6 +44,7 @@ const Routes = () => {
             <Route path='/my-blogs' component={MyBlogsPage}/>
             <Route path='/learning/:id' component={LearningPage}/>
             <Route path='/admin' component ={AdminPage}/>
+
             <Route component={NotFound}/>
             {/* <Route component={NotFound}/>   */}
         </Switch>

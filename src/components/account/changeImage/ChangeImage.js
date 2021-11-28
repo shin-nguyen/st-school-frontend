@@ -8,7 +8,6 @@ import "./ChangeImage.css";
 const ChangeImage = () => {
     const dispatch = useDispatch();
     const usersData = useSelector(state => state.user.user);
-    const [user, setUser] = useState(usersData);
     const [file, setFile] = useState(null);
 
     useEffect(() => {
@@ -30,7 +29,7 @@ const ChangeImage = () => {
         <div className="img-wrap" >
         <label htmlFor="fileInput"className="label-profile">
             {file ? <img className="writeImg" src={URL.createObjectURL(file)} alt="" />:
-            <img for="photo-upload" src={defaultAvatar} className="img-profile"/>
+            <img for="photo-upload" src={usersData.avatar||defaultAvatar} className="img-profile"/>
             } 
         </label>    
         <input

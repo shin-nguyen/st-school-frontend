@@ -7,22 +7,19 @@ import { Link } from 'react-router-dom'
 import Dropdown from '../../../dropdown/Dropdown'
 
 import notifications from '../../../../assets/JsonData/notification.json'
+import {useSelector} from "react-redux";
 
 import user_image from '../../../../assets/images/kai.jpg'
 
 import user_menu_admin from '../../../../assets/JsonData/user_menu_admin.json'
 
-const curr_user = {
-    display_name: localStorage.getItem("email"),
-    image: user_image
-}
 
-const renderNotificationItem = (item, index) => (
-    <div className="notification-item" key={index}>
-        <i className={item.icon}></i>
-        <span>{item.content}</span>
-    </div>
-)
+// const renderNotificationItem = (item, index) => (
+//     <div className="notification-item" key={index}>
+//         <i className={item.icon}></i>
+//         <span>{item.content}</span>
+//     </div>
+// )
 
 const renderUserToggle = (user) => (
     <div className="topnav__right-user">
@@ -45,7 +42,15 @@ const renderUserMenu =(item, index) => (
 )
 
 
+
 const Topnav = () => {
+    const user = useSelector(state => state.user.user);
+
+    const curr_user = {
+        display_name: localStorage.getItem("email"),
+        image: user?.avatar || user_image,
+    }
+
     return (
         <div className='topnav'>
             {/* <div className="topnav__search">
