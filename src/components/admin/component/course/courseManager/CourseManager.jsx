@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllCourse, deleteCourse } from '../../../../../services/course-services'
 import Table from '../../table/Table'
@@ -16,9 +16,9 @@ const CoursesManager = () => {
         'Price',
         '',
     ]
-    
+
     const renderHead = (item, index) => <th key={index}>{item}</th>
-    
+
     const renderBody = (item, index) => (
         <tr key={index}>
             <td>{index + 1}</td>
@@ -29,10 +29,10 @@ const CoursesManager = () => {
             <td className="mw-445">{item.description}</td>
             <td>${item.price}</td>
             <td>
-                <Link to={'course/'+item.id+'/detail'}>
+                <Link to={'course/' + item.id + '/detail'}>
                     <button className="btn-a btn btn-info mr-10">Detail</button>
                 </Link>
-                <Link to={'course/'+item.id+'/edit'}>
+                <Link to={'course/' + item.id + '/edit'}>
                     <button className="btn-a btn btn-success mr-10">Edit</button>
                 </Link>
                 <button className="btn btn-danger mr-10" onClick={() => handleDelete(item)}>Delete</button>
@@ -41,10 +41,10 @@ const CoursesManager = () => {
     )
 
     const handleDelete = (item) => {
-        if(confirm('Are you sure to delete it ?')){ //eslint-disable-line
+        if (confirm('Are you sure to delete it ?')) { //eslint-disable-line
             dispatch(deleteCourse(item.id));
             alert("delete success");
-        } 
+        }
     }
 
     useEffect(() => {
@@ -54,7 +54,7 @@ const CoursesManager = () => {
     useEffect(() => {
     }, [listCourse]);
 
-    return (    
+    return (
         <div>
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <Link to='course/add'>
@@ -67,15 +67,15 @@ const CoursesManager = () => {
                         <h3 className="title">Course List</h3>
                     </div>
                     <div className="card-body">
-                        <Table 
+                        <Table
                             headData={courseTableHead}
                             renderHead={(item, index) => renderHead(item, index)}
                             bodyData={listCourse}
                             renderBody={(item, index) => renderBody(item, index)}
-                        />         
+                        />
                     </div>
                 </div>
-            </div>  
+            </div>
         </div>
     )
 }

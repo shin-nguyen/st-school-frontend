@@ -62,7 +62,7 @@ const Dashboard = () => {
         dispatch(fetchDashboard());
         dispatch(fetchCustomersDashboard());
         dispatch(fetchOrderDashboard());
-        console.log("render");
+        console.log(orderResponse.data);
     }, [dispatch]);
 
 

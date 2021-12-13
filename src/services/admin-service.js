@@ -22,7 +22,7 @@ export const fetchAllUsers = () => async (dispatch) => {
 
 export const fetchAllCustomers = () => async (dispatch) => {
     dispatch(loadingData());
-    const response = await RequestService.get("/admin/customer/all", false);
+    const response = await RequestService.get("/admin/customer/all", true);
     dispatch(getAllUsers(response.data));
 };
 

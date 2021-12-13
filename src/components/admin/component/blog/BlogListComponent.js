@@ -56,13 +56,7 @@ const BlogListComponent = ({data, itemsPerPage,startFrom,searchByData,tableHead}
                 setFilteredData={setFilteredData}
                 setSearching={setSearching}/>
 
-            {/* <div className="mt-3">
-                <PaginationItem
-                    pagination={pagination}
-                    prevPage={prevPage}
-                    changePage={changePage}
-                    nextPage={nextPage}/>
-            </div> */}
+
             {loading ? <Spinner/> :
             <>
                 <table className="table table-hover">
