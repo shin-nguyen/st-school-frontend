@@ -14,10 +14,11 @@ const SearchForm = ({data, searchByData, setFilteredData, setSearching}) => {
             setSearching(true);
             const copiedData = [...data];
             const filtered = copiedData.filter((valueSearch) => {
-                let searchKey = 'blog';
+                let searchKey = '';
                 if (searchByData && searchByData.length > 0) {
                     searchKey = searchBy;
                 }
+                console.log(searchKey)
                 return valueSearch[searchKey].toLowerCase().includes(search.trim().toLowerCase());
             });
             setFilteredData(filtered);

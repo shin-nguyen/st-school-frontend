@@ -7,6 +7,7 @@ export const getAllBlogsByQuery = (data) => `
         content
         status
         image
+        view
         topics {
             id
             name
@@ -21,7 +22,7 @@ export const getAllBlogsByMe = (data) => `
     blogsOfMe(email: "${data}") {
         id
         title
-        summary
+        view
         content
         status
         image
@@ -39,7 +40,7 @@ export const getBlogByQuery = (id) => `
         blog(id: ${id}) {
             id
             title
-            summary
+            view
             content
             status
             image

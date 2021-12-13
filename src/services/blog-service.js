@@ -83,6 +83,12 @@ export const deleteBlog = (id) => async (dispatch) => {
     dispatch(deleteBlogSuccess(response.data));
 };
 
+export const updateBlogStatus = (id,status) => async (dispatch) => {
+    dispatch(loadingBlog());
+    const response = await RequestService.put("/blogs/" + id + "/" + status,null,true);
+    dispatch(updateBlogSuccess(response.data));
+};
+
 export const addBlog = (params,history) => async (dispatch) => {
     try {
         const { data } = await RequestService.post(`/blogs/add`, params,true);
