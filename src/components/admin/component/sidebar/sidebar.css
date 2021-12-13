@@ -17,6 +17,9 @@
 
 .sidebar__logo > img {
     height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
 }
 
 .sidebar__item {

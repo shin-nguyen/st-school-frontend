@@ -34,12 +34,13 @@
 }
 
 .writeInput {
-  font-size: 30px;
-  border: rgb(189, 188, 188) 1px solid;
+  font-size: 25px;
+  border: double 2px gray;
   border-radius: 10px;
   text-align: center;
-  padding: 20px;
-  width: 85vw;
+  /* padding: 20px; */
+  width: 35vw;
+  height: 70px;
 }
 
 .add-file-blog{
@@ -48,6 +49,8 @@
 
 .writeInput:focus {
   outline: none;
+  background-color: rgb(255, 255, 255);
+  border: var(--main-color) 6px double;
 }
 
 .writeText {
@@ -67,6 +70,7 @@
   cursor: pointer;
   font-size: 16px;
 }
+
 .text-editor {
   margin-bottom: 1rem;
   border: 1px solid #f1f1f1;
@@ -81,3 +85,9 @@
 .text-editor * {
   margin-bottom: 1rem;
 }
+
+.editor{
+  border: double 6px gray;
+  border-radius: 5px;
+}
+

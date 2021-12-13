@@ -8,6 +8,7 @@ import blogReducer from "../reducers/blogReducer"
 import commentReducer from "../reducers/commentReducer"
 
 import { combineReducers } from "redux";
+import ThemeReducer from "./themeReducer";
 
 const rootReducer = combineReducers({
     user: userReducer,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
     admin: adminReducer,
     blog: blogReducer,
     comment: commentReducer,
+    theme: ThemeReducer
 })
 
 export default rootReducer;

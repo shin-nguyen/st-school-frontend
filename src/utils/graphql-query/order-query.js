@@ -5,6 +5,7 @@ export const getOrderDashboardsByQuery = `
         createdTime
         course{
             id
+            name
             price
         }
         user{

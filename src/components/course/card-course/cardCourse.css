@@ -1,11 +1,16 @@
 .card{
-    /* height: 445px; */
-    border-radius: 15px;
-    border: 1px rgb(238, 237, 236) solid;
+    background-color: var(--main-bg);
+    color: var(--txt-color);
+}
+
+.card-footer{
+    padding: 10px;
+    background-color: var(--main-bg);
+    color: var(--txt-color);
 }
 
 .h-445{
-    height: 445px;
+    height: 425px;
 }
 
 .h-300{
@@ -19,11 +24,6 @@
 
 .card-content{
     font-size: 12px;
-}
-
-.card-footer{
-    padding: 10px;
-    background-color:white
 }
 
 .card-img-top{

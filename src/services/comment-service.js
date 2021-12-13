@@ -21,7 +21,7 @@ export const fetchComments = () => async(dispatch) => {
 
 export const fetchCommentById = (id) => async(dispatch) => {
     dispatch(loadingComment());
-    const response = await RequestService.get("/comments/all/" + id,true);
+    const response = await RequestService.get("/comments/all/" + id);
     dispatch(fetchCommentSuccess(response.data));
 };
 

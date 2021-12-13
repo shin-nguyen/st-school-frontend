@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import {useSelector} from "react-redux";
 import Dropdown from '../dropdown/Dropdown';
+import ThemeMenu from '../thememenu/ThemeMenu'
 import navbar_items from '../../assets/JsonData/navbar_routes.json'
 import logo from '../../assets/images/kai.jpg'
 import "./Navbar.css"
@@ -87,14 +88,19 @@ const Navbar= (props) => {
                         />
                     </div>
                     :
-                    <div className="navbar__right-item">
-                        <Dropdown
-                            icon="bx bx-lg bx-user-circle"
-                            contentData={access_menu}
-                            renderItems={(item, index) => renderUserMenu(item, index)}
-                        />
-                    </div> 
+                    // <div className='navbar__right'>
+                        <div className="navbar__right-item">
+                            <Dropdown
+                                icon="bx bx-md bx-user-circle"
+                                contentData={access_menu}
+                                renderItems={(item, index) => renderUserMenu(item, index)}
+                            />
+                        </div> 
+                    // </div>  
                 }
+                <div className="navbar__right-item">
+                    <ThemeMenu/>
+                </div>
             </div>
         </div>
     )

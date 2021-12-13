@@ -4,13 +4,13 @@ import "./singleBlog.css";
 import {useDispatch, useSelector} from "react-redux";
 import { useParams } from 'react-router'
 import {fetchBlog} from '../../../services/blog-service'
-import renderHTML from 'react-render-html';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import ListComment from '../../comment/listComment/ListComment'
+import Comment from "../../comment/comment-blog/CommentBlog";
 
 const Blog = () => {
     const dispatch = useDispatch();
     const blog = useSelector(state => state.blog.blog);
+    console.log(blog)
 
     let { id } = useParams();
 
@@ -45,18 +45,20 @@ const Blog = () => {
             {blog.title}
         </p>
         <p className="singleBlogDesc">
-            {renderHTML(blog.content ===undefined ?' ': blog.content)}
+            {/* {renderHTML(blog.content ===undefined ?' ': blog.content)} */}
+            <div dangerouslySetInnerHTML={{ __html: blog.content }} />
          </p>
         
       </div>
 
       <hr/>
 
-      <ListComment
+      {/* <ListComment
         isAuthenticated={localStorage.getItem("isLoggedIn") }
         loading={false}
         blogId={id}>
-      </ListComment>
+      </ListComment> */}
+      <Comment blog= {blog}/>
     </div>
   );
 }

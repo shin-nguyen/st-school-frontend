@@ -2,7 +2,7 @@
 
 :root {
     --main-bg: #ffffff;
-    --second-bg: #fafafb;
+    --second-bg: #ffffff;
     --txt-color: #455560;
     --txt-white: #fff;
     --main-color: #349eff;
@@ -40,6 +40,45 @@
     --transition-cubic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+.theme-mode-light {
+    --main-bg: var(--main-bg-light);
+    --second-bg: var(--second-bg-light);
+    --txt-color: var(--txt-color-light);
+    --box-shadow: var(--box-shadow-light);
+}
+
+.theme-mode-dark {
+    --main-bg: var(--main-bg-dark);
+    --second-bg: var(--second-bg-dark);
+    --txt-color: var(--txt-color-dark);
+    --box-shadow: var(--box-shadow-dark);
+}
+
+.theme-color-blue {
+    --main-color: var(--main-color-blue);
+    --second-color: var(--second-color-blue);
+}
+
+.theme-color-red {
+    --main-color: var(--main-color-red);
+    --second-color: var(--second-color-red);
+}
+
+.theme-color-cyan {
+    --main-color: var(--main-color-cyan);
+    --second-color: var(--second-color-cyan);
+}
+
+.theme-color-green {
+    --main-color: var(--main-color-green);
+    --second-color: var(--second-color-green);
+}
+
+.theme-color-orange {
+    --main-color: var(--main-color-orange);
+    --second-color: var(--second-color-orange);
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -48,7 +87,7 @@
 }
 
 body {
-    font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     letter-spacing: 0.7px;
@@ -107,6 +146,15 @@ input:focus {
     width: 75%;
 }
 
+/* .card-table{
+    padding: 0px;
+    padding-top: 20px;
+    margin-bottom: 30px;
+    background-color: var(--main-bg);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+} */
+
 .full-height {
     height: 100%;
 }
@@ -139,6 +187,10 @@ input:focus {
 .m-sides-5{
     margin-left: 5px;
     margin-right: 5px;
+}
+
+.br-15{
+    border-radius: 15px;
 }
 
 .bold{
@@ -208,4 +260,8 @@ input:focus {
 .w-and-h-95{
     width: 95%;
     height: 95%;
+}
+
+.mb-100{
+    margin-bottom: 100px;
 }

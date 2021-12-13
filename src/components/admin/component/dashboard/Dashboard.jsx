@@ -45,7 +45,7 @@ const renderOrderHead = (item, index) => (
 
 const renderOrderBody = (item, index) => (
     <tr key={index}>
-        <td>{item.course.id}</td>
+        <td>{item.course.name}</td>
         <td>{item.user.firstName}</td>
         <td>{item.course.price}</td>
         <td>{item.createdTime}</td>

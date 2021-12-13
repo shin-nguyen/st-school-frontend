@@ -5,7 +5,7 @@ import { activateAccount, formReset, login } from '../../services/auth-service';
 import { useParams } from 'react-router'
 
 import googleLogo from "../../img/google.png";
-import facebookLogo from "../../img/facebook.png";
+import facebookLogo from "../../img/face.png";
 import githubLogo from "../../img/github.png";
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";

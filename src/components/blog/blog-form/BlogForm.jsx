@@ -63,10 +63,10 @@ export default function Write(props) {
  
         <div className='text-editor'>
           <Editor
-          editorState={editor}
-          wrapperClassName="demo-wrapper"
-          editorClassName="demo-editor"
-          onEditorStateChange={ (editorState) => setEditor(editorState)}/>
+            editorState={editor}
+            wrapperClassName="demo-wrapper"
+            editorClassName="demo-editor"
+            onEditorStateChange={ (editorState) => setEditor(editorState)}/>
           </div>
         </div>
 

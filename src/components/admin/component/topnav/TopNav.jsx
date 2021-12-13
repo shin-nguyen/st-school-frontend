@@ -12,6 +12,7 @@ import {useSelector} from "react-redux";
 import user_image from '../../../../assets/images/kai.jpg'
 
 import user_menu_admin from '../../../../assets/JsonData/user_menu_admin.json'
+import ThemeMenu from '../../../thememenu/ThemeMenu'
 
 
 // const renderNotificationItem = (item, index) => (
@@ -80,7 +81,7 @@ const Topnav = () => {
                     />
                 </div> */}
                 <div className="topnav__right-item">
-                
+                    <ThemeMenu/>
                 </div>
             </div>
         </div>

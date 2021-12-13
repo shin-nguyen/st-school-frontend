@@ -18,9 +18,9 @@
   display: flex;
   flex-direction: column;
 }
-input[type="file"] {
+/* input[type="file"] {
   display: none;
-}
+} */
 
 .custom-file-upload {
   border-radius: 50%;

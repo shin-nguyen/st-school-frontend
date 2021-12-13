@@ -60,11 +60,11 @@
 
 .playlist-header{
     padding: 36px;
-    background-color: rgb(238, 238, 238);
+    /* background-color: rgb(207, 203, 203); */
     font-weight: bold;
     font-size: 20px;
     text-align: center;
-    border-bottom: 1px solid black ;
+    border-bottom: 5px double rgb(196, 190, 190) ;
 }
 
 .playlist-header i {
@@ -79,16 +79,15 @@
 
 .list_video_item{
     height: 60px;
-    border-bottom: solid 1px black;
+    border-bottom: solid 1px rgb(209, 208, 208);
     margin: auto;
 }
 
 .list_video_item-inner{
     height: 100%;
     padding-left: 20px;
-    padding-top: 5px;
+    padding-top: 15px;
     font-weight: 700;
-    margin: auto;
 }
 
 .list_video_item-inner:hover {

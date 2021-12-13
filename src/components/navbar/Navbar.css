@@ -22,6 +22,10 @@
 }
 
 .navbar__logo > img {
+
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
   height: 100%;
 }
 
@@ -60,7 +64,16 @@
   color: var(--txt-white);
 }
 
+.navbar__right{
+  display: flex;
+  align-items: center;
+}
+
 .navbar__right-item{
   position: absolute;
   right: 70px;
+}
+
+.navbar__right-item ~ .navbar__right-item {
+  margin-right: -50px;
 }
