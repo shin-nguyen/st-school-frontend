@@ -1,9 +1,9 @@
 import React from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { addComment } from "../../../services/comment-service"
+import { addComment } from "../../../services/comment-course-service"
 
-const CommentBox1 = ({ blogId }) => {
+const CommentBox = ({ courseId }) => {
     const dispatch = useDispatch();
     const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
     const isLogin = localStorage.getItem("isLoggedIn");
@@ -11,7 +11,7 @@ const CommentBox1 = ({ blogId }) => {
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-        const data = { blog: { id: blogId }, content };
+        const data = { course: { id: courseId }, content };
         if (content.length != 0) {
             dispatch(addComment(data));
         }
@@ -46,4 +46,4 @@ const CommentBox1 = ({ blogId }) => {
     )
 }
 
-export default CommentBox1
+export default CommentBox

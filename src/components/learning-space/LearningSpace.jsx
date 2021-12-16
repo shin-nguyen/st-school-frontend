@@ -4,9 +4,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router'
 import { getCourseById } from '../../services/course-services'
 import { getVideosOfCourse } from '../../services/video-services'
-import ListComment from '../comment/listComment/ListComment'
 import { Player } from 'video-react';
 import "../../../node_modules/video-react/dist/video-react.css";
+import Comment from "../comment-course/comment-course/CommentCourse";
 
 import "./learningSpace.css"
 
@@ -43,21 +43,21 @@ const LearningSpace = () => {
 
     useEffect(() => {
         const loadInfo = async () => {
-          await dispatch(getCourseById(id));
-          await dispatch(getVideosOfCourse(id));
-          if(videoSource==='' && listVideo !== null){
-              try{
-                setVideoSouce((listVideo[0].source));
-              } catch {
-                setVideoSouce("");
-              }
-          }
+            await dispatch(getCourseById(id));
+            await dispatch(getVideosOfCourse(id));
+            if (videoSource === '' && listVideo !== null) {
+                try {
+                    setVideoSouce((listVideo[0].source));
+                } catch {
+                    setVideoSouce("");
+                }
+            }
         };
-    
+
         loadInfo();
-    
+
         return () => {
-          return [];
+            return [];
         };
     }, [dispatch, videoSource]);
 
@@ -72,33 +72,33 @@ const LearningSpace = () => {
                         src={videoSource}
                     />
                     <div className={"btn-show show-" + !showPlaylist}>
-                        <i class="bx bx-lg bx-chevrons-left bx-fade-left-hover topright can-click" 
+                        <i class="bx bx-lg bx-chevrons-left bx-fade-left-hover topright can-click"
                             onClick={() => setShowPlaylist(!showPlaylist)}></i>
                     </div>
                 </div>
-                <div className="comment-wrapper">   
+                <div className="comment-wrapper">
                     <div className="list-comment">
-                        <ListComment/>
+                        <Comment course={course} />
                     </div>
                 </div>
             </div>
-            <div className={"playlist-wrapper show-"+ showPlaylist}>
+            <div className={"playlist-wrapper show-" + showPlaylist}>
                 <div className="playlist-header">
                     <span>{course.name}</span>
-                    <i className='bx bx-md bx-x-circle bx-burst-hover can-click mt_5-' 
-                            onClick={() => setShowPlaylist(!showPlaylist)}></i>
+                    <i className='bx bx-md bx-x-circle bx-burst-hover can-click mt_5-'
+                        onClick={() => setShowPlaylist(!showPlaylist)}></i>
                 </div>
                 <div className="playlist-content">
-                    {                       
+                    {
                         listVideo.map((video, index) => (
                             <ListVideoItem
-                                index = {index}
+                                index={index}
                                 name={video.name}
                                 onClick={() => handleChooseVideo(video, index)}
-                                active={index===activeItem}
+                                active={index === activeItem}
                             />
-                        ))      
-                    }           
+                        ))
+                    }
                 </div>
             </div>
         </div>

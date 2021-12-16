@@ -1,0 +1,142 @@
+/* comment */
+.comment{
+    margin-top: 1rem;
+}
+.comment-area textarea{
+    padding: 10px;
+    width: 1000px;
+    height: 112px;
+    outline: none;
+    border: 1px solid #eee;
+}
+.comment-send {
+    margin-top: 1rem;
+}
+.comment-send button{
+    padding: 5px 25px;
+    font-size: 14px;
+    color: #fff;
+    text-transform: uppercase;
+    border: 1px solid #e11b1e;
+    border-radius: 4px;
+    background: #e11b1e;
+    margin: 0;
+
+    outline: none;
+    cursor: pointer;
+}
+
+.comment-time{
+    font-size: x-small;
+}
+
+.all-comment{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+.all-comment-info{
+    display: flex;
+}
+
+.all-comment-info span{
+    background: #e11b1e;
+    font-weight: 300;
+    font-size: small;
+    padding: .1rem .2rem;
+    color: white;
+    line-height: 25px;
+    border-radius: 8px;
+}
+
+.all-comment-info strong{
+    margin: auto;
+    margin-left: 15px;
+    font-weight: 500;
+    padding: .1rem .2rem;
+    line-height: 25px;
+}
+
+.all-comment-info-name{
+    width: 25px;
+    height: 25px;
+    background: #ddd;
+    margin-right: 7px;
+    text-align: center;
+    color: #777;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 26px;
+    font-weight: 600;
+}
+
+.all-comment-info-name.admin{
+    background: none;
+}
+.all-comment-info-name.admin img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.all-comment-content, .all-comment-more{
+    display: flex;
+    margin-left: 2rem;
+    padding: 0.5rem 0;
+}
+.all-comment-more{
+    display: flex;
+    margin-left: 2rem;
+    padding: 0.3rem 0;
+}
+.all-comment-more-chat{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.all-comment-more-chat p{
+    font-size: small;
+    margin-bottom: 0;
+    color: #e11b1e;
+    margin-left: 1rem;
+}
+
+.all-comment-rep-list{
+    position: relative;
+    background: #eee;
+    width: calc(100% - 30px);
+    float: right;
+    border: 1px solid #dadada;
+    border-radius: 5px;
+    padding: 1rem;
+}
+.arrow-up {
+    position: absolute;
+    top: -6px;
+    left: 33px;
+    width: 10px;
+    height: 10px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 5px solid #eee;
+  }
+ 
+.all-comment-rep-list-item{
+    padding-top: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+.all-comment-rep-list-item:nth-child(1){
+    padding-top: 0;
+}
+
+.bxs-message-add{
+    color: crimson;
+}
+
+.comment-total{
+    margin-left: 15px;
+    font-size: large;
+    font-weight: 600;
+}
