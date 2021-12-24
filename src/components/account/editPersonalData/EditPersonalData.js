@@ -22,6 +22,7 @@ const EditPersonalData = () => {
         event.preventDefault();
         const userEdit = {id, firstName, lastName, address, phone};
         dispatch(updateUserInfo(userEdit));
+        alert("Edit Success")
     };
 
     const handleInputChange = (event) => {
@@ -33,8 +34,8 @@ const EditPersonalData = () => {
         <>
             <form className="edit_personal_data" onSubmit={onFormSubmit}>
                 <div className="form-group row">
-                    <label className="col-sm-3 col-form-label">First name: </label>
-                    <div className="col-sm-6">
+                    <label className="col-sm-4 col-form-label">First name: </label>
+                    <div className="col-sm-8">
                         <input
                             type="text"
                             className={firstNameError ? "form-control is-invalid" : "form-control"}
@@ -45,8 +46,8 @@ const EditPersonalData = () => {
                     </div>
                 </div>
                 <div className="form-group row">
-                    <label className="col-sm-3 col-form-label">Last name: </label>
-                    <div className="col-sm-6">
+                    <label className="col-sm-4 col-form-label">Last name: </label>
+                    <div className="col-sm-8">
                         <input
                             type="text"
                             className={lastNameError ? "form-control is-invalid" : "form-control"}
@@ -58,8 +59,8 @@ const EditPersonalData = () => {
                 </div>
             
                 <div className="form-group row">
-                    <label className="col-sm-3 col-form-label">Address: </label>
-                    <div className="col-sm-6">
+                    <label className="col-sm-4 col-form-label">Address: </label>
+                    <div className="col-sm-8">
                         <input
                             type="text"
                             className={"form-control"}
@@ -69,8 +70,8 @@ const EditPersonalData = () => {
                     </div>
                 </div>
                 <div className="form-group row">
-                    <label className="col-sm-3 col-form-label">Phone number: </label>
-                    <div className="col-sm-6">
+                    <label className="col-sm-4 col-form-label">Phone number: </label>
+                    <div className="col-sm-8">
                         <input
                             type="text"
                             className={"form-control"}

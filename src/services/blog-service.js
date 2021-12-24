@@ -107,7 +107,7 @@ export const addBlog = (params, history) => async (dispatch) => {
   try {
     const { data } = await RequestService.post(`/blogs/add`, params, true);
     await dispatch(addBlogSuccess(data));
-    history.push("/blogs");
+    history.push("/my-blogs");
   } catch (error) {
     // dispatch(addBlogFail(error.message));
     console.log(error.message);

@@ -19,6 +19,7 @@ tr {
 th,
 td {
     text-transform: capitalize;
+    color: var(--txt-color);
     padding: 15px 10px;
 }
 

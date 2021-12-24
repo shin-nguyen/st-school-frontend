@@ -180,6 +180,10 @@ input:focus {
     margin-left: 10px;
 }
 
+.mt-10{
+    margin-top: 10px;
+}
+
 .mr-20{
     margin-right: 20px;
 }
@@ -255,6 +259,10 @@ input:focus {
 
 .h-500{
     height: 500px;
+}
+
+.h-700{
+    height: 700px;
 }
 
 .w-and-h-95{

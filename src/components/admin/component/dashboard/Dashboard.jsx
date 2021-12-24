@@ -1,24 +1,17 @@
 import React, {useEffect} from 'react'
-
 import { Link } from 'react-router-dom'
-
 import StatusCard from '../status-card/StatusCard'
-
+import Chart from 'react-apexcharts'
 import Table from '../table/Table'
-
 import statusCards from '../../../../assets/JsonData/status-card-data.json'
-
 import "../dashboard/dashboard.css"
-
 import { useDispatch, useSelector } from 'react-redux'
-
 import {fetchDashboard,fetchCustomersDashboard,fetchOrderDashboard} from "../../../../services/admin-service";
-
 const topCustomers =[
         'User',
         'Total Orders',
         'Total Spending'
-    ]
+]
 
 const renderCusomerHead = (item, index) => (
     <th key={index}>{item}</th>
@@ -52,11 +45,46 @@ const renderOrderBody = (item, index) => (
     </tr>
 )
 
+const chartOptions = {
+    series: [{
+        name: 'Online Customers',
+        data: [40, 70, 20, 90, 36, 80, 30, 91, 60, 19, 12, 12]
+    }, {
+        name: 'Order',
+        data: [40, 30, 70, 80, 40, 16, 40, 20, 51, 10, 11, 12]
+    }, {
+        name: 'Blog',
+        data: [12, 3, 40, 23, 40, 10, 4, 24, 89, 23, 21, 1]
+    }],
+    options: {
+        color: ['#6ab04c', '#2980b9'],
+        chart: {
+            background: 'transparent'
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            curve: 'smooth'
+        },
+        xaxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Nov', 'Dec']
+        },
+        legend: {
+            position: 'top'
+        },
+        grid: {
+            show: false
+        }
+    }
+}
+
 const Dashboard = () => {
     const dispatch = useDispatch()
     const dashboardResponse= useSelector((state) => state.admin.dashboardResponse);
     const userResponse= useSelector((state) => state.admin.userResponse);
     const orderResponse= useSelector((state) => state.admin.orderResponse);
+    const themeReducer = useSelector(state => state.theme.mode)
 
     useEffect(() => {
         dispatch(fetchDashboard());
@@ -70,7 +98,7 @@ const Dashboard = () => {
         <div>
             <h2 className="page-header">Dashboard</h2>
             <div className="row">
-                <div className="col-7">
+                <div className="col-6">
                     <div className="row">
                        
                                 <div className="col-6">
@@ -102,11 +130,22 @@ const Dashboard = () => {
                                 </div>
                     </div>
                 </div>
-                {/* <div className="col-6">
+                <div className="col-6">
                     <div className="dash-card full-height">
-                        Để gắn cái đồ thị nếu cần
+                        <Chart
+                            options={themeReducer === 'theme-mode-dark' ? {
+                                ...chartOptions.options,
+                                theme: { mode: 'dark'}
+                            } : {
+                                ...chartOptions.options,
+                                theme: { mode: 'light'}
+                            }}
+                            series={chartOptions.series}
+                            type='line'
+                            height='100%'
+                        />
                     </div>
-                </div> */}
+                </div>
                 <div className="col-6">
                     <div className="dash-card">
                         <div className="dash-card-header">

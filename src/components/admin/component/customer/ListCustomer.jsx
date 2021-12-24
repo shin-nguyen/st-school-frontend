@@ -58,19 +58,17 @@ const ListCustomer = () => {
     return (
         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div className="card-table">
-                <div className="card-table-header">
-
-                    <h3 className="title">Customer List</h3>
-
-                    <a className="btn btn-outline-primary text-primary"
+                <h3 className="title">Customer List</h3>
+                <div className="card-table-header text-right">
+                    <a className="btn btn-primary mr-20"
                         href={API_BASE_URL + '/users/export/excel'}>
                         <FontAwesomeIcon icon={faFileExcel} />&nbsp;Export to xls</a>
-                    <a className="btn btn-outline-primary text-primary"
+                    <a className="btn btn-primary mr-20"
                         href={API_BASE_URL + '/users/export/csv'}>
                         <FontAwesomeIcon icon={faFileCsv}
                         />&nbsp;Export to csv
                     </a>
-                    <a className="btn btn-outline-primary text-primary"
+                    <a className="btn btn-primary mr-20"
                         href={API_BASE_URL + '/users/export/pdf'}>
                         <FontAwesomeIcon icon={faFilePdf}
                         />&nbsp;Export to pdf

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-import defaultAvatar from "../../../assets/images/kai.jpg"
+import defaultAvatar from "../../../assets/images/defaultavt.png"
 import {useDispatch, useSelector} from "react-redux";
 import {resetForm,addUserImage} from '../../../services/user-service';
 import "./ChangeImage.css";
@@ -16,10 +16,10 @@ const ChangeImage = () => {
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-
         let params = new FormData();
         params.append("file", file);
         dispatch(addUserImage(params));
+        alert("edit success")   
     };
 
     return (
@@ -28,8 +28,8 @@ const ChangeImage = () => {
       <label className="custom-file-upload fas">
         <div className="img-wrap" >
         <label htmlFor="fileInput"className="label-profile">
-            {file ? <img className="writeImg" src={URL.createObjectURL(file)} alt="" />:
-            <img for="photo-upload" src={usersData.avatar||defaultAvatar} className="img-profile"/>
+            {file ? <img className="writeImg can-click" src={URL.createObjectURL(file)} alt="" />:
+                <img for="photo-upload" src={usersData.avatar||defaultAvatar} className="img-profile can-click"/>
             } 
         </label>    
         <input

@@ -21,8 +21,8 @@ const Home = () => {
                 <div className="row">
                     <div className="col-md-6">
                         <div class="main_title">
-							<h2>Welcome to our Bakery</h2>
-							<p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur uis autem vel eum.</p>
+							<h2>Welcome to our Website</h2>
+							{/* <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur uis autem vel eum.</p> */}
 						</div>
                     </div>
                     <div className="col-md-6 my-auto">
@@ -38,8 +38,8 @@ const Home = () => {
                     </div> 
                     <div className="col-md-6">
                         <div class="main_title">
-							<h2>Welcome to our Bakery</h2>
-							<p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur uis autem vel eum.</p>
+							<h2>Welcome to ST School</h2>
+							{/* <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur uis autem vel eum.</p> */}
 						</div>
                     </div>    
                 </div>

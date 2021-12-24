@@ -60,3 +60,31 @@
 .mode-list__color.active > i {
     transform: scale(1);
 }
+
+.light-background{
+    background-color: white;
+}
+
+.dark-background{
+    background-color: black;
+}
+
+.blue-color{
+    background-color: var(--main-color-blue);
+}
+
+.red-color{
+    background-color: var(--main-color-red);
+}
+
+.cyan-color{
+    background-color: var(--main-color-cyan);
+}
+
+.green-color{
+    background-color: var(--main-color-green);
+}
+
+.orange-color{
+    background-color: var(--main-color-orange);
+}

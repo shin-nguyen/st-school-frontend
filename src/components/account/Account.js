@@ -21,10 +21,10 @@ const Account = () => {
     }, []);
 
     return (
-        <div className="account-container container h-500">
+        <div className="page-body body-content">
             <div className="row mt-5">
                 <div className="col-md-2">
-                    <h4><FontAwesomeIcon className="mr-2" icon={faUser}/>My Account</h4>
+                    <h4><FontAwesomeIcon icon={faUser}/>My Account</h4>
                     <NavLink to={"/account/user/info"}
                              className="account-sidebar-link nav-link"
                              activeClassName="is-active">Personal data</NavLink>

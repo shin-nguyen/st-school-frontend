@@ -21,7 +21,8 @@ const Checkout = () => {
             },
             "course": course
         }));
-        alert("saved")
+        alert("Success")
+        history.push('/my-courses')
     }
 
     const handelBack = () =>{
@@ -113,9 +114,11 @@ const Checkout = () => {
                                         },
                                         "course": course
                                     }));
-                                    if(confirm('Success!')){ //eslint-disable-line
-                                        history.push("/");
-                                    } 
+                                    // if(confirm('Success!')){ //eslint-disable-line
+                                    //     history.push("/");
+                                    // } 
+                                    alert("success")
+                                    history.push("/my-courses");
                                     console.log(data);
                                     console.log(details);
                                 });
@@ -124,9 +127,9 @@ const Checkout = () => {
                                 clientId: CLIENT_ID
                             }}
                         />
-                        {/* <button className="btn btn-success" onClick={handleClick}>
+                        <button className="btn btn-success" onClick={handleClick}>
                             Test Create Order
-                        </button> */}
+                        </button>
                     </div>
                 </div>
             </div>

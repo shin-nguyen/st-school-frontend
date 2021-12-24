@@ -32,7 +32,7 @@ const SearchForm = ({data, searchByData, setFilteredData, setSearching}) => {
         <form onSubmit={submitHandler} style={{justifyContent: 'center'}}>
             <div className="row">
                 {searchByData && searchByData.length > 0 &&
-                <div className="col-md-4">
+                <div className="col-md-2">
                     <select className="form-control" value={searchBy}
                             onChange={(event) => setSearchBy(event.target.value)}>
                         {searchByData.map((data, index) => (
@@ -48,7 +48,7 @@ const SearchForm = ({data, searchByData, setFilteredData, setSearching}) => {
                         value={search}
                         onChange={(event) => setSearch(event.target.value)}/>
                 </div>
-                <div className="col-md-5">
+                <div className="col-md-2">
                     <button type="submit" className="btn btn-dark">
                         <FontAwesomeIcon icon={faSearch}/> Search</button>
                 </div>

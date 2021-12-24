@@ -13,7 +13,7 @@ const PersonalData = () => {
 
     return (
         <div className="row">
-            <div className="personal_data col-md-5">
+            <div className="personal_data col-md-6">
                 <h4 className="personal_data_title">
                     <FontAwesomeIcon className="ml-2 mr-2" icon={faAddressCard}/>Personal data
                 </h4>
@@ -40,7 +40,7 @@ const PersonalData = () => {
                         <FontAwesomeIcon className="mr-2" icon={faEyeSlash}/> Hide
                     </Link>}
             </div>
-            <div className="col-md-7">
+            <div className="col-md-6">
                 <Route path="/account/user/info/edit" component={() => <EditPersonalData/>}/>
             </div>
         </div>

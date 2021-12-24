@@ -13,16 +13,16 @@
   align-items: center;
 }
 
-.field {
+/* .field {
   margin: 5px;
   display: flex;
   flex-direction: column;
-}
+} */
 /* input[type="file"] {
   display: none;
 } */
 
-.custom-file-upload {
+/* .custom-file-upload {
   border-radius: 50%;
   display: inline-block;
   position: relative;
@@ -30,7 +30,7 @@
   cursor: pointer;
   background: linear-gradient(270deg, #3fa1a9, #79f1a4);
   margin-bottom: 25px;
-}
+} */
 
 .img-wrap {
   position: relative;
@@ -39,7 +39,7 @@
   overflow: hidden;
   border-radius: 50%;
 }
-.img-upload:before {
+/* .img-upload:before {
   content: "\f093";
   font-size: 90px;
   position: absolute;
@@ -55,7 +55,7 @@
   opacity: 0;
   transition: 0.5s ease;
   background-color: #fff;
-}
+} */
 .img-upload:hover:before {
   opacity: 1;
 }

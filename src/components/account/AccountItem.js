@@ -9,7 +9,7 @@ const AccountItem = () => {
     return (
         <>
             {loading ? <Spinner/> :
-                <h4 style={{display: "flex", justifyContent: "center"}}>
+                <h4 style={{display: "flex", justifyContent: "center", marginBottom: "40px"}}>
                     Hello {usersData.firstName} {usersData.lastName}!
                 </h4>
             }
