@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import StatusCard from '../status-card/StatusCard'
 import Chart from 'react-apexcharts'
@@ -6,11 +6,11 @@ import Table from '../table/Table'
 import statusCards from '../../../../assets/JsonData/status-card-data.json'
 import "../dashboard/dashboard.css"
 import { useDispatch, useSelector } from 'react-redux'
-import {fetchDashboard,fetchCustomersDashboard,fetchOrderDashboard} from "../../../../services/admin-service";
-const topCustomers =[
-        'User',
-        'Total Orders',
-        'Total Spending'
+import { fetchDashboard, fetchCustomersDashboard, fetchOrderDashboard, fetchGraphDashboard } from "../../../../services/admin-service";
+const topCustomers = [
+    'User',
+    'Total Orders',
+    'Total Spending'
 ]
 
 const renderCusomerHead = (item, index) => (
@@ -26,10 +26,10 @@ const renderCusomerBody = (item, index) => (
 )
 
 const latestOrders = [
-        "Course",
-        "User",
-        "Total Price",
-        "Date",
+    "Course",
+    "User",
+    "Total Price",
+    "Date",
 ]
 
 const renderOrderHead = (item, index) => (
@@ -46,16 +46,6 @@ const renderOrderBody = (item, index) => (
 )
 
 const chartOptions = {
-    series: [{
-        name: 'Online Customers',
-        data: [40, 70, 20, 90, 36, 80, 30, 91, 60, 19, 12, 12]
-    }, {
-        name: 'Order',
-        data: [40, 30, 70, 80, 40, 16, 40, 20, 51, 10, 11, 12]
-    }, {
-        name: 'Blog',
-        data: [12, 3, 40, 23, 40, 10, 4, 24, 89, 23, 21, 1]
-    }],
     options: {
         color: ['#6ab04c', '#2980b9'],
         chart: {
@@ -81,15 +71,18 @@ const chartOptions = {
 
 const Dashboard = () => {
     const dispatch = useDispatch()
-    const dashboardResponse= useSelector((state) => state.admin.dashboardResponse);
-    const userResponse= useSelector((state) => state.admin.userResponse);
-    const orderResponse= useSelector((state) => state.admin.orderResponse);
+    const dashboardResponse = useSelector((state) => state.admin.dashboardResponse);
+    const userResponse = useSelector((state) => state.admin.userResponse);
+    const orderResponse = useSelector((state) => state.admin.orderResponse);
+    const graphdashboardResponse = useSelector((state) => state.admin.graphs);
     const themeReducer = useSelector(state => state.theme.mode)
+
 
     useEffect(() => {
         dispatch(fetchDashboard());
         dispatch(fetchCustomersDashboard());
         dispatch(fetchOrderDashboard());
+        dispatch(fetchGraphDashboard());
         console.log(orderResponse.data);
     }, [dispatch]);
 
@@ -100,34 +93,34 @@ const Dashboard = () => {
             <div className="row">
                 <div className="col-6">
                     <div className="row">
-                       
-                                <div className="col-6">
-                                    <StatusCard
-                                        count={dashboardResponse.totalCourse}
-                                        title={"Total Course"}
-                                    />
-                                </div>
-                                
-                                <div className="col-6">
-                                    <StatusCard
-                                    count={dashboardResponse.totalOrder}
-                                    title={"Total Order"}
-                                    />
-                                </div>
 
-                                <div className="col-6">
-                                    <StatusCard
-                                    count={dashboardResponse.totalIncome}
-                                    title={"Total Income"}
-                                    />
-                                </div>
+                        <div className="col-6">
+                            <StatusCard
+                                count={dashboardResponse.totalCourse}
+                                title={"Total Course"}
+                            />
+                        </div>
 
-                                <div className="col-6">
-                                    <StatusCard
-                                    count={dashboardResponse.totalBlog}
-                                    title={"Total Blog"}
-                                    />
-                                </div>
+                        <div className="col-6">
+                            <StatusCard
+                                count={dashboardResponse.totalOrder}
+                                title={"Total Order"}
+                            />
+                        </div>
+
+                        <div className="col-6">
+                            <StatusCard
+                                count={dashboardResponse.totalIncome}
+                                title={"Total Income"}
+                            />
+                        </div>
+
+                        <div className="col-6">
+                            <StatusCard
+                                count={dashboardResponse.totalBlog}
+                                title={"Total Blog"}
+                            />
+                        </div>
                     </div>
                 </div>
                 <div className="col-6">
@@ -135,12 +128,12 @@ const Dashboard = () => {
                         <Chart
                             options={themeReducer === 'theme-mode-dark' ? {
                                 ...chartOptions.options,
-                                theme: { mode: 'dark'}
+                                theme: { mode: 'dark' }
                             } : {
                                 ...chartOptions.options,
-                                theme: { mode: 'light'}
+                                theme: { mode: 'light' }
                             }}
-                            series={chartOptions.series}
+                            series={graphdashboardResponse}
                             type='line'
                             height='100%'
                         />

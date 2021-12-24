@@ -1,14 +1,34 @@
 import React, { useEffect } from 'react'
+import { Route } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllCourse, deleteCourse } from '../../../../../services/course-services'
-import Table from '../../table/Table'
+import { getAllCourse } from '../../../../../services/course-services'
+import CourseListComponent from "./CourseListComponent";
 import { Link } from 'react-router-dom'
+import {
+    faFileExcel,
+    faFilePdf,
+    faFileCsv,
+} from "@fortawesome/free-solid-svg-icons";
+import { API_BASE_URL } from "../../../../../constants/SystemConstants";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const CoursesManager = () => {
     const dispatch = useDispatch()
     const listCourse = useSelector(state => state.course.listCourse)
 
-    const courseTableHead = [
+    useEffect(() => {
+        dispatch(getAllCourse());
+    }, [dispatch]);
+
+
+    const itemsPerPage = 4;
+    const searchByData = [
+        { label: "Name", value: "name" },
+        { label: "Description", value: "description" },
+        { label: "Price", value: "price" },
+    ];
+
+    const tableHead = [
         '',
         'Image',
         'Name',
@@ -16,43 +36,6 @@ const CoursesManager = () => {
         'Price',
         '',
     ]
-
-    const renderHead = (item, index) => <th key={index}>{item}</th>
-
-    const renderBody = (item, index) => (
-        <tr key={index}>
-            <td>{index + 1}</td>
-            <td>
-                <img src={item.image} alt="" className="custom-img"></img>
-            </td>
-            <td>{item.name}</td>
-            <td className="mw-445">{item.description}</td>
-            <td>${item.price}</td>
-            <td>
-                <Link to={'course/' + item.id + '/detail'}>
-                    <button className="btn-a btn btn-info mr-10">Detail</button>
-                </Link>
-                <Link to={'course/' + item.id + '/edit'}>
-                    <button className="btn-a btn btn-success mr-10">Edit</button>
-                </Link>
-                <button className="btn btn-danger mr-10" onClick={() => handleDelete(item)}>Delete</button>
-            </td>
-        </tr>
-    )
-
-    const handleDelete = (item) => {
-        if (confirm('Are you sure to delete it ?')) { //eslint-disable-line
-            dispatch(deleteCourse(item.id));
-            alert("delete success");
-        }
-    }
-
-    useEffect(() => {
-        dispatch(getAllCourse());
-    }, [dispatch]);
-
-    useEffect(() => {
-    }, [listCourse]);
 
     return (
         <div>
@@ -62,18 +45,45 @@ const CoursesManager = () => {
                         New Course
                     </button>
                 </Link>
+
                 <div className="card-table">
                     <div className="card-table-header">
                         <h3 className="title">Course List</h3>
+                        <a
+                            className="btn btn-outline-primary text-primary"
+                            href={API_BASE_URL + "/course/export/excel"}
+                        >
+                            <FontAwesomeIcon icon={faFileExcel} />
+                            &nbsp;Export to xls
+                        </a>
+                        <a
+                            className="btn btn-outline-primary text-primary"
+                            href={API_BASE_URL + "/course/export/csv"}
+                        >
+                            <FontAwesomeIcon icon={faFileCsv} />
+                            &nbsp;Export to csv
+                        </a>
+                        <a
+                            className="btn btn-outline-primary text-primary"
+                            href={API_BASE_URL + "/course/export/pdf"}
+                        >
+                            <FontAwesomeIcon icon={faFilePdf} />
+                            &nbsp;Export to pdf
+                        </a>
                     </div>
-                    <div className="card-body">
-                        <Table
-                            headData={courseTableHead}
-                            renderHead={(item, index) => renderHead(item, index)}
-                            bodyData={listCourse}
-                            renderBody={(item, index) => renderBody(item, index)}
-                        />
-                    </div>
+                </div>
+                <div className="card-body">
+                    <Route
+                        exact
+                        component={() => (
+                            <CourseListComponent
+                                data={listCourse}
+                                itemsPerPage={itemsPerPage}
+                                searchByData={searchByData}
+                                tableHead={tableHead}
+                            />
+                        )}
+                    />
                 </div>
             </div>
         </div>
