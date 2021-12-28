@@ -73,7 +73,7 @@ const ListCustomerComponent = ({ data, itemsPerPage, startFrom, searchByData, ta
                                     <tr key={index}>
                                         <td>{index + 1}</td>
                                         <td>{item.firstName} {item.lastName}</td>
-                                        <td>{item.birthday}</td>
+                                        {/* <td>{item.birthday}</td> */}
                                         <td>{item.email}</td>
                                         <td>{item.phone}</td>
                                         <td>{item.address}</td>

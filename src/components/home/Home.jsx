@@ -2,6 +2,7 @@ import React from 'react'
 import Banner from './component/banner/Banner'
 import TopBlogs from './component/top-blogs/TopBlogs'
 import rocketImg from '../../assets/images/learn.jpg'
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 import "./home.css"
 
@@ -9,8 +10,7 @@ const Home = () => {
     return (
         <div className="body-content">
             <Banner/>
-            <div className="container mt-3 mb-100">
-                {/* <TopBlogs/> */}
+            {/* <div className="container mt-3 mb-100">
                 <hr />
                 <div className="welcom">
                     <h1>
@@ -22,7 +22,6 @@ const Home = () => {
                     <div className="col-md-6">
                         <div class="main_title">
 							<h2>Welcome to our Website</h2>
-							{/* <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur uis autem vel eum.</p> */}
 						</div>
                     </div>
                     <div className="col-md-6 my-auto">
@@ -39,12 +38,17 @@ const Home = () => {
                     <div className="col-md-6">
                         <div class="main_title">
 							<h2>Welcome to ST School</h2>
-							{/* <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur uis autem vel eum.</p> */}
-						</div>
+                        </div>
                     </div>    
                 </div>
 
-            </div>
+            </div> */}
+            <MessengerCustomerChat
+                pageId="111158174768013"
+                appId="1377288292701161"
+                // language=""
+                // htmlRef="<REF_STRING>"
+            />,
         </div>
     )
 }

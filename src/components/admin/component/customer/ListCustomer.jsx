@@ -16,7 +16,7 @@ const ListCustomer = () => {
         dispatch(fetchAllCustomers());
     }, [dispatch]);
 
-    const itemsPerPage = 4;
+    const itemsPerPage = 10;
     const searchByData = [
         { label: 'Name', value: 'lastName' },
         { label: 'Birthday', value: 'birthday' },
@@ -29,7 +29,7 @@ const ListCustomer = () => {
     const tableHead = [
         '',
         'Name',
-        'Birthday',
+        // 'Birthday',
         'Email',
         'Phone',
         'Address',
@@ -60,15 +60,15 @@ const ListCustomer = () => {
             <div className="card-table">
                 <h3 className="title">Customer List</h3>
                 <div className="card-table-header text-right">
-                    <a className="btn btn-primary mr-20"
+                    <a className="btn btn-success mr-20"
                         href={API_BASE_URL + '/users/export/excel'}>
                         <FontAwesomeIcon icon={faFileExcel} />&nbsp;Export to xls</a>
-                    <a className="btn btn-primary mr-20"
+                    <a className="btn btn-success mr-20"
                         href={API_BASE_URL + '/users/export/csv'}>
                         <FontAwesomeIcon icon={faFileCsv}
                         />&nbsp;Export to csv
                     </a>
-                    <a className="btn btn-primary mr-20"
+                    <a className="btn btn-success mr-20"
                         href={API_BASE_URL + '/users/export/pdf'}>
                         <FontAwesomeIcon icon={faFilePdf}
                         />&nbsp;Export to pdf
