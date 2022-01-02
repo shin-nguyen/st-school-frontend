@@ -6,6 +6,9 @@ import ThemeAction from "./actions/theme-actions"
 import Routes from './routes/Routes'
 import { BrowserRouter, Route } from 'react-router-dom'
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const App = () => {
     const themeReducer = useSelector(state => state.theme)
 
@@ -26,7 +29,8 @@ const App = () => {
             <Route render={(props) => (
                 <div className={`app ${themeReducer.mode} ${themeReducer.color}`}>
                     <div className="app">    
-                        <Routes/> 
+                        <Routes/>
+                        <ToastContainer/> 
                     </div>
                 </div>    
             )}/>

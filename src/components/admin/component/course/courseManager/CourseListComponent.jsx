@@ -49,7 +49,7 @@ const CourseListComponent = ({
       {modalActive ? (
         <ModalCourse
           course={courseInfo}
-          deleteBlogHandler={deleteCourseHandler}
+          deleteBlogHandler={deleteCourseHandler()}
           setModalActive={setModalActive}
         />
       ) : null}

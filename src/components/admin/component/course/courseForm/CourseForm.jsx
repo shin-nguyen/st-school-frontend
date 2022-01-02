@@ -44,18 +44,7 @@ const FormTest = () => {
     };
 
     loadCourseEdited();
-
-    return () => {
-      return [];
-    };
   }, [dispatch, id]);
-
-  // useEffect(()=>{
-  //   if(id !== -1){
-  //       console.log("Get course edited: ")
-  //       console.log(course);
-  //   }
-  // },[course, id]);
 
   const handelBack = () => {
     history.push("/admin/courses");
@@ -63,21 +52,24 @@ const FormTest = () => {
 
   const handleSubmit = (values) => {
     let params = new FormData();
-    console.log(values);
-    params.append("name", values.name);
-    params.append("description", values.description);
-    params.append("language", values.language);
-    params.append("price", values.price);
+    let newCourse = {
+      "name" : values.name, 
+      "description" : values.description,
+      "lecturer" : values.lecturer,
+      "language" : values.language, 
+      "price" : values.price
+    }
+
     params.append("file", values.file);
 
     if(id === -1){
+      params.append("course", JSON.stringify(newCourse));
       dispatch(addCourse(params));
-      alert("add success");
-    }
-    else {
-      params.append("id", id)
+    } else {
+      console.log("newCourse")
+      newCourse = {...newCourse,"id" : id}
+      params.append("course", JSON.stringify(newCourse));
       dispatch(updateCourse(params));
-      alert("edit success");
     }
 
     handelBack();
@@ -91,17 +83,17 @@ const FormTest = () => {
       .min(6, "Must be at least 6 charaters")
       // .max(20, "Must be 20 characters or less")
       .required("Required"),
+    lecturer: Yup.string()
+      .required("Required"),
     language: Yup.string()
       .oneOf(
         ["English", "Vietnamese", "Japanese", "Chinese"],
         "Invalid Language"
       )
       .required("Required"),
-    price: Yup.string()
+    price: Yup.number()
       .required("Required")
       .min(0,"Min is 0"),
-    file: Yup.string()
-      .required("Required"),
   });
 
   return (
@@ -118,6 +110,7 @@ const FormTest = () => {
             <Form>
               <TextField label="Name" name="name" type="text" />
               <TextField label="Desctiption" name="description" type="text" />
+              <TextField label="Lecturer" name="lecturer" type="text" />
               <SelectField label="Language" name="language">
                 {
                   listLanguage.map((item) => (
@@ -139,9 +132,6 @@ const FormTest = () => {
               <button className="btn btn-success mt-3" type="submit">
                 Save
               </button>
-              {/* <button className="btn btn-danger mt-3 ml-3" onClick={()=> {history.push("/admin")}}>
-                Reset
-              </button> */}
               <button className="btn btn-dark mt-3 ml-3" type="button"  onClick={handelBack}>
                 Close
               </button>
