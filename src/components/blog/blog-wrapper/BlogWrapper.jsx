@@ -1,7 +1,6 @@
 import { useEffect, Fragment } from "react";
 import ListBlog from "../list-blogs/ListBlog";
 import "./blogWrapper.css";
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import {useDispatch, useSelector} from "react-redux";
 import {fetchBlogsByQuery,fetchBlogsByMe} from "../../../services/blog-service";
 

@@ -4,7 +4,6 @@ import "./singleBlog.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from 'react-router'
 import { fetchBlog, updateBlogStatus } from '../../../../../services/blog-service'
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 const Blog = () => {
   const dispatch = useDispatch();

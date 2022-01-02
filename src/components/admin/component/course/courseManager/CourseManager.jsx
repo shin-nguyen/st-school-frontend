@@ -21,7 +21,7 @@ const CoursesManager = () => {
     }, [dispatch]);
 
 
-    const itemsPerPage = 4;
+    const itemsPerPage = 5;
     const searchByData = [
         { label: "Name", value: "name" },
         { label: "Description", value: "description" },
@@ -47,24 +47,25 @@ const CoursesManager = () => {
                 </Link>
 
                 <div className="card-table">
-                    <div className="card-table-header">
-                        <h3 className="title">Course List</h3>
+                    <h3 className="title">Course List</h3>
+                    <div className="card-table-header text-right">
+                        
                         <a
-                            className="btn btn-outline-primary text-primary"
+                            className="btn btn-success mr-20"
                             href={API_BASE_URL + "/course/export/excel"}
                         >
                             <FontAwesomeIcon icon={faFileExcel} />
                             &nbsp;Export to xls
                         </a>
                         <a
-                            className="btn btn-outline-primary text-primary"
+                            className="btn btn-success mr-20"
                             href={API_BASE_URL + "/course/export/csv"}
                         >
                             <FontAwesomeIcon icon={faFileCsv} />
                             &nbsp;Export to csv
                         </a>
                         <a
-                            className="btn btn-outline-primary text-primary"
+                            className="btn btn-success mr-20"
                             href={API_BASE_URL + "/course/export/pdf"}
                         >
                             <FontAwesomeIcon icon={faFilePdf} />

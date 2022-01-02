@@ -24,7 +24,7 @@ const BlogList = () => {
     dispatch(fetchBlogsByQuery(""));
   }, []);
 
-  const itemsPerPage = 4;
+  const itemsPerPage = 10;
   const searchByData = [
     { label: "Title", value: "title" },
     { label: "Summary", value: "summary" },
@@ -50,21 +50,21 @@ const BlogList = () => {
           <h3 className="title">Blog List</h3>
 
           <a
-            className="btn btn-outline-primary text-primary"
+            className="btn btn-success mr-20"
             href={API_BASE_URL + "/blogs/export/excel"}
           >
             <FontAwesomeIcon icon={faFileExcel} />
             &nbsp;Export to xls
           </a>
           <a
-            className="btn btn-outline-primary text-primary"
+            className="btn btn-success mr-20"
             href={API_BASE_URL + "/blogs/export/csv"}
           >
             <FontAwesomeIcon icon={faFileCsv} />
             &nbsp;Export to csv
           </a>
           <a
-            className="btn btn-outline-primary text-primary"
+            className="btn btn-success mr-20"
             href={API_BASE_URL + "/blogs/export/pdf"}
           >
             <FontAwesomeIcon icon={faFilePdf} />
