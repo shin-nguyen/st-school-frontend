@@ -11,10 +11,11 @@ import ListCustomer from '../components/admin/component/customer/ListCustomer'
 import ListOrder from '../components/admin/component/order/ListOrder'
 import ListBlog from '../components/admin/component/blog/BlogList'
 import Blog from '../components/admin/component/blog/single-blog/Blog'
-
+import QuizManager from '../components/admin/component/quizz/quizManager/QuizManager'
+import CreateQuiz from '../components/admin/component/quizz/quizForm/CreateQuiz'
+import EditQuiz from '../components/admin/component/quizz/editQuiz/EditQuiz'
 import ChangePassword from '../components/account/changePassword/ChangePassword'
 import Transfer from '../components/admin/component/transfer/Transfer'
-// import LogoutPage from '../pages/LogoutPage'
 
 const AdminRoutes = () => {
     return (
@@ -30,7 +31,11 @@ const AdminRoutes = () => {
             <Route path='/admin/course/:id/video/add' component={VideoForm} />
             <Route path='/admin/orders' component={ListOrder} />
             <Route path='/admin/account' component={ChangePassword} />
-            {/* <Route path='/logout' component = {LogoutPage}/> */}
+            <Route path="/admin/quizzes/:id/edit" component={EditQuiz} />
+            <Route path="/admin/quizzes/add" component={CreateQuiz} />
+            <Route path="/admin/quizzes" component={QuizManager} />
+
+            {/* <Route path="/admin/quizzes/edit/:id" component={EditQuiz} /> */}
             <Route path='/admin/logout' component={Transfer} />
         </Switch>
     )

@@ -1,12 +1,13 @@
-const Modal = ({ course, deleteCourseHandler, setModalActive }) => {
+const ModalDelete = ({ object, deleteHandler, setModalActive, message }) => {
   return (
     <>
+      {console.log(JSON.stringify(object))}
       <div className="modal-open">
         <div className="modal fade show" style={{ display: "block" }}>
           <div className="modal-dialog modal-dialog-centered" role="document">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title">Delete Course</h5>
+                <h5 className="modal-title">{message?.title}</h5>
                 <button
                   type="button"
                   className="close"
@@ -17,15 +18,15 @@ const Modal = ({ course, deleteCourseHandler, setModalActive }) => {
               </div>
               <div className="row modal-body">
                 <div className="col-md-8 text-center">
-                  <p> Are you sure too delete? ID: {course?.id}</p>
-                  <h6>{course?.name}</h6>
+                  <p> Are you sure too delete? ID: {object.id}</p>
+                  <h6>{object?.name}</h6>
                 </div>
               </div>
               <div className="modal-footer">
                 <button
                   type="button"
                   className="btn btn-danger"
-                  onClick={() => deleteCourseHandler(course?.id)}
+                  onClick={() => deleteHandler(object.id)}
                 >
                   Delete
                 </button>
@@ -47,4 +48,4 @@ const Modal = ({ course, deleteCourseHandler, setModalActive }) => {
   );
 };
 
-export default Modal;
+export default ModalDelete;

@@ -25,8 +25,8 @@
         "icon": "bx bx-user-pin"
     },
     {
-        "display_name": "Settings",
-        "route": "/admin/settings",
+        "display_name": "Quizes",
+        "route": "/admin/quizzes",
         "icon": "bx bx-cog"
     }
 ]

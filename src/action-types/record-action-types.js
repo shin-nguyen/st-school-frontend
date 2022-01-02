@@ -1,0 +1,2 @@
+export const LOADING_RECORD = "LOADING_RECORD";
+export const FETCH_RECORDS = "FETCH_RECORDS";

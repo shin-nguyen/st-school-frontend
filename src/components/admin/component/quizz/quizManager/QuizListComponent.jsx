@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import usePagination from "../../pagination/usePagination";
 import ModalDelete from "../../../../modal/ModalDelete";
-
 import SearchForm from "../../../../searchForm/SearchForm";
 import PaginationItem from "../../pagination/PaginationItem";
-import { deleteCourse } from '../../../../../services/course-services'
-
-const CourseListComponent = ({
+import { deleteQuiz } from '../../../../../services/quiz-services'
+import Spinner from "../../../../../components/spinner/Spinner";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLockOpen, faLock } from "@fortawesome/free-solid-svg-icons";
+const QuizListComponent = ({
   data,
   itemsPerPage,
   startFrom,
@@ -16,9 +17,9 @@ const CourseListComponent = ({
   tableHead,
 }) => {
   const dispatch = useDispatch();
-  const loading = false;
+  const loading = useSelector((state) => state.quiz.isQuizLoading);
   const [modalActive, setModalActive] = useState(false);
-  const [courseInfo, setCourseInfo] = useState();
+  const [quizInfo, setQuizInfo] = useState();
 
   const {
     slicedData,
@@ -35,22 +36,24 @@ const CourseListComponent = ({
   }, [data]);
 
   const deleteHandler = (id) => {
-    dispatch(deleteCourse(id));
+    dispatch(deleteQuiz(id));
   };
 
-  const showDeleteModalWindow = (course) => {
+  const showDeleteModalWindow = (quiz) => {
     setModalActive(true);
-    setCourseInfo(course);
+    setQuizInfo(quiz);
   };
+
   const messege = {
-    title: "Delete Course",
+    title: "Delete Quiz",
   }
+
   const renderHead = (item, index) => <th key={index}>{item}</th>;
   return (
     <>
       {modalActive ? (
         <ModalDelete
-          object={courseInfo}
+          object={quizInfo}
           deleteHandler={deleteHandler}
           setModalActive={setModalActive}
           messege={messege}
@@ -64,7 +67,9 @@ const CourseListComponent = ({
         setSearching={setSearching}
       />
 
-      {(
+      {loading ? (
+        <Spinner />
+      ) : (
         <>
           <table className="table table-hover">
             <thead>
@@ -75,17 +80,24 @@ const CourseListComponent = ({
                 return (
                   <tr key={index}>
                     <td>{index + 1}</td>
-                    <td>
+                    {/* <td>
                       <img src={item.image} alt="" className="custom-img"></img>
-                    </td>
+                    </td> */}
                     <td>{item.name}</td>
-                    <td className="mw-445">{item.description}</td>
-                    <td>${item.price}</td>
+                    <td className="mw-445">{item.duration}</td>
+                    <td>{item.createBy?.firstName}</td>
                     <td>
-                      <Link to={'course/' + item.id + '/detail'}>
+                      {item.status ? (
+                        <FontAwesomeIcon icon={faLockOpen} />
+                      ) : (
+                        <FontAwesomeIcon icon={faLock} />
+                      )}
+                    </td>
+                    <td>
+                      <Link to={'quizzes/' + item.id + '/detail'}>
                         <button className="btn-a btn btn-info mr-10">Detail</button>
                       </Link>
-                      <Link to={'course/' + item.id + '/edit'}>
+                      <Link to={'quizzes/' + item.id + '/edit'}>
                         <button className="btn-a btn btn-success mr-10">Edit</button>
                       </Link>
                       <button className="btn btn-danger mr-10" onClick={() => showDeleteModalWindow(item)}>Delete</button>
@@ -107,4 +119,4 @@ const CourseListComponent = ({
   );
 };
 
-export default CourseListComponent;
+export default QuizListComponent;
