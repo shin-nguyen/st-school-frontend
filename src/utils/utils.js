@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 
 export const checkAccess = async () => {
     const role = localStorage.getItem("userRole");
@@ -26,6 +27,14 @@ export const findIndex = (list, id) => {
         }
     });
     return result;
+}
+
+export const toastSuccess = (message) => {
+    toast.success(message, {position: toast.POSITION.BOTTOM_RIGHT, theme: "dark"});
+}
+
+export const toastError = (message) => {
+    toast.error(message, {position: toast.POSITION.BOTTOM_RIGHT, theme: "dark"});
 }
 
 

@@ -1,4 +1,5 @@
 import requestService from "./request-service";
+import { toastSuccess, toastError } from "../utils/utils";
 
 import {
     fetchOrderSuccess, 
@@ -15,7 +16,7 @@ export const getAllOrder  = () => async (dispatch) => {
         dispatch(fetchOrderSuccess(data));
     } catch (error) {
         dispatch(fetchOrderFail(error.message));
-        console.log(error.message)
+        toastError(error.message);
     }
 }
 
@@ -23,9 +24,10 @@ export const addOrder = (params) => async (dispatch) => {
     try {
         const { data } = await requestService.post(`/order/add`, params, true);
         dispatch(addOrderSuccess(data));
+        toastSuccess("Save Success");
     } catch (error) {
         dispatch(addOrderFail(error.message));
-        console.log(error.message)
+        toastError(error.message);
     }
 }
 
@@ -33,8 +35,9 @@ export const deleteOrder = (orderId) => async (dispatch) => {
     try {
       const { data } = await requestService.delete(`/order/${orderId}`);
       dispatch(deleteOrderSuccess(data));
+      toastSuccess("Delete Success");
     } catch (error) {
       dispatch(deleteOrderFail(error.message));
-      console.log(error.message)
+      toastError(error.message);
     }
   };

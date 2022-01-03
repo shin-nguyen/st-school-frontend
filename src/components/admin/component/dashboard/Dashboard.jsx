@@ -21,14 +21,14 @@ const renderCusomerBody = (item, index) => (
     <tr key={index}>
         <td>{item.firstName + item.lastName}</td>
         <td>{item.order}</td>
-        <td>{item.price}</td>
+        <td>{item.price}$</td>
     </tr>
 )
 
 const latestOrders = [
     "Course",
     "User",
-    "Total Price",
+    "Total",
     "Date",
 ]
 
@@ -40,7 +40,7 @@ const renderOrderBody = (item, index) => (
     <tr key={index}>
         <td>{item.course.name}</td>
         <td>{item.user.firstName}</td>
-        <td>{item.course.price}</td>
+        <td>{item.course.price}$</td>
         <td>{item.createdTime}</td>
     </tr>
 )

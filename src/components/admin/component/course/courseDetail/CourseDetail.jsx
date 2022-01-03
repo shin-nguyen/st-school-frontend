@@ -42,7 +42,6 @@ const CourseDetail = (props) => {
     const handleDelete = (item) => {
         if(confirm('Are you sure to delete it ?')){ //eslint-disable-line
             dispatch(deleteVideo(item.id));
-            alert("delete success");
         } 
     }
 
@@ -53,8 +52,7 @@ const CourseDetail = (props) => {
         params.append("name", values.name);
         params.append("file", values.file);
         params.append("course", JSON.stringify(course));
-        dispatch(addVideo(params));
-        alert("add success");       
+        dispatch(addVideo(params));      
     }
 
     useEffect(() => {
@@ -84,6 +82,10 @@ const CourseDetail = (props) => {
                     <div className="info-control">
                         <label>Description:</label>
                         <p>{course.description}</p>
+                    </div>
+                    <div className="info-control">
+                        <label>Lecturer:</label>
+                        <p>{course.lecturer}</p>
                     </div>
                     <div className="info-control">
                         <label>Language:</label>

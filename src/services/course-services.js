@@ -1,4 +1,5 @@
 import requestService from "./request-service";
+import { toastSuccess, toastError } from "../utils/utils";
 
 import {
     fetchCourseSuccess, 
@@ -17,16 +18,13 @@ import {
     deleteCourseFail} 
 from '../actions/course-actions'
 
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 export const getAllCourse  = () => async (dispatch) => {
     try {
         const { data } = await requestService.get(`/course/admin/list`);
         dispatch(fetchCourseSuccess(data));
     } catch (error) {
         dispatch(fetchCourseFail(error.message));
-        toast.error(error.message, {position: toast.POSITION.BOTTOM_RIGHT, theme: "dark"});
+        toastError(error.message);
     }
 }
 
@@ -36,7 +34,7 @@ export const getAllCourseByMe  = () => async (dispatch) => {
         dispatch(fetchCourseSuccess(data));
     } catch (error) {
         dispatch(fetchCourseFail(error.message));
-        toast.error(error.message, {position: toast.POSITION.BOTTOM_RIGHT, theme: "dark"});
+        toastError(error.message);
     }
 }
 
@@ -46,7 +44,7 @@ export const getPurchasedCourses  = () => async (dispatch) => {
       dispatch(getPurchasedCourseSuccess(data));
   } catch (error) {
       dispatch(getPurchasedCourseFail(error.message));
-      toast.error(error.message, {position: toast.POSITION.BOTTOM_RIGHT, theme: "dark"});
+      toastError(error.message);
   }
 }
 
@@ -56,7 +54,7 @@ export const getCourseById  = (courseId) => async (dispatch) => {
         dispatch(getCourseSuccess(data));
     } catch (error) {
         dispatch(getCourseFail(error.message));
-        toast.error(error.message, {position: toast.POSITION.BOTTOM_RIGHT, theme: "dark"})
+        toastError(error.message);
     }
 }
 
@@ -65,7 +63,7 @@ export const resetCourse  = () => async (dispatch) => {
         dispatch(resetCourseSuccess());
     } catch (error) {
         dispatch(resetCourseFail(error.message));
-        toast.error(error.message, {position: toast.POSITION.BOTTOM_RIGHT, theme: "dark"});
+        toastError(error.message);
     }
 }
 
@@ -73,10 +71,10 @@ export const addCourse = (params) => async (dispatch) => {
     try {
         const { data } = await requestService.post(`/course/add`, params,true,"multipart/form-data");
         dispatch(addCourseSuccess(data));
-        toast.success("Add Success", {position: toast.POSITION.BOTTOM_RIGHT});
+        toastSuccess("Save Success");
     } catch (error) {
         dispatch(addCourseFail(error.message));
-        toast.error(error.message, {position: toast.POSITION.BOTTOM_RIGHT, theme: "dark"});
+        toastError(error.message);
     }
 }
 
@@ -84,9 +82,10 @@ export const updateCourse = (params) => async (dispatch) => {
   try {
       const { data } = await requestService.put(`/course/update`, params);
       dispatch(updateCourseSuccess(data));
+      toastSuccess("Update Success");
   } catch (error) {
       dispatch(updateCourseFail(error.message));
-      toast.error(error.message, {position: toast.POSITION.BOTTOM_RIGHT, theme: "dark"});
+     toastError(error.message);
   }
 }
 
@@ -94,8 +93,9 @@ export const deleteCourse = (courseId) => async (dispatch) => {
     try {
       const { data } = await requestService.delete(`/course/${courseId}`);
       dispatch(deleteCourseSuccess(data));
+      toastSuccess("Delete Success");
     } catch (error) {
       dispatch(deleteCourseFail(error.message));
-      toast.error(error.message, {position: toast.POSITION.BOTTOM_RIGHT, theme: "dark"});
+      toastError(error.message);
     }
 };
