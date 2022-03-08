@@ -1,18 +1,19 @@
 import React,{useEffect} from "react";
-import './allComment.css'
-import {fetchCommentById} from "../../../services/comment-service";
+import './list-comment.css'
+import {fetchCommentsOfBlog} from "../../../services/comment-service";
 import {useDispatch, useSelector} from "react-redux";
 import defaultAvatar from "../../../assets/images/kai.jpg"
 
 const AllComment = (props) => {
     const dispatch = useDispatch();
     const comments= useSelector(state => state.comment.comments);
-    const commentsShow = comments.sort((a,b) => b.id - a.id);
-    const {blog} = props
-    console.log(blog)
+    const commentsShow = comments?.sort((a,b) => b.id - a.id);
+    const blog = props?.blog
+    const course = props?.course
+    console.log(props?.blog)
 
     useEffect(() => {
-        dispatch(fetchCommentById(blog.id));
+        // dispatch(fetchCommentsOfBlog(1));
     }, [blog]);
 
     return (

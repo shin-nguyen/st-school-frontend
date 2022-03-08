@@ -1,10 +1,11 @@
 import React from 'react'
-import AllComment from '../all-comment/AllComment'
-import CommentBox1 from '../comentBox/CommentBox1'
+import ListComment from './list-comment/ListComment'
+import CommentBox from './coment-box/CommentBox'
 
-const CommentBlog = (props) => {
-    const { blog } = props
-    console.log(blog)
+const Comment = (props) => {
+    const blog = props?.blog
+    const course = props?.course
+    console.log(props.blog)
     return (
         <div>
             <div className='comment-box'>
@@ -12,15 +13,17 @@ const CommentBlog = (props) => {
                     {/* <span className="badge badge-success">{blog.comments.length}</span>{" "}
                     Comment {blog.comments.length > 0 ? comments.length : ""} */}
                 </h5>
-                <CommentBox1
-                    blogId={blog.id}
-                />
-                <AllComment
+                <CommentBox
                     blog={blog}
+                    course={course}
+                />
+                <ListComment
+                    blog={blog}
+                    course={course}
                 />
             </div>
         </div>
     )
 }
 
-export default CommentBlog
+export default Comment

@@ -11,7 +11,6 @@ import {
     deleteVideoSuccess,
     deleteVideoFail
 } from "../actions/video-actions"
-import { toast } from "react-toastify";
 
 export const getVideosOfCourse = (courseId) => async (dispatch) => {
     try {

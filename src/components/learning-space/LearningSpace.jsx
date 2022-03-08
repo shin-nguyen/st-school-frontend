@@ -6,7 +6,7 @@ import { getCourseById } from '../../services/course-services'
 import { getVideosOfCourse } from '../../services/video-services'
 import { Player } from 'video-react';
 import "../../../node_modules/video-react/dist/video-react.css";
-import Comment from "../comment-course/comment-course/CommentCourse";
+import Comment from "../comment/Comment";
 
 import "./learningSpace.css"
 

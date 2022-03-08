@@ -4,7 +4,7 @@ import "./singleBlog.css";
 import {useDispatch, useSelector} from "react-redux";
 import { useParams } from 'react-router'
 import {fetchBlog} from '../../../services/blog-service'
-import Comment from "../../comment/comment-blog/CommentBlog";
+import Comment from "../../comment/Comment";
 
 const Blog = () => {
     const dispatch = useDispatch();
@@ -52,11 +52,6 @@ const Blog = () => {
 
       <hr/>
 
-      {/* <ListComment
-        isAuthenticated={localStorage.getItem("isLoggedIn") }
-        loading={false}
-        blogId={id}>
-      </ListComment> */}
       <Comment blog= {blog}/>
     </div>
   );

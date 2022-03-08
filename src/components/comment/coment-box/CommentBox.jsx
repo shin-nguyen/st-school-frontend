@@ -3,15 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { addComment } from "../../../services/comment-service"
 
-const CommentBox1 = ({ blogId }) => {
+const CommentBox = (props) => {
     const dispatch = useDispatch();
     const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
     const isLogin = localStorage.getItem("isLoggedIn");
     const [content, setContent] = useState("");
+    const blog = props?.blog;
+    const course = props?.course;
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-        const data = { blog: { id: blogId }, content };
+        const data = { blog: { id: blog?.id }, course: { id: course?.id }, content };
         if (content.length != 0) {
             dispatch(addComment(data));
         }
@@ -46,4 +48,4 @@ const CommentBox1 = ({ blogId }) => {
     )
 }
 
-export default CommentBox1
+export default CommentBox

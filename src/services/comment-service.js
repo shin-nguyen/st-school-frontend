@@ -9,15 +9,15 @@ import {
 
 import RequestService from "../services/request-service";
 
-export const fetchComments = () => async (dispatch) => {
+export const fetchCommentsOfCourse = (id) => async (dispatch) => {
   dispatch(loadingComment());
-  const response = await RequestService.get("/comments");
+  const response = await RequestService.get("/comments/blog/" + id);
   dispatch(getComments(response.data));
 };
 
-export const fetchCommentById = (id) => async (dispatch) => {
+export const fetchCommentsOfBlog = (id) => async (dispatch) => {
   dispatch(loadingComment());
-  const response = await RequestService.get("/comments/all/" + id);
+  const response = await RequestService.get("/comments/blog/" + id);
   dispatch(fetchCommentSuccess(response.data));
 };
 
