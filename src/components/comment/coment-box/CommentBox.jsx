@@ -13,7 +13,7 @@ const CommentBox = (props) => {
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-        const data = { blog: { id: blog?.id }, course: { id: course?.id }, content };
+        const data = blog ? { blog: { id: blog?.id }, content } : { course: { id: course?.id }, content }
         if (content.length != 0) {
             dispatch(addComment(data));
         }

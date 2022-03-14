@@ -15,11 +15,9 @@ const ListCourse = (props) => {
             dispatch(getPurchasedCourses());
         } else {
             if(isLoggedIn){
-                console.log("full list by me")
                 dispatch(getAllCourseByMe());
             }
             else{
-                console.log("full list")
                 dispatch(getAllCourse());
             }
         }

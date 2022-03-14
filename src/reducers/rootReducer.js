@@ -8,7 +8,6 @@ import blogReducer from "../reducers/blogReducer";
 import commentReducer from "../reducers/commentReducer";
 import quizReducer from "../reducers/quiz-reducer";
 import recordReducer from "../reducers/record-reducer";
-import commentCourseReducer from "../reducers/comment-course-reducer";
 import { combineReducers } from "redux";
 import ThemeReducer from "./themeReducer";
 
@@ -22,7 +21,6 @@ const rootReducer = combineReducers({
   blog: blogReducer,
   comment: commentReducer,
   theme: ThemeReducer,
-  commentCourse: commentCourseReducer,
   quiz: quizReducer,
   record: recordReducer,
 });

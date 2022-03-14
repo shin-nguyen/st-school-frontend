@@ -2,8 +2,6 @@ import { findIndex } from '../utils/utils'
 import { 
     GET_VIDEOS_OF_COURSE,
     GET_VIDEOS_OF_COURSE_FAIL,
-    GET_VIDEO_BY_ID,
-    GET_VIDEO_BY_ID_FAIL,
     ADD_VIDEO,
     ADD_VIDEO_FAIL,
     UPDATE_VIDEO,

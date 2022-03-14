@@ -1,4 +1,4 @@
-import Blog from "../components/blog/single-blog/Blog";
+import Blog from "../components/blog/Blog";
 import Navbar from '../components/navbar/Navbar'
 
 export default function Single(props) {

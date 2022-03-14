@@ -6,8 +6,8 @@ import { getVideosOfCourse } from '../../../services/video-services'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import default_image from '../../../assets/images/loading.png'
-
 import './courseDetail.css'
+import ReviewCourse from '../../review-course/ReviewCourse';
 
 const CourseDetail = () => {
     let { id } = useParams();
@@ -70,6 +70,7 @@ const CourseDetail = () => {
                     
                 </div>
             </div>
+            {/* <ReviewCourse/> */}
         </div>
         
     )

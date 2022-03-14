@@ -9,9 +9,9 @@ import store from './store';
 
 ReactDOM.render(
   <Provider store={store}>
-     {/* <React.StrictMode> */}
+     <React.StrictMode>
       <App />
-     {/* </React.StrictMode> */}
+     </React.StrictMode>
   </Provider>,
   document.getElementById('root')
 );

@@ -1,50 +1,51 @@
-import {
-  LOADING_COMMENT,
-  FETCH_COMMENTS,
-  FETCH_COMMENT_SUCCESS,
-  FETCH_COMMENTS_BY_QUERY_SUCCESS,
-  FETCH_COMMENT_BY_QUERY_SUCCESS,
-  DELETE_COMMENT,
+import { 
+  GET_COMMENTS,
+  GET_COMMENTS_FAIL,
+  ADD_COMMENT,
+  ADD_COMMENT_FAIL,
   UPDATE_COMMENT,
-  ADD_COMMENT_SUCCESS,
-  // ADD_COMMENT_FAIL
-} from "../action-types/comment-action-types";
+  UPDATE_COMMENT_FAIL,
+  DELETE_COMMENT,
+  DELETE_COMMENT_FAIL
+} from '../action-types/comment-action-types'
 
-export const loadingComment = () => ({
-  type: LOADING_COMMENT,
+export const getCommentsSuccess = (data) => ({
+  type: GET_COMMENTS,
+  payload: data
 });
 
-export const getComments = (comments) => ({
-  type: FETCH_COMMENTS,
-  payload: comments,
+export const getCommentsFail = (data) => ({
+  type: GET_COMMENTS_FAIL,
+  payload: data
 });
 
-export const fetchCommentsByQuerySuccess = (comments) => ({
-  type: FETCH_COMMENTS_BY_QUERY_SUCCESS,
-  payload: comments,
+export const addCommentSuccess = (data) => ({
+  type: ADD_COMMENT,
+  payload: data
 });
 
-export const fetchCommentByQuerySuccess = (comment) => ({
-  type: FETCH_COMMENT_BY_QUERY_SUCCESS,
-  payload: comment,
+export const addCommentFail = (data) => ({
+  type: ADD_COMMENT_FAIL,
+  payload: data
 });
 
-export const fetchCommentSuccess = (comment) => ({
-  type: FETCH_COMMENT_SUCCESS,
-  payload: comment,
-});
-
-export const deleteCommentSuccess = (id) => ({
-  type: DELETE_COMMENT,
-  payload: id,
-});
-
-export const updateCommentSuccess = (comment) => ({
+export const updateCommentSuccess = (data) => ({
   type: UPDATE_COMMENT,
-  payload: comment,
+  payload: data
 });
 
-export const addCommentSuccess = (comment) => ({
-  type: ADD_COMMENT_SUCCESS,
-  payload: comment,
+export const updateCommentFail = (data) => ({
+  type: UPDATE_COMMENT_FAIL,
+  payload: data
 });
+
+export const deleteCommentSuccess = (data) => ({
+  type: DELETE_COMMENT,
+  payload: data
+});
+
+export const deleteCommentFail = (data) => ({
+  type: DELETE_COMMENT_FAIL,
+  payload: data
+});
+
