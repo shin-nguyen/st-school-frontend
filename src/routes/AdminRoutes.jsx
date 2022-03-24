@@ -31,7 +31,7 @@ const AdminRoutes = () => {
             <Route path='/admin/course/:id/video/add' component={VideoForm} />
             <Route path='/admin/orders' component={ListOrder} />
             <Route path='/admin/account' component={ChangePassword} />
-            <Route path="/admin/quizzes/:id/edit" component={EditQuiz} />
+            <Route path='/admin/quizzes/:quizId/edit' component={EditQuiz} />
             <Route path="/admin/quizzes/add" component={CreateQuiz} />
             <Route path="/admin/quizzes" component={QuizManager} />
 

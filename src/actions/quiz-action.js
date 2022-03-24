@@ -2,10 +2,6 @@ import {
   LOADING_QUIZ,
   FETCH_QUIZZES,
   FETCH_QUIZ_SUCCESS,
-  FETCH_QUIZZES_BY_FILTER_PARAMS_SUCCESS,
-  FETCH_QUIZZES_BY_QUERY_SUCCESS,
-  FETCH_QUIZ_BY_QUERY_SUCCESS,
-  FETCH_QUIZZES_BY_STATUS_SUCCESS,
   DELETE_QUIZ,
   UPDATE_QUIZ,
   ADD_QUIZ_SUCCESS,
@@ -13,6 +9,7 @@ import {
   ADD_QUIZ_LIST_SUCCESS,
   DELETE_QUESTION_IN_QUIZ,
   UPDATE_QUESTION_IN_QUIZ_SUCCESS,
+  ADD_QUESTION_IN_QUIZ_SUCCESS,
   // ADD_QUIZ_FAIL
 } from "../action-types/quiz-action-types";
 
@@ -29,29 +26,10 @@ export const getQuizzes = (quizzes) => ({
   payload: quizzes,
 });
 
-export const fetchQuizzesByQuerySuccess = (quizzes) => ({
-  type: FETCH_QUIZZES_BY_QUERY_SUCCESS,
-  payload: quizzes,
-});
-
-export const fetchQuizByQuerySuccess = (quiz) => ({
-  type: FETCH_QUIZ_BY_QUERY_SUCCESS,
-  payload: quiz,
-});
 
 export const fetchQuizSuccess = (quiz) => ({
   type: FETCH_QUIZ_SUCCESS,
   payload: quiz,
-});
-
-export const fetchQuizzesByStatusSuccess = (quizzes) => ({
-  type: FETCH_QUIZZES_BY_STATUS_SUCCESS,
-  payload: quizzes,
-});
-
-export const fetchQuizzesByFilterParamsSuccess = (quizzes) => ({
-  type: FETCH_QUIZZES_BY_FILTER_PARAMS_SUCCESS,
-  payload: quizzes,
 });
 
 export const deleteQuizSuccess = (id) => ({
@@ -73,12 +51,18 @@ export const addQuizSuccess = (quiz) => ({
   payload: quiz,
 });
 
+
 export const addQuizListSuccess = (quizzes) => ({
   type: ADD_QUIZ_LIST_SUCCESS,
   payload: quizzes,
 });
 
-export const updateQuestionInQuizSuccess = (quiz) => ({
+export const updateQuestionInQuizSuccess = (question) => ({
   type: UPDATE_QUESTION_IN_QUIZ_SUCCESS,
-  payload: quiz,
+  payload: question,
+});
+
+export const addQuestionInQuizSuccess = (question) => ({
+  type: ADD_QUESTION_IN_QUIZ_SUCCESS,
+  payload: question,
 });

@@ -8,9 +8,10 @@ import {
   DELETE_QUIZ,
   UPDATE_QUIZ,
   ADD_QUIZ_SUCCESS,
-  ADD_QUIZ_FAIL,
   ADD_QUIZ_LIST_SUCCESS,
   DELETE_QUESTION_IN_QUIZ,
+  ADD_QUESTION_IN_QUIZ_SUCCESS,
+  UPDATE_QUESTION_IN_QUIZ_SUCCESS
 } from "../action-types/quiz-action-types";
 
 const initialState = {
@@ -39,12 +40,18 @@ const reducer = (state = initialState, action) => {
       return { ...state, quizzes: newList, isQuizLoading: false };
     }
 
+    case ADD_QUESTION_IN_QUIZ_SUCCESS: {
+      return { ...state, quiz: action.payload, isQuizLoading: false };
+    }
+
+    case UPDATE_QUESTION_IN_QUIZ_SUCCESS: {
+      return { ...state, quiz: action.payload, isQuizLoading: false };
+    }
+
     case DELETE_QUESTION_IN_QUIZ: {
-      console.log(action.payload);
       const newList = [...state.quiz.question].filter(
         (item) => item.id !== action.payload
       );
-      console.log(newList);
       return { ...state, quiz: { question: newList }, isQuizLoading: false };
     }
 
@@ -60,10 +67,11 @@ const reducer = (state = initialState, action) => {
       return { ...state, quizzes: newList };
     }
 
-    case ADD_QUIZ_LIST_SUCCESS:
+    case ADD_QUIZ_LIST_SUCCESS: {
       const newList = [...state.quizzes];
       newList.push(action.payload);
       return { ...state, quizzes: newList, isQuizLoading: false };
+    }
 
     case RESET_QUIZ: {
       return { ...state, quiz: null };
