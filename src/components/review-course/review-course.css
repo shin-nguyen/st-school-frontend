@@ -1,0 +1,57 @@
+/* rate star */
+.rate{
+    border: 1px solid #eee;
+    padding: 1.5rem 0;
+}
+.rate-star-title{
+    display: flex;
+    font-size: 23px;
+    padding: 1rem 0;
+}
+.thongke span{
+    display: flex;
+    font-size: 14px;
+}
+.thongke{
+    display: flex;
+    align-items: center;
+}
+.numstar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.star-average{
+    margin-bottom: 0;
+}
+.percent{
+    width: 100%;
+    margin-bottom: 0;
+    font-size: 14px;
+}
+.guidanhgia{
+    padding: 0.5rem 1rem;
+    background: orange;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.ant-rate-star-full svg{
+    color: orange;
+}
+.rate-send{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.rate-send textarea{
+    width: 64%;
+    height: 100px;
+    padding: 1rem;
+    margin: 0 1rem;
+    outline: none;
+    border: 1px solid #ccc;
+}

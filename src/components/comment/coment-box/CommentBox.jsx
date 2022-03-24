@@ -1,17 +1,19 @@
 import React from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { addComment } from "../../../services/comment-course-service"
+import { addComment } from "../../../services/comment-service"
 
-const CommentBox = ({ courseId }) => {
+const CommentBox = (props) => {
     const dispatch = useDispatch();
     const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
     const isLogin = localStorage.getItem("isLoggedIn");
     const [content, setContent] = useState("");
+    const blog = props?.blog;
+    const course = props?.course;
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-        const data = { course: { id: courseId }, content };
+        const data = blog ? { blog: { id: blog?.id }, content } : { course: { id: course?.id }, content }
         if (content.length != 0) {
             dispatch(addComment(data));
         }

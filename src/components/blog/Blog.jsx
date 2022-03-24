@@ -1,15 +1,14 @@
 import {useEffect} from "react";
 import { Link } from "react-router-dom";
-import "./singleBlog.css";
+import "./blog.css";
 import {useDispatch, useSelector} from "react-redux";
 import { useParams } from 'react-router'
-import {fetchBlog} from '../../../services/blog-service'
-import Comment from "../../comment/comment-blog/CommentBlog";
+import {fetchBlog} from '../../services/blog-service'
+import Comment from "../comment/Comment";
 
 const Blog = () => {
     const dispatch = useDispatch();
     const blog = useSelector(state => state.blog.blog);
-    console.log(blog)
 
     let { id } = useParams();
 
@@ -52,11 +51,6 @@ const Blog = () => {
 
       <hr/>
 
-      {/* <ListComment
-        isAuthenticated={localStorage.getItem("isLoggedIn") }
-        loading={false}
-        blogId={id}>
-      </ListComment> */}
       <Comment blog= {blog}/>
     </div>
   );

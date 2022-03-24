@@ -21,7 +21,6 @@ const Checkout = () => {
             },
             "course": course
         }));
-        alert("Success")
         history.push('/my-courses')
     }
 
@@ -114,10 +113,6 @@ const Checkout = () => {
                                         },
                                         "course": course
                                     }));
-                                    // if(confirm('Success!')){ //eslint-disable-line
-                                    //     history.push("/");
-                                    // } 
-                                    alert("success")
                                     history.push("/my-courses");
                                     console.log(data);
                                     console.log(details);
@@ -127,9 +122,9 @@ const Checkout = () => {
                                 clientId: CLIENT_ID
                             }}
                         />
-                        {/* <button className="btn btn-success" onClick={handleClick}>
+                        <button className="btn btn-success" onClick={handleClick}>
                             Enroll Free
-                        </button> */}
+                        </button>
                     </div>
                 </div>
             </div>

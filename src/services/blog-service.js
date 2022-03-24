@@ -19,7 +19,7 @@ import {
   getBlogByQuery,
   getAllBlogsByMe,
 } from "../utils/graphql-query/blog-query.js";
-import RequestService from "../services/request-service";
+import RequestService from "./request-service";
 
 export const fetchBlogs = () => async (dispatch) => {
   dispatch(loadingBlog());
@@ -36,7 +36,7 @@ export const resetBlog = () => async (dispatch) => {
 };
 export const fetchBlog = (id) => async (dispatch) => {
   dispatch(loadingBlog());
-  const response = await RequestService.get("/blogs/" + id);
+  const response = await RequestService.get(`/blogs/${id}`);
   dispatch(fetchBlogSuccess(response.data));
 };
 
@@ -61,7 +61,6 @@ export const fetchBlogsByStatus = (gender) => async (dispatch) => {
 // GraphQL thunks
 export const fetchBlogsByQuery = (data) => async (dispatch) => {
   dispatch(loadingBlog());
-  console.log(typeof data);
   const response = await RequestService.post("/blogs/graphql/blogs", {
     query: getAllBlogsByQuery(data),
   });

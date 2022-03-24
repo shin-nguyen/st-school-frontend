@@ -1,101 +1,102 @@
 import requestService from "./request-service";
+import { toastSuccess, toastError } from "../utils/utils";
 
 import {
-    fetchCourseSuccess, 
+    fetchCourseSuccess,
     fetchCourseFail,
     getPurchasedCourseSuccess,
     getPurchasedCourseFail,
-    getCourseSuccess, 
-    getCourseFail, 
+    getCourseSuccess,
+    getCourseFail,
     resetCourseSuccess,
     resetCourseFail,
-    addCourseSuccess, 
-    addCourseFail, 
-    updateCourseSuccess, 
-    updateCourseFail, 
-    deleteCourseSuccess, 
-    deleteCourseFail} 
-from '../actions/course-actions'
+    addCourseSuccess,
+    addCourseFail,
+    updateCourseSuccess,
+    updateCourseFail,
+    deleteCourseSuccess,
+    deleteCourseFail
+}
+    from '../actions/course-actions'
 
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-export const getAllCourse  = () => async (dispatch) => {
+export const getAllCourse = () => async (dispatch) => {
     try {
         const { data } = await requestService.get(`/course/admin/list`);
         dispatch(fetchCourseSuccess(data));
     } catch (error) {
+        toastError(error.message);
         dispatch(fetchCourseFail(error.message));
-        toast.error(error.message, {position: toast.POSITION.BOTTOM_RIGHT, theme: "dark"});
     }
 }
 
-export const getAllCourseByMe  = () => async (dispatch) => {
+export const getAllCourseByMe = () => async (dispatch) => {
     try {
         const { data } = await requestService.get(`/course/list`, true);
         dispatch(fetchCourseSuccess(data));
     } catch (error) {
+        toastError(error.message);
         dispatch(fetchCourseFail(error.message));
-        toast.error(error.message, {position: toast.POSITION.BOTTOM_RIGHT, theme: "dark"});
     }
 }
 
-export const getPurchasedCourses  = () => async (dispatch) => {
-  try {
-      const { data } = await requestService.get(`/course/list/purchased`, true);
-      dispatch(getPurchasedCourseSuccess(data));
-  } catch (error) {
-      dispatch(getPurchasedCourseFail(error.message));
-      toast.error(error.message, {position: toast.POSITION.BOTTOM_RIGHT, theme: "dark"});
-  }
+export const getPurchasedCourses = () => async (dispatch) => {
+    try {
+        const { data } = await requestService.get(`/course/list/purchased`, true);
+        dispatch(getPurchasedCourseSuccess(data));
+    } catch (error) {
+        toastError(error.message);
+        dispatch(getPurchasedCourseFail(error.message));
+    }
 }
 
-export const getCourseById  = (courseId) => async (dispatch) => {
+export const getCourseById = (courseId) => async (dispatch) => {
     try {
         const { data } = await requestService.get(`/course/${courseId}`);
         dispatch(getCourseSuccess(data));
     } catch (error) {
+        toastError(error.message);
         dispatch(getCourseFail(error.message));
-        toast.error(error.message, {position: toast.POSITION.BOTTOM_RIGHT, theme: "dark"})
     }
 }
 
-export const resetCourse  = () => async (dispatch) => {
+export const resetCourse = () => async (dispatch) => {
     try {
         dispatch(resetCourseSuccess());
     } catch (error) {
+        toastError(error.message);
         dispatch(resetCourseFail(error.message));
-        toast.error(error.message, {position: toast.POSITION.BOTTOM_RIGHT, theme: "dark"});
     }
 }
 
 export const addCourse = (params) => async (dispatch) => {
     try {
-        const { data } = await requestService.post(`/course/add`, params,true,"multipart/form-data");
+        toastSuccess("Save Success");
+        const { data } = await requestService.post(`/course/add`, params, true, "multipart/form-data");
         dispatch(addCourseSuccess(data));
-        toast.success("Add Success", {position: toast.POSITION.BOTTOM_RIGHT});
     } catch (error) {
+        toastError(error.message);
         dispatch(addCourseFail(error.message));
-        toast.error(error.message, {position: toast.POSITION.BOTTOM_RIGHT, theme: "dark"});
     }
 }
 
 export const updateCourse = (params) => async (dispatch) => {
-  try {
-      const { data } = await requestService.put(`/course/update`, params);
-      dispatch(updateCourseSuccess(data));
-  } catch (error) {
-      dispatch(updateCourseFail(error.message));
-      toast.error(error.message, {position: toast.POSITION.BOTTOM_RIGHT, theme: "dark"});
-  }
+    try {
+        const { data } = await requestService.put(`/course/update`, params);
+        toastSuccess("Update Success");
+        dispatch(updateCourseSuccess(data));
+    } catch (error) {
+        toastError(error.message);
+        dispatch(updateCourseFail(error.message));
+    }
 }
 
 export const deleteCourse = (courseId) => async (dispatch) => {
     try {
-      const { data } = await requestService.delete(`/course/${courseId}`);
-      dispatch(deleteCourseSuccess(data));
+        const { data } = await requestService.delete(`/course/${courseId}`);
+        toastSuccess("Delete Success");
+        dispatch(deleteCourseSuccess(data));
     } catch (error) {
-      dispatch(deleteCourseFail(error.message));
-      toast.error(error.message, {position: toast.POSITION.BOTTOM_RIGHT, theme: "dark"});
+        toastError(error.message);
+        dispatch(deleteCourseFail(error.message));
     }
 };
