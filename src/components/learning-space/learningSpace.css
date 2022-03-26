@@ -1,106 +1,151 @@
-.video-react.video-react-fluid, .video-react.video-react-16-9, .video-react.video-react-4-3 {
-    width: 100%;
-    max-width: 100%;
-    height: 100%;
-  }
-
-.learning-space{
-    display: flex;
+.video-react.video-react-fluid,
+.video-react.video-react-16-9,
+.video-react.video-react-4-3 {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
 }
 
-.content-wrapper{
-    direction: inherit;
-    box-sizing: border-box!important;
-    position: relative;
-    display: block;
-    height: 100%;
-    width: 100%;
-    visibility: visible;
+.learning-space {
+  display: flex;
 }
 
-.video-wrapper{
-    height: 582px;
-    background-color: black;
-    padding: 0 15%;
-    margin: auto; 
+.content-wrapper {
+  direction: inherit;
+  box-sizing: border-box !important;
+  position: relative;
+  display: block;
+  height: 100%;
+  width: 100%;
+  visibility: visible;
+}
+
+.video-wrapper {
+  height: 582px;
+  background-color: black;
+  padding: 0 15%;
+  margin: auto;
 }
 
 .video-wrapper i {
-    
-    color:rgb(251, 253, 130) ;
+  color: rgb(251, 253, 130);
 }
 
-.comment-wrapper{
-    width: 100%;
-    position: relative;
-    padding: 0 17%;
+.comment-wrapper {
+  width: 100%;
+  position: relative;
+  padding: 0 17%;
 }
 
-.comment-header{
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
+.comment-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
 .comment-wrapper h4 {
-    font-size: 1.2rem;
-    font-weight: 550;
-    margin: 20px auto 0 0;
+  font-size: 1.2rem;
+  font-weight: 550;
+  margin: 20px auto 0 0;
 }
 
-.share-box{
-    display: flex;
-    align-items: center;
+.share-box {
+  display: flex;
+  align-items: center;
 }
 
-.playlist-wrapper{
-    width: 30%;
+.playlist-wrapper {
+  width: 30%;
 }
 
-.playlist-header{
-    padding: 36px;
-    /* background-color: rgb(207, 203, 203); */
-    font-weight: bold;
-    font-size: 20px;
-    text-align: center;
-    border-bottom: 5px double rgb(196, 190, 190) ;
+.playlist-header {
+  padding: 36px;
+  /* background-color: rgb(207, 203, 203); */
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  border-bottom: 5px double rgb(196, 190, 190);
 }
 
 .playlist-header i {
-    float: right;
+  float: right;
 }
 
-.playlist-content{
-    height:61vh ;
-    overflow: hidden;
-    overflow-y: scroll;
+.playlist-content {
+  height: 61vh;
+  overflow: hidden;
+  overflow-y: scroll;
 }
 
-.list_video_item{
-    height: 60px;
-    border-bottom: solid 1px rgb(209, 208, 208);
-    margin: auto;
+.list_video_item {
+  height: 60px;
+  border-bottom: solid 1px rgb(209, 208, 208);
+  margin: auto;
 }
 
-.list_video_item-inner{
-    height: 100%;
-    padding-left: 20px;
-    padding-top: 15px;
-    font-weight: 700;
+.list_video_item-inner {
+  height: 100%;
+  padding-left: 20px;
+  padding-top: 15px;
+  font-weight: 700;
 }
 
 .list_video_item-inner:hover {
-    color: var(--main-color);
-  }
-  
+  color: var(--main-color);
+}
+
 .list_video_item-inner.active {
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient(
-        to right,
-        var(--main-color),
-        var(--second-color)
-    );
-    color: var(--txt-white);
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    to right,
+    var(--main-color),
+    var(--second-color)
+  );
+  color: var(--txt-white);
+}
+
+/* choose-bar */
+.choosebar-wrapper {
+  margin: auto;
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.choosebar__item {
+  padding: 0 5px;
+}
+
+.choosebar__item-inner {
+  padding: 28px 20px;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  transition: color 0.25s ease 0.1s;
+}
+
+.choosebar__item-inner > i {
+  margin-right: 5px;
+  font-size: 1.5rem;
+}
+
+.choosebar__item-inner > span {
+  text-transform: capitalize;
+}
+
+.choosebar__item-inner:hover {
+  color: var(--main-color);
+}
+
+.choosebar__item-inner.active {
+  border-radius: 5px;
+  /* background-image: linear-gradient(
+    to right,
+    var(--main-color),
+    var(--second-color)
+  ); */
+  color: var(--main-color);
 }

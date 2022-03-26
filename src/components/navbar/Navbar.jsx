@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import {useSelector} from "react-redux";
 import Dropdown from '../dropdown/Dropdown';
-import ThemeMenu from '../thememenu/ThemeMenu'
+import ThemeMenu from '../share/thememenu/ThemeMenu'
 import navbar_items from '../../assets/JsonData/navbar_routes.json'
 import logo from '../../assets/images/kai.jpg'
 import "./Navbar.css"

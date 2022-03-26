@@ -8,6 +8,7 @@ import blogReducer from "../reducers/blogReducer";
 import commentReducer from "../reducers/commentReducer";
 import quizReducer from "../reducers/quiz-reducer";
 import recordReducer from "../reducers/record-reducer";
+import reviewReducer from "./reviewReducer"
 import { combineReducers } from "redux";
 import ThemeReducer from "./themeReducer";
 
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   theme: ThemeReducer,
   quiz: quizReducer,
   record: recordReducer,
+  review: reviewReducer,
 });
 
 export default rootReducer;
