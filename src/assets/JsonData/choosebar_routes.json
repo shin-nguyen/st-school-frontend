@@ -1,0 +1,22 @@
+[
+    {
+        "display_name": "Overview",
+        "route": "overview"
+    },
+    {
+        "display_name": "Q&A",
+        "route": "comments"
+    },
+    {
+        "display_name": "Reviews",
+        "route": "reviews"
+    },
+    {
+        "display_name": "Notes",
+        "route": "notes"
+    },
+    {
+        "display_name": "Learning Tools",
+        "route": "tools"
+    }
+]

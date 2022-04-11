@@ -10,9 +10,11 @@
 }
 .thongke span{
     display: flex;
-    font-size: 14px;
+    font-size: 13px;
+    color: orange;
 }
 .thongke{
+    width: 100%;
     display: flex;
     align-items: center;
 }
@@ -27,7 +29,7 @@
 .percent{
     width: 100%;
     margin-bottom: 0;
-    font-size: 14px;
+    font-size: 10px;
 }
 .guidanhgia{
     padding: 0.5rem 1rem;
@@ -54,4 +56,10 @@
     margin: 0 1rem;
     outline: none;
     border: 1px solid #ccc;
+}
+
+.list-review{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
 }

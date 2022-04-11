@@ -70,7 +70,9 @@ const CourseDetail = () => {
                     
                 </div>
             </div>
-            {/* <ReviewCourse/> */}
+            <div className='page-body'>
+                <ReviewCourse/>
+            </div>
         </div>
         
     )
