@@ -27,6 +27,6 @@
     {
         "display_name": "Quizes",
         "route": "/admin/quizzes",
-        "icon": "bx bx-cog"
+        "icon": "bx bx-question-mark"
     }
 ]

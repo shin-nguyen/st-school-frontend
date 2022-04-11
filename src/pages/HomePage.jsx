@@ -1,8 +1,6 @@
 import {React, useEffect} from 'react'
 import Navbar from '../components/navbar/Navbar'
 import Footer from '../components/footer/Footer'
-import { useHistory } from "react-router";
-import {useSelector} from "react-redux";
 
 import Home from '../components/home/Home';
 

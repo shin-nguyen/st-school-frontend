@@ -1,10 +1,12 @@
 import {
   LOADING_RECORD,
   FETCH_RECORDS,
+  FETCH_RECORD
 } from "../action-types/record-action-types.js";
 
 const initialState = {
   records: [],
+  record: {},
   isRecordLoading: false,
 };
 
@@ -15,6 +17,9 @@ const reducer = (state = initialState, action) => {
 
     case FETCH_RECORDS:
       return { ...state, records: action.payload, isRecordLoading: false };
+
+    case FETCH_RECORD:
+      return { ...state, record: action.payload, isRecordLoading: false };
 
     default:
       return state;

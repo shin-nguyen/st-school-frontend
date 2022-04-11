@@ -28,7 +28,6 @@ import {
   Adjust,
   Delete,
   BarChart,
-  Info,
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import Spinner from "../../../../../components/spinner/Spinner";
@@ -42,13 +41,13 @@ import {
   addQuestionInQuiz,
   updateQuestionInQuiz
 } from "../../../../../services/quiz-services";
-import { getRecords } from "../../../../../services/record-service";
-import { useHistory, useParams } from "react-router";
+// import { getRecords } from "../../../../../services/record-service";
+import { useParams } from "react-router";
 
 function EditQuiz() {
   const dispatch = useDispatch();
   let { quizId } = useParams();
-  // const [loading, setLoading] = useState(true);
+  const loading = useSelector((state) => state.quiz.isQuizLoading);
   const quiz = useSelector((state) => state.quiz.quiz);
 
   const [serverError, setServerError] = useState(false);
@@ -269,7 +268,6 @@ function EditQuiz() {
   };
 
   const getQuizDetails = () => {
-    // setLoading(true);
     dispatch(fetchQuiz(quizId));
     // dispatch(getRecords(quizId));
   };
@@ -277,386 +275,386 @@ function EditQuiz() {
   useEffect(() => {
     getQuizDetails();
   }, [quizId]);
-  // if (loading) {
-  //   return <Spinner />;
-  // } else {
-  return (
-    <Container className="edit-quiz-page">
-      <Typography variant="h3" className="dash-head p-top edit-quiz-head">
-        Edit Quiz
-      </Typography>
-      <div className="edit-btn-bar">
-        <Button
-          className="edit-details-btn"
-          component={Link}
-          to={`/update-quiz/${quizId}`}
-        >
-          <Create className="edit-icon" />
-          Edit Details
-        </Button>
-      </div>
-      <div className="quiz-details-sec">
-        <Typography variant="h6" className="quiz-detail-param">
-          Name: <span className="quiz-detail-text">{quiz.name}</span>
+  if (loading) {
+    return <Spinner />;
+  } else {
+    return (
+      <Container className="edit-quiz-page">
+        <Typography variant="h3" className="dash-head p-top edit-quiz-head">
+          Edit Quiz
         </Typography>
-        <Typography variant="h6" className="quiz-detail-param">
-          Duration:{" "}
-          <span className="quiz-detail-text">{quiz.duration} minutes</span>
-        </Typography>
-        <Typography variant="h6" className="quiz-detail-param">
-          Type:{" "}
-          <span className="quiz-detail-text">
-            {quiz.status ? "Public" : "Private"}
-          </span>
-        </Typography>
-        {quiz.status === false ? (
+        <div className="edit-btn-bar">
+          <Button
+            className="edit-details-btn"
+            component={Link}
+            to={`update-detail`}
+          >
+            <Create className="edit-icon" />
+            Edit Details
+          </Button>
+        </div>
+        <div className="quiz-details-sec">
           <Typography variant="h6" className="quiz-detail-param">
-            Quiz Code: <span className="quiz-detail-text">{quiz.code}</span>
+            Name: <span className="quiz-detail-text">{quiz.name}</span>
           </Typography>
-        ) : null}
-      </div>
-      <div className="quiz-questions-sec">
-        <Typography variant="h4" className="quiz-questions-head">
-          Questions
-        </Typography>
-        <div className="quiz-questions-display">
-          <div className="add-question-bar">
-            <Button
-              className="add-question-btn"
-              onClick={() => setQuestionModal(true)}
-            >
-              Add a question
-            </Button>
-          </div>
-          {quiz.questions == null || quiz.questions.length === 0 ? (
-            <p style={{ textAlign: "center" }}>No questions added yet!</p>
-          ) : (
-            <div className="questions-list-display">
-              {quiz.questions.map((question) => (
-                <ExpansionPanel
-                  elevation={3}
-                  className="expansion"
-                  key={question.id}
-                >
-                  <ExpansionPanelSummary
-                    className="question-summary"
-                    expandIcon={<ExpandMore />}
-                    aria-controls="question-content"
-                    aria-label="Expand"
+          <Typography variant="h6" className="quiz-detail-param">
+            Duration:{" "}
+            <span className="quiz-detail-text">{quiz.duration} minutes</span>
+          </Typography>
+          <Typography variant="h6" className="quiz-detail-param">
+            Type:{" "}
+            <span className="quiz-detail-text">
+              {quiz.status ? "Public" : "Private"}
+            </span>
+          </Typography>
+          {quiz.status === false ? (
+            <Typography variant="h6" className="quiz-detail-param">
+              Quiz Code: <span className="quiz-detail-text">{quiz.code}</span>
+            </Typography>
+          ) : null}
+        </div>
+        <div className="quiz-questions-sec">
+          <Typography variant="h4" className="quiz-questions-head">
+            Questions
+          </Typography>
+          <div className="quiz-questions-display">
+            <div className="add-question-bar">
+              <Button
+                className="add-question-btn"
+                onClick={() => setQuestionModal(true)}
+              >
+                Add a question
+              </Button>
+            </div>
+            {quiz.questions == null || quiz.questions.length === 0 ? (
+              <p style={{ textAlign: "center" }}>No questions added yet!</p>
+            ) : (
+              <div className="questions-list-display">
+                {quiz.questions.map((question) => (
+                  <ExpansionPanel
+                    elevation={3}
+                    className="expansion"
+                    key={question.id}
                   >
-                    <FormControlLabel
-                      style={{ marginRight: "0" }}
-                      aria-label="Edit"
-                      control={
-                        <IconButton>
-                          <Create />
-                        </IconButton>
-                      }
-                      onClick={() => handleQuestionEditBtn(question)}
-                    />
-                    <FormControlLabel
-                      aria-label="Edit"
-                      control={
-                        <IconButton>
-                          <Delete />
-                        </IconButton>
-                      }
-                      onClick={() => handleQuestionDeleteBtn(question)}
-                    />
-                    <Typography className="question-label">
-                      {question.description}
-                    </Typography>
-                  </ExpansionPanelSummary>
-                  <ExpansionPanelDetails>
-                    <List component="nav" className="options-display">
-                      {question.options.map((option) => (
-                        <ListItem button key={option.text}>
-                          <ListItemIcon>
-                            <Adjust
+                    <ExpansionPanelSummary
+                      className="question-summary"
+                      expandIcon={<ExpandMore />}
+                      aria-controls="question-content"
+                      aria-label="Expand"
+                    >
+                      <FormControlLabel
+                        style={{ marginRight: "0" }}
+                        aria-label="Edit"
+                        control={
+                          <IconButton>
+                            <Create />
+                          </IconButton>
+                        }
+                        onClick={() => handleQuestionEditBtn(question)}
+                      />
+                      <FormControlLabel
+                        aria-label="Edit"
+                        control={
+                          <IconButton>
+                            <Delete />
+                          </IconButton>
+                        }
+                        onClick={() => handleQuestionDeleteBtn(question)}
+                      />
+                      <Typography className="question-label">
+                        {question.description}
+                      </Typography>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails>
+                      <List component="nav" className="options-display">
+                        {question.options.map((option) => (
+                          <ListItem button key={option.text}>
+                            <ListItemIcon>
+                              <Adjust
+                                style={{
+                                  color:
+                                    question.correct == option.text
+                                      ? "green"
+                                      : "black",
+                                }}
+                              />
+                            </ListItemIcon>
+                            <ListItemText
                               style={{
                                 color:
                                   question.correct == option.text
                                     ? "green"
                                     : "black",
                               }}
+                              primary={option.text}
                             />
-                          </ListItemIcon>
-                          <ListItemText
-                            style={{
-                              color:
-                                question.correct == option.text
-                                  ? "green"
-                                  : "black",
-                            }}
-                            primary={option.text}
-                          />
-                        </ListItem>
-                      ))}
-                    </List>
-                  </ExpansionPanelDetails>
-                </ExpansionPanel>
-              ))}
-            </div>
-          )}
-        </div>
-        <Typography variant="h4" className="quiz-questions-head m-top">
-          Submissions
-        </Typography>
-        <div className="quiz-students-list">
-          <div className="add-question-bar">
-            {/* Thong ke */}
-            <Button
-              className="add-question-btn stats-btn"
-              component={records.length !== 0 ? Link : Button}
-              to={{
-                pathname: "/quiz-stats",
-                state: { records: records },
-              }}
-            >
-              <BarChart />
-              View Stats
-            </Button>
-          </div>
-          {records.length === 0 ? (
-            <p
-              style={{
-                textAlign: "center",
-                margin: "0",
-                paddingTop: "3%",
-                paddingBottom: "3%",
-              }}
-            >
-              No records yet!
-            </p>
-          ) : (
-            <>
-              <div className="search-bar">
-                <TextField
-                  placeholder="Search by name or score"
-                  type="text"
-                  onChange={handleSearchChange}
-                  className="search-input"
-                  value={searchText}
-                />
-                <div style={{ marginLeft: "3%" }}>
-                  <InputLabel id="sort-by">Sort by</InputLabel>
-                  <Select
-                    labelId="sort-by"
-                    id="sort-select"
-                    value={sortBy}
-                    onChange={handleSortChange}
-                  >
-                    <MenuItem value={-1}>
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value="recent">Recent</MenuItem>
-                    <MenuItem value="score">Score</MenuItem>
-                    <MenuItem value="name">Name</MenuItem>
-                  </Select>
-                </div>
-              </div>
-              <List aria-label="records list">
-                {searchData.map((response) => (
-                  <ListItem
-                    button
-                    key={response._id}
-                    component={Link}
-                    to={{
-                      pathname: `/studentResponse`,
-                      state: { response: response },
-                    }}
-                  >
-                    <ListItemText
-                      primary={response.userId.name}
-                      secondary={`Scored: ${response.marks}`}
-                    />
-                  </ListItem>
+                          </ListItem>
+                        ))}
+                      </List>
+                    </ExpansionPanelDetails>
+                  </ExpansionPanel>
                 ))}
-              </List>
-            </>
-          )}
-        </div>
-      </div>
-      <Dialog
-        open={questionModal}
-        onClose={onCloseHandle}
-        aria-labelledby="add-question-modal"
-        PaperProps={{
-          style: {
-            backgroundColor: "white",
-            color: "#333",
-            minWidth: "50%",
-          },
-        }}
-        style={{ width: "100%" }}
-      >
-        <div className="add-ques-heading">
-          <Typography
-            variant="h6"
-            style={{ textAlign: "center", margin: "2% 5%" }}
-          >
-            New Question{" "}
+              </div>
+            )}
+          </div>
+          <Typography variant="h4" className="quiz-questions-head m-top">
+            Submissions
           </Typography>
-          {/* {!update ? (
+          <div className="quiz-students-list">
+            <div className="add-question-bar">
+              {/* Thong ke */}
+              <Button
+                className="add-question-btn stats-btn"
+                component={records.length !== 0 ? Link : Button}
+                to={{
+                  pathname: "/quiz-stats",
+                  state: { records: records },
+                }}
+              >
+                <BarChart />
+                View Stats
+              </Button>
+            </div>
+            {records.length === 0 ? (
+              <p
+                style={{
+                  textAlign: "center",
+                  margin: "0",
+                  paddingTop: "3%",
+                  paddingBottom: "3%",
+                }}
+              >
+                No records yet!
+              </p>
+            ) : (
+              <>
+                <div className="search-bar">
+                  <TextField
+                    placeholder="Search by name or score"
+                    type="text"
+                    onChange={handleSearchChange}
+                    className="search-input"
+                    value={searchText}
+                  />
+                  <div style={{ marginLeft: "3%" }}>
+                    <InputLabel id="sort-by">Sort by</InputLabel>
+                    <Select
+                      labelId="sort-by"
+                      id="sort-select"
+                      value={sortBy}
+                      onChange={handleSortChange}
+                    >
+                      <MenuItem value={-1}>
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value="recent">Recent</MenuItem>
+                      <MenuItem value="score">Score</MenuItem>
+                      <MenuItem value="name">Name</MenuItem>
+                    </Select>
+                  </div>
+                </div>
+                <List aria-label="records list">
+                  {searchData.map((response) => (
+                    <ListItem
+                      button
+                      key={response._id}
+                      component={Link}
+                      to={{
+                        pathname: `/studentResponse`,
+                        state: { response: response },
+                      }}
+                    >
+                      <ListItemText
+                        primary={response.userId.name}
+                        secondary={`Scored: ${response.marks}`}
+                      />
+                    </ListItem>
+                  ))}
+                </List>
+              </>
+            )}
+          </div>
+        </div>
+        <Dialog
+          open={questionModal}
+          onClose={onCloseHandle}
+          aria-labelledby="add-question-modal"
+          PaperProps={{
+            style: {
+              backgroundColor: "white",
+              color: "#333",
+              minWidth: "50%",
+            },
+          }}
+          style={{ width: "100%" }}
+        >
+          <div className="add-ques-heading">
+            <Typography
+              variant="h6"
+              style={{ textAlign: "center", margin: "2% 5%" }}
+            >
+              New Question{" "}
+            </Typography>
+            {/* {!update ? (
               <IconButton onClick={handlePopover}>
                 <Info className="add-info-icon" />
               </IconButton>
             ) : null} */}
-        </div>
-        {!update ? (
-          <>
-            <p className="manual-head">
-              <span>Or manually add the question</span>
-            </p>
-          </>
-        ) : null}
-        <div className="new-question-form">
-          <TextInput
-            error={newQuestionError}
-            helperText={newQuestionError ? "This cannot be empty" : null}
-            className="new-ques-input"
-            variant="outlined"
-            label="Question Text"
-            value={newQuestion}
-            onChange={onQuestionChange}
-          />
-          <hr style={{ width: "100%", marginBottom: "3%" }} />
-          <Grid container spacing={1}>
-            <Grid item xs={12} sm={6}>
-              <TextInput
-                error={option1Error}
-                helperText={option1Error ? "This cannot be empty" : null}
-                className="new-ques-input"
-                variant="outlined"
-                label="Option 1"
-                value={option1}
-                onChange={handleOptionChange1}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextInput
-                error={option2Error}
-                helperText={option2Error ? "This cannot be empty" : null}
-                className="new-ques-input"
-                variant="outlined"
-                label="Option 2"
-                value={option2}
-                onChange={handleOptionChange2}
-              />
-            </Grid>
-          </Grid>
-          <Grid container spacing={1}>
-            <Grid item xs={12} sm={6}>
-              <TextInput
-                error={option3Error}
-                helperText={option3Error ? "This cannot be empty" : null}
-                className="new-ques-input"
-                variant="outlined"
-                label="Option 3"
-                value={option3}
-                onChange={handleOptionChange3}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextInput
-                error={option4Error}
-                helperText={option4Error ? "This cannot be empty" : null}
-                className="new-ques-input"
-                variant="outlined"
-                label="Option 4"
-                value={option4}
-                onChange={handleOptionChange4}
-              />
-            </Grid>
-          </Grid>
-          <hr style={{ width: "100%", marginBottom: "3%" }} />
-          <InputLabel id="correct-option">Correct Option</InputLabel>
-          <Select
-            error={correctOptionError}
-            className="correct-answer-select"
-            style={{ width: "50%" }}
-            labelId="correct-option"
-            value={correctOption}
-            onChange={handleCorrectOption}
-          >
-            <MenuItem value={-1}>None</MenuItem>
-            {option1.trim().length !== 0 ? (
-              <MenuItem value={option1}>{option1}</MenuItem>
-            ) : null}
-            {option2.trim().length !== 0 ? (
-              <MenuItem value={option2}>{option2}</MenuItem>
-            ) : null}
-            {option3.trim().length !== 0 ? (
-              <MenuItem value={option3}>{option3}</MenuItem>
-            ) : null}
-            {option4.trim().length !== 0 ? (
-              <MenuItem value={option4}>{option4}</MenuItem>
-            ) : null}
-          </Select>
+          </div>
           {!update ? (
-            <Button
-              className="add-question-submit"
-              onClick={handleQuestionSubmit}
+            <>
+              <p className="manual-head">
+                <span>Or manually add the question</span>
+              </p>
+            </>
+          ) : null}
+          <div className="new-question-form">
+            <TextInput
+              error={newQuestionError}
+              helperText={newQuestionError ? "This cannot be empty" : null}
+              className="new-ques-input"
+              variant="outlined"
+              label="Question Text"
+              value={newQuestion}
+              onChange={onQuestionChange}
+            />
+            <hr style={{ width: "100%", marginBottom: "3%" }} />
+            <Grid container spacing={1}>
+              <Grid item xs={12} sm={6}>
+                <TextInput
+                  error={option1Error}
+                  helperText={option1Error ? "This cannot be empty" : null}
+                  className="new-ques-input"
+                  variant="outlined"
+                  label="Option 1"
+                  value={option1}
+                  onChange={handleOptionChange1}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextInput
+                  error={option2Error}
+                  helperText={option2Error ? "This cannot be empty" : null}
+                  className="new-ques-input"
+                  variant="outlined"
+                  label="Option 2"
+                  value={option2}
+                  onChange={handleOptionChange2}
+                />
+              </Grid>
+            </Grid>
+            <Grid container spacing={1}>
+              <Grid item xs={12} sm={6}>
+                <TextInput
+                  error={option3Error}
+                  helperText={option3Error ? "This cannot be empty" : null}
+                  className="new-ques-input"
+                  variant="outlined"
+                  label="Option 3"
+                  value={option3}
+                  onChange={handleOptionChange3}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextInput
+                  error={option4Error}
+                  helperText={option4Error ? "This cannot be empty" : null}
+                  className="new-ques-input"
+                  variant="outlined"
+                  label="Option 4"
+                  value={option4}
+                  onChange={handleOptionChange4}
+                />
+              </Grid>
+            </Grid>
+            <hr style={{ width: "100%", marginBottom: "3%" }} />
+            <InputLabel id="correct-option">Correct Option</InputLabel>
+            <Select
+              error={correctOptionError}
+              className="correct-answer-select"
+              style={{ width: "50%" }}
+              labelId="correct-option"
+              value={correctOption}
+              onChange={handleCorrectOption}
             >
-              Add Question
-            </Button>
-          ) : (
-            <Button
-              className="add-question-submit"
-              onClick={handleQuestionUpdate}
-            >
-              Update Question
-            </Button>
-          )}
-        </div>
-      </Dialog>
-      <Dialog
-        open={deleteQuestionModal}
-        onClose={handleQuestionModalClose}
-        aria-labelledby="delete-quiz-modal"
-        PaperProps={{
-          style: {
-            backgroundColor: "white",
-            color: "black",
-            minWidth: "10%",
-          },
-        }}
-      >
-        <DialogTitle>
-          Are you sure you want to delete this question?
-        </DialogTitle>
-        <div className="btn-div">
-          <Button
-            className="logout-btn m-right bg-red-btn"
-            onClick={handleDeleteQuestion}
-          >
-            Yes
-          </Button>
-          <Button
-            className="cancel-btn m-left"
-            onClick={handleQuestionModalClose}
-          >
-            No
-          </Button>
-        </div>
-      </Dialog>
-      <Snackbar
-        open={serverError}
-        autoHideDuration={3000}
-        onClose={() => setServerError(false)}
-        anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-      >
-        <Alert
-          variant="filled"
-          severity="error"
-          onClose={() => setServerError(false)}
+              <MenuItem value={-1}>None</MenuItem>
+              {option1.trim().length !== 0 ? (
+                <MenuItem value={option1}>{option1}</MenuItem>
+              ) : null}
+              {option2.trim().length !== 0 ? (
+                <MenuItem value={option2}>{option2}</MenuItem>
+              ) : null}
+              {option3.trim().length !== 0 ? (
+                <MenuItem value={option3}>{option3}</MenuItem>
+              ) : null}
+              {option4.trim().length !== 0 ? (
+                <MenuItem value={option4}>{option4}</MenuItem>
+              ) : null}
+            </Select>
+            {!update ? (
+              <Button
+                className="add-question-submit"
+                onClick={handleQuestionSubmit}
+              >
+                Add Question
+              </Button>
+            ) : (
+              <Button
+                className="add-question-submit"
+                onClick={handleQuestionUpdate}
+              >
+                Update Question
+              </Button>
+            )}
+          </div>
+        </Dialog>
+        <Dialog
+          open={deleteQuestionModal}
+          onClose={handleQuestionModalClose}
+          aria-labelledby="delete-quiz-modal"
+          PaperProps={{
+            style: {
+              backgroundColor: "white",
+              color: "black",
+              minWidth: "10%",
+            },
+          }}
         >
-          There was some problem with the server. Try again...
-        </Alert>
-      </Snackbar>
-    </Container>
-  );
-  // }
+          <DialogTitle>
+            Are you sure you want to delete this question?
+          </DialogTitle>
+          <div className="btn-div">
+            <Button
+              className="logout-btn m-right bg-red-btn"
+              onClick={handleDeleteQuestion}
+            >
+              Yes
+            </Button>
+            <Button
+              className="cancel-btn m-left"
+              onClick={handleQuestionModalClose}
+            >
+              No
+            </Button>
+          </div>
+        </Dialog>
+        <Snackbar
+          open={serverError}
+          autoHideDuration={3000}
+          onClose={() => setServerError(false)}
+          anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+        >
+          <Alert
+            variant="filled"
+            severity="error"
+            onClose={() => setServerError(false)}
+          >
+            There was some problem with the server. Try again...
+          </Alert>
+        </Snackbar>
+      </Container>
+    );
+  }
 }
 
 export default EditQuiz;

@@ -12,13 +12,10 @@ import {
   updateQuestionInQuizSuccess,
   // addQuizFail
 } from "../actions/quiz-action";
+
+import { addRecord } from "../services/record-service"
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-//   import {
-//     getAllQuizzesByQuery,
-//     getQuizByQuery,
-//     getAllQuizzesByMe,
-//   } from "../utils/graphql-query/blog-query.js";
 import RequestService from "../services/request-service";
 
 export const fetchQuizzes = () => async (dispatch) => {
@@ -74,10 +71,11 @@ export const deleteQuestionInQuiz = (quizId, questionId) => async (dispatch) => 
   }
 };
 
-export const updateQuiz = (params) => async (dispatch) => {
+export const updateQuiz = (params, history) => async (dispatch) => {
   dispatch(loadingQuiz());
-  const { data } = await RequestService.put(`/quizzes/edit`, params, true);
+  const { data } = await RequestService.put(`/quizzes/update-detail`, params, true);
   dispatch(updateQuizSuccess(data));
+  history.push("/admin/quizzes/" + params.id + "/edit");
 };
 
 
@@ -107,6 +105,18 @@ export const addQuiz = (params, history) => async (dispatch) => {
     console.log(error.message);
   }
 };
+
+export const submitQuiz = (params, history) => async (dispatch) => {
+  try {
+    const { data } = await RequestService.post(`/quizzes/submit`, params, true);
+    await dispatch(addRecord(data));
+    history.push("/results/" + data.id);
+  } catch (error) {
+    // dispatch(addQuizFail(error.message));
+    console.log(error.message);
+  }
+};
+
 
 export const addQuizByExcel = (params, history) => async (dispatch) => {
   try {

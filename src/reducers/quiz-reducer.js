@@ -17,6 +17,7 @@ import {
 const initialState = {
   quizzes: [],
   quiz: {},
+  questions: [],
   isQuizLoading: false,
 };
 
@@ -29,7 +30,7 @@ const reducer = (state = initialState, action) => {
       return { ...state, quizzes: action.payload, isQuizLoading: false };
 
     case FETCH_QUIZ_SUCCESS:
-      return { ...state, quiz: action.payload, isQuizLoading: false };
+      return { ...state, quiz: action.payload, isQuizLoading: false, questions: action.payload.questions };
 
     case DELETE_QUIZ: {
       console.log(action.payload);
@@ -64,7 +65,7 @@ const reducer = (state = initialState, action) => {
       const index = findIndex(state.quizzes, action.payload.id);
       const newList = [...state.quizzes];
       newList[index] = action.payload;
-      return { ...state, quizzes: newList };
+      return { ...state, quizzes: newList, isQuizLoading: false };
     }
 
     case ADD_QUIZ_LIST_SUCCESS: {

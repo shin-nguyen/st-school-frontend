@@ -14,6 +14,7 @@ import Blog from '../components/admin/component/blog/single-blog/Blog'
 import QuizManager from '../components/admin/component/quizz/quizManager/QuizManager'
 import CreateQuiz from '../components/admin/component/quizz/quizForm/CreateQuiz'
 import EditQuiz from '../components/admin/component/quizz/editQuiz/EditQuiz'
+import UpdateQuizDetails from '../components/admin/component/quizz/update-quiz-details/update-quiz-details'
 import ChangePassword from '../components/account/changePassword/ChangePassword'
 import Transfer from '../components/admin/component/transfer/Transfer'
 
@@ -31,6 +32,7 @@ const AdminRoutes = () => {
             <Route path='/admin/course/:id/video/add' component={VideoForm} />
             <Route path='/admin/orders' component={ListOrder} />
             <Route path='/admin/account' component={ChangePassword} />
+            <Route path="/admin/quizzes/:quizId/update-detail" component={UpdateQuizDetails}/> 
             <Route path='/admin/quizzes/:quizId/edit' component={EditQuiz} />
             <Route path="/admin/quizzes/add" component={CreateQuiz} />
             <Route path="/admin/quizzes" component={QuizManager} />

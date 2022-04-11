@@ -94,9 +94,9 @@ const QuizListComponent = ({
                       )}
                     </td>
                     <td>
-                      <Link to={'quizzes/' + item.id + '/detail'}>
+                      {/* <Link to={'quizzes/' + item.id + '/detail'}>
                         <button className="btn-a btn btn-info mr-10">Detail</button>
-                      </Link>
+                      </Link> */}
                       <Link to={'quizzes/' + item.id + '/edit'}>
                         <button className="btn-a btn btn-success mr-10">Edit</button>
                       </Link>
