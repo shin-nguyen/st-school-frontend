@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router'
 import { getCourseById } from '../../services/course-services'
@@ -12,6 +12,7 @@ import ReviewCourse from '../review-course/ReviewCourse'
 import Note from './note/Note'
 
 import "./learningSpace.css"
+import { Link } from 'react-router-dom'
 
 const ListVideoItem = props => {
 
@@ -49,22 +50,40 @@ const LearningSpace = () => {
     const [activeChoose, setActiveChoose] = useState(0);
     const [autoPlay, setAutoPlay] = useState(false);
     const [choose, setChoose] = useState('');
+    const player = useRef(null);
+    const [videoState, setVideoState] = useState(null);
+
     const course = useSelector(state => state.course.course);
     const listVideo = useSelector(state => state.video.listVideo);
-    const dispatch = useDispatch();
-
-    console.log(listVideo)
+    const dispatch = useDispatch(); 
 
     const handleChooseVideo = (item, index) => {
         setAutoPlay(true);
         setVideoSouce(item.source);
         setActiveItem(index);
+        console.log(player)
     }
 
-    const onChooseItem = (item, index) => {
+    const handleChooseItem = (item, index) => {
         setChoose(item.route)
         setActiveChoose(index)
     }
+
+    const handleSeek = (seconds) => {
+        player?.current.actions.seek(seconds);
+    }
+
+    const handlePlay = () => {
+        player?.current.actions.play()
+    }
+
+    const handlePause = () => {
+        player?.current.actions.pause()
+    }
+
+    useEffect(() => {
+        player.current.subscribeToStateChange(setVideoState);
+    }, [setVideoState]);
 
     useEffect(() => {
         const loadInfo = async () => {
@@ -87,7 +106,7 @@ const LearningSpace = () => {
     }, [dispatch, videoSource]);
 
     return (
-        <div className="learning-space body-content">
+        <div className="learning-space body-content">\
             <div className="content-wrapper">
                 <div className="content-container">
                     <div className="video-wrapper">
@@ -96,6 +115,7 @@ const LearningSpace = () => {
                             autoPlay={autoPlay}
                             poster={course.image}
                             src={videoSource}
+                            ref={player}
                         />
                         <div className={"btn-show show-" + !showPlaylist}>
                             <i class="bx bx-lg bx-chevrons-left bx-fade-left-hover topright can-click"
@@ -109,7 +129,7 @@ const LearningSpace = () => {
                                     title={item.display_name}
                                     icon={item.icon}
                                     active={index === activeChoose}
-                                    onClick={() => onChooseItem(item, index)}
+                                    onClick={() => handleChooseItem(item, index)}
                                 />
                             ))
                         }
@@ -143,7 +163,15 @@ const LearningSpace = () => {
                     choose === 'notes' ? 
                     <div className="comment-wrapper">
                         <div className="list-comment">
-                            <Note course={course} />
+                            <Note 
+                                index = {activeItem} 
+                                video = {listVideo[activeItem]} 
+                                course = {course}
+                                time = {videoState?.currentTime}
+                                // onPlay = {handlePlay}
+                                // onPause = {handlePause}
+                                // onSeek = {handleSeek}
+                            />
                         </div>
                     </div>: ''
                 }
@@ -173,6 +201,20 @@ const LearningSpace = () => {
                             />
                         ))
                     }
+                    <div className ="list_video_item can-click">
+                        <div className= "final-exam-text">
+                            <Link to={"/do-quiz/" + course?.id}>
+                                <i class='bx bx-send'></i> Final Exam
+                            </Link>
+                        </div>
+                    </div>
+                    <div className ="disabled list_video_item can-click">
+                        <div className= "final-exam-text">
+                            <Link onClick={ (event) => event.preventDefault()}>
+                                <i class='bx bxs-lock'></i> Final Exam
+                            </Link> 
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -11,6 +11,7 @@ import recordReducer from "../reducers/record-reducer";
 import reviewReducer from "./reviewReducer"
 import { combineReducers } from "redux";
 import ThemeReducer from "./themeReducer";
+import noteReducer from "./noteReducer"
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   quiz: quizReducer,
   record: recordReducer,
   review: reviewReducer,
+  note: noteReducer,
 });
 
 export default rootReducer;

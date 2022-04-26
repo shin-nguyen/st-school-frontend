@@ -1,0 +1,93 @@
+.note-title{
+    display: flex;
+}
+
+.list-note-item{
+    margin-bottom: 25px;
+}
+
+.note-header{
+    margin-bottom: 10px;
+}
+
+.note-content-container{
+    font-size: 0.95rem;
+}
+
+.note-content{
+    margin: auto;
+    background-color: whitesmoke;
+    padding: 10px;
+    margin: auto;
+    margin-right: 4.5%;
+    border-radius: 10px;
+}
+
+.at-time{
+    background-color: dimgrey;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    margin: auto;
+    font-size: 0.9rem;
+    font-weight: bold;
+    height: 25px;
+    width: 45px;
+}
+
+.new-note-btn{
+    display: flex;
+    border: 1px solid black;
+    margin: auto;
+    margin-right: 4.5%;
+    margin-bottom: 50px;
+    padding: 10;
+    height: 50px;
+    align-items: center;
+}
+
+.new-note-btn-content{
+    margin-left: 3%;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.new-note-btn-icon{
+    margin: auto;
+    margin-top: 10%;
+    text-align: center;
+}
+
+.note-input{
+    margin-right: 4.5%;
+}
+
+.note-input-btn-container{
+    display: flex;
+    padding: 20px;
+    align-items: right;
+    justify-content: right;
+    margin-right: 2%;
+}
+
+.note-input-btn{
+    margin-left: 15px;
+    font-weight: bold;
+    font-size: 0.88rem;
+    padding: 5px;
+    height: 35px;
+    width: 90px;
+    text-align: center;
+}
+
+.save-note-btn{
+    border-radius: 5px;
+    color: white;
+    background-color: black;
+}
+
+.cancel-note-btn{
+    color: black;
+    font-weight: 1000;
+    font-size: 1rem;
+}

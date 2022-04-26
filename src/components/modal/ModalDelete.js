@@ -1,7 +1,6 @@
 const ModalDelete = ({ object, deleteHandler, setModalActive, message }) => {
   return (
     <>
-      {console.log(JSON.stringify(object))}
       <div className="modal-open">
         <div className="modal fade show" style={{ display: "block" }}>
           <div className="modal-dialog modal-dialog-centered" role="document">

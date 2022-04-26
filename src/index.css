@@ -273,3 +273,8 @@ input:focus {
 .mb-100{
     margin-bottom: 100px;
 }
+
+.disabled { 
+    color:rgb(0, 0, 0);
+    background-color: #dbd8d8;
+}

@@ -67,7 +67,6 @@ const Quiz = () => {
 
   useEffect(() => {
     if (quizId) {
-      console.log("START" + quizId);
       getQuizDetails();
     }
   }, [quiz.id]);
@@ -80,7 +79,6 @@ const Quiz = () => {
       questions: allChosenAns,
     };
 
-    console.log(JSON.stringify(allChosenAns));
     dispatch(submitQuiz(data, history));
   };
 

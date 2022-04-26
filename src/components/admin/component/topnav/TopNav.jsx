@@ -15,8 +15,8 @@ import user_menu_admin from '../../../../assets/JsonData/user_menu_admin.json'
 import ThemeMenu from '../../../share/thememenu/ThemeMenu'
 
 
-import user_menu_admin from "../../../../assets/JsonData/user_menu_admin.json";
-import ThemeMenu from "../../../thememenu/ThemeMenu";
+// import user_menu_admin from "../../../../assets/JsonData/user_menu_admin.json";
+// import ThemeMenu from "../../../thememenu/ThemeMenu";
 
 // const renderNotificationItem = (item, index) => (
 //     <div className="notification-item" key={index}>
