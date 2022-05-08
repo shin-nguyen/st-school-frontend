@@ -18,8 +18,10 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 
 import { addQuiz } from "../../../../../services/quiz-services";
+import { useParams } from 'react-router'
 
 function CreateQuiz() {
+  let { courseId } = useParams();
   const [name, setName] = useState("");
   const [duration, setDuration] = useState(5);
   const [status, setStatus] = useState(false);
@@ -47,6 +49,9 @@ function CreateQuiz() {
       name: name,
       duration: duration,
       status: status,
+      course: {
+        "id": courseId
+      }
     };
 
     dispatch(addQuiz(data, history));

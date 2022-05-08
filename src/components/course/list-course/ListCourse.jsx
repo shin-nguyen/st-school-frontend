@@ -2,17 +2,17 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllCourse, getPurchasedCourses,getAllCourseByMe } from '../../../services/course-services';
+import { getOrderByUser } from '../../../services/order-services';
 import CardCourse from '../card-course/CardCourse'
 
 const ListCourse = (props) => {
     const dispatch = useDispatch()
     const listCourse = useSelector(state => state.course.listCourse)
-    const purchasedCourses = useSelector(state => state.course.purchasedCourses)
+    const listOrder = useSelector(state => state.order.listOrder)
     const isLoggedIn = localStorage.getItem("isLoggedIn")
     useEffect(() => {
         if(props.isBought === true){
-            console.log("is bought")
-            dispatch(getPurchasedCourses());
+            dispatch(getOrderByUser());
         } else {
             if(isLoggedIn){
                 dispatch(getAllCourseByMe());
@@ -30,14 +30,12 @@ const ListCourse = (props) => {
         <div className="row page-body body-content">
         {
             props.isBought === true ?
-                purchasedCourses.map((item)=>(
+                listOrder.map((item)=>(
                     <div className="col-md-3 col-sm-6 " key={item.id}>
                         <CardCourse 
-                            image= {item.image}
-                            title= {item.name}
-                            description= {item.description}
-                            price={item.price}
-                            goto={"/learning/" + item.id}
+                            course = {item.course}
+                            goto={"/learning/" + item.course?.id}
+                            progress = {item.progress}
                             isBought/>
                     </div>
                 ))
@@ -45,10 +43,7 @@ const ListCourse = (props) => {
                 listCourse.map((item)=>(    
                     <div className="col-md-3 col-sm-6 " key={item.id}>
                         <CardCourse 
-                            image= {item.image}
-                            title= {item.name}
-                            description= {item.description}
-                            price={item.price}
+                            course = {item}
                             goto={"/course/" + item.id}/>
                     </div>
                 ))

@@ -10,6 +10,12 @@ const orderReducer = (state = initialState, action) => {
         case 'FETCH_ALL__ORDER_FAIL':{
             return {...state, error: action.payload}
         }
+        case 'GET_ORDER_BY_USER':{
+            return {...state, listOrder: action.payload}
+        }
+        case 'GET_ORDER_BY_USER_FAIL':{
+            return {...state, error: action.payload}
+        }
         case 'SAVE_ORDER':{
             return {...state, listOrder: action.payload}
         }
@@ -32,6 +38,12 @@ const orderReducer = (state = initialState, action) => {
             return {...state, order: action.payload}
         }
         case 'GET_ORDER_BY_ID_FAIL':{
+            return {...state, error: action.payload}
+        }
+        case 'GET_ORDER_BY_COURSE_AND_USER':{
+            return {...state, order: action.payload}
+        }
+        case 'GET_ORDER_BY_COURSE_AND_USER_FAIL':{
             return {...state, error: action.payload}
         }
         default:

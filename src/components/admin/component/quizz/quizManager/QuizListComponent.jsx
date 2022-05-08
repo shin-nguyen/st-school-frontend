@@ -31,6 +31,8 @@ const QuizListComponent = ({
     setSearching,
   } = usePagination({ itemsPerPage, data, startFrom });
 
+  console.log(slicedData)
+
   useEffect(() => {
     setModalActive(false);
   }, [data]);
@@ -85,7 +87,7 @@ const QuizListComponent = ({
                     </td> */}
                     <td>{item.name}</td>
                     <td className="mw-445">{item.duration}</td>
-                    <td>{item.createBy?.firstName}</td>
+                    <td>{item.course?.name}</td>
                     <td>
                       {item.status ? (
                         <FontAwesomeIcon icon={faLockOpen} />

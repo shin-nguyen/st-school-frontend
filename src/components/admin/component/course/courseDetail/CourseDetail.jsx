@@ -95,6 +95,11 @@ const CourseDetail = (props) => {
                         <label>Price:</label>
                         <p>{course.price}</p>
                     </div>
+                    <Link to={'/admin/quizzes/'+ course.id +'/add'}>
+                        <div className="btn btn-success mb-10">
+                            Add Quiz
+                        </div>
+                    </Link>
                 </div>
                 <div className="col-sm-6 course-video-list">
                     <div className="list-title">

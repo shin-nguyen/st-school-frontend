@@ -87,8 +87,12 @@
 .list_video_item-inner {
   height: 100%;
   padding-left: 20px;
-  padding-top: 15px;
+  /* padding-top: 15px; */
   font-weight: 700;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .list_video_item-inner:hover {

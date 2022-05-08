@@ -25,7 +25,7 @@ function UpdateQuizDetails() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  let { quizId } = useParams();
+  let { courseId } = useParams();
   const quiz = useSelector((state) => state.quiz.quiz);
   const [quizName, setQuizName] = useState("");
   const [quizDate, setQuizDate] = useState(new Date());
@@ -53,7 +53,7 @@ function UpdateQuizDetails() {
 
   const handleSubmit = () => {
     let data = {
-      id: quizId,
+      id: courseId,
       name: quizName,
       duration: duration,
       status: status,
@@ -63,7 +63,7 @@ function UpdateQuizDetails() {
   };
 
   const getQuizDetails = () => {
-    dispatch(fetchQuiz(quizId));
+    dispatch(fetchQuiz(courseId));
     setQuizName(quiz.name);
     // setQuizDate(new Date(Number(details.scheduledFor)));
     setDuration(quiz.duration);
@@ -72,7 +72,7 @@ function UpdateQuizDetails() {
 
   useEffect(() => {
     getQuizDetails();
-  }, [quizId]);
+  }, [courseId]);
 
   if (loading) {
     return <Spinner />;

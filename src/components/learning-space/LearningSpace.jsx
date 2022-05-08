@@ -10,9 +10,10 @@ import Comment from "../comment/Comment";
 import choosebar_items from '../../assets/JsonData/choosebar_routes.json'
 import ReviewCourse from '../review-course/ReviewCourse'
 import Note from './note/Note'
-
+import Checkbox from '@mui/material/Checkbox';
 import "./learningSpace.css"
 import { Link } from 'react-router-dom'
+import { updateProgress, getOrderByCourseAndUser } from '../../services/order-services'
 
 const ListVideoItem = props => {
 
@@ -21,7 +22,12 @@ const ListVideoItem = props => {
     return (
         <div className="list_video_item can-click" onClick={props.onClick}>
             <div className={`list_video_item-inner ${active}`}>
-                Lesson {props.index + 1} : {props.name}
+                <span>Lesson {props.index + 1} : {props.name}</span>
+                <label class="form-check-label">
+                    {
+                        props.progress? <Checkbox disabled checked/> : <Checkbox disabled/>
+                    }
+                </label>
             </div>
         </div>
     )
@@ -52,16 +58,23 @@ const LearningSpace = () => {
     const [choose, setChoose] = useState('');
     const player = useRef(null);
     const [videoState, setVideoState] = useState(null);
-
     const course = useSelector(state => state.course.course);
+    const order = useSelector(state => state.order.order);
     const listVideo = useSelector(state => state.video.listVideo);
     const dispatch = useDispatch(); 
+
+    const [trueState, setTrueState] = useState(null);
 
     const handleChooseVideo = (item, index) => {
         setAutoPlay(true);
         setVideoSouce(item.source);
         setActiveItem(index);
-        console.log(player)
+        dispatch(updateProgress({
+            "courseId": id,
+            "video": item
+        }))
+        dispatch(getOrderByCourseAndUser(id));
+        setTrueState(!trueState)
     }
 
     const handleChooseItem = (item, index) => {
@@ -81,6 +94,10 @@ const LearningSpace = () => {
         player?.current.actions.pause()
     }
 
+    const isLearned = (order, video) => {
+        return order.videos?.some(v => v.id === video.id);
+    }
+
     useEffect(() => {
         player.current.subscribeToStateChange(setVideoState);
     }, [setVideoState]);
@@ -89,6 +106,7 @@ const LearningSpace = () => {
         const loadInfo = async () => {
             await dispatch(getCourseById(id));
             await dispatch(getVideosOfCourse(id));
+            await dispatch(getOrderByCourseAndUser(id));
             if (videoSource === '' && listVideo !== null) {
                 try {
                     setVideoSouce((listVideo[0].source));
@@ -97,12 +115,8 @@ const LearningSpace = () => {
                 }
             }
         };
-
+        console.log(order)
         loadInfo();
-
-        return () => {
-            return [];
-        };
     }, [dispatch, videoSource]);
 
     return (
@@ -198,23 +212,28 @@ const LearningSpace = () => {
                                 name={video.name}
                                 onClick={() => handleChooseVideo(video, index)}
                                 active={index === activeItem}
+                                progress = {isLearned(order, video)}
                             />
                         ))
                     }
-                    <div className ="list_video_item can-click">
-                        <div className= "final-exam-text">
-                            <Link to={"/do-quiz/" + course?.id}>
-                                <i class='bx bx-send'></i> Final Exam
-                            </Link>
+                    {
+                        order.progress == 100 ? 
+                        <div className ="list_video_item can-click">
+                            <div className= "final-exam-text">
+                                <Link to={"/do-quiz/" + course?.id}>
+                                    <i class='bx bx-send'></i> Final Exam
+                                </Link>
+                            </div>
+                        </div> 
+                        :
+                        <div className ="disabled list_video_item can-click">
+                            <div className= "final-exam-text">
+                                <Link onClick={ (event) => event.preventDefault()}>
+                                    <i class='bx bxs-lock'></i> Final Exam
+                                </Link> 
+                            </div>
                         </div>
-                    </div>
-                    <div className ="disabled list_video_item can-click">
-                        <div className= "final-exam-text">
-                            <Link onClick={ (event) => event.preventDefault()}>
-                                <i class='bx bxs-lock'></i> Final Exam
-                            </Link> 
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
         </div>

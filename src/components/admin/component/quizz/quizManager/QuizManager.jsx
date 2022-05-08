@@ -24,14 +24,14 @@ const QuizManager = () => {
     const itemsPerPage = 4;
     const searchByData = [
         { label: "Name", value: "name" },
-        { label: "Create By", value: "firstName" }
+        { label: "Course", value: "course.name" }
     ];
 
     const tableHead = [
         '',
         'Name',
         'Duration',
-        'Create By',
+        'Course',
         'Status',
         '',
     ]

@@ -19,7 +19,7 @@
 
 .card-title{
     font-size: 18px;
-    border-bottom:rgb(158, 158, 158) 1px solid;
+    /* border-bottom:rgb(158, 158, 158) 1px solid; */
 }
 
 .card-content{
@@ -57,4 +57,16 @@
     color:aquamarine;
     float: right;
     font-size: 40px;
+}
+
+.learning-progress-bar{
+    margin-top: -15px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.progress-detail{
+    display: flex;
+    font-size: 12px;
+    justify-content: space-between;
 }

@@ -32,9 +32,9 @@ const AdminRoutes = () => {
             <Route path='/admin/course/:id/video/add' component={VideoForm} />
             <Route path='/admin/orders' component={ListOrder} />
             <Route path='/admin/account' component={ChangePassword} />
-            <Route path="/admin/quizzes/:quizId/update-detail" component={UpdateQuizDetails}/> 
-            <Route path='/admin/quizzes/:quizId/edit' component={EditQuiz} />
-            <Route path="/admin/quizzes/add" component={CreateQuiz} />
+            <Route path="/admin/quizzes/:courseId/update-detail" component={UpdateQuizDetails}/> 
+            <Route path='/admin/quizzes/:courseId/edit' component={EditQuiz} />
+            <Route path="/admin/quizzes/:courseId/add" component={CreateQuiz} />
             <Route path="/admin/quizzes" component={QuizManager} />
 
             {/* <Route path="/admin/quizzes/edit/:id" component={EditQuiz} /> */}

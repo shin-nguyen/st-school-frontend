@@ -46,7 +46,7 @@ import { useParams } from "react-router";
 
 function EditQuiz() {
   const dispatch = useDispatch();
-  let { quizId } = useParams();
+  let { courseId } = useParams();
   const loading = useSelector((state) => state.quiz.isQuizLoading);
   const quiz = useSelector((state) => state.quiz.quiz);
 
@@ -193,7 +193,7 @@ function EditQuiz() {
   //Delete Question In Quiz With UpdateId
   const handleDeleteQuestion = () => {
     console.log('Delete' + updateId)
-    dispatch(deleteQuestionInQuiz(quizId, updateId));
+    dispatch(deleteQuestionInQuiz(courseId, updateId));
     setUpdateId(null);
     setDeleteQuestionModal(false);
   };
@@ -213,7 +213,7 @@ function EditQuiz() {
       description: newQuestion
     };
 
-    dispatch(updateQuestionInQuiz(quizId, question));
+    dispatch(updateQuestionInQuiz(courseId, question));
     onCloseHandle();
   };
 
@@ -262,19 +262,19 @@ function EditQuiz() {
       description: newQuestion
     };
 
-    dispatch(addQuestionInQuiz(quizId, question));
+    dispatch(addQuestionInQuiz(courseId, question));
     clearModal();
     setQuestionModal(false);
   };
 
   const getQuizDetails = () => {
-    dispatch(fetchQuiz(quizId));
-    // dispatch(getRecords(quizId));
+    dispatch(fetchQuiz(courseId));
+    // dispatch(getRecords(courseId));
   };
 
   useEffect(() => {
     getQuizDetails();
-  }, [quizId]);
+  }, [courseId]);
   if (loading) {
     return <Spinner />;
   } else {
