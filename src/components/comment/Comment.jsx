@@ -5,7 +5,6 @@ import CommentBox from './coment-box/CommentBox'
 const Comment = (props) => {
     const blog = props?.blog
     const course = props?.course
-    console.log(props.blog)
     return (
         <div>
             <div className='comment-box'>

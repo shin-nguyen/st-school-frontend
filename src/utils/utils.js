@@ -43,8 +43,13 @@ export const generateTimeToString = (timeNumber) => {
     return (minute + ":" + second).toString()
 }
 
-export const generateTimeToNumber = (timeString) => {
-    console.log()
+export const generateTimeToNumber = (timeString) => { // your input string
+    const time = timeString.split(':'); // split it at the colons
+    // minutes are worth 60 seconds. Hours are worth 60 minutes.
+    if (time.size === 3)
+        return (+time[0]) * 60 * 60 + (+time[1]) * 60 + (+time[2]); 
+
+    return ((+time[0]) * 60 + (+time[1]));
 }
 
 

@@ -8,7 +8,9 @@ import {
     UPDATE_COMMENT,
     UPDATE_COMMENT_FAIL,
     DELETE_COMMENT,
-    DELETE_COMMENT_FAIL
+    DELETE_COMMENT_FAIL,
+    REPLY_COMMENT,
+    REPLY_COMMENT_FAIL
   } from '../action-types/comment-action-types'
 
 
@@ -22,6 +24,15 @@ const reducer = (state = initialState, action) => {
             return {...state, listComment: action.payload}
         }
         case GET_COMMENTS_FAIL:{
+            return {...state, error: action.payload}
+        }
+        case REPLY_COMMENT:{
+            const index = findIndex(state.listComment, action.payload.id)
+            const newList = [...state.listComment];
+            newList[index] = action.payload;
+            return {...state, listComment: newList};
+        }
+        case REPLY_COMMENT_FAIL:{
             return {...state, error: action.payload}
         }
         case ADD_COMMENT:{

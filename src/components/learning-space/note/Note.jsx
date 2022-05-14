@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { Editor } from "@tinymce/tinymce-react";
 import { getNotes, addNote, deleteNote } from "../../../services/note-service"
-import { generateTimeToString } from "../../../utils/utils"
+import { generateTimeToString, generateTimeToNumber } from "../../../utils/utils"
 import './note.css'
 
 const Note = (props) => {
@@ -23,12 +23,17 @@ const Note = (props) => {
 
     const handleInputNote = () => {
         setIsSchow(!isShow)
-        // props.onPause()
+        props.onPause()
     }
 
     const handleCancel = () => {
-
+        setIsSchow(!isShow)
+        props.onPlay()
     }
+
+    // const handleSeek = (time) => {
+    //     props.onSeek(generateTimeToNumber(time));
+    // }
 
     const handleSave = () => {
         const content = String(editorRef.current.getContent());
@@ -37,7 +42,7 @@ const Note = (props) => {
             dispatch(addNote(data));
         }
         setIsSchow(!isShow)
-
+        props.onPlay()
     }
 
     const handleDelete = (id) => {
@@ -82,7 +87,7 @@ const Note = (props) => {
                                 />
                             </div>
                             <div className="note-input-btn-container">
-                                <div className="cancel-note-btn note-input-btn" onClick={() => handleInputNote()} >Cancel</div>
+                                <div className="cancel-note-btn note-input-btn" onClick={() => handleCancel()} >Cancel</div>
                                 <div className="save-note-btn note-input-btn" onClick={() => handleSave()}>Save Note</div>
                             </div>
                         </div>
@@ -125,4 +130,9 @@ const Note = (props) => {
     )
 }
 
-export default Note
+function notePropsAreEqual(prevNote, nextNote) {
+    return prevNote.index === nextNote.index && prevNote.course === nextNote.course
+      && prevNote.time === nextNote.time;
+}
+
+export default React.memo(Note, notePropsAreEqual)

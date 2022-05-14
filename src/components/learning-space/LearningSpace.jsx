@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router'
 import { getCourseById } from '../../services/course-services'
@@ -82,7 +82,7 @@ const LearningSpace = () => {
         setActiveChoose(index)
     }
 
-    const handleSeek = (seconds) => {
+    const handleSeek =  (seconds) => {
         player?.current.actions.seek(seconds);
     }
 
@@ -117,7 +117,7 @@ const LearningSpace = () => {
         };
         console.log(order)
         loadInfo();
-    }, [dispatch, videoSource]);
+    }, [dispatch, videoSource]);  
 
     return (
         <div className="learning-space body-content">\
@@ -182,8 +182,8 @@ const LearningSpace = () => {
                                 video = {listVideo[activeItem]} 
                                 course = {course}
                                 time = {videoState?.currentTime}
-                                // onPlay = {handlePlay}
-                                // onPause = {handlePause}
+                                onPlay = {handlePlay}
+                                onPause = {handlePause}
                                 // onSeek = {handleSeek}
                             />
                         </div>

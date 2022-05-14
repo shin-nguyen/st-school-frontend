@@ -158,7 +158,7 @@ const ReviewCourse = (props) => {
                                 sm={24}
                                 md={18}
                             >
-                                <div className="all-comment-info">
+                                <div className="all-review-info">
                                     <div style={{ display: "flex" }}>
                                         <div className="topnav__right-user__image">
                                             <img
@@ -169,12 +169,14 @@ const ReviewCourse = (props) => {
                                         <strong>
                                                 {item.user?.firstName + " " + item.user?.lastName}
                                                 <div className="comment-time">{item.createdTime}</div>
+                                                <div className="all-reply-content">
+                                                    <Rating name="read-only" value={item.rate} readOnly /> <br/>
+                                                    {
+                                                        item.content?  <p className="review-content">{item.content}</p> : null
+                                                    }
+                                                </div>
                                         </strong>
                                     </div>
-                                </div>
-                                <div className="all-comment-content">
-                                    <Rating name="read-only" value={item.rate} readOnly /> <br/>
-                                    <p className="cmt" style={{ marginLeft: '1rem' }}>{item.content}</p>
                                 </div>
                             </div>
                         </>

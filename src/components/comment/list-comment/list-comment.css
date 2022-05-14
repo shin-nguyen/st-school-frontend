@@ -21,7 +21,6 @@
     border-radius: 4px;
     background: #e11b1e;
     margin: 0;
-
     outline: none;
     cursor: pointer;
 }
@@ -80,7 +79,7 @@
 }
 .all-comment-content, .all-comment-more{
     display: flex;
-    margin-left: 2rem;
+    /* margin-left: 2rem; */
     padding: 0.5rem 0;
 }
 .all-comment-more{
@@ -90,7 +89,7 @@
 }
 .all-comment-more-chat{
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
 }
 
@@ -139,4 +138,16 @@
     margin-left: 15px;
     font-size: large;
     font-weight: 600;
+}
+
+.comment-replies-container{
+    padding-left: 50px;
+}
+
+.all-comment-content{
+    border-radius: 10px;
+    background-color: rgb(246, 246, 246);
+    padding: 10px;
+    padding-right: 30px;
+    padding-left: 15px;
 }

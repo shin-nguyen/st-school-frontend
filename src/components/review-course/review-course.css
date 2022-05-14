@@ -63,3 +63,13 @@
     flex-direction: column;
     margin-top: 1rem;
 }
+
+.all-reply-content{
+    margin-top: 10px;
+}
+
+.review-content{
+    padding: 5px;
+    background-color: rgb(245, 242, 242);
+    border-radius: 10px;
+}

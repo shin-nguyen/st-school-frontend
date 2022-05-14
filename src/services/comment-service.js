@@ -6,7 +6,9 @@ import {
   updateCommentSuccess,
   updateCommentFail,
   deleteCommentSuccess,
-  deleteCommentFail
+  deleteCommentFail,
+  replyCommentSuccess,
+  replyCommentFail
 } from "../actions/comment-actions";
 
 import requestService from "./request-service";
@@ -63,4 +65,14 @@ export const deleteComment = (id) => async (dispatch) => {
       dispatch(deleteCommentFail(error.message));
   }
 };
+
+export const replyComment = (id, params) => async (dispatch) => {
+  try {
+      const { data } = await requestService.post(`/comments/${id}/replies`, params, true);
+      dispatch(replyCommentSuccess(data));
+  } catch (error) {
+      toastError(error.message);
+      dispatch(replyCommentFail(error.message));
+  }
+}
 

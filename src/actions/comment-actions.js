@@ -6,7 +6,9 @@ import {
   UPDATE_COMMENT,
   UPDATE_COMMENT_FAIL,
   DELETE_COMMENT,
-  DELETE_COMMENT_FAIL
+  DELETE_COMMENT_FAIL,
+  REPLY_COMMENT,
+  REPLY_COMMENT_FAIL
 } from '../action-types/comment-action-types'
 
 export const getCommentsSuccess = (data) => ({
@@ -46,6 +48,16 @@ export const deleteCommentSuccess = (data) => ({
 
 export const deleteCommentFail = (data) => ({
   type: DELETE_COMMENT_FAIL,
+  payload: data
+});
+
+export const replyCommentSuccess = (data) => ({
+  type: REPLY_COMMENT,
+  payload: data
+});
+
+export const replyCommentFail = (data) => ({
+  type: REPLY_COMMENT_FAIL,
   payload: data
 });
 

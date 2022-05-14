@@ -6,6 +6,8 @@ import {
 } from "../../../services/comment-service";
 import { useDispatch, useSelector } from "react-redux";
 import defaultAvatar from "../../../assets/images/kai.jpg";
+import { replyComment } from "../../../services/comment-service";
+import ListRepComment from "../list-rep-comment/ListRepComment";
 
 const AllComment = (props) => {
     const dispatch = useDispatch();
@@ -16,18 +18,23 @@ const AllComment = (props) => {
     const blog = props?.blog;
     const course = props?.course;
 
+    console.log("re-render")
+    console.log(commentsShow)
+
     const showRepComment = (id) => {
         setRepCmt({ key: id, status: !repCmt.status });
     };
 
-    const handleRepComment = (value) => {
+    const handleRepComment = (id) => {
         if (1) {
-            const comment = {
-
-            };
-            //   dispatch(repCommentProduct(id, comment));
-            setRepValue("");
-            setRepCmt({ key: "", status: false });
+            if (repValue.trim() !== "") {
+                const comment = {
+                    "content": repValue
+                }
+                dispatch(replyComment(id, comment));
+                setRepValue("");
+            }
+            // setRepCmt({ key: "", status: false });
         } else alert("Đăng nhập đi bạn eiii");
     };
 
@@ -38,7 +45,7 @@ const AllComment = (props) => {
                 : dispatch(getCommentOfCourse(course?.id));
         };
         getComments();
-    }, [props]);
+    }, []);
 
     return (
         <div class="all-comment">
@@ -78,61 +85,84 @@ const AllComment = (props) => {
                                         </strong>
                                     )
                                 ) : comment.user?.roles[0] === "ADMIN" ? (
-                                    <strong>
+                                    <strong className="comment-container">
                                         {comment.user?.firstName + " " + comment.user?.lastName}{" "}
                                         <span>Admin</span>
                                         <div className="comment-time">{comment.createdTime}</div>
+                                        <div className="all-comment-content">{comment.content}</div>
                                     </strong>
                                 ) : (
-                                    <strong>
+                                    <strong  className="comment-container">
                                         {comment.user?.firstName + " " + comment.user?.lastName}
                                         <div className="comment-time">{comment.createdTime}</div>
+                                        <div className="all-comment-content">{comment.content}</div>
                                     </strong>
                                 )}
                             </div>
                         </div>
-                        <div className="all-comment-content">{comment.content}</div>
-                        <div
-                            className="all-comment-more btn can-click"
-                            onClick={() => showRepComment(comment?.id)}
-                        >
-                            <div className="all-comment-more-chat can-click">
-                                <p>
-                                    <i class="bx bxs-message-add"></i> Reply
-                                </p>
+                        <div className="k">
+                            <div className="all-comment-more-chat can-click" onClick={() => showRepComment(comment?.id)}>
+                                {
+                                    repCmt.status === true && repCmt.key === comment.id ?
+                                    <p><i class='bx bxs-hide'></i> Hide</p> : 
+                                    <p><i class="bx bxs-message-add"></i> {comment?.replies? comment?.replies?.length : 0} Reply</p>
+                                }
                             </div>
-                            {repCmt.status === true && repCmt.key === comment.id ? (
-                                <div className="col"
-                                    span={18}
-                                    xs={24}
-                                    md={18}
-                                    align="start"
-                                    style={{
-                                        alignItems: "center",
-                                        marginTop: "1rem",
-                                        marginBottom: "1rem",
-                                    }}
-                                >
-                                    <div
-                                        className="comment-area"
-                                        style={{ display: "flex", alignItems: "center" }}
-                                    >
-                                        <textarea
-                                            placeholder="Xin mời để lại câu hỏi, CellphoneS sẽ trả lời trong 1h từ 8h - 22h mỗi ngày."
-                                            rows={10}
-                                            cols={3}
-                                            vaule={repValue}
-                                            onChange={(e) => setRepValue(e.target.value)}
-                                        ></textarea>
-                                    </div>
+                            <div className="comment-replies-container">
+                                <div className="comment-replies-box">
+                                    {
+                                        repCmt.status === true && repCmt.key === comment.id ? (
+                                            <div className="col"
+                                                span={18}
+                                                xs={24}
+                                                md={18}
+                                                align="start"
+                                                style={{
+                                                    alignItems: "center",
+                                                    marginTop: "1rem",
+                                                    marginBottom: "1rem",
+                                                }}
+                                            >
+                                                <div
+                                                    className="comment-area"
+                                                    style={{ display: "flex", alignItems: "center" }}
+                                                >
+                                                    <textarea
+                                                        placeholder="Enter the comment"
+                                                        rows={10}
+                                                        cols={3}
+                                                        vaule={repValue}
+                                                        onChange={(e) => setRepValue(e.target.value)}
+                                                    ></textarea>
+                                                </div>
 
-                                    <div className="comment-send">
-                                        <button onClick={() => handleRepComment()}>Trả lời</button>
-                                    </div>
+                                                <div className="comment-send">
+                                                    <button
+                                                        onClick={() => handleRepComment(comment.id)}
+                                                    >Reply</button>
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            ""
+                                        )
+                                    }
                                 </div>
-                            ) : (
-                                ""
-                            )}
+                                <div className="comment-replies-list">
+                                    {
+                                        comment?.replies?.length > 0 && repCmt.status == true && repCmt.key == comment.id ? (
+                                            <ListRepComment
+                                                allrepcomment={comment?.replies}
+                                                showRepComment={showRepComment}
+                                                id={comment?.id}
+                                                blog={blog}
+                                                course={course}
+                                            ></ListRepComment>
+                                        ) : (
+                                            ""
+                                        )
+                                    }
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </>
@@ -141,4 +171,8 @@ const AllComment = (props) => {
     );
 };
 
-export default AllComment;
+function isPropsAreEqual(prevNote, nextNote) {
+    return prevNote.course === nextNote.course;
+}
+
+export default React.memo(AllComment, isPropsAreEqual);
