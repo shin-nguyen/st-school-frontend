@@ -20,6 +20,7 @@ import { findIndex } from '../../utils/utils'
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
+import { generateTimeToString, generateTimeToNumber } from "../../utils/utils"
 
 const ListVideoItem = props => {
 
@@ -37,10 +38,10 @@ const ListVideoItem = props => {
                 <ListItem>
                     <ListItemAvatar>
                         {
-                            props.progress? <Checkbox disabled checked/> : <Checkbox disabled/>
+                            props.progress? <Checkbox disabled checked/> : <Checkbox/>
                         }
                     </ListItemAvatar>
-                    <ListItemText primary={'Lesson' + props.index +': '+ props.name} secondary={props.duration} />
+                    <ListItemText primary={'Lesson' + props.index +': '+ props.name} secondary={generateTimeToString(props.duration)} />
                 </ListItem>
             </div>
         </div>

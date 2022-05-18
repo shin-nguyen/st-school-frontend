@@ -81,7 +81,7 @@ const CourseDetail = (props) => {
                     </div>
                     <div className="info-control">
                         <label>Description:</label>
-                        <p>{course.description}</p>
+                        <p>{course.about}</p>
                     </div>
                     <div className="info-control">
                         <label>Lecturer:</label>
