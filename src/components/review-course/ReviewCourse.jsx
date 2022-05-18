@@ -52,7 +52,7 @@ const ReviewCourse = (props) => {
 
     useEffect(() => {
         dispatch(getReviewsOfCourse(id));
-        setAverageRate(Math.round(listReview?.reduce((a, c) => a + c.rate, 0) / countReview))
+        setAverageRate(Math.round((listReview?.reduce((a, c) => a + c.rate, 0) / countReview)*10)/10)
         return () => {
             return [];
         }

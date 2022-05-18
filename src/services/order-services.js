@@ -27,6 +27,7 @@ export const getAllOrder  = () => async (dispatch) => {
 export const getOrderByCourseAndUser  = (courseId) => async (dispatch) => {
     try {
         const { data } = await requestService.get(`/order/by-course-and-user/${courseId}`, true);
+        console.log(data)
         dispatch(getOrderByCourseAndUserSuccess(data));
     } catch (error) {
         dispatch(getOrderByCourseAndUserFail(error.message));

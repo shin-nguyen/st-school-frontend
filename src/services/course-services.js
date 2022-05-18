@@ -70,9 +70,9 @@ export const resetCourse = () => async (dispatch) => {
 
 export const addCourse = (params) => async (dispatch) => {
     try {
-        toastSuccess("Save Success");
         const { data } = await requestService.post(`/course/add`, params, true, "multipart/form-data");
         dispatch(addCourseSuccess(data));
+        toastSuccess("Save Success");
     } catch (error) {
         toastError(error.message);
         dispatch(addCourseFail(error.message));

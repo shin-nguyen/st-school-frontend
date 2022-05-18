@@ -18,5 +18,77 @@
     {
         "id": "4",
         "name": "Chinese"
-    }   
+    },
+    {
+        "id": "5",
+        "name": "Spanish"
+    },
+    {
+        "id": "6",
+        "name": "Bengali"
+    },
+    {
+        "id": "7",
+        "name": "Portuguese"
+    },
+    {
+        "id": "8",
+        "name": "Russian"
+    },
+    {
+        "id": "9",
+        "name": "Korean"
+    },
+    {
+        "id": "10",
+        "name": "French"
+    },
+    {
+        "id": "11",
+        "name": "German"
+    },
+    {
+        "id": "12",
+        "name": "Tamil"
+    },
+    {
+        "id": "13",
+        "name": "Italian"
+    },
+    {
+        "id": "14",
+        "name": "Indonesian"
+    },
+    {
+        "id": "15",
+        "name": "Khmer"
+    },
+    {
+        "id": "16",
+        "name": "Nepali"
+    },
+    {
+        "id": "17",
+        "name": "Northern Kurdish"
+    },
+    {
+        "id": "18",
+        "name": "Bavarian"
+    },
+    {
+        "id": "19",
+        "name": "Greek"
+    },
+    {
+        "id": "20",
+        "name": "Uyghur"
+    },
+    {
+        "id": "21",
+        "name": "Assamese"
+    },
+    {
+        "id": "22",
+        "name": "Malaysian"
+    }
 ]

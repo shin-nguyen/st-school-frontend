@@ -3,3 +3,10 @@
     margin-left: 5%;
 
 }
+
+.course-info-group{
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    justify-content: space-between;
+}

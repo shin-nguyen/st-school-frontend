@@ -32,7 +32,8 @@ const CoursesManager = () => {
         '',
         'Image',
         'Name',
-        'Description',
+        'Lecturer',
+        'Topic',
         'Price',
         '',
     ]

@@ -14,6 +14,12 @@ import Checkbox from '@mui/material/Checkbox';
 import "./learningSpace.css"
 import { Link } from 'react-router-dom'
 import { updateProgress, getOrderByCourseAndUser } from '../../services/order-services'
+import NoteBox from './note/NoteBox'
+import NoteList from './note/NoteList'
+import { findIndex } from '../../utils/utils'
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
 
 const ListVideoItem = props => {
 
@@ -22,12 +28,20 @@ const ListVideoItem = props => {
     return (
         <div className="list_video_item can-click" onClick={props.onClick}>
             <div className={`list_video_item-inner ${active}`}>
-                <span>Lesson {props.index + 1} : {props.name}</span>
+                {/* <span>Lesson {props.index + 1} : {props.name}</span>
                 <label class="form-check-label">
                     {
                         props.progress? <Checkbox disabled checked/> : <Checkbox disabled/>
                     }
-                </label>
+                </label> */}
+                <ListItem>
+                    <ListItemAvatar>
+                        {
+                            props.progress? <Checkbox disabled checked/> : <Checkbox disabled/>
+                        }
+                    </ListItemAvatar>
+                    <ListItemText primary={'Lesson' + props.index +': '+ props.name} secondary={props.duration} />
+                </ListItem>
             </div>
         </div>
     )
@@ -61,12 +75,11 @@ const LearningSpace = () => {
     const course = useSelector(state => state.course.course);
     const order = useSelector(state => state.order.order);
     const listVideo = useSelector(state => state.video.listVideo);
-    const dispatch = useDispatch(); 
+    const dispatch = useDispatch();
 
     const [trueState, setTrueState] = useState(null);
 
     const handleChooseVideo = (item, index) => {
-        setAutoPlay(true);
         setVideoSouce(item.source);
         setActiveItem(index);
         dispatch(updateProgress({
@@ -74,6 +87,7 @@ const LearningSpace = () => {
             "video": item
         }))
         dispatch(getOrderByCourseAndUser(id));
+        setAutoPlay(true);
         setTrueState(!trueState)
     }
 
@@ -82,8 +96,17 @@ const LearningSpace = () => {
         setActiveChoose(index)
     }
 
-    const handleSeek =  (seconds) => {
-        player?.current.actions.seek(seconds);
+    const handleSeek = (time, item) => {
+        console.log(item)
+        console.log(time)
+        const index = findIndex(listVideo, item?.id)
+        console.log(index)
+        if (index === -1) return
+        setVideoSouce(item?.source);
+        setActiveItem(index);
+        setAutoPlay(true);
+        player?.current.actions.seek(time);
+        player?.current.actions.pause()
     }
 
     const handlePlay = () => {
@@ -117,7 +140,7 @@ const LearningSpace = () => {
         };
         console.log(order)
         loadInfo();
-    }, [dispatch, videoSource]);  
+    }, [dispatch, videoSource]);
 
     return (
         <div className="learning-space body-content">\
@@ -150,52 +173,57 @@ const LearningSpace = () => {
                     </div>
                 </div>
                 {
-                    choose === 'overview' ? 
-                    <div className="comment-wrapper">
-                        <div className="list-comment">
-                            Overview
-                        </div>
-                    </div>: ''
+                    choose === 'overview' ?
+                        <div className="comment-wrapper">
+                            <div className="list-comment">
+                                Overview
+                            </div>
+                        </div> : ''
                 }
                 {
-                    choose === 'comments' ? 
-                    <div className="comment-wrapper">
-                        <div className="list-comment">
-                            <Comment course={course} />
-                        </div>
-                    </div>: ''
+                    choose === 'comments' ?
+                        <div className="comment-wrapper">
+                            <div className="list-comment">
+                                <Comment course={course} />
+                            </div>
+                        </div> : ''
                 }
                 {
-                    choose === 'reviews' ? 
-                    <div className="comment-wrapper">
-                        <div className="list-comment">
-                            <ReviewCourse course={course} />
-                        </div>
-                    </div>: ''
+                    choose === 'reviews' ?
+                        <div className="comment-wrapper">
+                            <div className="list-comment">
+                                <ReviewCourse course={course} />
+                            </div>
+                        </div> : ''
                 }
                 {
-                    choose === 'notes' ? 
-                    <div className="comment-wrapper">
-                        <div className="list-comment">
-                            <Note 
-                                index = {activeItem} 
-                                video = {listVideo[activeItem]} 
-                                course = {course}
-                                time = {videoState?.currentTime}
-                                onPlay = {handlePlay}
-                                onPause = {handlePause}
-                                // onSeek = {handleSeek}
-                            />
-                        </div>
-                    </div>: ''
+                    choose === 'notes' ?
+                        <div className="comment-wrapper">
+                            <div className="list-comment">
+                                <NoteBox
+                                    index={activeItem}
+                                    listVideo={listVideo}
+                                    video={listVideo[activeItem]}
+                                    course={course}
+                                    time={videoState?.currentTime}
+                                    onPlay={handlePlay}
+                                    onPause={handlePause}
+                                />
+                                <NoteList
+                                    course={course}
+                                    listVideo={listVideo}
+                                    onSeek={handleSeek}
+                                />
+                            </div>
+                        </div> : ''
                 }
                 {
-                    choose === 'tools' ? 
-                    <div className="comment-wrapper">
-                        <div className="list-comment">
-                            Tools
-                        </div>
-                    </div>: ''
+                    choose === 'tools' ?
+                        <div className="comment-wrapper">
+                            <div className="list-comment">
+                                Tools
+                            </div>
+                        </div> : ''
                 }
             </div>
             <div className={"playlist-wrapper show-" + showPlaylist}>
@@ -210,29 +238,30 @@ const LearningSpace = () => {
                             <ListVideoItem
                                 index={index}
                                 name={video.name}
+                                duration={video.duration}
                                 onClick={() => handleChooseVideo(video, index)}
                                 active={index === activeItem}
-                                progress = {isLearned(order, video)}
+                                progress={isLearned(order, video)}
                             />
                         ))
                     }
                     {
-                        order.progress == 100 ? 
-                        <div className ="list_video_item can-click">
-                            <div className= "final-exam-text">
-                                <Link to={"/do-quiz/" + course?.id}>
-                                    <i class='bx bx-send'></i> Final Exam
-                                </Link>
+                        order.progress == 100 ?
+                            <div className="list_video_item can-click">
+                                <div className="final-exam-text">
+                                    <Link to={"/do-quiz/" + course?.id}>
+                                        <i class='bx bx-send'></i> Final Exam
+                                    </Link>
+                                </div>
                             </div>
-                        </div> 
-                        :
-                        <div className ="disabled list_video_item can-click">
-                            <div className= "final-exam-text">
-                                <Link onClick={ (event) => event.preventDefault()}>
-                                    <i class='bx bxs-lock'></i> Final Exam
-                                </Link> 
+                            :
+                            <div className="disabled list_video_item can-click">
+                                <div className="final-exam-text">
+                                    <Link onClick={(event) => event.preventDefault()}>
+                                        <i class='bx bxs-lock'></i> Final Exam
+                                    </Link>
+                                </div>
                             </div>
-                        </div>
                     }
                 </div>
             </div>

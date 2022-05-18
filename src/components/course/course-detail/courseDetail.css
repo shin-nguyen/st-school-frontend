@@ -96,6 +96,21 @@
     border-bottom:#e6e6e6 1px solid;
 }
 
-.collapse{
-    padding: auto;
+.course-detail-sub-title{
+    font-family: Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -.02rem;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.course-detail-sub-content{
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.course-info-detail{
+    display: flex;
+    flex-direction: row;
 }

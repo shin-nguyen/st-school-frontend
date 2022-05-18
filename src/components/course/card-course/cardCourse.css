@@ -3,27 +3,59 @@
     color: var(--txt-color);
 }
 
+.card-body{
+    padding: 1rem;
+}
+
 .card-footer{
-    padding: 10px;
+    padding: 10px 20px 10px 20px;
     background-color: var(--main-bg);
     color: var(--txt-color);
 }
 
 .h-445{
-    height: 425px;
+    height: 445px;
 }
 
-.h-300{
-    height: 300px;
+.h-330{
+    height: 330;
 }
 
 .card-title{
-    font-size: 18px;
+    font-size: 13px;
+    font-weight: 600;
+    height: 30%;
     /* border-bottom:rgb(158, 158, 158) 1px solid; */
 }
 
 .card-content{
-    font-size: 12px;
+    font-size: 11px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.card-content-header{
+    height : 73px;
+}
+
+.card-content-item{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card-content-item span{
+    font-size: 1rem;
+    color: rgb(255, 189, 82);
+    font-weight: 700;
+}
+
+.card-info-item{
+    padding-bottom: 5px;
+    font-size: 10px;
+    font-weight: 100;
 }
 
 .card-img-top{
@@ -61,8 +93,8 @@
 
 .learning-progress-bar{
     margin-top: -15px;
-    padding-right: 5px;
-    padding-left: 5px;
+    padding-right: 16px;
+    padding-left: 16px;
 }
 
 .progress-detail{

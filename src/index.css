@@ -87,7 +87,7 @@
 }
 
 body {
-    font-family: "Roboto", sans-serif;
+    font-family: Helvetica,Arial,sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     letter-spacing: 0.7px;
@@ -203,6 +203,10 @@ input:focus {
 
 .mw-445{
     max-width: 445px;
+}
+
+.mw-200{
+    max-width: 200px;
 }
 
 .fw-bold{

@@ -78,8 +78,9 @@ const CourseListComponent = ({
                     <td>
                       <img src={item.image} alt="" className="custom-img"></img>
                     </td>
-                    <td>{item.name}</td>
-                    <td className="mw-445">{item.description}</td>
+                    <td className="mw-200">{item.name}</td>
+                    <td className="mw-200">{item.lecturer}</td>
+                    <td>{item.topic}</td>
                     <td>${item.price}</td>
                     <td>
                       <Link to={'course/' + item.id + '/detail'}>

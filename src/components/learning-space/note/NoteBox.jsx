@@ -1,18 +1,39 @@
-import React from 'react'
+import React, { useState, useRef } from "react";
+import  { useDispatch } from 'react-redux'
+import { Editor } from "@tinymce/tinymce-react";
+import { addNote } from "../../../services/note-service"
+import { generateTimeToString } from "../../../utils/utils"
+import './note.css'
 
 const NoteBox = (props) => {
+    const video = props?.video
+    const course = props?.course
+    const time = props?.time;
     const editorRef = useRef(null);
+    const dispatch = useDispatch();
     const [isShow, setIsSchow] = useState(false);
 
-    const onSave = () => {
+    const handleCancel = () => {
         setIsSchow(!isShow)
-        props.onSave(String(editorRef.current.getContent()))
+        props.onPlay()
     }
 
-    const onCancel = () => {
+    const handleInputNote = () => {
         setIsSchow(!isShow)
-        props.onCancel()
+        props.onPause()
     }
+
+    const handleSave = () => {
+        const content = String(editorRef.current.getContent());
+        const data = course ? { course: course, atTime: generateTimeToString(time), video : video, content: content } : null
+        if (data && editorRef.length != 0) {
+            dispatch(addNote(data));
+        }
+        setIsSchow(!isShow)
+        props.onPlay()
+    }
+
+    console.log("re-render")
 
     return (
         <div>
@@ -52,8 +73,8 @@ const NoteBox = (props) => {
                                 />
                             </div>
                             <div className="note-input-btn-container">
-                                <div className="cancel-note-btn note-input-btn" onClick={() => onCancel()} >Cancel</div>
-                                <div className="save-note-btn note-input-btn" onClick={() => onSave()}>Save Note</div>
+                                <div className="cancel-note-btn note-input-btn" onClick={() => handleCancel()} >Cancel</div>
+                                <div className="save-note-btn note-input-btn" onClick={() => handleSave()}>Save Note</div>
                             </div>
                         </div>
                     </div>
@@ -64,7 +85,7 @@ const NoteBox = (props) => {
 }
 
 function isPropsAreEqual(prevNote, nextNote) {
-    prevNote.time === nextNote.time;
+    return prevNote.time === nextNote.time;
 }
 
 export default React.memo(NoteBox, isPropsAreEqual)

@@ -37,6 +37,7 @@ const courseReducer = (state = initialState, action) => {
             return {...state, error: action.payload}
         }
         case ADD_COURSE:{
+            debugger
             const newList = [...state.listCourse];
             newList.push(action.payload);
             return {...state, listCourse: newList};

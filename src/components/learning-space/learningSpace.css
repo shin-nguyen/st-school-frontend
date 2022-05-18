@@ -58,15 +58,17 @@
 
 .playlist-wrapper {
   width: 30%;
+  border-bottom: rgb(0, 0, 0) 1px solid;
 }
 
 .playlist-header {
-  padding: 36px;
+  padding: 20px;
   /* background-color: rgb(207, 203, 203); */
   font-weight: bold;
   font-size: 20px;
   text-align: center;
   border-bottom: 5px double rgb(196, 190, 190);
+  height: 17vh;
 }
 
 .playlist-header i {
@@ -74,7 +76,8 @@
 }
 
 .playlist-content {
-  height: 60.5vh;
+  height: 57.1vh;
+  width: 100%;
   overflow: hidden;
   overflow-y: scroll;
 }
@@ -83,14 +86,15 @@
   height: 60px;
   border-bottom: solid 1px rgb(209, 208, 208);
   margin: auto;
+  overflow: hidden;
 }
 
 .list_video_item-inner {
   height: 100%;
-  padding-left: 20px;
+  /* padding-left: 20px; */
   /* padding-top: 15px; */
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.6rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -161,4 +165,11 @@
   padding-left: 20px;
   padding-top: 15px;
   font-weight: 700;
+}
+
+.course-content-item{
+  margin: auto;
+  width: 90vh;
+  display: flex;
+  justify-content: space-between;
 }
