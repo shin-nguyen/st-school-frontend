@@ -17,6 +17,8 @@ const AllComment = (props) => {
     const [repCmt, setRepCmt] = useState({ key: "", status: false });
     const blog = props?.blog;
     const course = props?.course;
+    const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+    const isLogin = localStorage.getItem("isLoggedIn");
 
     console.log("re-render")
     console.log(commentsShow)
@@ -26,7 +28,7 @@ const AllComment = (props) => {
     };
 
     const handleRepComment = (id) => {
-        if (1) {
+        if (isLoggedIn || isLogin) {
             if (repValue.trim() !== "") {
                 const comment = {
                     "content": repValue
@@ -35,7 +37,7 @@ const AllComment = (props) => {
                 setRepValue("");
             }
             // setRepCmt({ key: "", status: false });
-        } else alert("Đăng nhập đi bạn eiii");
+        } else alert("Please sign in to comment!");
     };
 
     useEffect(() => {
@@ -49,10 +51,13 @@ const AllComment = (props) => {
 
     return (
         <div class="all-comment">
-            <h5 className="comment-total mb-4">
+            {
+                props.blog?
+                <h5 className="comment-total mb-4">
                 <span className="">{comments.length + " comments"}</span>{" "}
                 <i class="bx bx-sm bx-message-square-dots"></i>
-            </h5>
+                </h5> : null
+            }
             {commentsShow.map((comment) => (
                 <>
                     <div
@@ -77,11 +82,13 @@ const AllComment = (props) => {
                                             {comment.user?.firstName + " " + comment.user?.lastName}{" "}
                                             <span>Author</span>
                                             <div className="comment-time">{comment.createdTime}</div>
+                                            <div className="all-comment-content">{comment.content}</div>
                                         </strong>
                                     ) : (
                                         <strong>
                                             {comment.user?.firstName + " " + comment.user?.lastName}
                                             <div className="comment-time">{comment.createdTime}</div>
+                                            <div className="all-comment-content">{comment.content}</div>
                                         </strong>
                                     )
                                 ) : comment.user?.roles[0] === "ADMIN" ? (

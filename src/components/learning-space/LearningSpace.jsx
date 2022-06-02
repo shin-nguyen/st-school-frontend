@@ -10,6 +10,7 @@ import Comment from "../comment/Comment";
 import choosebar_items from '../../assets/JsonData/choosebar_routes.json'
 import ReviewCourse from '../review-course/ReviewCourse'
 import Note from './note/Note'
+import Overview from './overview/Overview'
 import Checkbox from '@mui/material/Checkbox';
 import "./learningSpace.css"
 import { Link } from 'react-router-dom'
@@ -20,28 +21,30 @@ import { findIndex } from '../../utils/utils'
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
-import { generateTimeToString, generateTimeToNumber } from "../../utils/utils"
+import { generateTimeToString} from "../../utils/utils"
+import LearningTool from './tool/LearningTool'
+import { toastSuccess, toastError } from "../../utils/utils";
+import botAvatar from "../../assets/images/bot.png"
+import Avatar from '@mui/material/Avatar';
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material/styles';
 
 const ListVideoItem = props => {
 
     const active = props.active ? 'active' : ''
+    const index = props.index + 1
 
     return (
         <div className="list_video_item can-click" onClick={props.onClick}>
             <div className={`list_video_item-inner ${active}`}>
-                {/* <span>Lesson {props.index + 1} : {props.name}</span>
-                <label class="form-check-label">
-                    {
-                        props.progress? <Checkbox disabled checked/> : <Checkbox disabled/>
-                    }
-                </label> */}
                 <ListItem>
                     <ListItemAvatar>
                         {
-                            props.progress? <Checkbox disabled checked/> : <Checkbox/>
+                            props.progress ? <Checkbox disabled checked color="success"/> : <Checkbox />
                         }
                     </ListItemAvatar>
-                    <ListItemText primary={'Lesson' + props.index +': '+ props.name} secondary={generateTimeToString(props.duration)} />
+                    <ListItemText primary={'Lesson ' + index + ': ' + props.name} secondary={generateTimeToString(props.duration)} />
                 </ListItem>
             </div>
         </div>
@@ -70,7 +73,7 @@ const LearningSpace = () => {
     const [activeItem, setActiveItem] = useState(0);
     const [activeChoose, setActiveChoose] = useState(0);
     const [autoPlay, setAutoPlay] = useState(false);
-    const [choose, setChoose] = useState('');
+    const [choose, setChoose] = useState('overview');
     const player = useRef(null);
     const [videoState, setVideoState] = useState(null);
     const course = useSelector(state => state.course.course);
@@ -144,10 +147,26 @@ const LearningSpace = () => {
     }, [dispatch, videoSource]);
 
     return (
-        <div className="learning-space body-content">\
+        <div className="learning-space body-content">
             <div className="content-wrapper">
                 <div className="content-container">
                     <div className="video-wrapper">
+                        <div className="topleft can-click">
+                        <HtmlTooltip
+                            title={
+                            <React.Fragment>
+                                <Typography color="inherit">Hi Boss, I'm your assistant - Shila</Typography>
+                                {"Come to me whenever you need help!"}
+                            </React.Fragment>
+                            }
+                        >
+                            <Avatar
+                                alt="Ala Chan"
+                                src={botAvatar}
+                                sx={{ width: 80, height: 80 }}
+                            />
+                        </HtmlTooltip>   
+                        </div>
                         <Player
                             playsInline
                             autoPlay={autoPlay}
@@ -171,13 +190,29 @@ const LearningSpace = () => {
                                 />
                             ))
                         }
+                        {
+                            order?.isComplete ?
+                                <div>
+                                    <Link to={"/certificate/" + order?.id} >
+                                        <ChoosebarItem
+                                            title={"Get certificate"}
+                                        />
+                                    </Link>
+                                </div> :
+                                <div className='disabled'>
+                                    <ChoosebarItem
+                                        title={"Get certificate"}
+                                        onClick={() => toastError("You must complete the course first!")}
+                                    />
+                                </div>       
+                        }
                     </div>
                 </div>
                 {
                     choose === 'overview' ?
                         <div className="comment-wrapper">
                             <div className="list-comment">
-                                Overview
+                                <Overview course={course} listVideo={listVideo} />
                             </div>
                         </div> : ''
                 }
@@ -222,7 +257,7 @@ const LearningSpace = () => {
                     choose === 'tools' ?
                         <div className="comment-wrapper">
                             <div className="list-comment">
-                                Tools
+                                <LearningTool />
                             </div>
                         </div> : ''
                 }
@@ -269,5 +304,17 @@ const LearningSpace = () => {
         </div>
     )
 }
+
+const HtmlTooltip = styled(({ className, ...props }) => (
+    <Tooltip {...props} classes={{ popper: className }} />
+  ))(({ theme }) => ({
+    [`& .${tooltipClasses.tooltip}`]: {
+      backgroundColor: '#f5f5f9',
+      color: 'rgba(0, 0, 0, 0.87)',
+      maxWidth: 270,
+      fontSize: theme.typography.pxToRem(12),
+      border: '1px solid #dadde9',
+    },
+  }));
 
 export default LearningSpace

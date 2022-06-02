@@ -5,8 +5,9 @@
 }
 .rate-star-title{
     display: flex;
-    font-size: 23px;
-    padding: 1rem 0;
+    font-size: 18px;
+    /* padding: 1rem 0; */
+    font-weight: 700;
 }
 .thongke span{
     display: flex;

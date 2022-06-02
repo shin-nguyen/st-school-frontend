@@ -1,0 +1,44 @@
+.certificate-container{
+    display: flex;
+    justify-content: center;
+    /* padding: 20px; */
+    padding-left: 40px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    margin-bottom: 80px;
+    margin-top: 50px;
+}
+
+.certificate-content{
+    width: 61.5%;
+    padding: 30px;
+    border: 1px rgba(212, 210, 210, 0.996) solid;
+    border-radius: 10px;
+    background-color: rgb(250, 253, 253);
+    min-height: 580px;
+}
+
+.certificate-info{
+    width: 25%;
+    /* padding: 10px; */
+    margin-left: 50px;
+}
+
+.certificate-course-info{
+    width: 75%;
+    /* padding-left: 20px; */
+}
+
+.certificate-download-btn{
+    height: 50px;
+    width: 130px;
+    background-color: rgb(250, 249, 249);
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #000;
+    border: 1px solid;
+}

@@ -21,7 +21,7 @@
 }
 
 .video-wrapper {
-  height: 582px;
+  height: 645px;
   background-color: black;
   padding: 0 15%;
   margin: auto;
@@ -76,14 +76,14 @@
 }
 
 .playlist-content {
-  height: 57.1vh;
+  height: 65vh;
   width: 100%;
   overflow: hidden;
   overflow-y: scroll;
 }
 
 .list_video_item {
-  height: 60px;
+  height: 75px;
   border-bottom: solid 1px rgb(209, 208, 208);
   margin: auto;
   overflow: hidden;
@@ -122,7 +122,10 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-left: 6%;
+  justify-content: center;
+  /* padding-left: 6%; */
+  border-bottom: 1px solid rgb(204, 204, 204);
+  margin-bottom: 30px;
 }
 
 .choosebar__item {
@@ -130,7 +133,7 @@
 }
 
 .choosebar__item-inner {
-  padding: 28px 20px;
+  padding: 15px 20px;
   display: flex;
   align-items: center;
   font-weight: 600;
@@ -151,7 +154,8 @@
 }
 
 .choosebar__item-inner.active {
-  border-radius: 5px;
+  /* border-radius: 5px; */
+  border-bottom: 2px solid black;
   /* background-image: linear-gradient(
     to right,
     var(--main-color),

@@ -1,0 +1,31 @@
+.learning-tool-container{
+    width: 84%;
+    margin-left: 8%;
+}
+
+.learning-tool-schedule-btn{
+    height: 45px;
+    width: 250px;
+    padding: auto;
+    align-items: center;
+    background-color: rgb(195, 62, 186);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+}
+
+.learning-tool-schedule-content{
+    align-items: left;
+    width: 70%;
+}
+
+.learning-tool-action-btn{
+    display: flex;
+    margin-top: 20px;
+}
+
+.learning-tool-confirm-btn{
+    margin-right: 10px;
+}

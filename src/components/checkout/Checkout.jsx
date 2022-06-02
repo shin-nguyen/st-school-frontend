@@ -25,8 +25,10 @@ const Checkout = () => {
     }
 
     const handelBack = () =>{
-        history.push("/course/"+course.id)
-    }
+        setTimeout(() => {
+            history.push("/course/"+course.id)
+        }, 2000)
+    }; 
 
     return (
         <div className="checkout-card-container">
@@ -122,8 +124,8 @@ const Checkout = () => {
                                 clientId: CLIENT_ID
                             }}
                         />
-                        <button className="btn btn-success" onClick={handleClick}>
-                            Enroll Free
+                        <button className="btn btn-success" onClick={handleClick} style={{ "width": "100%" }}>
+                            Enroll Free Now
                         </button>
                     </div>
                 </div>

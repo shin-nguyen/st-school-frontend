@@ -21,6 +21,7 @@ import WriteBlogPage from "../pages/WriteBlogPage";
 import MyBlogsPage from "../pages/MyBlogsPage";
 import SingleQuizPage from "../pages/SingleQuizPage";
 import SingleResultPagePage from "../pages/SingleResultPagePage";
+import CertificatePage from "../pages/CertificatePage";
 
 const Routes = () => {
   return (
@@ -33,7 +34,7 @@ const Routes = () => {
       <Route path="/forgot" exact component={ForgotPassword} />
       <Route path="/do-quiz/:quizId" component={SingleQuizPage} />
       <Route path="/results/:recordId" component={SingleResultPagePage} />
-
+      <Route path="/certificate/:certificateId" component={CertificatePage} />
       <Route
         path="/account"
         render={() =>

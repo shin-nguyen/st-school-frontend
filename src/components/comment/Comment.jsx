@@ -8,8 +8,13 @@ const Comment = (props) => {
     return (
         <div>
             <div className='comment-box'>
-                <h5 className="text-muted mb-4">
-                </h5>
+                {
+                    course?
+                    <h5 className="comment-total mb-4">
+                        <span className="">{course.commentTotal + " comments"}</span>{" "}
+                        <i class="bx bx-sm bx-message-square-dots"></i>
+                    </h5> : null
+                }
                 <CommentBox
                     blog={blog}
                     course={course}

@@ -30,11 +30,13 @@ const ListRepComment = (props) => {
                       {comment.user?.firstName + " " + comment.user?.lastName}{" "}
                       <span>Author</span>
                       <div className="comment-time">{comment.createdTime}</div>
+                      <div className="all-comment-content">{comment.content}</div>
                     </strong>
                   ) : (
                     <strong>
                       {comment.user?.firstName + " " + comment.user?.lastName}
                       <div className="comment-time">{comment.createdTime}</div>
+                      <div className="all-comment-content">{comment.content}</div>
                     </strong>
                   )
                 ) : comment.user?.roles[0] === "ADMIN" ? (
