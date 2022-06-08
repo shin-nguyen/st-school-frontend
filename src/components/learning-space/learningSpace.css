@@ -8,6 +8,7 @@
 
 .learning-space {
   display: flex;
+  justify-content: space-between;
 }
 
 .content-wrapper {
@@ -21,7 +22,7 @@
 }
 
 .video-wrapper {
-  height: 645px;
+  height: 640px;
   background-color: black;
   padding: 0 15%;
   margin: auto;
@@ -58,7 +59,6 @@
 
 .playlist-wrapper {
   width: 30%;
-  border-bottom: rgb(0, 0, 0) 1px solid;
 }
 
 .playlist-header {
@@ -76,10 +76,11 @@
 }
 
 .playlist-content {
-  height: 65vh;
+  height: 64.4vh;
   width: 100%;
   overflow: hidden;
   overflow-y: scroll;
+  border-bottom: rgb(0, 0, 0) 1px solid;
 }
 
 .list_video_item {
@@ -126,6 +127,7 @@
   /* padding-left: 6%; */
   border-bottom: 1px solid rgb(204, 204, 204);
   margin-bottom: 30px;
+  z-index: 100 !important;
 }
 
 .choosebar__item {
@@ -176,4 +178,132 @@
   width: 90vh;
   display: flex;
   justify-content: space-between;
+}
+
+.active-step{
+  border-radius: 10px !important;
+  background-color: white !important;
+  color: black !important;
+  z-index: 100 !important;
+}
+
+.step1{
+  width: 400px;
+  height: 250px;
+  margin-left: 40%;
+  margin-top: 10%;
+  background-color: rgb(255, 255, 255);
+  z-index: 10;
+  position: absolute;
+  border-radius: 50px;
+}
+
+.step2{
+  width: 450px;
+  height: 250px;
+  margin-left: -438px;
+  margin-top: 40px;
+  background-color: rgb(255, 255, 255);
+  z-index: 10;
+  position: absolute;
+  border-radius: 50px;
+}
+
+.step3{
+  width: 380px;
+  height: 260px;
+  margin-left: -374px;
+  margin-top: -80px;
+  background-color: rgb(255, 255, 255);
+  z-index: 10;
+  position: absolute;
+  border-radius: 50px;
+}
+
+.step4{
+  width: 400px;
+  height: 220px;
+  margin-left: -388px;
+  margin-top: 42vh;
+  background-color: rgb(255, 255, 255);
+  z-index: 100;
+  position: absolute;
+  border-radius: 50px;
+}
+
+.step5{
+  width: 350px;
+  height: 200px;
+  margin-left: 5.7%;
+  margin-top: -193px;
+  background-color: rgb(255, 255, 255);
+  z-index: 100;
+  position: absolute;
+  border-radius: 50px;
+}
+
+.step6{
+  width: 380px;
+  height: 200px;
+  margin-left: 7.5%;
+  margin-top: -195px;
+  background-color: rgb(255, 255, 255);
+  z-index: 100;
+  position: absolute;
+  border-radius: 50px;
+}
+
+.step7{
+  width: 350px;
+  height: 200px;
+  margin-left: 31%;
+  margin-top: -193px;
+  background-color: rgb(255, 255, 255);
+  z-index: 100;
+  position: absolute;
+  border-radius: 50px;
+}
+
+.step8{
+  width: 420px;
+  height: 250px;
+  margin-left: 41%;
+  margin-top: -245px;
+  background-color: rgb(255, 255, 255);
+  z-index: 100;
+  position: absolute;
+  border-radius: 50px;
+}
+
+.step9{
+  width: 350px;
+  height: 240px;
+  margin-left: 46%;
+  margin-top: -236px;
+  background-color: rgb(255, 255, 255);
+  z-index: 100;
+  position: absolute;
+  border-radius: 50px;
+}
+
+.step10{
+  width: 452px;
+  height: 235px;
+  margin-left: 57%;
+  margin-top: -230px;
+  background-color: rgb(255, 255, 255);
+  z-index: 100;
+  position: absolute;
+  border-radius: 50px;
+}
+
+.step11{
+  width: 420px;
+  height: 220px;
+  margin-left: 40%;
+  margin-top: 10%;
+  background-color: rgb(255, 255, 255);
+  z-index: 100;
+  position: absolute;
+  border-radius: 50px;
 }

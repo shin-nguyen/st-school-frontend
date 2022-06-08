@@ -1,0 +1,36 @@
+.step{
+    padding: 0 10% 0 10%;
+    font-size: medium;
+    font-weight: 500;
+    color: #000;
+}
+
+.step-bot-avt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.next-btn-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 20% 0 20%;
+}
+
+.next-btn{
+    width: 80px;
+    height: 40px;
+    border-radius: 15px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(206, 108, 10);
+}
+
+.prev-btn{
+    width: 80px;
+    height: 40px;
+    border-radius: 15px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(3, 59, 59);
+}

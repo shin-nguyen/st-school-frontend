@@ -289,8 +289,25 @@ input:focus {
 }
 
 .disabled { 
-    color:rgb(212, 199, 199);
+    color:rgb(212, 199, 199) !important;
     /* background-color: #dbd8d8; */
+}
+
+.disabled :hover{
+    color:rgb(212, 199, 199) !important;
+}
+
+.hidden{
+    display: none;
+}
+
+.prioritized{
+    z-index: 100;
+}
+
+.disabled-background{
+    background-color: #727171;
+    color: #8a8a8a;
 }
 
 .loadmore-container{
@@ -317,4 +334,9 @@ input:focus {
 .loadmore-btn:hover {
     color: var(--main-color);
     background-color: rgb(252, 249, 234);
+  }
+
+  .largerCheckbox{
+    width: 18px;
+    height: 18px;
   }

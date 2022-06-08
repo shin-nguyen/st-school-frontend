@@ -89,7 +89,7 @@ const Checkout = () => {
                                             items: [
                                                 {
                                                     name: course.name,
-                                                    description: course.description,
+                                                    description: course.about,
                                                     sku: course.id,
                                                     unit_amount: {
                                                         currency_code: "USD",

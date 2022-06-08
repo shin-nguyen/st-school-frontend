@@ -5,7 +5,7 @@ export default function SingleQuizPage(props) {
   return (
     <>
       <Navbar {...props}/>
-      <div style={{display: "flex"}}>
+      <div style={{display: "flex",justifyContent:"center"}}>
         <Quiz/>
       </div>
     </>

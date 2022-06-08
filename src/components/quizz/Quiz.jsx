@@ -217,8 +217,12 @@ const Quiz = () => {
               padding: "2%",
               borderBottom: "3px solid #222",
               minHeight: "30vh",
+              alignContent: "center",
+              display: "flex",
+              justifyContent: "center"
             }}
           >
+            <div>
             <FormControl
               style={{ margin: "auto", width: "100%" }}
               component="fieldset"
@@ -246,6 +250,8 @@ const Quiz = () => {
                 })}
               </RadioGroup>
             </FormControl>
+            </div>
+            
           </Grid>
 
           {/* {Buttton Next And Pre Page} */}
