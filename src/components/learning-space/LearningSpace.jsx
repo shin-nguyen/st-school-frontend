@@ -11,6 +11,7 @@ import ReviewCourse from '../review-course/ReviewCourse'
 import Overview from './overview/Overview'
 import { Link } from 'react-router-dom'
 import { updateProgress, getOrderByCourseAndUser } from '../../services/order-services'
+import { isNewbie } from '../../services/user-service'
 import NoteBox from './note/NoteBox'
 import NoteList from './note/NoteList'
 import { findIndex } from '../../utils/utils'
@@ -87,6 +88,7 @@ const LearningSpace = () => {
     const course = useSelector(state => state.course.course);
     const order = useSelector(state => state.order.order);
     const listVideo = useSelector(state => state.video.listVideo);
+    const isUserNewbie = useSelector(state => state.user.isNewbie);
 
     const [videoSource, setVideoSouce] = useState('');
     const [showPlaylist, setShowPlaylist] = useState(true);
@@ -106,6 +108,8 @@ const LearningSpace = () => {
     const [isPlay, setPlay] = useState(false);
 
     const [open, setOpen] = React.useState(false);
+
+    console.log(isUserNewbie)
 
     const handleLoadedData = () => {
         if (isPlay) audioRef.current.play();
@@ -233,15 +237,26 @@ const LearningSpace = () => {
             await dispatch(getCourseById(id));
             await dispatch(getVideosOfCourse(id));
             await dispatch(getOrderByCourseAndUser(id));
-            if (videoSource === '' && listVideo !== null) {
-                try {
-                    setVideoSouce((listVideo[0].source));
-                } catch {
-                    setVideoSouce("");
-                }
-            }
+            await dispatch(isNewbie());
         };
+        debugger
         loadInfo();
+        setTimeout(() => {
+            if(isUserNewbie){
+                setStep(1);
+                setOpen(true);
+                setAudioIndex((audioIndex + 1) % audios.length)
+                setPlay(true);
+                audioRef.current.play();
+            }
+        }, 1500);
+        if (videoSource === '' && listVideo !== null) {
+            try {
+                setVideoSouce((listVideo[0].source));
+            } catch {
+                setVideoSouce("");
+            }
+        }
         // setInterval(function (){
         //     checkLearning()
         // },5000);
@@ -377,11 +392,11 @@ const LearningSpace = () => {
                                         />
                                     </Link>
                                 </div> :
-                                <Tooltip title="You must complete the course first!">
+                                <Tooltip title="You must complete the course and have a final test score of more than 8 marks!">
                                     <div className={"disabled" + (step === 10 ? " active-step" : "")}>
                                         <ChoosebarItem
                                             title={"Get certificate"}
-                                            onClick={() => toastError("You must complete the course first!")}
+                                            onClick={() => toastError("You must complete the course and have a final test score of more than 8 marks!")}
                                         />
                                     </div>
                                 </Tooltip>
@@ -497,7 +512,7 @@ const LearningSpace = () => {
                             </div>
                             :
                             <div className={"disabled list_video_item can-click" + (step === 4 ? " active-step" : "")}>
-                                <Tooltip title="You don't have permission to do this">
+                                <Tooltip title="You must complete the course first!">
                                     <div className="final-exam-text">
                                         <Link onClick={(event) => event.preventDefault()}>
                                             <i class='bx bxs-lock'></i> Final Exam
@@ -518,7 +533,11 @@ const LearningSpace = () => {
     )
 }
 
-export default LearningSpace
+function isPropsAreEqual(prevNote, nextNote) {
+    return prevNote.course === nextNote.course || prevNote.order === nextNote.order;
+}
+
+export default React.memo(LearningSpace, isPropsAreEqual)
 
 const email = localStorage.getItem("email");
 const step1Message = "Hi " + email + ". Welcome to ST-School! Before starting to study, let me take you on a tour to see what ST-School has to offer. ≧◠◡◠≦✌";

@@ -12,10 +12,16 @@ import {
   ADD_BLOG_SUCCESS,
   ADD_BLOG_LIST_SUCCESS,
   RESET_BLOG,
+  GET_TOP_NEW_BLOG,
+  GET_TOP_NEW_BLOG_FAIL,
+  GET_TOP_VIEW,
+  GET_TOP_VIEW_FAIL
 } from "../action-types/blog-action-types";
 
 const initialState = {
   blogs: [],
+  topView: [],
+  topNewBlog: [],
   blog: {},
   isBlogLoading: false,
 };
@@ -66,6 +72,19 @@ const reducer = (state = initialState, action) => {
 
     case RESET_BLOG: {
       return { ...state, blog: null };
+    }
+
+    case GET_TOP_VIEW: {
+      return { ...state, topView: action.payload }
+    }
+    case GET_TOP_VIEW_FAIL: {
+      return { ...state, error: action.payload }
+    }
+    case GET_TOP_NEW_BLOG: {
+      return { ...state, topNewBlog: action.payload }
+    }
+    case GET_TOP_NEW_BLOG_FAIL: {
+      return { ...state, error: action.payload }
     }
     default:
       return state;

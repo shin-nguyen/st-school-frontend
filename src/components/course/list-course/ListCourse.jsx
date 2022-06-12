@@ -22,7 +22,7 @@ const ListCourse = (props) => {
 
     return (
         <>
-            <div className="page-body body-content">
+            <div>
                 <div className='row'>
                 {
                     props.isBought === true ?

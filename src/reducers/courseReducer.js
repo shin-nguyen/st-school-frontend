@@ -14,13 +14,19 @@ import {
     UPDATE_COURSE,
     UPDATE_COURSE_FAIL,
     DELETE_COURSE,
-    DELETE_COURSE_FAIL
+    DELETE_COURSE_FAIL,
+    GET_TOP_HOT,
+    GET_TOP_HOT_FAIL,
+    GET_TOP_NEW,
+    GET_TOP_NEW_FAIL
 } from '../action-types/course-action-types'
 
 const initialState ={
     listCourse:[],
     purchasedCourses:[],
-    course: {}
+    course: {},
+    topNew:[],
+    topHot:[]
 }
 const courseReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -74,6 +80,18 @@ const courseReducer = (state = initialState, action) => {
             return {...state, course: {}}
         }
         case RESET_COURSE_FAIL:{
+            return {...state, error: action.payload}
+        }
+        case GET_TOP_HOT:{
+            return {...state, topHot: action.payload}
+        }
+        case GET_TOP_HOT_FAIL:{
+            return {...state, error: action.payload}
+        }
+        case GET_TOP_NEW:{
+            return {...state, topNew: action.payload}
+        }
+        case GET_TOP_NEW_FAIL:{
             return {...state, error: action.payload}
         }
         default:

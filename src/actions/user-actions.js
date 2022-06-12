@@ -6,7 +6,8 @@ import { LOADING_USER_INFO,
     USER_UPDATED_PASSWORD_SUCCESS,
     USER_UPDATED_SUCCESS,
     FETCH_USER_BY_QUERY_SUCCESS,
-    USER_IMAGE_UPDATED_SUCCESS
+    USER_IMAGE_UPDATED_SUCCESS,
+    CHECK_NEWBIE
 } from '../action-types/user-actions-types' 
 
 export const loadingUserInfo = () => ({
@@ -44,4 +45,9 @@ export const resetInputForm = () => ({
 export const fetchUserByQuerySuccess = (user) => ({
     type: FETCH_USER_BY_QUERY_SUCCESS,
     payload: user
+});
+
+export const checkIsNewbie = (isNewbie) => ({
+    type: CHECK_NEWBIE,
+    payload: isNewbie
 });

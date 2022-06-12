@@ -45,10 +45,12 @@ const MyCoursesPage = (props) => {
                         setSearchQuery={setSearchQuery}
                     />
             </div>
-            <ListCourse
-                isBought={true}
-                listOrder={filteredOrders}
-            />
+            <div className="page-body body-content">
+                <ListCourse
+                    isBought={true}
+                    listOrder={filteredOrders}
+                />
+            </div>
             <Footer/>
         </div>
     )

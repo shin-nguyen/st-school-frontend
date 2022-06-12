@@ -8,13 +8,15 @@ import {
     RESET_INPUT_FORM,
     FETCH_USER_BY_QUERY_SUCCESS,
     LOADING_USER_INFO,
-    USER_IMAGE_UPDATED_SUCCESS
+    USER_IMAGE_UPDATED_SUCCESS,
+    CHECK_NEWBIE
 } from "../action-types/user-actions-types";
 
 const initialState = {
     user :{},
     isLoggedIn : false,
     isLoaded: false,
+    isNewbie:false,
     successMessage:"",
     userEditErrors :{},
     userResetPasswordErrors:{},
@@ -23,6 +25,10 @@ const initialState = {
 const reducer = (state = initialState, action) => {
 
     switch (action.type) {
+
+        case CHECK_NEWBIE:
+            return {...state, isNewbie: action.payload}
+
         case LOADING_USER_INFO:
             return {...state, isLoaded: true}
 

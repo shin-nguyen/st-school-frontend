@@ -5,7 +5,7 @@ import Footer from '../components/footer/Footer'
 import PageTitle from '../components/page-title/PageTitle'
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getAllCourse, getPurchasedCourses, getAllCourseByMe } from '../services/course-services';
+import { getAllCourse, getAllCourseByMe } from '../services/course-services';
 import SearchBar from '../components/share/search-bar/SearchBar';
 
 const CoursePage = (props) => {
@@ -41,9 +41,11 @@ const CoursePage = (props) => {
                         setSearchQuery={setSearchQuery}
                     />
             </div>
-            <ListCourse 
-                listCourse={filteredCourses}
-            />
+            <div className="page-body body-content">
+                <ListCourse 
+                    listCourse={filteredCourses}
+                />
+            </div>
             <Footer />
         </div>
     )

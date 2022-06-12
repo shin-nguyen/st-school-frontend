@@ -11,6 +11,10 @@ import {
   ADD_BLOG_SUCCESS,
   RESET_BLOG,
   ADD_BLOG_LIST_SUCCESS,
+  GET_TOP_NEW_BLOG,
+  GET_TOP_NEW_BLOG_FAIL,
+  GET_TOP_VIEW,
+  GET_TOP_VIEW_FAIL
   // ADD_BLOG_FAIL
 } from "../action-types/blog-action-types";
 
@@ -71,11 +75,23 @@ export const addBlogListSuccess = (blogs) => ({
   type: ADD_BLOG_LIST_SUCCESS,
   payload: blogs,
 });
-// export const addBlogFail = (blog) => ({
-//     type: ADD_BLOG_FAIL,
-//     payload: blog
-// });
-// export const deleteBlogFail = (data) => ({
-//     type: ADD_BLOG_FAIL,
-//     payload: data
-// });
+
+export const getTopNewSuccess = (data) => ({
+  type: GET_TOP_NEW_BLOG,
+  payload: data
+});
+
+export const getTopNewFail = (data) => ({
+  type: GET_TOP_NEW_BLOG_FAIL,
+  payload: data
+});
+
+export const getTopViewSuccess = (data) => ({
+  type: GET_TOP_VIEW,
+  payload: data
+});
+
+export const getTopViewFail = (data) => ({
+  type: GET_TOP_VIEW_FAIL,
+  payload: data
+});

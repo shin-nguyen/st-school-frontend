@@ -11,8 +11,13 @@ import {
   addBlogSuccess,
   resetBlogSuccess,
   addBlogListSuccess,
+  getTopNewSuccess,
+  getTopNewFail,
+  getTopViewSuccess,
+  getTopViewFail
   // addBlogFail
 } from "../actions/blog-actions";
+import { toastSuccess, toastError } from "../utils/utils";
 
 import {
   getAllBlogsByQuery,
@@ -124,3 +129,23 @@ export const addBlogByExcel = (params, history) => async (dispatch) => {
     console.log(error.message);
   }
 };
+
+export const getTopView = () => async (dispatch) => {
+  try {
+      const { data } = await RequestService.get(`/blogs/top-view`);
+      dispatch(getTopViewSuccess(data));
+  } catch (error) {
+      toastError(error.message);
+      dispatch(getTopViewFail(error.message));
+  }
+}
+
+export const getTopNewBlog = () => async (dispatch) => {
+  try {
+      const { data } = await RequestService.get(`/blogs/top-new`);
+      dispatch(getTopNewSuccess(data));
+  } catch (error) {
+      toastError(error.message);
+      dispatch(getTopNewFail(error.message));
+  }
+}

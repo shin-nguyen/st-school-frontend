@@ -12,4 +12,8 @@ export const UPDATE_COURSE = "UPDATE_COURSE";
 export const UPDATE_COURSE_FAIL = "UPDATE_COURSE_FAIL";
 export const DELETE_COURSE = "DELETE_COURSE";
 export const DELETE_COURSE_FAIL = "DELETE_COURSE_FAIL";
+export const GET_TOP_NEW = "GET_TOP_NEW";
+export const GET_TOP_NEW_FAIL = "GET_TOP_NEW_FAIL";
+export const GET_TOP_HOT = "GET_TOP_HOT";
+export const GET_TOP_HOT_FAIL = "GET_TOP_HOT_FAIL";
 

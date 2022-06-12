@@ -15,7 +15,11 @@ import {
     updateCourseSuccess,
     updateCourseFail,
     deleteCourseSuccess,
-    deleteCourseFail
+    deleteCourseFail,
+    getTopHotSuccess,
+    getTopHotFail,
+    getTopNewSuccess,
+    getTopNewFail
 }
     from '../actions/course-actions'
 
@@ -100,3 +104,23 @@ export const deleteCourse = (courseId) => async (dispatch) => {
         dispatch(deleteCourseFail(error.message));
     }
 };
+
+export const getTopHot = (isLoggedIn) => async (dispatch) => {
+    try {
+        const { data } = await requestService.get(`/course/top-hot`, isLoggedIn);
+        dispatch(getTopHotSuccess(data));
+    } catch (error) {
+        toastError(error.message);
+        dispatch(getTopHotFail(error.message));
+    }
+}
+
+export const getTopNew = (isLoggedIn) => async (dispatch) => {
+    try {
+        const { data } = await requestService.get(`/course/top-new`, isLoggedIn);
+        dispatch(getTopNewSuccess(data));
+    } catch (error) {
+        toastError(error.message);
+        dispatch(getTopNewFail(error.message));
+    }
+}

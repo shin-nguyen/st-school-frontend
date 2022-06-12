@@ -12,7 +12,11 @@ import {
     UPDATE_COURSE,
     UPDATE_COURSE_FAIL,
     DELETE_COURSE,
-    DELETE_COURSE_FAIL
+    DELETE_COURSE_FAIL,
+    GET_TOP_HOT,
+    GET_TOP_HOT_FAIL,
+    GET_TOP_NEW,
+    GET_TOP_NEW_FAIL
 } from '../action-types/course-action-types'
 
 export const fetchCourseSuccess = (data) => ({
@@ -80,6 +84,26 @@ export const deleteCourseSuccess = (data) => ({
 
 export const deleteCourseFail = (data) => ({
     type: DELETE_COURSE_FAIL,
+    payload: data
+});
+
+export const getTopNewSuccess = (data) => ({
+    type: GET_TOP_NEW,
+    payload: data
+});
+
+export const getTopNewFail = (data) => ({
+    type: GET_TOP_NEW_FAIL,
+    payload: data
+});
+
+export const getTopHotSuccess = (data) => ({
+    type: GET_TOP_HOT,
+    payload: data
+});
+
+export const getTopHotFail = (data) => ({
+    type: GET_TOP_HOT_FAIL,
     payload: data
 });
 

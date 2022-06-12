@@ -3,27 +3,12 @@ import React from "react";
 import "./topnav.css";
 
 import { Link } from "react-router-dom";
-
 import Dropdown from "../../../dropdown/Dropdown";
-
 import { useSelector } from "react-redux";
-
-
 import user_image from '../../../../assets/images/kai.jpg'
-
 import user_menu_admin from '../../../../assets/JsonData/user_menu_admin.json'
 import ThemeMenu from '../../../share/thememenu/ThemeMenu'
 
-
-// import user_menu_admin from "../../../../assets/JsonData/user_menu_admin.json";
-// import ThemeMenu from "../../../thememenu/ThemeMenu";
-
-// const renderNotificationItem = (item, index) => (
-//     <div className="notification-item" key={index}>
-//         <i className={item.icon}></i>
-//         <span>{item.content}</span>
-//     </div>
-// )
 
 const renderUserToggle = (user) => (
   <div className="topnav__right-user">

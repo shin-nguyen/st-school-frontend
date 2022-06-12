@@ -7,7 +7,8 @@ import {
     userUpdatedPasswordFailure,
     userUpdatedPasswordSuccess,
     userUpdatedSuccess,
-    addUserImageSuccess
+    addUserImageSuccess,
+    checkIsNewbie
 } from "../actions/user-actions";
 import {userByQuery} from "../utils/graphql-query/users-query";
 
@@ -67,4 +68,9 @@ export const fetchUserInfoByQuery = (id) => async (dispatch) =>{
 
     dispatch(fetchUserSuccess(response.data.data.user));
 
+}
+
+export const isNewbie = () => async (dispatch) =>{
+    const response  = await RequestService.get("/users/is-newbie");
+    dispatch(checkIsNewbie(response));
 }
