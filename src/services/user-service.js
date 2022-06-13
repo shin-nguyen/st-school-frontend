@@ -10,44 +10,43 @@ import {
     addUserImageSuccess,
     checkIsNewbie
 } from "../actions/user-actions";
-import {userByQuery} from "../utils/graphql-query/users-query";
 
-export const fetchUserInfo = () => async (dispatch) =>{
+export const fetchUserInfo = () => async (dispatch) => {
     dispatch(loadingUserInfo());
-    const response = await RequestService.get("/users/info",true);
-    localStorage.setItem("email",response.data.email);
-    localStorage.setItem("userRole",response.data.roles);
-    localStorage.setItem("isLoggedIn","true");
+    const response = await RequestService.get("/users/info", true);
+    localStorage.setItem("email", response.data.email);
+    localStorage.setItem("userRole", response.data.roles);
+    localStorage.setItem("isLoggedIn", "true");
 
     dispatch(fetchUserSuccess(response.data));
 }
 
-export const updateUserInfo = (userEdit)=> async(dispatch) =>{
-    try{
+export const updateUserInfo = (userEdit) => async (dispatch) => {
+    try {
         console.log(userEdit);
-        const response = await RequestService.put("/users/edit",userEdit,true);
+        const response = await RequestService.put("/users/edit", userEdit, true);
         dispatch(userUpdatedSuccess(response.data));
     }
-    catch(error){
+    catch (error) {
         dispatch(userUpdatedFailure(error.response.data));
     }
 }
 
 export const addUserImage = (params) => async (dispatch) => {
     try {
-        const { data } = await RequestService.post(`/users/add-image`, params,true);
+        const { data } = await RequestService.post(`/users/add-image`, params, true);
         await dispatch(addUserImageSuccess(data));
     } catch (error) {
         // dispatch(addBlogFail(error.message));
         console.log(error.message)
     }
 }
-export const updateUserPassword = (data) => async (dispatch) =>{
-    try{
-        const response  = await RequestService.put("/auth/edit/password",data,true);
+export const updateUserPassword = (data) => async (dispatch) => {
+    try {
+        const response = await RequestService.put("/auth/edit/password", data, true);
         dispatch(userUpdatedPasswordSuccess(response.data));
     }
-    catch(error){
+    catch (error) {
         dispatch(userUpdatedPasswordFailure(error.response.data));
     }
 }
@@ -57,20 +56,8 @@ export const resetForm = () => (dispatch) => {
 };
 
 
-//GraphQL
-export const fetchUserInfoByQuery = (id) => async (dispatch) =>{
-    dispatch(loadingUserInfo());
 
-    const response =  await RequestService.post("/user/graphql/info",{query:userByQuery(id)},true);
-    localStorage.setItem("email",response.data.data.user.email);
-    localStorage.setItem("userRole",response.data.data.user.roles);
-    localStorage.setItem("isLoggedIn","true");
-
-    dispatch(fetchUserSuccess(response.data.data.user));
-
-}
-
-export const isNewbie = () => async (dispatch) =>{
-    const response  = await RequestService.get("/users/is-newbie");
+export const isNewbie = () => async (dispatch) => {
+    const response = await RequestService.get("/users/is-newbie");
     dispatch(checkIsNewbie(response));
 }

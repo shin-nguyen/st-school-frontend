@@ -19,11 +19,6 @@ import {
 } from "../actions/blog-actions";
 import { toastSuccess, toastError } from "../utils/utils";
 
-import {
-  getAllBlogsByQuery,
-  getBlogByQuery,
-  getAllBlogsByMe,
-} from "../utils/graphql-query/blog-query.js";
 import RequestService from "./request-service";
 
 export const fetchBlogs = () => async (dispatch) => {
@@ -63,33 +58,21 @@ export const fetchBlogsByStatus = (gender) => async (dispatch) => {
   dispatch(fetchBlogsByStatusSuccess(response.data));
 };
 
-// GraphQL thunks
 export const fetchBlogsByQuery = (data) => async (dispatch) => {
   dispatch(loadingBlog());
-  const response = await RequestService.post("/blogs/graphql/blogs", {
-    query: getAllBlogsByQuery(data),
-  });
-  dispatch(fetchBlogsByQuerySuccess(response.data.data.blogs));
+  const response = await RequestService.get("/blogs");
+  dispatch(fetchBlogsByQuerySuccess(response.data));
 };
 
-// GraphQL thunks
 export const fetchBlogsByMe = (data) => async (dispatch) => {
   dispatch(loadingBlog());
-  const response = await RequestService.post(
-    "/blogs/graphql/blogs/me",
-    { query: getAllBlogsByMe(data) },
+  const response = await RequestService.get(
+    "/blogs/me",
     true
   );
-  dispatch(fetchBlogsByQuerySuccess(response.data.data.blogsOfMe));
+  dispatch(fetchBlogsByQuerySuccess(response.data));
 };
 
-export const fetchBlogByQuery = (id) => async (dispatch) => {
-  dispatch(loadingBlog());
-  const response = await RequestService.post("/blogs/graphql/blog", {
-    query: getBlogByQuery(id),
-  });
-  dispatch(fetchBlogByQuerySuccess(response.data.data.blog));
-};
 
 export const deleteBlog = (id) => async (dispatch) => {
   const response = await RequestService.delete("/blogs/delete/" + id, true);
@@ -132,20 +115,20 @@ export const addBlogByExcel = (params, history) => async (dispatch) => {
 
 export const getTopView = () => async (dispatch) => {
   try {
-      const { data } = await RequestService.get(`/blogs/top-view`);
-      dispatch(getTopViewSuccess(data));
+    const { data } = await RequestService.get(`/blogs/top-view`);
+    dispatch(getTopViewSuccess(data));
   } catch (error) {
-      toastError(error.message);
-      dispatch(getTopViewFail(error.message));
+    toastError(error.message);
+    dispatch(getTopViewFail(error.message));
   }
 }
 
 export const getTopNewBlog = () => async (dispatch) => {
   try {
-      const { data } = await RequestService.get(`/blogs/top-new`);
-      dispatch(getTopNewSuccess(data));
+    const { data } = await RequestService.get(`/blogs/top-new`);
+    dispatch(getTopNewSuccess(data));
   } catch (error) {
-      toastError(error.message);
-      dispatch(getTopNewFail(error.message));
+    toastError(error.message);
+    dispatch(getTopNewFail(error.message));
   }
 }

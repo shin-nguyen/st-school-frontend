@@ -11,8 +11,6 @@ import {
   getGraphDashboard,
 } from "../actions/admin-actions";
 import RequestService from "./request-service";
-import { userByQuery, usersByQuery } from "../utils/graphql-query/users-query";
-import { getOrderDashboardsByQuery } from "../utils/graphql-query/order-query";
 
 export const fetchAllUsers = () => async (dispatch) => {
   dispatch(loadingData());
@@ -38,16 +36,14 @@ export const fetchCustomersDashboard = () => async (dispatch) => {
   dispatch(getCustomersDashboard(response.data));
 };
 
-// GraphQL thunks
 export const fetchOrderDashboard = () => async (dispatch) => {
   dispatch(loadingData());
-  const response = await RequestService.post(
-    "/admin/graphql/dashboard/order",
-    { query: getOrderDashboardsByQuery },
+  const response = await RequestService.get(
+    "/admin/dashboard/order",
     true
   );
   console.log(response);
-  dispatch(getOrderDashboard(response.data.data.orders));
+  dispatch(getOrderDashboard(response.data));
 };
 
 export const fetchGraphDashboard = () => async (dispatch) => {
@@ -66,23 +62,20 @@ export const formReset = () => async (dispatch) => {
   dispatch(reset());
 };
 
-//GraphQL thunks
 export const fetchUserInfoByQuery = (id) => async (dispatch) => {
   dispatch(loadingData());
-  const response = await RequestService.post(
-    "/admin/graphql/user",
-    { query: userByQuery(id) },
+  const response = await RequestService.get(
+    "/admin/user",
     true
   );
-  dispatch(getUserInfoByQuery(response.data.data.user));
+  dispatch(getUserInfoByQuery(response.data));
 };
 
 export const fetchAllUsersByQuery = () => async (dispatch) => {
   dispatch(loadingData());
-  const response = await RequestService.post(
-    "/admin/graphql/user/all",
-    { query: usersByQuery },
+  const response = await RequestService.get(
+    "/admin/user/all",
     true
   );
-  dispatch(getAllUsersByQuery(response.data.data.users));
+  dispatch(getAllUsersByQuery(response.data));
 };
