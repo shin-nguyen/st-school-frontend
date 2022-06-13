@@ -34,15 +34,15 @@ const Certificate = () => {
 
         <div className='certificate-container'>
             <div className='certificate-content' id='content'>
-                <div style={{ fontSize: '33px', fontWeight: '900', marginBottom: '60px' }}>ST School</div>
+                <div style={{ fontSize: '33px', fontWeight: '900', marginBottom: '30px', letterSpacing:"10px", fontFamily:"fantasy" }}>ST School</div>
                 <div style={{ fontSize: '17px', fontWeight: '600', marginBottom: '30px' }}>CERTIFICATE OF COMPLETION</div>
-                <div style={{ fontSize: '30px', fontWeight: '900', marginBottom: '10px' }}>{course?.name}</div>
+                <div style={{ fontSize: '40px', fontWeight: '900', marginBottom: '10px', fontFamily:"fantasy" }}>{course?.name}</div>
                 <div style={{ "display": "flex", "alignItems": "center", "marginBottom": "60px" }}>
                     <span style={{ fontSize: '16px', fontWeight: '500' }}>Instructors:&nbsp;</span>
                     <span style={{ fontSize: '16px', fontWeight: '700' }}> {course?.lecturer}</span>
                 </div>
-                <div style={{ fontSize: '32px', fontWeight: '900', marginBottom: '50px' }}>
-                    {user?.firstName + " " + user?.lastName}
+                <div style={{ fontSize: '42px', fontWeight: '800', marginBottom: '50px', letterSpacing:"5px", fontFamily:"fantasy" }}>
+                    {user?.firstName.normalize("NFD").replace(/[\u0300-\u036f]/g, "") + " " + user?.lastName.normalize("NFD").replace(/[\u0300-\u036f]/g, "")}
                 </div>
                 <div style={{ "display": "flex", "alignItems": "center" }}>
                     <span>Date:&nbsp;</span>
