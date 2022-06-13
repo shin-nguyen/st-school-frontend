@@ -4,7 +4,7 @@ import moment from 'moment';
 
 export default function Blog({ blog }) {
   return (
-    <div className="blog col-md-4 col-sm-6">
+    <div>
       {blog.image && <img className="blogImg" src={blog.image} alt="Img" />}
       <div className="blogInfo">
         <div className="blogCats">

@@ -6,7 +6,12 @@ import { getTopHot, getTopNew } from "../../services/course-services";
 import { getTopNewBlog, getTopView } from "../../services/blog-service";
 import ListCourse from "../../components/course/list-course/ListCourse";
 import ListBlog from "../blog/list-blogs/ListBlog";
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+import CardCourse from '../course/card-course/CardCourse'
+import CardBlog from '../blog/card-blog/CardBlog'
 import "./home.css";
+import CarouselCustom from "./component/carousel/CarouselCustom";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -33,28 +38,64 @@ const Home = () => {
         <div>
           <p className="p-title">Hot Courses</p>
           <div>
-            <ListCourse listCourse={listTopHot} />
+            <CarouselCustom
+                items={
+                  listTopHot.map((item) => (
+                    <div className="mr-20" key={item.id}>
+                      <CardCourse
+                        course={item}
+                        goto={"/course/" + item.id} />
+                    </div>
+                  ))
+                }
+              />
           </div>
         </div>
         <br />
         <div>
           <p className="p-title">Newest Courses</p>
           <div>
-            <ListCourse listCourse={listTopNew} />
+            <CarouselCustom
+              items={
+                listTopNew.map((item) => (
+                  <div className="mr-20" key={item.id}>
+                    <CardCourse
+                      course={item}
+                      goto={"/course/" + item.id} />
+                  </div>
+                ))
+              }
+            />
           </div>
         </div>
         <br />
         <div>
           <p className="p-title">New Blogs</p>
           <div>
-            <ListBlog blogs={listTopNewBlog} />
+            <CarouselCustom
+              items={
+                listTopNewBlog.map((b) => (
+                  <div className="mr-20" key={b.id}>
+                    <CardBlog blog={b} />
+                  </div>
+                ))
+              }
+            />
           </div>
         </div>
         <br />
         <div>
           <p className="p-title">Top Blogs</p>
           <div>
-            <ListBlog blogs={listTopView} />
+          <CarouselCustom
+              items={
+                listTopView.map((b) => (
+                  <div className="mr-20" key={b.id}>
+                    <CardBlog blog={b} />
+                  </div>
+                ))
+              }
+            />
           </div>
         </div>
       </div>
@@ -62,7 +103,7 @@ const Home = () => {
         pageId="111158174768013"
         appId="1377288292701161"
         language="sv_SE"
-        // htmlRef="<REF_STRING>"
+      // htmlRef="<REF_STRING>"
       />
       ,
     </div>

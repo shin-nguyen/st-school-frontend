@@ -19,7 +19,9 @@ export default function Blogs({ blogs }) {
       <div className="blogs">
         {
           listShow.map((b) => (
-            <CardBlog blog={b} />
+            <div  className="col-md-4">
+              <CardBlog blog={b} />
+            </div>
           ))
         }
       </div>

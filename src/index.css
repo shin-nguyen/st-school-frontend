@@ -189,6 +189,10 @@ input:focus {
     margin-right: 20px;
 }
 
+.ml-20{
+    margin-left: 20px;
+}
+
 .m-sides-5{
     margin-left: 5px;
     margin-right: 5px;

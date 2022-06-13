@@ -245,7 +245,7 @@ const LearningSpace = () => {
 
   useEffect(() => {
     player.current.subscribeToStateChange(setVideoState);
-  }, [setVideoState]);
+  }, []);
 
   useEffect(() => {
     const loadInfo = async () => {
@@ -254,7 +254,6 @@ const LearningSpace = () => {
       await dispatch(getOrderByCourseAndUser(id));
       await dispatch(isNewbie());
     };
-    debugger;
     loadInfo();
     setTimeout(() => {
       if (isUserNewbie) {
@@ -272,10 +271,10 @@ const LearningSpace = () => {
         setVideoSouce("");
       }
     }
-    // setInterval(function (){
+    // setTimeout(() => {
     //     checkLearning()
     // },5000);
-  }, [dispatch, videoSource]);
+  }, []);
 
   return (
     <div
@@ -589,7 +588,7 @@ const LearningSpace = () => {
 
 function isPropsAreEqual(prevNote, nextNote) {
   return (
-    prevNote.course === nextNote.course || prevNote.order === nextNote.order
+    prevNote.course === nextNote.course
   );
 }
 

@@ -6,14 +6,23 @@ import { generateTimeToString, generateTimeToNumber } from "../../../utils/utils
 import './note.css'
 
 const NoteList = (props) => {
+
+    const defaultSize = 10;
+    const defaultValueIncreased = 10;
+
     const course = props?.course
     const listVideo = props?.listVideo
-    const listNote = useSelector(state => state.note.listNote);
-    const listNoteShow = listNote?.sort((a, b) => b.id - a.id);
     const editorRef = useRef("");
     const dispatch = useDispatch();
     const [isShow, setIsSchow] = useState(false);
     const [isShowUpdate, setIsShowUpdate] = useState({ key: -1, status: false });
+    const listNote = useSelector(state => state.note.listNote);
+    const [listSize, setListSize] = useState(defaultSize);
+    const listNoteShow = listNote?.sort((a, b) => b.id - a.id).slice(0, listSize);
+
+    const updateList = () => {
+        listSize + defaultValueIncreased < listNote?.length ? setListSize(listSize + defaultValueIncreased) : setListSize(listNote.length)
+    }
 
     const handleCancel = (id) => {
         setIsShowUpdate({ key: id, status: !isShowUpdate.status })
@@ -27,7 +36,6 @@ const NoteList = (props) => {
     }
 
     const handleSave = (id) => {
-        debugger
         const content = String(editorRef.current.getContent());
         const data = course ? { id: id, content: content } : null
         if (data && editorRef.length != 0) {
@@ -50,8 +58,6 @@ const NoteList = (props) => {
     const onSeek = (time, video) => {
         props.onSeek(generateTimeToNumber(time), video)
     }
-
-    console.log(listNoteShow)
 
     return (
         <div>
@@ -113,6 +119,17 @@ const NoteList = (props) => {
                     ))
                 }
             </div>
+            <div className='loadmore-container'>
+                {
+                    listSize < listNote?.length ?
+                        <div className='loadmore-btn can-click' onClick={() => updateList()}>
+                            Load more
+                        </div> : listSize >= defaultSize && defaultSize < listNote.length ?
+                            <div className='loadmore-btn can-click' onClick={() => setListSize(defaultSize)}>
+                                Hide
+                            </div> : null
+                }
+                </div> 
         </div>
     )
 }
