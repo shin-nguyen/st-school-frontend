@@ -58,6 +58,6 @@ export const resetForm = () => (dispatch) => {
 
 
 export const isNewbie = () => async (dispatch) => {
-    const response = await RequestService.get("/users/is-newbie");
+    const response = await RequestService.get("/users/is-newbie", true);
     dispatch(checkIsNewbie(response));
 }
