@@ -23,7 +23,6 @@ export const fetchUserInfo = () => async (dispatch) => {
 
 export const updateUserInfo = (userEdit) => async (dispatch) => {
     try {
-        console.log(userEdit);
         const response = await RequestService.put("/users/edit", userEdit, true);
         dispatch(userUpdatedSuccess(response.data));
     }
@@ -59,5 +58,5 @@ export const resetForm = () => (dispatch) => {
 
 export const isNewbie = () => async (dispatch) => {
     const response = await RequestService.get("/users/is-newbie", true);
-    dispatch(checkIsNewbie(response));
+    dispatch(checkIsNewbie(response.data));
 }
