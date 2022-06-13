@@ -1,6 +1,6 @@
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { TextField } from "../formik/TextField";
 import ReCAPTCHA from "react-google-recaptcha";
 import { registration } from "../../services/auth-service";
@@ -12,7 +12,7 @@ const Registration = () => {
   const dispatch = useDispatch();
   const isRegistered = useSelector((state) => state.auth.isRegistered);
   const loading = useSelector((state) => state.auth.loading);
-  const errors = useSelector((state) => state.auth.errors);
+  // const errors = useSelector((state) => state.auth.errors);
 
   const handleSubmit = (values) => {
     console.log(values);
