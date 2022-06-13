@@ -10,18 +10,24 @@ import { replyComment } from "../../../services/comment-service";
 import ListRepComment from "../list-rep-comment/ListRepComment";
 
 const AllComment = (props) => {
+
+    const defaultSize = 10;
+    const defaultValueIncreased = 10;
+
     const dispatch = useDispatch();
     const comments = useSelector((state) => state.comment.listComment);
-    const commentsShow = comments?.sort((a, b) => b.id - a.id);
     const [repValue, setRepValue] = useState("");
     const [repCmt, setRepCmt] = useState({ key: "", status: false });
     const blog = props?.blog;
     const course = props?.course;
     const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
     const isLogin = localStorage.getItem("isLoggedIn");
+    const [listSize, setListSize] = useState(defaultSize);
+    const commentsShow = comments?.sort((a, b) => b.id - a.id).slice(0, listSize);
 
-    console.log("re-render")
-    console.log(commentsShow)
+    const updateList = () => {
+        listSize + defaultValueIncreased < comments?.length ? setListSize(listSize + defaultValueIncreased) : setListSize(comments.length)
+    }
 
     const showRepComment = (id) => {
         setRepCmt({ key: id, status: !repCmt.status });
@@ -52,11 +58,11 @@ const AllComment = (props) => {
     return (
         <div class="all-comment">
             {
-                props.blog?
-                <h5 className="comment-total mb-4">
-                <span className="">{comments.length + " comments"}</span>{" "}
-                <i class="bx bx-sm bx-message-square-dots"></i>
-                </h5> : null
+                props.blog ?
+                    <h5 className="comment-total mb-4">
+                        <span className="">{comments.length + " comments"}</span>{" "}
+                        <i class="bx bx-sm bx-message-square-dots"></i>
+                    </h5> : null
             }
             {commentsShow.map((comment) => (
                 <>
@@ -99,7 +105,7 @@ const AllComment = (props) => {
                                         <div className="all-comment-content">{comment.content}</div>
                                     </strong>
                                 ) : (
-                                    <strong  className="comment-container">
+                                    <strong className="comment-container">
                                         {comment.user?.firstName + " " + comment.user?.lastName}
                                         <div className="comment-time">{comment.createdTime}</div>
                                         <div className="all-comment-content">{comment.content}</div>
@@ -111,8 +117,8 @@ const AllComment = (props) => {
                             <div className="all-comment-more-chat can-click" onClick={() => showRepComment(comment?.id)}>
                                 {
                                     repCmt.status === true && repCmt.key === comment.id ?
-                                    <p><i class='bx bxs-hide'></i> Hide</p> : 
-                                    <p><i class="bx bxs-message-add"></i> {comment?.replies? comment?.replies?.length : 0} Reply</p>
+                                        <p><i class='bx bxs-hide'></i> Hide</p> :
+                                        <p><i class="bx bxs-message-add"></i> {comment?.replies ? comment?.replies?.length : 0} Reply</p>
                                 }
                             </div>
                             <div className="comment-replies-container">
@@ -174,6 +180,17 @@ const AllComment = (props) => {
                     </div>
                 </>
             ))}
+            <div className='loadmore-container'>
+                {
+                    listSize < comments?.length ?
+                        <div className='loadmore-btn can-click' onClick={() => updateList()}>
+                            Load more
+                        </div> : listSize >= defaultSize && defaultSize < comments.length ?
+                            <div className='loadmore-btn can-click' onClick={() => setListSize(defaultSize)}>
+                                Hide
+                            </div> : null
+                }
+            </div>
         </div>
     );
 };

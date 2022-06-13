@@ -10,6 +10,10 @@ import defaultAvatar from "../../assets/images/kai.jpg";
 import './review-course.css'
 
 const ReviewCourse = (props) => {
+
+    const defaultSize = 10;
+    const defaultValueIncreased = 10;
+
     const { id } = useParams()
     const dispatch = useDispatch()
 
@@ -21,6 +25,12 @@ const ReviewCourse = (props) => {
 
     // const {userInfo} = useSelector(state => state.userSignin)
     const listReview = useSelector(state => state.review.listReview)
+    const [listSize, setListSize] = useState(defaultSize);
+    const reviewsShow = listReview?.sort((a, b) => b.id - a.id).slice(0, listSize);
+
+    const updateList = () => {
+        listSize + defaultValueIncreased < listReview?.length ? setListSize(listSize + defaultValueIncreased) : setListSize(listReview.length)
+    }
 
     const countReview = listReview.length
 
@@ -45,7 +55,6 @@ const ReviewCourse = (props) => {
     }
 
     const setRate = (value) => {
-        console.log(value)
         setStar(value)
         setShowEvalute(true)
     }
@@ -148,7 +157,7 @@ const ReviewCourse = (props) => {
 
             <div className='row list-review' style={{ marginTop: '1rem' }}>
                 {
-                    listReview.map(item => (
+                    reviewsShow.map(item => (
                         <>
                             <div
                                 className="col comment"
@@ -181,6 +190,17 @@ const ReviewCourse = (props) => {
                             </div>
                         </>
                     ))
+                }
+            </div>
+            <div className='loadmore-container'>
+                {
+                    listSize < listReview?.length ?
+                        <div className='loadmore-btn can-click' onClick={() => updateList()}>
+                            Load more
+                        </div> : listSize >= defaultSize && defaultSize < listReview.length ?
+                            <div className='loadmore-btn can-click' onClick={() => setListSize(defaultSize)}>
+                                Hide
+                            </div> : null
                 }
             </div>
         </div>
