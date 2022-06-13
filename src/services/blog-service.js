@@ -1,7 +1,6 @@
 import {
   getBlogs,
   fetchBlogsByQuerySuccess,
-  fetchBlogByQuerySuccess,
   fetchBlogsByFilterParamsSuccess,
   fetchBlogSuccess,
   fetchBlogsByStatusSuccess,
@@ -17,7 +16,7 @@ import {
   getTopViewFail
   // addBlogFail
 } from "../actions/blog-actions";
-import { toastSuccess, toastError } from "../utils/utils";
+import { toastError } from "../utils/utils";
 
 import RequestService from "./request-service";
 

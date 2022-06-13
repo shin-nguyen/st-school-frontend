@@ -6,7 +6,7 @@ import ModalDelete from "../../../../modal/ModalDelete";
 
 import SearchForm from "../../../../searchForm/SearchForm";
 import PaginationItem from "../../pagination/PaginationItem";
-import { deleteCourse } from '../../../../../services/course-services'
+import { deleteCourse } from "../../../../../services/course-services";
 
 const CourseListComponent = ({
   data,
@@ -16,7 +16,7 @@ const CourseListComponent = ({
   tableHead,
 }) => {
   const dispatch = useDispatch();
-  const loading = false;
+  // const loading = false;
   const [modalActive, setModalActive] = useState(false);
   const [courseInfo, setCourseInfo] = useState();
 
@@ -44,7 +44,7 @@ const CourseListComponent = ({
   };
   const messege = {
     title: "Delete Course",
-  }
+  };
   const renderHead = (item, index) => <th key={index}>{item}</th>;
   return (
     <>
@@ -64,12 +64,12 @@ const CourseListComponent = ({
         setSearching={setSearching}
       />
 
-      {(
+      {
         <>
           <table className="table table-hover">
             <thead>
               <tr>{tableHead.map((item, index) => renderHead(item, index))}</tr>
-            </thead >
+            </thead>
             <tbody>
               {slicedData.map((item, index) => {
                 return (
@@ -83,19 +83,28 @@ const CourseListComponent = ({
                     <td>{item.topic}</td>
                     <td>${item.price}</td>
                     <td>
-                      <Link to={'course/' + item.id + '/detail'}>
-                        <button className="btn-a btn btn-info mr-10">Detail</button>
+                      <Link to={"course/" + item.id + "/detail"}>
+                        <button className="btn-a btn btn-info mr-10">
+                          Detail
+                        </button>
                       </Link>
-                      <Link to={'course/' + item.id + '/edit'}>
-                        <button className="btn-a btn btn-success mr-10">Edit</button>
+                      <Link to={"course/" + item.id + "/edit"}>
+                        <button className="btn-a btn btn-success mr-10">
+                          Edit
+                        </button>
                       </Link>
-                      <button className="btn btn-danger mr-10" onClick={() => showDeleteModalWindow(item)}>Delete</button>
+                      <button
+                        className="btn btn-danger mr-10"
+                        onClick={() => showDeleteModalWindow(item)}
+                      >
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 );
               })}
             </tbody>
-          </table >
+          </table>
           <PaginationItem
             pagination={pagination}
             prevPage={prevPage}
@@ -103,7 +112,7 @@ const CourseListComponent = ({
             nextPage={nextPage}
           />
         </>
-      )}
+      }
     </>
   );
 };

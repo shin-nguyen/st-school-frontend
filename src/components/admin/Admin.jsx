@@ -9,7 +9,7 @@ import ThemeAction from "../../actions/theme-actions";
 import "./admin.css";
 
 const Admin = () => {
-  const themeReducer = useSelector((state) => state.theme);
+  // const themeReducer = useSelector((state) => state.theme);
 
   const dispatch = useDispatch();
 
