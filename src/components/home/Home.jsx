@@ -4,12 +4,9 @@ import { React, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getTopHot, getTopNew } from "../../services/course-services";
 import { getTopNewBlog, getTopView } from "../../services/blog-service";
-import ListCourse from "../../components/course/list-course/ListCourse";
-import ListBlog from "../blog/list-blogs/ListBlog";
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-import CardCourse from '../course/card-course/CardCourse'
-import CardBlog from '../blog/card-blog/CardBlog'
+import "react-multi-carousel/lib/styles.css";
+import CardCourse from "../course/card-course/CardCourse";
+import CardBlog from "../blog/card-blog/CardBlog";
 import "./home.css";
 import CarouselCustom from "./component/carousel/CarouselCustom";
 
@@ -39,16 +36,12 @@ const Home = () => {
           <p className="p-title">Hot Courses</p>
           <div>
             <CarouselCustom
-                items={
-                  listTopHot.map((item) => (
-                    <div className="mr-20" key={item.id}>
-                      <CardCourse
-                        course={item}
-                        goto={"/course/" + item.id} />
-                    </div>
-                  ))
-                }
-              />
+              items={listTopHot.map((item) => (
+                <div className="mr-20" key={item.id}>
+                  <CardCourse course={item} goto={"/course/" + item.id} />
+                </div>
+              ))}
+            />
           </div>
         </div>
         <br />
@@ -56,15 +49,11 @@ const Home = () => {
           <p className="p-title">Newest Courses</p>
           <div>
             <CarouselCustom
-              items={
-                listTopNew.map((item) => (
-                  <div className="mr-20" key={item.id}>
-                    <CardCourse
-                      course={item}
-                      goto={"/course/" + item.id} />
-                  </div>
-                ))
-              }
+              items={listTopNew.map((item) => (
+                <div className="mr-20" key={item.id}>
+                  <CardCourse course={item} goto={"/course/" + item.id} />
+                </div>
+              ))}
             />
           </div>
         </div>
@@ -73,13 +62,11 @@ const Home = () => {
           <p className="p-title">New Blogs</p>
           <div>
             <CarouselCustom
-              items={
-                listTopNewBlog.map((b) => (
-                  <div className="mr-20" key={b.id}>
-                    <CardBlog blog={b} />
-                  </div>
-                ))
-              }
+              items={listTopNewBlog.map((b) => (
+                <div className="mr-20" key={b.id}>
+                  <CardBlog blog={b} />
+                </div>
+              ))}
             />
           </div>
         </div>
@@ -87,23 +74,20 @@ const Home = () => {
         <div>
           <p className="p-title">Top Blogs</p>
           <div>
-          <CarouselCustom
-              items={
-                listTopView.map((b) => (
-                  <div className="mr-20" key={b.id}>
-                    <CardBlog blog={b} />
-                  </div>
-                ))
-              }
+            <CarouselCustom
+              items={listTopView.map((b) => (
+                <div className="mr-20" key={b.id}>
+                  <CardBlog blog={b} />
+                </div>
+              ))}
             />
           </div>
         </div>
       </div>
       <MessengerChat
-        pageId="111158174768013"
-        appId="1377288292701161"
-        language="sv_SE"
-      // htmlRef="<REF_STRING>"
+        pageId="102052712358008"
+        appId="858821448148070"
+        language="en_US"
       />
       ,
     </div>

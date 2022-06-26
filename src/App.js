@@ -1,5 +1,5 @@
 import './App.css'
-import {React, useEffect} from 'react'
+import { React, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ThemeAction from "./actions/theme-actions"
 
@@ -28,12 +28,12 @@ const App = () => {
         <BrowserRouter>
             <Route render={(props) => (
                 <div className={`app ${themeReducer.mode} ${themeReducer.color}`}>
-                    <div className="app">    
-                        <Routes/>
-                        <ToastContainer/> 
+                    <div className="app">
+                        <Routes />
+                        <ToastContainer />
                     </div>
-                </div>    
-            )}/>
+                </div>
+            )} />
         </BrowserRouter>
     )
 }

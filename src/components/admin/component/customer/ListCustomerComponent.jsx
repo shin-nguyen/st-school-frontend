@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import usePagination from "../pagination/usePagination";
 import SearchForm from "../../../searchForm/SearchForm.js";
@@ -13,7 +13,6 @@ const ListCustomerComponent = ({
   searchByData,
   tableHead,
 }) => {
-  const dispatch = useDispatch();
   const loading = useSelector((state) => state.admin.isLoaded);
   const [modalActive, setModalActive] = useState(false);
   // const [blogInfo, setBlogInfo] = useState();

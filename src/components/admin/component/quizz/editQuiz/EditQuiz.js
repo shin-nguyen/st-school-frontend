@@ -35,7 +35,6 @@ import TextInput from "../../../../../components/quizz/TextInput";
 import { Alert } from "@material-ui/lab";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  addQuiz,
   fetchQuiz,
   deleteQuestionInQuiz,
   addQuestionInQuiz,

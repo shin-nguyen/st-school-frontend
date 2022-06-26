@@ -1,6 +1,5 @@
 import "./learning-tool.css";
 import { Formik, Form } from "formik";
-import * as Yup from "yup";
 import { TextField } from "../../formik/TextField";
 import React, { useState } from "react";
 import Radio from "@mui/material/Radio";

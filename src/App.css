@@ -1,24 +1,24 @@
 .app {
-    color: var(--txt-color);
+  color: var(--txt-color);
 }
 
 .app {
-    background-color: var(--main-bg);
-    min-height: 100vh;
+  background-color: var(--main-bg);
+  min-height: 100vh;
 }
 
 label {
-    font-weight: bold;
-    display: flex;
-    margin-bottom: 5px;
-  }
-  
-  .form-control {
-    margin-bottom: 5px;
-  }
-  
-  .error {
-    color: red;
-    margin-bottom: 5px;
-    font-size: 0.8rem;
-  }
+  font-weight: bold;
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  margin-bottom: 5px;
+}
+
+.error {
+  color: red;
+  margin-bottom: 5px;
+  font-size: 0.8rem;
+}

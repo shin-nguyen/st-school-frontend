@@ -8,7 +8,6 @@ const AccountPage = (props) => {
     <div>
       <Navbar {...props} />
       <Account />
-      {/* <Account1/> */}
       <Footer />
     </div>
   );
