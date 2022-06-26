@@ -84,12 +84,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <MessengerChat
-        pageId="102052712358008"
-        appId="858821448148070"
-        language="en_US"
-      />
-      ,
+      <MessengerChat pageId="102052712358008" appId="858821448148070" />
     </div>
   );
 };
