@@ -80,8 +80,6 @@ const BlogListComponent = ({
                   <tr key={index}>
                     <td>{index + 1}</td>
                     <td>{blog.title}</td>
-                    <td className="mw-445">{blog.summary}</td>
-
                     <td>
                       {blog.status ? (
                         <FontAwesomeIcon icon={faLockOpen} />

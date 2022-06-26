@@ -48,7 +48,7 @@ export const fetchOrderDashboard = () => async (dispatch) => {
 
 export const fetchGraphDashboard = () => async (dispatch) => {
   dispatch(loadingData());
-  const response = await RequestService.get("/admin/dashboard/2021", true);
+  const response = await RequestService.get("/admin/dashboard/" + new Date().getFullYear(), true);
   dispatch(getGraphDashboard(response.data));
 };
 

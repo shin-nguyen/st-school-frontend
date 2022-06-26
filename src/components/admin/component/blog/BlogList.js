@@ -24,13 +24,13 @@ const BlogList = () => {
     dispatch(fetchBlogsByQuery(""));
   }, []);
 
-  const itemsPerPage = 10;
+  const itemsPerPage = 5;
   const searchByData = [
     { label: "Title", value: "title" },
     { label: "Summary", value: "summary" },
   ];
 
-  const tableHead = ["", "Title", "Description", "Status", ""];
+  const tableHead = ["", "Title", "Status", ""];
 
   const handelBack = () => {
     history.push("/admin/blogs");
@@ -98,7 +98,6 @@ const BlogList = () => {
             />
           )}
         />
-        {/* data, itemsPerPage,startFrom,searchByData,tableHead */}
       </div>
     </div>
   );
