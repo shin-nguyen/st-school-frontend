@@ -26,18 +26,6 @@ const Checkout = () => {
     history.push("/my-courses");
   };
 
-  //   const handleVnPayClick = () => {
-  //     dispatch(
-  //       addOrder({
-  //         user: {
-  //           id: 1,
-  //         },
-  //         course: course,
-  //       })
-  //     );
-  //     history.push("/my-courses");
-  //   };
-
   const handelBack = () => {
     setTimeout(() => {
       history.push("/course/" + course.id);
@@ -145,7 +133,7 @@ const Checkout = () => {
               }}
             />
             <a
-              href={`${API_BASE_URL}/pay-vn/get-code?callback=https://st-school-client.herokuapp.com/course/${course?.id}&vnp_IpAddr=13.160.92.202&vnp_OrderInfo=Payment&vnp_OrderType=1&course_Id=${course?.id}`}
+              href={`${API_BASE_URL}/pay-vn/get-code?callback=https://st-school-client.herokuapp.com/learning/${course?.id}&vnp_IpAddr=13.160.92.202&vnp_OrderInfo=Payment&vnp_OrderType=1&course_Id=${course?.id}`}
               className="btn btn-success"
               style={{ width: "100%" }}
             >
@@ -164,7 +152,7 @@ const Checkout = () => {
               onClick={handleClick}
               style={{ width: "100%" }}
             >
-              Enroll Free Now
+              Enroll Free Noww
             </button>
           </div>
         </div>
