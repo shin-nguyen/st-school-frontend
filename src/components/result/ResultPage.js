@@ -18,15 +18,12 @@ function ResultPage() {
 	const resIcon = (response) => {
 
 		if (response.select == response.correct) {
-			console.log("green" + response.select);
 			return <Check style={{ color: 'green', marginLeft: '3px' }} />
 		} else if (response.select === null) {
 
 			return <Warning style={{ color: 'goldenrod', marginLeft: '3px' }} />
 		}
 		else {
-			console.log("red" + response.select + response.correct);
-
 			return <Close style={{ color: 'red', marginLeft: '3px' }} />
 		}
 	}
@@ -39,7 +36,6 @@ function ResultPage() {
 
 	useEffect(() => {
 		if (recordId) {
-			console.log("START" + recordId);
 			getRecordDetail();
 		}
 	}, [record.id]);

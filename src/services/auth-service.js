@@ -17,12 +17,11 @@ import {
     showLoader
 } from "../actions/auth-actions";
 
-import {reset} from "../actions/admin-actions";
+import { reset } from "../actions/admin-actions";
 
-export const login = (userData,history) => async (dispatch) =>{
-    try{
-        const response = await RequestService.post("/auth/login",userData);
-        console.log(response);
+export const login = (userData, history) => async (dispatch) => {
+    try {
+        const response = await RequestService.post("/auth/login", userData);
         localStorage.setItem("email", response.data.email);
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("userRole", response.data.userRole);
@@ -30,28 +29,28 @@ export const login = (userData,history) => async (dispatch) =>{
 
         dispatch(loginSuccess(response.data.userRole));
 
-        if (response.data.userRole==="ADMIN")
+        if (response.data.userRole === "ADMIN")
             history.push("/admin");
-        else    
+        else
             history.push("/");
     }
-    catch(error){
+    catch (error) {
         dispatch(loginFailure(error.response.data));
     }
 }
 
-export const registration = (userRegistrationData)=> async (dispatch) =>{
-    try{
+export const registration = (userRegistrationData) => async (dispatch) => {
+    try {
         dispatch(showLoader());
-        await RequestService.post("/registration",userRegistrationData);
+        await RequestService.post("/registration", userRegistrationData);
         dispatch(registerSuccess());
     }
-    catch(error){
+    catch (error) {
         dispatch(registerFailure(error.response.data));
     }
 }
 
-export const logout = () => async(dispatch) =>{
+export const logout = () => async (dispatch) => {
     localStorage.removeItem("email");
     localStorage.removeItem("token");
     localStorage.removeItem("userRole");
@@ -59,12 +58,12 @@ export const logout = () => async(dispatch) =>{
     dispatch(logoutSuccess());
 }
 
-export const activateAccount = (code) =>async (dispatch) =>{
-    try{
-        const response = await RequestService.get("/registration/activate/"+code);
+export const activateAccount = (code) => async (dispatch) => {
+    try {
+        const response = await RequestService.get("/registration/activate/" + code);
         dispatch(activateAccountSuccess(response.data));
     }
-    catch(error){
+    catch (error) {
         dispatch(activateAccountFailure(error.response.data));
     }
 }

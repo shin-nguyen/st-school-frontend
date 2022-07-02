@@ -41,7 +41,6 @@ const Quiz = () => {
 
   //Render Quiz -> Question -> Answer
   const setupQuestion = (questions) => {
-    console.log(JSON.stringify(questions) + "New");
     let answerData = [];
     if (questions == undefined || questions.length == 0) {
       // I solve backend with condition question == 0 then status = false and not show
@@ -158,7 +157,6 @@ const Quiz = () => {
     newState[currentQuestion].userSelect = event.target.value;
 
     setAllAns(newState);
-    console.log(JSON.stringify(newState) + "Current - currentQuestion");
   };
 
   useEffect(() => {
@@ -219,39 +217,38 @@ const Quiz = () => {
               minHeight: "30vh",
               alignContent: "center",
               display: "flex",
-              justifyContent: "center"
+              justifyContent: "center",
             }}
           >
             <div>
-            <FormControl
-              style={{ margin: "auto", width: "100%" }}
-              component="fieldset"
-            >
-              <FormLabel className="label" component="legend">
-                <p className="question">
-                  {quiz.questions[currentQuestion].description}
-                </p>
-              </FormLabel>
-              <RadioGroup
-                aria-label="correct-choice"
-                value={currentAns}
-                onChange={handleOptionChange}
+              <FormControl
+                style={{ margin: "auto", width: "100%" }}
+                component="fieldset"
               >
-                {quiz.questions[currentQuestion].options.map((option) => {
-                  return (
-                    <FormControlLabel
-                      key={option._id}
-                      value={option.text}
-                      control={<Radio className="radio" />}
-                      label={option.text}
-                      style={{ margin: 0 }}
-                    />
-                  );
-                })}
-              </RadioGroup>
-            </FormControl>
+                <FormLabel className="label" component="legend">
+                  <p className="question">
+                    {quiz.questions[currentQuestion].description}
+                  </p>
+                </FormLabel>
+                <RadioGroup
+                  aria-label="correct-choice"
+                  value={currentAns}
+                  onChange={handleOptionChange}
+                >
+                  {quiz.questions[currentQuestion].options.map((option) => {
+                    return (
+                      <FormControlLabel
+                        key={option._id}
+                        value={option.text}
+                        control={<Radio className="radio" />}
+                        label={option.text}
+                        style={{ margin: 0 }}
+                      />
+                    );
+                  })}
+                </RadioGroup>
+              </FormControl>
             </div>
-            
           </Grid>
 
           {/* {Buttton Next And Pre Page} */}

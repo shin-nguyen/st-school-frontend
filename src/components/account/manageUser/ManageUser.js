@@ -1,21 +1,20 @@
-import {useEffect} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {faUserEdit} from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { faUserEdit } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import {fetchUserInfo} from "../../../services/admin-service";
+import { fetchUserInfo } from "../../../services/admin-service";
 import Spinner from '../../../components/spinner/Spinner';
 import { useParams } from 'react-router'
 
-const ManageUser = ({match}) => {
+const ManageUser = ({ match }) => {
     const dispatch = useDispatch();
     const userData = useSelector((state) => state.admin.user);
     // const userOrders = useSelector((state) => state.admin.userOrders);
     const loading = useSelector((state) => state.admin.isLoaded);
-    const {id, email, firstName, lastName, address, phone, provider, roles} = userData;
+    const { id, email, firstName, lastName, address, phone, provider, roles } = userData;
 
     let { userId } = useParams();
-    console.log(userId)
     useEffect(() => {
         dispatch(fetchUserInfo(userId));
     }, []);
@@ -27,9 +26,9 @@ const ManageUser = ({match}) => {
     return (
         <>
             <div className="container">
-                {loading ? <Spinner/> :
+                {loading ? <Spinner /> :
                     <>
-                        <h4><FontAwesomeIcon className="mr-2" icon={faUserEdit}/> User: {firstName} {lastName}</h4>
+                        <h4><FontAwesomeIcon className="mr-2" icon={faUserEdit} /> User: {firstName} {lastName}</h4>
                         <div className="row mt-5 mb-4 border px-3 py-3">
                             <div className="col-md-4">
                                 <p className="personal_data_item">User id:
@@ -54,17 +53,17 @@ const ManageUser = ({match}) => {
                                 </p>
                             </div>
                             <div className="col-md-4">
-                            
+
                                 <p className="personal_data_item">Address:
                                     <span className="personal_data_text">{address}</span>
                                 </p>
                                 <p className="personal_data_item">Phone number:
                                     <span className="personal_data_text">{phone}</span>
                                 </p>
-                               
+
                             </div>
                         </div>
-                        
+
                     </>
                 }
             </div>

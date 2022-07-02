@@ -40,8 +40,6 @@ const NoteBox = (props) => {
     props.onPlay();
   };
 
-  console.log("re-render");
-
   return (
     <div>
       <div className="col can-click">

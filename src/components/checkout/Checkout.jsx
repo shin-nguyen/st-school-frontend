@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { PayPalButton } from "react-paypal-button-v2";
-import { addOrder } from "../../services/order-services";
+import { addOrder, addVnPay } from "../../services/order-services";
 import { CLIENT_ID } from "../../constants/SystemConstants";
 import { API_BASE_URL } from "../../constants/SystemConstants";
 import "../checkout/checkout.css";
@@ -12,7 +12,6 @@ const Checkout = () => {
   const course = useSelector((state) => state.course.course);
   const dispatch = useDispatch();
   const history = useHistory();
-  console.log(course);
 
   const handleClick = () => {
     dispatch(
@@ -24,6 +23,10 @@ const Checkout = () => {
       })
     );
     history.push("/my-courses");
+  };
+
+  const handleVnPayClick = () => {
+    dispatch(addVnPay(course.id, localStorage.getItem("email")));
   };
 
   const handelBack = () => {
@@ -124,35 +127,39 @@ const Checkout = () => {
                     })
                   );
                   history.push("/my-courses");
-                  console.log(data);
-                  console.log(details);
                 });
               }}
               options={{
                 clientId: CLIENT_ID,
               }}
             />
-            <a
-              href={`${API_BASE_URL}/pay-vn/get-code?callback=https://st-school-client.herokuapp.com/learning/${course?.id}&vnp_IpAddr=13.160.92.202&vnp_OrderInfo=Payment&vnp_OrderType=1&course_Id=${course?.id}`}
+            {/* <a
+              href={`${API_BASE_URL}/pay-vn/get-code?callback=https://st-school-client.herokuapp.com/learning/${
+                course?.id
+              }&vnp_IpAddr=13.160.92.202&vnp_OrderInfo=Payment&vnp_OrderType=1&course_Id=${
+                course?.id
+              }&email=${localStorage.getItem("email")}`}
               className="btn btn-success"
               style={{ width: "100%" }}
             >
               VN Pay
-            </a>
-            {/* <div className="col-md-4" style={{ textAlign: "center" }}>
-              <a href={`${BASE_URL}/oauth2/authorize/google`}>
-                <img style={{ width: "40%" }} src={googleLogo} alt="google" />
-              </a>
-            </div> */}
+            </a> */}
+
+            <button
+              className="btn btn-success"
+              onClick={handleVnPayClick}
+              style={{ width: "100%" }}
+            >
+              Vn Payyyy
+            </button>
             <br />
             <hr />
-
             <button
               className="btn btn-success"
               onClick={handleClick}
               style={{ width: "100%" }}
             >
-              Enroll Free Noww
+              Enroll Free Now
             </button>
           </div>
         </div>

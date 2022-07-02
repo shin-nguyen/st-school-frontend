@@ -55,7 +55,7 @@ const FormTest = () => {
   };
 
   const handleSubmit = (values) => {
-    debugger
+    debugger;
     let params = new FormData();
 
     const description = String(descriptionRef.current.getContent());
@@ -77,11 +77,9 @@ const FormTest = () => {
     params.append("file", values.file);
 
     if (id === -1) {
-      console.log("ađdCourse");
       params.append("course", JSON.stringify(newCourse));
       dispatch(addCourse(params));
     } else {
-      console.log("newCourse");
       newCourse = { ...newCourse, id: id };
       params.append("course", JSON.stringify(newCourse));
       dispatch(updateCourse(params));
@@ -161,7 +159,7 @@ const FormTest = () => {
                 <label>Requirements:</label>
                 <Editor
                   apiKey="cmlltcvw2ydrtenwdgwdwqqrvsje6foe8t5xtyaq6lo2ufki"
-                  language='vi'
+                  language="vi"
                   onInit={(evt, editor) => (requirementsRef.current = editor)}
                   initialValue={course.requirements}
                   init={{
@@ -186,7 +184,7 @@ const FormTest = () => {
                 <label>Who this course is for:</label>
                 <Editor
                   apiKey="cmlltcvw2ydrtenwdgwdwqqrvsje6foe8t5xtyaq6lo2ufki"
-                  language='vi'
+                  language="vi"
                   onInit={(evt, editor) => (isForRef.current = editor)}
                   initialValue={course.isFor}
                   init={{
@@ -211,7 +209,7 @@ const FormTest = () => {
                 <label>Description:</label>
                 <Editor
                   apiKey="cmlltcvw2ydrtenwdgwdwqqrvsje6foe8t5xtyaq6lo2ufki"
-                  language='vi'
+                  language="vi"
                   onInit={(evt, editor) => (descriptionRef.current = editor)}
                   initialValue={course.description}
                   init={{

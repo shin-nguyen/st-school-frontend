@@ -75,7 +75,6 @@ const BlogListComponent = ({
             </thead>
             <tbody>
               {slicedData.map((blog, index) => {
-                console.log(blog);
                 return (
                   <tr key={index}>
                     <td>{index + 1}</td>

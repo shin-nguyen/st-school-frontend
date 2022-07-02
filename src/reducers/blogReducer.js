@@ -46,11 +46,9 @@ const reducer = (state = initialState, action) => {
     case FETCH_BLOGS_BY_QUERY_SUCCESS:
       return { ...state, blogs: action.payload, isBlogLoading: false };
     case DELETE_BLOG: {
-      console.log(action.payload);
       const newList = [...state.blogs].filter(
         (item) => item.id !== action.payload
       );
-      console.log(newList);
       return { ...state, blogs: newList, isBlogLoading: false };
     }
     case ADD_BLOG_SUCCESS: {

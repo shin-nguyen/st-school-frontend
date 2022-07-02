@@ -28,7 +28,6 @@ const LearningTool = (props) => {
   };
 
   const handleSubmit = (values) => {
-    console.log(values.time);
     const data =
       radioValue === "email"
         ? {

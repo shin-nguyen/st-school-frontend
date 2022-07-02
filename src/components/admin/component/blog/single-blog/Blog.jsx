@@ -2,14 +2,16 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./singleBlog.css";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useHistory } from 'react-router'
-import { fetchBlog, updateBlogStatus } from '../../../../../services/blog-service'
+import { useParams, useHistory } from "react-router";
+import {
+  fetchBlog,
+  updateBlogStatus,
+} from "../../../../../services/blog-service";
 
 const Blog = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const blog = useSelector(state => state.blog.blog);
-  console.log(blog)
+  const blog = useSelector((state) => state.blog.blog);
 
   let { id } = useParams();
 
@@ -17,7 +19,7 @@ const Blog = () => {
     if (id) {
       dispatch(fetchBlog(id));
     }
-  }, [id])
+  }, [id]);
 
   const onClickUpdate = () => {
     dispatch(updateBlogStatus(blog.id, history));
@@ -27,9 +29,7 @@ const Blog = () => {
     history.push("/admin/blogs");
   };
 
-
   return (
-
     <div className="page-body">
       <div className="singleBlogWrapper">
         {blog.image && (
@@ -40,23 +40,19 @@ const Blog = () => {
           <span className="singleBlogAuthor">
             Author:
             <Link
-              // to={`/?user=${user?.email}`} 
-              className="link">
+              // to={`/?user=${user?.email}`}
+              className="link"
+            >
               <b> {blog.user?.email}</b>
             </Link>
           </span>
-          <span className="singleBlogDate">
-            {blog.createdTime}
-          </span>
+          <span className="singleBlogDate">{blog.createdTime}</span>
         </div>
-        <p className="blog-title">
-          {blog.title}
-        </p>
+        <p className="blog-title">{blog.title}</p>
         <p className="singleBlogDesc">
           {/* {renderHTML(blog.content ===undefined ?' ': blog.content)} */}
           <div dangerouslySetInnerHTML={{ __html: blog.content }} />
         </p>
-
       </div>
 
       <hr />
@@ -70,6 +66,6 @@ const Blog = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Blog
+export default Blog;

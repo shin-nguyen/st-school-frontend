@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCheck} from "@fortawesome/free-solid-svg-icons";
+import React, { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
-import {useDispatch, useSelector} from "react-redux";
-import {resetForm, updateUserInfo} from '../../../services/user-service';
+import { useDispatch, useSelector } from "react-redux";
+import { resetForm, updateUserInfo } from '../../../services/user-service';
 import "./EditPersonalData.css";
 
 const EditPersonalData = () => {
@@ -11,23 +11,22 @@ const EditPersonalData = () => {
     const usersData = useSelector(state => state.user.user);
     const errors = useSelector((state) => state.user.userEditErrors);
     const [user, setUser] = useState(usersData);
-    const {id, firstName, lastName, address, phone} = user;
-    const {firstNameError, lastNameError} = errors;
-    console.log(user);
+    const { id, firstName, lastName, address, phone } = user;
+    const { firstNameError, lastNameError } = errors;
     useEffect(() => {
         dispatch(resetForm());
     }, []);
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-        const userEdit = {id, firstName, lastName, address, phone};
+        const userEdit = { id, firstName, lastName, address, phone };
         dispatch(updateUserInfo(userEdit));
         alert("Edit Success")
     };
 
     const handleInputChange = (event) => {
-        const {name, value} = event.target;
-        setUser({...user, [name]: value});
+        const { name, value } = event.target;
+        setUser({ ...user, [name]: value });
     };
 
     return (
@@ -41,7 +40,7 @@ const EditPersonalData = () => {
                             className={firstNameError ? "form-control is-invalid" : "form-control"}
                             name="firstName"
                             value={firstName}
-                            onChange={handleInputChange}/>
+                            onChange={handleInputChange} />
                         <div className="invalid-feedback">{firstNameError}</div>
                     </div>
                 </div>
@@ -53,11 +52,11 @@ const EditPersonalData = () => {
                             className={lastNameError ? "form-control is-invalid" : "form-control"}
                             name="lastName"
                             value={lastName}
-                            onChange={handleInputChange}/>
+                            onChange={handleInputChange} />
                         <div className="invalid-feedback">{lastNameError}</div>
                     </div>
                 </div>
-            
+
                 <div className="form-group row">
                     <label className="col-sm-4 col-form-label">Address: </label>
                     <div className="col-sm-8">
@@ -66,7 +65,7 @@ const EditPersonalData = () => {
                             className={"form-control"}
                             name="address"
                             value={address}
-                            onChange={handleInputChange}/>
+                            onChange={handleInputChange} />
                     </div>
                 </div>
                 <div className="form-group row">
@@ -77,12 +76,12 @@ const EditPersonalData = () => {
                             className={"form-control"}
                             name="phone"
                             value={phone}
-                            onChange={handleInputChange}/>
+                            onChange={handleInputChange} />
                     </div>
                 </div>
-               
+
                 <button type="submit" className="btn btn-dark">
-                    <FontAwesomeIcon className="mr-2" icon={faCheck}/>Save
+                    <FontAwesomeIcon className="mr-2" icon={faCheck} />Save
                 </button>
             </form>
         </>

@@ -3,7 +3,7 @@ import AdminRoutes from ".././../routes/AdminRoutes";
 import { Route } from "react-router-dom";
 import Sidebar from "../admin/component/sidebar/Sidebar";
 import TopNav from "../admin/component/topnav/TopNav";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import ThemeAction from "../../actions/theme-actions";
 
 import "./admin.css";

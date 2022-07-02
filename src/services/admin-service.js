@@ -42,7 +42,6 @@ export const fetchOrderDashboard = () => async (dispatch) => {
     "/admin/dashboard/order",
     true
   );
-  console.log(response);
   dispatch(getOrderDashboard(response.data));
 };
 

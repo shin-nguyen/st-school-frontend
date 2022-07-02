@@ -33,11 +33,9 @@ const reducer = (state = initialState, action) => {
       return { ...state, quiz: action.payload, isQuizLoading: false, questions: action.payload.questions };
 
     case DELETE_QUIZ: {
-      console.log(action.payload);
       const newList = [...state.quizzes].filter(
         (item) => item.id !== action.payload
       );
-      console.log(newList);
       return { ...state, quizzes: newList, isQuizLoading: false };
     }
 

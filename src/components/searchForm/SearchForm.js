@@ -20,7 +20,6 @@ const SearchForm = ({ data, searchByData, setFilteredData, setSearching }) => {
         if (searchByData && searchByData.length > 0) {
           searchKey = searchBy;
         }
-        console.log(searchKey);
         return valueSearch[searchKey]
           .toLowerCase()
           .includes(search.trim().toLowerCase());

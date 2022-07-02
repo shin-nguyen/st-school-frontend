@@ -65,7 +65,6 @@ const ListCustomerComponent = ({
             </thead>
             <tbody>
               {slicedData.map((item, index) => {
-                console.log(item);
                 return (
                   <tr key={index}>
                     <td>{index + 1}</td>

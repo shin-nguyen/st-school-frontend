@@ -5,7 +5,7 @@ import usePagination from "../../pagination/usePagination";
 import ModalDelete from "../../../../modal/ModalDelete";
 import SearchForm from "../../../../searchForm/SearchForm";
 import PaginationItem from "../../pagination/PaginationItem";
-import { deleteQuiz } from '../../../../../services/quiz-services'
+import { deleteQuiz } from "../../../../../services/quiz-services";
 import Spinner from "../../../../../components/spinner/Spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLockOpen, faLock } from "@fortawesome/free-solid-svg-icons";
@@ -31,8 +31,6 @@ const QuizListComponent = ({
     setSearching,
   } = usePagination({ itemsPerPage, data, startFrom });
 
-  console.log(slicedData)
-
   useEffect(() => {
     setModalActive(false);
   }, [data]);
@@ -48,7 +46,7 @@ const QuizListComponent = ({
 
   const messege = {
     title: "Delete Quiz",
-  }
+  };
 
   const renderHead = (item, index) => <th key={index}>{item}</th>;
   return (
@@ -76,7 +74,7 @@ const QuizListComponent = ({
           <table className="table table-hover">
             <thead>
               <tr>{tableHead.map((item, index) => renderHead(item, index))}</tr>
-            </thead >
+            </thead>
             <tbody>
               {slicedData.map((item, index) => {
                 return (
@@ -99,16 +97,23 @@ const QuizListComponent = ({
                       {/* <Link to={'quizzes/' + item.id + '/detail'}>
                         <button className="btn-a btn btn-info mr-10">Detail</button>
                       </Link> */}
-                      <Link to={'quizzes/' + item.id + '/edit'}>
-                        <button className="btn-a btn btn-success mr-10">Edit</button>
+                      <Link to={"quizzes/" + item.id + "/edit"}>
+                        <button className="btn-a btn btn-success mr-10">
+                          Edit
+                        </button>
                       </Link>
-                      <button className="btn btn-danger mr-10" onClick={() => showDeleteModalWindow(item)}>Delete</button>
+                      <button
+                        className="btn btn-danger mr-10"
+                        onClick={() => showDeleteModalWindow(item)}
+                      >
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 );
               })}
             </tbody>
-          </table >
+          </table>
           <PaginationItem
             pagination={pagination}
             prevPage={prevPage}

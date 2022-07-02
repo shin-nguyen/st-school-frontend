@@ -30,7 +30,6 @@ export const resetBlog = () => async (dispatch) => {
   try {
     dispatch(resetBlogSuccess());
   } catch (error) {
-    console.log(error.message);
   }
 };
 export const fetchBlog = (id) => async (dispatch) => {
@@ -96,7 +95,6 @@ export const addBlog = (params, history) => async (dispatch) => {
     history.push("/my-blogs");
   } catch (error) {
     // dispatch(addBlogFail(error.message));
-    console.log(error.message);
   }
 };
 
@@ -108,7 +106,6 @@ export const addBlogByExcel = (params, history) => async (dispatch) => {
     history.push("/admin/blogs");
   } catch (error) {
     // dispatch(addBlogFail(error.message));
-    console.log(error.message);
   }
 };
 

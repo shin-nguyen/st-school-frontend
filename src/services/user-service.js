@@ -37,7 +37,6 @@ export const addUserImage = (params) => async (dispatch) => {
         await dispatch(addUserImageSuccess(data));
     } catch (error) {
         // dispatch(addBlogFail(error.message));
-        console.log(error.message)
     }
 }
 export const updateUserPassword = (data) => async (dispatch) => {

@@ -194,7 +194,6 @@ function EditQuiz() {
 
   //Delete Question In Quiz With UpdateId
   const handleDeleteQuestion = () => {
-    console.log('Delete' + updateId)
     dispatch(deleteQuestionInQuiz(courseId, updateId));
     setUpdateId(null);
     setDeleteQuestionModal(false);

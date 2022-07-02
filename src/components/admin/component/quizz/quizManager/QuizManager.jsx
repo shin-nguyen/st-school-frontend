@@ -3,7 +3,6 @@ import { Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchQuizzes } from "../../../../../services/quiz-services";
 import QuizListComponent from "./QuizListComponent";
-import { Link } from "react-router-dom";
 import {
   faFileExcel,
   faFilePdf,

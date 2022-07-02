@@ -1,6 +1,6 @@
 import Banner from "./component/banner/Banner";
 import { MessengerChat } from "react-messenger-chat-plugin";
-import { React, useEffect, useState } from "react";
+import { React, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getTopHot, getTopNew } from "../../services/course-services";
 import { getTopNewBlog, getTopView } from "../../services/blog-service";
@@ -17,8 +17,6 @@ const Home = () => {
   const listTopNewBlog = useSelector((state) => state.blog.topNewBlog);
   const listTopView = useSelector((state) => state.blog.topView);
   const isLoggedIn = localStorage.getItem("isLoggedIn");
-
-  console.log(listTopNew);
 
   useEffect(() => {
     dispatch(getTopNew(isLoggedIn));

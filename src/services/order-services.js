@@ -56,11 +56,12 @@ export const addOrder = (params) => async (dispatch) => {
     }
 }
 
-export const addVnPayOrder = (callback, courseId) => async (dispatch) => {
+export const addVnPay = (courseId, email) => async (dispatch) => {
     try {
-        const { data } = await requestService.post(`/pay-vn/get-code?callback=${callback}&vnp_IpAddr=13.160.92.202&vnp_OrderInfo=Payment&vnp_OrderType=1&course_Id=${courseId}`, null, true);
-        dispatch(addOrderSuccess(data));
-        toastSuccess("Save Success");
+        const { data } = await requestService.get(`/pay-vn/get-code?callback=https://st-school-client.herokuapp.com/my-courses&vnp_IpAddr=13.160.92.202&vnp_OrderInfo=Payment&vnp_OrderType=1&course_Id=${courseId}&email=${email}`, true);
+        // dispatch(addOrderSuccess(data));
+        window.open(data, "_self")
+        // toastSuccess("Save Success");
     } catch (error) {
         dispatch(addOrderFail(error.message));
         toastError(error.message);

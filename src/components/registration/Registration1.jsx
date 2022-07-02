@@ -15,8 +15,6 @@ const Registration = () => {
   // const errors = useSelector((state) => state.auth.errors);
 
   const handleSubmit = (values) => {
-    console.log(values);
-
     const email = values.email;
     const firstName = values.firstName;
     const lastName = values.lastName;
@@ -32,8 +30,6 @@ const Registration = () => {
       password2,
       captcha,
     };
-
-    console.log(userRegistrationData);
 
     dispatch(registration(userRegistrationData));
     window.grecaptcha.reset();

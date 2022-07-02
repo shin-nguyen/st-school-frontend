@@ -28,7 +28,6 @@ export const resetQuiz = () => async (dispatch) => {
   try {
     dispatch(resetQuizSuccess());
   } catch (error) {
-    console.log(error.message);
   }
 };
 export const fetchQuiz = (id) => async (dispatch) => {
@@ -102,7 +101,6 @@ export const addQuiz = (params, history) => async (dispatch) => {
     history.push(`/admin/quizzes/${data.id}/edit`);
   } catch (error) {
     // dispatch(addQuizFail(error.message));
-    console.log(error.message);
   }
 };
 
@@ -113,7 +111,6 @@ export const submitQuiz = (params, history) => async (dispatch) => {
     history.push("/results/" + data.id);
   } catch (error) {
     // dispatch(addQuizFail(error.message));
-    console.log(error.message);
   }
 };
 
@@ -130,6 +127,5 @@ export const addQuizByExcel = (params, history) => async (dispatch) => {
     history.push("/admin/quizzes");
   } catch (error) {
     // dispatch(addQuizFail(error.message));
-    console.log(error.message);
   }
 };

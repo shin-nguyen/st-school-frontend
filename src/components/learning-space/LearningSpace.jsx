@@ -124,8 +124,6 @@ const LearningSpace = () => {
 
   const [open, setOpen] = React.useState(false);
 
-  console.log(isUserNewbie);
-
   const handleLoadedData = () => {
     if (isPlay) audioRef.current.play();
   };
@@ -225,9 +223,6 @@ const LearningSpace = () => {
   };
 
   const checkLearning = () => {
-    console.log("check");
-    console.log(videoState?.currentTime);
-    console.log(prevTime);
     if (!prevTime) {
       setPrevTime(videoState?.currentTime);
       return;
@@ -235,8 +230,6 @@ const LearningSpace = () => {
 
     if (videoState?.currentTime - prevTime > 10) {
       // alert("m tua nhanh qua roi do")
-      console.log(videoState?.currentTime);
-      console.log(prevTime);
       handleSeek(0);
     } else {
       setPrevTime(videoState?.currentTime);
@@ -587,9 +580,7 @@ const LearningSpace = () => {
 };
 
 function isPropsAreEqual(prevNote, nextNote) {
-  return (
-    prevNote.course === nextNote.course
-  );
+  return prevNote.course === nextNote.course;
 }
 
 export default React.memo(LearningSpace, isPropsAreEqual);

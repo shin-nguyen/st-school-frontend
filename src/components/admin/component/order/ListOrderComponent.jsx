@@ -1,4 +1,3 @@
-import { useDispatch, useSelector } from "react-redux";
 import usePagination from "../pagination/usePagination";
 import SearchForm from "../../../searchForm/SearchForm.js";
 import PaginationItem from "../pagination/PaginationItem";
@@ -11,7 +10,6 @@ const ListOrderComponent = ({
   searchByData,
   tableHead,
 }) => {
-  const dispatch = useDispatch();
   // const loading= useSelector((state) => state.order.isBlogLoading);
   const loading = false;
   // const [modalActive, setModalActive] = useState(false);
@@ -65,7 +63,6 @@ const ListOrderComponent = ({
             </thead>
             <tbody>
               {slicedData.map((item, index) => {
-                console.log(item);
                 return (
                   <tr key={index}>
                     <td>{index + 1}</td>
