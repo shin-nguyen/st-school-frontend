@@ -2,7 +2,7 @@ import React from "react";
 import "./overview.css";
 
 const Overview = (props) => {
-  const { course, listVideo } = props;
+  const { course } = props;
   return (
     <>
       <div className="course-detail">

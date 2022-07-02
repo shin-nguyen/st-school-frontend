@@ -2,19 +2,20 @@ import requestService from "./request-service";
 import { toastSuccess, toastError } from "../utils/utils";
 
 import {
-    fetchOrderSuccess, 
+    fetchOrderSuccess,
     fetchOrderFail,
     getOrderByCourseAndUserSuccess,
     getOrderByCourseAndUserFail,
     getOrderByUserSuccess,
     getOrderByUserFail,
-    addOrderSuccess, 
-    addOrderFail, 
-    deleteOrderSuccess, 
-    deleteOrderFail} 
-from '../actions/order-actions'
+    addOrderSuccess,
+    addOrderFail,
+    deleteOrderSuccess,
+    deleteOrderFail
+}
+    from '../actions/order-actions'
 
-export const getAllOrder  = () => async (dispatch) => {
+export const getAllOrder = () => async (dispatch) => {
     try {
         const { data } = await requestService.get(`/order/list`);
         dispatch(fetchOrderSuccess(data));
@@ -24,7 +25,7 @@ export const getAllOrder  = () => async (dispatch) => {
     }
 }
 
-export const getOrderByCourseAndUser  = (courseId) => async (dispatch) => {
+export const getOrderByCourseAndUser = (courseId) => async (dispatch) => {
     try {
         const { data } = await requestService.get(`/order/by-course-and-user/${courseId}`, true);
         dispatch(getOrderByCourseAndUserSuccess(data));
@@ -34,7 +35,7 @@ export const getOrderByCourseAndUser  = (courseId) => async (dispatch) => {
     }
 }
 
-export const getOrderByUser  = () => async (dispatch) => {
+export const getOrderByUser = () => async (dispatch) => {
     try {
         const { data } = await requestService.get(`/order/by-user`, true);
         dispatch(getOrderByUserSuccess(data));
@@ -55,16 +56,27 @@ export const addOrder = (params) => async (dispatch) => {
     }
 }
 
+export const addVnPayOrder = (callback, courseId) => async (dispatch) => {
+    try {
+        const { data } = await requestService.post(`/pay-vn/get-code?callback=${callback}&vnp_IpAddr=13.160.92.202&vnp_OrderInfo=Payment&vnp_OrderType=1&course_Id=${courseId}`, null, true);
+        dispatch(addOrderSuccess(data));
+        toastSuccess("Save Success");
+    } catch (error) {
+        dispatch(addOrderFail(error.message));
+        toastError(error.message);
+    }
+}
+
 export const deleteOrder = (orderId) => async (dispatch) => {
     try {
-      const { data } = await requestService.delete(`/order/${orderId}`);
-      dispatch(deleteOrderSuccess(data));
-      toastSuccess("Delete Success");
+        const { data } = await requestService.delete(`/order/${orderId}`);
+        dispatch(deleteOrderSuccess(data));
+        toastSuccess("Delete Success");
     } catch (error) {
-      dispatch(deleteOrderFail(error.message));
-      toastError(error.message);
+        dispatch(deleteOrderFail(error.message));
+        toastError(error.message);
     }
-  };
+};
 
 export const updateProgress = (params) => async () => {
     try {

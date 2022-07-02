@@ -7,7 +7,6 @@ const LoginPage = (props) => {
   return (
     <div>
       <Navbar {...props} />
-      {/* <Login/> */}
       <LoginForm />
       <Footer />
     </div>

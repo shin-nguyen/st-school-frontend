@@ -40,7 +40,7 @@ import {
   addQuestionInQuiz,
   updateQuestionInQuiz
 } from "../../../../../services/quiz-services";
-// import { getRecords } from "../../../../../services/record-service";
+import { getRecords } from "../../../../../services/record-service";
 import { useParams } from "react-router";
 
 function EditQuiz() {
@@ -48,6 +48,7 @@ function EditQuiz() {
   let { courseId } = useParams();
   const loading = useSelector((state) => state.quiz.isQuizLoading);
   const quiz = useSelector((state) => state.quiz.quiz);
+  const records = useSelector((state) => state.record.records);
 
   const [serverError, setServerError] = useState(false);
   const [questionModal, setQuestionModal] = useState(false);
@@ -71,7 +72,7 @@ function EditQuiz() {
   const [updateId, setUpdateId] = useState(null);
 
   const [deleteQuestionModal, setDeleteQuestionModal] = useState(false);
-  const [records, setRecords] = useState([]);
+
 
   const [searchData, setSearchData] = useState(records);
   const [searchText, setSearchText] = useState("");
@@ -132,7 +133,7 @@ function EditQuiz() {
 
     let newValue = records.filter(
       (record) =>
-        record.user?.firstName
+        record.user?.email
           .toLowerCase()
           .search(valueSearch.trim().toLowerCase()) !== -1 ||
         String(record.score) === valueSearch.trim().toLowerCase()
@@ -158,11 +159,13 @@ function EditQuiz() {
       return array.sort(function (a, b) {
         return a.user.firstName - b.user.firstName;
       });
-    } else if (by === "recent") {
-      return array.sort(function (a, b) {
-        return b.time - a.time;
-      });
-    } else {
+    }
+    //  else if (by === "recent") {
+    //   return array.sort(function (a, b) {
+    //     return b.time - a.time;
+    //   });
+    // } 
+    else {
       return array;
     }
   };
@@ -268,12 +271,13 @@ function EditQuiz() {
 
   const getQuizDetails = () => {
     dispatch(fetchQuiz(courseId));
-    // dispatch(getRecords(courseId));
+    dispatch(getRecords(courseId));
   };
 
   useEffect(() => {
     getQuizDetails();
   }, [courseId]);
+
   if (loading) {
     return <Spinner />;
   } else {
@@ -446,7 +450,7 @@ function EditQuiz() {
                       <MenuItem value={-1}>
                         <em>None</em>
                       </MenuItem>
-                      <MenuItem value="recent">Recent</MenuItem>
+                      {/* <MenuItem value="recent">Recent</MenuItem> */}
                       <MenuItem value="score">Score</MenuItem>
                       <MenuItem value="name">Name</MenuItem>
                     </Select>
@@ -456,7 +460,7 @@ function EditQuiz() {
                   {searchData.map((response) => (
                     <ListItem
                       button
-                      key={response._id}
+                      key={response.id}
                       component={Link}
                       to={{
                         pathname: `/studentResponse`,
@@ -464,8 +468,8 @@ function EditQuiz() {
                       }}
                     >
                       <ListItemText
-                        primary={response.userId.name}
-                        secondary={`Scored: ${response.marks}`}
+                        primary={response.user.email}
+                        secondary={`Scored: ${response.score}`}
                       />
                     </ListItem>
                   ))}
