@@ -23,11 +23,16 @@ const createRequest = (method, url, body, isAuthRequired, contentType) => {
         data: body,
         headers: setHeader(isAuthRequired, contentType)
     });
-    
+
 };
 const setHeader = (isAuthRequired, contentType) => {
     if (isAuthRequired) {
-        axios.defaults.headers.common["Authorization"] = localStorage.getItem("token");
+        if (localStorage.getItem("token") == null || localStorage.getItem("token") == "") {
+            delete axios.defaults.headers.common['Authorization'];
+        }
+        else {
+            axios.defaults.headers.common["Authorization"] = localStorage.getItem("token");
+        }
     }
     else {
         delete axios.defaults.headers.common['Authorization'];

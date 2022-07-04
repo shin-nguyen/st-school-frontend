@@ -39,10 +39,7 @@ const Blog = () => {
         <div className="singleBlogInfo">
           <span className="singleBlogAuthor">
             Author:
-            <Link
-              // to={`/?user=${user?.email}`}
-              className="link"
-            >
+            <Link className="link">
               <b> {blog.user?.email}</b>
             </Link>
           </span>
@@ -50,7 +47,6 @@ const Blog = () => {
         </div>
         <p className="blog-title">{blog.title}</p>
         <p className="singleBlogDesc">
-          {/* {renderHTML(blog.content ===undefined ?' ': blog.content)} */}
           <div dangerouslySetInnerHTML={{ __html: blog.content }} />
         </p>
       </div>

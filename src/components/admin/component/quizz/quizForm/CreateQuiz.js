@@ -10,9 +10,6 @@ import {
   Snackbar,
 } from "@material-ui/core";
 import TextInput from "../../../../../components/quizz/TextInput";
-import Spinner from "../../../../../components/spinner/Spinner";
-
-// import Loading from "../pages/Loading";
 import { Alert } from "@material-ui/lab";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
@@ -25,9 +22,6 @@ function CreateQuiz() {
   const [name, setName] = useState("");
   const [duration, setDuration] = useState(5);
   const [status, setStatus] = useState(false);
-
-  const [loading, setLoading] = useState(false);
-
   const [error, setError] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -57,26 +51,24 @@ function CreateQuiz() {
     dispatch(addQuiz(data, history));
   };
 
-  if (loading) {
-    return <Spinner />;
-  } else {
-    return (
-      <Container className="create-quiz-page">
-        <div className="create-form">
-          <Typography variant="h4" className="create-head">
-            Quiz Details
-          </Typography>
-          <div className="create-form-inputs">
-            <TextInput
-              variant="outlined"
-              label="Quiz Name"
-              value={name}
-              onChange={onQuizNameChange}
-              name="Quiz Name"
-              className="form-input"
-            />
 
-            {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
+  return (
+    <Container className="create-quiz-page">
+      <div className="create-form">
+        <Typography variant="h4" className="create-head">
+          Quiz Details
+        </Typography>
+        <div className="create-form-inputs">
+          <TextInput
+            variant="outlined"
+            label="Quiz Name"
+            value={name}
+            onChange={onQuizNameChange}
+            name="Quiz Name"
+            className="form-input"
+          />
+
+          {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <Grid className="date-time-select" container spacing={3}>
                 <Grid item xs={12} sm={6}>
                   <KeyboardDatePicker
@@ -103,56 +95,55 @@ function CreateQuiz() {
                 </Grid>
               </Grid>
             </MuiPickersUtilsProvider> */}
-            <p style={{ marginTop: "5%", marginBottom: "5%" }}>
-              Quiz Time (in minutes):
-            </p>
-            <Slider
-              defaultValue={5}
-              aria-labelledby="quiz time slider"
-              step={5}
-              min={5}
-              max={60}
-              valueLabelDisplay="on"
-              marks
-              className="time-slider"
-              value={duration}
-              onChange={handleTimeChange}
-            />
-            <p>Select quiz type: </p>
-            <Select
-              value={status}
-              onChange={onTypeChange}
-              className="type-select"
-            >
-              <MenuItem value={true}>Public</MenuItem>
-              <MenuItem value={false}>Private</MenuItem>
-            </Select>
+          <p style={{ marginTop: "5%", marginBottom: "5%" }}>
+            Quiz Time (in minutes):
+          </p>
+          <Slider
+            defaultValue={5}
+            aria-labelledby="quiz time slider"
+            step={5}
+            min={5}
+            max={60}
+            valueLabelDisplay="on"
+            marks
+            className="time-slider"
+            value={duration}
+            onChange={handleTimeChange}
+          />
+          <p>Select quiz type: </p>
+          <Select
+            value={status}
+            onChange={onTypeChange}
+            className="type-select"
+          >
+            <MenuItem value={true}>Public</MenuItem>
+            <MenuItem value={false}>Private</MenuItem>
+          </Select>
 
-            <Button className="login-btn create-btn" onClick={handleSubmit}>
-              Create Quiz
-            </Button>
-            <Typography variant="subtitle1" className="create-subtitle">
-              NOTE: After creating the quiz, you can add questions by editing
-              the quiz in YOUR QUIZZES section of the dashboard.
-            </Typography>
-          </div>
+          <Button className="login-btn create-btn" onClick={handleSubmit}>
+            Create Quiz
+          </Button>
+          <Typography variant="subtitle1" className="create-subtitle">
+            NOTE: After creating the quiz, you can add questions by editing
+            the quiz in YOUR QUIZZES section of the dashboard.
+          </Typography>
         </div>
-        <Snackbar
-          open={error}
-          autoHideDuration={5000}
+      </div>
+      <Snackbar
+        open={error}
+        autoHideDuration={5000}
+        onClose={() => setError(false)}
+      >
+        <Alert
+          variant="filled"
+          severity="error"
           onClose={() => setError(false)}
         >
-          <Alert
-            variant="filled"
-            severity="error"
-            onClose={() => setError(false)}
-          >
-            There was a problem. Please try again!
-          </Alert>
-        </Snackbar>
-      </Container>
-    );
-  }
+          There was a problem. Please try again!
+        </Alert>
+      </Snackbar>
+    </Container>
+  );
 }
 
 export default CreateQuiz;

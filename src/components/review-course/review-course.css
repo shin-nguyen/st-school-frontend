@@ -1,38 +1,45 @@
 /* rate star */
-.rate{
+.rate {
     border: 1px solid #eee;
     padding: 1.5rem 0;
 }
-.rate-star-title{
+
+.rate-star-title {
     display: flex;
     font-size: 18px;
     /* padding: 1rem 0; */
     font-weight: 700;
 }
-.thongke span{
+
+.thongke span {
     display: flex;
     font-size: 13px;
     color: orange;
 }
-.thongke{
+
+.thongke {
     width: 100%;
     display: flex;
     align-items: center;
 }
-.numstar{
+
+.numstar {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.star-average{
+
+.star-average {
     margin-bottom: 0;
 }
-.percent{
+
+.percent {
     width: 100%;
     margin-bottom: 0;
     font-size: 10px;
 }
-.guidanhgia{
+
+.guidanhgia {
     padding: 0.5rem 1rem;
     background: orange;
     color: white;
@@ -42,15 +49,23 @@
     cursor: pointer;
 }
 
-.ant-rate-star-full svg{
+.guidanhgia:disabled {
+    background: #fff;
+    color: #ccc;
+    cursor: no-drop;
+}
+
+.ant-rate-star-full svg {
     color: orange;
 }
-.rate-send{
+
+.rate-send {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.rate-send textarea{
+
+.rate-send textarea {
     width: 64%;
     height: 100px;
     padding: 1rem;
@@ -59,17 +74,17 @@
     border: 1px solid #ccc;
 }
 
-.list-review{
+.list-review {
     display: flex;
     flex-direction: column;
     margin-top: 1rem;
 }
 
-.all-reply-content{
+.all-reply-content {
     margin-top: 10px;
 }
 
-.review-content{
+.review-content {
     padding: 5px;
     background-color: rgb(245, 242, 242);
     border-radius: 10px;

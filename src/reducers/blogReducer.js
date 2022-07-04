@@ -15,7 +15,7 @@ import {
   GET_TOP_NEW_BLOG,
   GET_TOP_NEW_BLOG_FAIL,
   GET_TOP_VIEW,
-  GET_TOP_VIEW_FAIL
+  GET_TOP_VIEW_FAIL,
 } from "../action-types/blog-action-types";
 
 const initialState = {
@@ -60,7 +60,8 @@ const reducer = (state = initialState, action) => {
       const index = findIndex(state.blogs, action.payload.id);
       const newList = [...state.blogs];
       newList[index] = action.payload;
-      return { ...state, blogs: newList };
+
+      return { ...state, blogs: newList, blog: action.payload };
     }
 
     case ADD_BLOG_LIST_SUCCESS:

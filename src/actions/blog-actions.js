@@ -14,8 +14,7 @@ import {
   GET_TOP_NEW_BLOG,
   GET_TOP_NEW_BLOG_FAIL,
   GET_TOP_VIEW,
-  GET_TOP_VIEW_FAIL
-  // ADD_BLOG_FAIL
+  GET_TOP_VIEW_FAIL,
 } from "../action-types/blog-action-types";
 
 export const loadingBlog = () => ({

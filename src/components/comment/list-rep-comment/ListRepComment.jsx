@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react";
 import defaultAvatar from "../../../assets/images/kai.jpg";
 
 const ListRepComment = (props) => {
-  const {allrepcomment, showRepComment, id, blog, course} = props;
+  const { allrepcomment, showRepComment, id, blog, course } = props;
   const commentsShow = allrepcomment?.sort((a, b) => b.id - a.id);
   return (
     <div>
@@ -30,13 +30,17 @@ const ListRepComment = (props) => {
                       {comment.user?.firstName + " " + comment.user?.lastName}{" "}
                       <span>Author</span>
                       <div className="comment-time">{comment.createdTime}</div>
-                      <div className="all-comment-content">{comment.content}</div>
+                      <div className="all-comment-content">
+                        {comment.content}
+                      </div>
                     </strong>
                   ) : (
                     <strong>
                       {comment.user?.firstName + " " + comment.user?.lastName}
                       <div className="comment-time">{comment.createdTime}</div>
-                      <div className="all-comment-content">{comment.content}</div>
+                      <div className="all-comment-content">
+                        {comment.content}
+                      </div>
                     </strong>
                   )
                 ) : comment.user?.roles[0] === "ADMIN" ? (
@@ -57,8 +61,9 @@ const ListRepComment = (props) => {
             </div>
           </div>
         </>
-    ))}
-    </div>)
-  } 
+      ))}
+    </div>
+  );
+};
 
-export default ListRepComment
+export default ListRepComment;
