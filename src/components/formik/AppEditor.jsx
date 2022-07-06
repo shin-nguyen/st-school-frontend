@@ -1,10 +1,11 @@
 import React from 'react'
 import { Editor } from "@tinymce/tinymce-react";
+import { TINY_API_KEY } from '../../constants/SystemConstants';
 
 export const AppEditor = (props) => {
   return (
       <Editor
-        apiKey="cmlltcvw2ydrtenwdgwdwqqrvsje6foe8t5xtyaq6lo2ufki"
+        apiKey={TINY_API_KEY}
         language='vi'
         onInit={(evt,editor) => props.onInit(editor)}
         initialValue={props.initialValue}

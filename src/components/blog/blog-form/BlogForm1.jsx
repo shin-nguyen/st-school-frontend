@@ -5,6 +5,7 @@ import { useHistory } from 'react-router'
 import { addBlog } from '../../../services/blog-service'
 import "./blogForm.css";
 import { Editor } from "@tinymce/tinymce-react";
+import { TINY_API_KEY } from "../../../constants/SystemConstants";
 import {
   Button
 } from 'reactstrap';
@@ -61,7 +62,7 @@ const BlogForm1 = () => {
  
         <div className='editor'>
             <Editor
-                apiKey="cmlltcvw2ydrtenwdgwdwqqrvsje6foe8t5xtyaq6lo2ufki"
+                apiKey={TINY_API_KEY}
                 language='vi'
                 onInit={(evt, editor) => (editorRef.current = editor)}
                 init={{

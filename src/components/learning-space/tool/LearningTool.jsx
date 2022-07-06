@@ -33,12 +33,12 @@ const LearningTool = (props) => {
         ? {
             email: values.email,
             body: values.content,
-            subject: "Things I wanna say to my Future self",
+            subject: values.title,
             dateTime: values.time,
             timeZone: "Asia/Ho_Chi_Minh",
           }
         : {
-            phone: values.phone,
+            phoneNumber: values.phone,
             message: values.content,
             dateTime: values.time,
             timeZone: "Asia/Ho_Chi_Minh",

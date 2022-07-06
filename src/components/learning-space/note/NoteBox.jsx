@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Editor } from "@tinymce/tinymce-react";
 import { addNote } from "../../../services/note-service";
 import { generateTimeToString } from "../../../utils/utils";
+import { TINY_API_KEY } from "../../../constants/SystemConstants";
 import "./note.css";
 
 const NoteBox = (props) => {
@@ -65,7 +66,7 @@ const NoteBox = (props) => {
             <div className="col col-sm-11">
               <div className="note-input">
                 <Editor
-                  apiKey="cmlltcvw2ydrtenwdgwdwqqrvsje6foe8t5xtyaq6lo2ufki"
+                  apiKey={TINY_API_KEY}
                   language="vi"
                   onInit={(evt, editor) => (editorRef.current = editor)}
                   init={{

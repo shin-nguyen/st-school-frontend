@@ -15,6 +15,7 @@ import { TextField } from "../../../../formik/TextField";
 import { SelectField } from "../../../../formik/SelectField";
 import { TextArea } from "../../../../formik/TextArea";
 import { Editor } from "@tinymce/tinymce-react";
+import { TINY_API_KEY } from "../../../../../constants/SystemConstants";
 import "./courseForm.css";
 
 const FormTest = () => {
@@ -158,7 +159,7 @@ const FormTest = () => {
               <div className="form-group">
                 <label>Requirements:</label>
                 <Editor
-                  apiKey="cmlltcvw2ydrtenwdgwdwqqrvsje6foe8t5xtyaq6lo2ufki"
+                  apiKey={TINY_API_KEY}
                   language="vi"
                   onInit={(evt, editor) => (requirementsRef.current = editor)}
                   initialValue={course.requirements}
@@ -183,7 +184,7 @@ const FormTest = () => {
               <div className="form-group">
                 <label>Who this course is for:</label>
                 <Editor
-                  apiKey="cmlltcvw2ydrtenwdgwdwqqrvsje6foe8t5xtyaq6lo2ufki"
+                  apiKey={TINY_API_KEY}
                   language="vi"
                   onInit={(evt, editor) => (isForRef.current = editor)}
                   initialValue={course.isFor}
@@ -208,7 +209,7 @@ const FormTest = () => {
               <div className="form-group">
                 <label>Description:</label>
                 <Editor
-                  apiKey="cmlltcvw2ydrtenwdgwdwqqrvsje6foe8t5xtyaq6lo2ufki"
+                  apiKey={TINY_API_KEY}
                   language="vi"
                   onInit={(evt, editor) => (descriptionRef.current = editor)}
                   initialValue={course.description}
