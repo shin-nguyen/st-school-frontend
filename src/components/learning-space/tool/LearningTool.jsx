@@ -119,7 +119,7 @@ const LearningTool = (props) => {
                         marginTop: "10px",
                       }}
                     >
-                      Notifice By
+                      Notice By
                     </div>
                   </FormLabel>
                   <RadioGroup
