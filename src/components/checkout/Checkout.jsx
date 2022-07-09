@@ -4,9 +4,9 @@ import { useHistory } from "react-router";
 import { PayPalButton } from "react-paypal-button-v2";
 import { addOrder, addVnPay } from "../../services/order-services";
 import { CLIENT_ID } from "../../constants/SystemConstants";
-import { API_BASE_URL } from "../../constants/SystemConstants";
 import "../checkout/checkout.css";
 import { Link } from "react-router-dom";
+import vnpay from "../../assets/images/VN-PAY.png"
 
 const Checkout = () => {
   const course = useSelector((state) => state.course.course);
@@ -42,17 +42,24 @@ const Checkout = () => {
           <h2>Checkout</h2>
           <div className="item-detail">
             <p>Order Details</p>
-            <div className="item-image">
-              <img src={course.image} alt="" className="item-image"></img>
-            </div>
-            <div className="item-name">
-              <span>{course.name}</span>
-            </div>
-            <div className="item-price">
-              <span>${course.price}</span>
+            <div className="order-detail-flex">
+              <div className="item-image">
+                <img src={course.image} alt="" className="item-image"></img>
+              </div>
+              <div>
+                <div className="item-name">
+                  <span>{course.name}</span>
+                </div>
+                <div className="item-about">
+                  <span>{course.about}</span>
+                </div>
+                <div className="item-price">
+                  <span>${course.price}</span>
+                </div>
+              </div>
             </div>
           </div>
-          <button className="btn-cancel btn btn-success" onClick={handelBack}>
+          <button className="btn-cancel btn btn-danger" onClick={handelBack}>
             Cancel
           </button>
         </div>
@@ -144,23 +151,26 @@ const Checkout = () => {
             >
               VN Pay
             </a> */}
-
-            <button
+            <div className="vnpay-btn can-click" onClick={handleVnPayClick}>
+              <img src={vnpay} alt="" height={60} width={300} />
+            </div>
+            {/* <button
               className="btn btn-success"
               onClick={handleVnPayClick}
               style={{ width: "100%" }}
             >
               Vn Payyyy
-            </button>
+              
+            </button> */}
             <br />
             <hr />
-            <button
+            {/* <button
               className="btn btn-success"
               onClick={handleClick}
               style={{ width: "100%" }}
             >
               Enroll Free Now
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
