@@ -164,7 +164,7 @@ const NoteList = (props) => {
 };
 
 function isPropsAreEqual(prevNote, nextNote) {
-  return prevNote.course === nextNote.course;
+  return prevNote.course === nextNote.course && prevNote.listNote === nextNote.listNote && prevNote.listNoteShow === nextNote.listNoteShow;
 }
 
 export default React.memo(NoteList, isPropsAreEqual);
