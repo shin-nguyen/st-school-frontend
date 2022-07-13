@@ -59,6 +59,7 @@ const chartOptions = {
         "Jul",
         "Aug",
         "Sep",
+        "Oct",
         "Nov",
         "Dec",
       ],
