@@ -30,9 +30,7 @@ const Checkout = () => {
   };
 
   const handelBack = () => {
-    setTimeout(() => {
       history.push("/course/" + course.id);
-    }, 2000);
   };
 
   return (
@@ -133,7 +131,9 @@ const Checkout = () => {
                       course: course,
                     })
                   );
-                  history.push("/my-courses");
+                  setTimeout(() => {
+                    history.push("/my-courses");
+                  }, 2500);
                 });
               }}
               options={{
