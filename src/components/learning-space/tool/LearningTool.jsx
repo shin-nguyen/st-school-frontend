@@ -9,6 +9,7 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import { createEvent } from "../../../services/job-service";
 import { useDispatch } from "react-redux";
+import { TextArea } from "../../formik/TextArea";
 // import TextField1 from '@mui/material/TextField';
 // import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 // import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -98,7 +99,7 @@ const LearningTool = (props) => {
               </h2>
               <Form>
                 <TextField label="Title" name="title" type="text" />
-                <TextField label="Content" name="content" type="text" />
+                <TextArea label="Content" name="content" type="text" />
                 <TextField label="Time" name="time" type="datetime-local" />
                 {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
                   <DateTimePicker
