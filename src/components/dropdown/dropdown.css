@@ -1,6 +1,6 @@
 .dropdown {
     position: relative;
-    z-index: 1000;
+    z-index: 99;
     border: white;
     cursor: pointer;
 }
